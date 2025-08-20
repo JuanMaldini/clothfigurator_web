@@ -1,0 +1,614 @@
+[
+  {
+    "collection": "Impact",
+    "subcollection": [
+      {
+        "name": "Fuse",
+        "variation": [
+          "Berry 804-001",
+          "Jungle 804-003",
+          "Oceanic 804-004",
+          "Piano 804-006",
+          "Parchment 804-007"
+        ]
+      },
+      {
+        "name": "Note",
+        "variation": [
+          "Oyster 305-007",
+          "Reef 305-024",
+          "Pacific 305-014",
+          "Orchid 305-008",
+          "Blush 305-001",
+          "Moss 305-003",
+          "Storm 305-026"
+        ]
+      },
+      {
+        "name": "Pivot",
+        "variation": [
+          "Slate PIV-006",
+          "Harbor PIV-004",
+          "Chutney PIV-008",
+          "Tarmac PIV-007",
+          "Petrol PIV-014",
+          "Willow PIV-003",
+          "Root PIV-013"
+        ]
+      },
+      {
+        "name": "Summit",
+        "variation": [
+          "Sequoia SU-014",
+          "Tundra SU-006",
+          "Pinyon SU-009",
+          "Cactus SU-003",
+          "Lake SU-004",
+          "Nightfall SU-007"
+        ]
+      },
+      {
+        "name": "Twist",
+        "variation": [
+          "Sangria TW-001",
+          "Pine TW-003",
+          "Carbon TW-006",
+          "Marine TW-004",
+          "Mermaid TW-009",
+          "Smoke TW-007",
+          "Macaron TW-008",
+          "Eucalyptus TW-002"
+        ]
+      }
+    ]
+  },
+  {
+    "collection": "Hyphyn",
+    "subcollection": [
+      {
+        "name": "Cosmos",
+        "variation": [
+          "Black CO-006",
+          "Truffle CO-060",
+          "Burgundy CO-001",
+          "Dark Green CO-023",
+          "Midnight CO-024",
+          "Peat CO-036",
+          "Brownie CO-030",
+          "Cognac CO-009",
+          "Pine CO-013",
+          "Thunder CO-014",
+          "Cinder CO-026",
+          "Mocha CO-020",
+          "Buckskin CO-050",
+          "Moss CO-003",
+          "Bluestone CO-004",
+          "Quarry CO-016",
+          "Clove CO-010",
+          "Chestnut CO-040",
+          "Limestone CO-027",
+          "Cement CO-037",
+          "Porcelain CO-007",
+          "Aged Oak CO-000",
+          "Honey CO-002",
+          "Morel CO-017"
+        ]
+      },
+      {
+        "name": "Gadget",
+        "variation": [
+          "Rootbeer GT-000",
+          "Claret GT-005",
+          "Fir GT-003",
+          "Gears GT-016",
+          "Iron GT-006",
+          "Biscotti GT-002",
+          "Sepia GT-009",
+          "Cool Blue GT-004",
+          "Nile GT-014",
+          "Pumice GT-007"
+        ]
+      },
+      {
+        "name": "Gaia",
+        "variation": [
+          "Pumice GI-007",
+          "Mist GI-027",
+          "Bedrock GI-017",
+          "Chardonnay GI-002",
+          "Dove Grey GI-037",
+          "Metal GI-016",
+          "Bronze GI-000",
+          "Penny GI-009",
+          "Blush GI-001",
+          "Willow GI-013",
+          "Mint GI-003",
+          "Isle GI-014",
+          "Agate GI-004",
+          "Ash GI-026",
+          "Teak GI-010",
+          "Malbec GI-011",
+          "Celery GI-023",
+          "Ocean GI-024",
+          "Coal GI-036",
+          "Earth GI-020",
+          "Brick GI-021",
+          "Alpine GI-033",
+          "Naval GI-034",
+          "Shadow GI-006",
+          "Mahogany GI-030",
+          "Raisin GI-005",
+          "Billiard GI-043",
+          "Midnight GI-044"
+        ]
+      },
+      {
+        "name": "Tellus",
+        "variation": [
+          "Tradewind TE-034",
+          "Blue Jeans TE-024",
+          "Inky Blue TE-014",
+          "Naval TE-004",
+          "Pesto TE-023",
+          "Hunter TE-033",
+          "Caviar TE-016",
+          "Charcoal TE-006",
+          "Goldfinch TE-002",
+          "Bittersweet TE-009",
+          "Garnet TE-001",
+          "Merlot TE-005",
+          "Khaki TE-030",
+          "Glacier TE-027",
+          "Bamboo TE-013",
+          "Storm TE-026",
+          "Emerald TE-003",
+          "Linen TE-017",
+          "Alabaster TE-007",
+          "Cobblestone TE-020",
+          "Branch TE-010",
+          "Allspice TE-000"
+        ]
+      },
+      {
+        "name": "Universe",
+        "variation": [
+          "Fern UN-003",
+          "Pacific UN-014",
+          "Isle UN-004",
+          "Orchid UN-008",
+          "Coral UN-001",
+          "Earth UN-000",
+          "Mineral UN-006"
+        ]
+      }
+    ]
+  },
+  {
+    "collection": "Keystone",
+    "subcollection": [
+      {
+        "name": "Chev",
+        "variation": [
+          "Linen CV-007",
+          "Marble CV-017",
+          "Cement CV-016",
+          "Airy CV-034",
+          "Malt CV-000",
+          "Wheat CV-002",
+          "Willow CV-003",
+          "Jeans CV-024",
+          "Bison CV-010",
+          "Harvest CV-009",
+          "Ocean CV-044",
+          "Hydro CV-014",
+          "Pepper CV-006",
+          "Raisin CV-008",
+          "Pesto CV-013",
+          "Imperial CV-004"
+        ]
+      },
+      {
+        "name": "Enliven",
+        "variation": [
+          "Buttercream PC9-012",
+          "Taupe PC9-006",
+          "Abalone PC9-017",
+          "Fog PC9-016",
+          "Seafoam PC9-043",
+          "Arctic PC9-024",
+          "Ocean PC9-013",
+          "Iris PC9-008"
+        ]
+      },
+      {
+        "name": "Fleck",
+        "variation": [
+          "Tundra 474-007",
+          "Honey 474-002",
+          "Waterfall 474-004",
+          "Dune 474-017",
+          "Umber 474-012",
+          "Baltic 474-014",
+          "Heron 474-027",
+          "Maple 474-009",
+          "Tidal 474-024",
+          "Pewter 474-006",
+          "Bittersweet 474-019",
+          "Mallard 474-003",
+          "Piano 474-016",
+          "Sandstone 474-029",
+          "Raintree 474-013",
+          "Carbon 474-026",
+          "Flare 474-001",
+          "Lagoon 474-034",
+          "Peppercorn 474-036",
+          "Wildberry 474-008",
+          "Midnight 474-044"
+        ]
+      },
+      {
+        "name": "Focus",
+        "variation": [
+          "Newsprint FO-006",
+          "Lunar FO-007",
+          "Habanero FO-009",
+          "Currant FO-008",
+          "Wintergreen FO-003",
+          "Tidal FO-004",
+          "Olive FO-013"
+        ]
+      },
+      {
+        "name": "Palermo II",
+        "variation": [
+          "Pearl PM-037",
+          "Dove PM-026",
+          "Fossil PM-036",
+          "Overcast PM-024",
+          "Shell PM-047",
+          "Storm PM-016",
+          "River Rock PM-034",
+          "Thyme PM-023",
+          "Clove PM-030",
+          "Buff PM-027",
+          "Ecru PM-007",
+          "Bronze PM-050",
+          "Coin PM-012",
+          "Ash PM-046",
+          "Regatta PM-044",
+          "Pine PM-033",
+          "Otter PM-020",
+          "Tawny PM-019",
+          "Carbon PM-056",
+          "Sapphire PM-004",
+          "Alligator PM-043",
+          "Mink PM-040",
+          "Russet PM-029",
+          "Ebony PM-006",
+          "Naval PM-054",
+          "Ivy PM-053",
+          "Saddle PM-010",
+          "Rootbeer PM-060"
+        ]
+      },
+      {
+        "name": "Pavilion",
+        "variation": [
+          "Sisal PV-007",
+          "Eucalyptus PV-003",
+          "Wheat PV-002",
+          "Neptune PV-004",
+          "Elderberry PV-008",
+          "Nightfall PV-006"
+        ]
+      }
+    ]
+  },
+  {
+    "collection": "Vitality",
+    "subcollection": [
+      {"name": "Foliage", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Nimble", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Ripple", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Ritzi", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Sequoia", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Botanique",
+    "subcollection": [
+      {
+        "name": "Bloom",
+        "variation": [
+          "Dogwood 800-000",
+          "Goldfinch 800-002",
+          "Auburn 800-001",
+          "White Oleander 800-006",
+          "Sprout 800-003",
+          "Juniper 800-013"
+        ]
+      },
+      {
+        "name": "Flora",
+        "variation": [
+          "Vapor 801-006",
+          "Bluegrass 801-003",
+          "Mustard Seed 801-002",
+          "Clover 801-013",
+          "Scarlet 801-001",
+          "Cornflower 801-004"
+        ]
+      },
+      {
+        "name": "Sanctuary",
+        "variation": [
+          "Ivory 643-007",
+          "Honey 643-002",
+          "Platinum 643-016",
+          "Hazelnut 643-000",
+          "Orchid 643-005",
+          "Dew 643-006",
+          "Atlantis 643-004",
+          "Taupe 643-010",
+          "Rosewood 643-001",
+          "Palmetto 643-003",
+          "Riptide 643-014",
+          "Meteorite 643-026",
+          "Bordeaux 643-011",
+          "Evergreen 643-013",
+          "Prussian 643-024"
+        ]
+      },
+      {
+        "name": "Valley",
+        "variation": [
+          "Sienna 802-001",
+          "Almond 802-002",
+          "Fern 802-003",
+          "Aegean 802-004",
+          "Cloud 802-006",
+          "Charcoal 802-007"
+        ]
+      },
+      {
+        "name": "Vista",
+        "variation": [
+          "Porcelain 803-007",
+          "Butterscotch 803-002",
+          "Leaf 803-003",
+          "Denim 803-004",
+          "Lilac 803-005",
+          "Slate 803-006"
+        ]
+      }
+    ]
+  },
+  {
+    "collection": "Getaway",
+    "subcollection": [
+      {
+        "name": "Amalfi",
+        "variation": [
+          "Rosy 325-011",
+          "Beachcomber 325-002",
+          "Breeze 325-024",
+          "Vineyard 325-001",
+          "Garden 325-013",
+          "Shoreline 325-014",
+          "Bedrock 325-006",
+          "Grove 325-003",
+          "Waterfall 325-004"
+        ]
+      },
+      {
+        "name": "Belize",
+        "variation": [
+          "Shell 326-007",
+          "Lagoon 326-034",
+          "Shoreline 326-017",
+          "Palm 326-003",
+          "Dijon 326-002",
+          "Driftwood 326-000",
+          "Seaside 326-024",
+          "Oleander 326-011",
+          "Haze 326-006",
+          "Fog 326-016",
+          "Tidal 326-014",
+          "Admiral 326-004",
+          "Papaya 326-009",
+          "Hibiscus 326-001"
+        ]
+      },
+      {
+        "name": "Riviera",
+        "variation": [
+          "Shoreline 327-007",
+          "Gold Coast 327-002",
+          "Daybreak 327-024",
+          "Petal 327-011",
+          "Kelp 327-013",
+          "Scuba 327-014",
+          "Coral 327-001",
+          "Jade 327-003",
+          "Baltic 327-004"
+        ]
+      },
+      {
+        "name": "Tulum",
+        "variation": [
+          "Seasalt 328-007",
+          "Sunrise 328-002",
+          "Coconut 328-000",
+          "Tangelo 328-009",
+          "Sangria 328-001",
+          "Palmetto 328-013",
+          "Paradise 328-003",
+          "Dew Drop 328-014",
+          "River 328-004"
+        ]
+      }
+    ]
+  },
+  {
+    "collection": "SEAQUAL INITIATIVE",
+    "subcollection": [
+      {"name": "Caspian", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Denali", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Leoni", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Mira", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Serene", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Tranquility", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Cambridge",
+    "subcollection": [
+      {"name": "Adler", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Delmar", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Durango", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Lancaster", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Omega", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Seville", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Prestige",
+    "subcollection": [
+      {"name": "Fitz", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Harper", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Lyric", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Sonnet", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Utopia", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Webster", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Revival",
+    "subcollection": [
+      {"name": "Arc", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Beaux", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Retro", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Craftsman",
+    "subcollection": [
+      {"name": "Empire Silicone", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Omega", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Prospect", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Spartan", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Axis",
+    "subcollection": [
+      {"name": "Connect", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Fractal", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Loop", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Vertex", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Supreen",
+    "subcollection": [
+      {"name": "Fleck", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Haven", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Legacy", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Ritzi", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Scout", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Utopia", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Crypton Structures",
+    "subcollection": [
+      {"name": "Channel", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Form", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Function", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Gatsby", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Quantum",
+    "subcollection": [
+      {"name": "Gravity", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Relativity", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Static", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Matter", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Molecule", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Vector", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Good Vibes",
+    "subcollection": [
+      {"name": "Jive", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Rumba", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Samba", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Tango", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Majorelle",
+    "subcollection": [
+      {"name": "Botany", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Labyrinth", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Landscape", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Refuge", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Villa", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Tourist",
+    "subcollection": [
+      {"name": "Bali", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Havana", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Sydney", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Imprint", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Noble", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Wonderlust",
+    "subcollection": [
+      {"name": "Acuco", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Comalapa", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Haarlem", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Huipil", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Milagro", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Puno", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Sula", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Anatolia",
+    "subcollection": [
+      {"name": "Ankara", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Ephesus", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Marmara", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Odessa", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Vollis Simpson",
+    "subcollection": [
+      {"name": "Metal Strips", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Reflector", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Signs", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Spokes", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Whirligig", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Wilson", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  },
+  {
+    "collection": "Spectrum",
+    "subcollection": [
+      {"name": "Continuum 10", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Foundation 10", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Optic 10", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Prism 10", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Theory 10", "variation": ["1", "2", "3", "4", "5"]},
+      {"name": "Variant 10", "variation": ["1", "2", "3", "4", "5"]}
+    ]
+  }
+]
