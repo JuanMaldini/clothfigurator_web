@@ -26,7 +26,8 @@ const Sidepanel = () => {
       <div className={`sp-panel ${open ? 'open' : ''}`}>
         <div className="sp-header">
           <strong>Configurat System</strong>
-          <button onClick={() => setOpen(false)}>✕</button>
+          <div onClick={() => setOpen(false)} className="sp-export-btn">Close</div>
+
         </div>
         <div className="sp-body">
 
