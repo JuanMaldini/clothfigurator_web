@@ -1,3 +1,13 @@
+*{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--ColorBackground);
+}
+
 :root {
     --ColorText: #000000;
     --ColorBackground: #ebebeb;
