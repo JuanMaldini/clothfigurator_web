@@ -7,7 +7,7 @@ import './Sidepanel.css';
 //TINT
 // Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
 const Sidepanel = () => {
-  const [open, setOpen] = useState(!false);
+  const [open, setOpen] = useState(false);
   // Color tint sincronizado globalmente
   const [tint, setTint] = useState(getCurrentTint());
   const [tintOpen, setTintOpen] = useState(false);
