@@ -221,7 +221,8 @@
 .sp-collapsible-title { font-size: 1.05rem; font-weight: 600; }
 .sp-collapsible-title[data-tint] { color: var(--ColorText); }
 .sp-caret { font-size: 0.9rem; opacity: 0.8; margin-left: 0.5rem; }
-.sp-collapsible-body { max-height: 0; transition: max-height .28s ease, opacity .25s ease; opacity: 0; }
-.sp-collapsible-body.open { max-height: 260px; opacity: 1; }
+.sp-collapsible-body { max-height: 0; overflow: hidden; transition: max-height .28s ease, opacity .25s ease; opacity: 0; pointer-events: none; }
+.sp-collapsible-body.open { max-height: 260px; opacity: 1; pointer-events: auto; }
 .sp-section { margin: 0.25rem 0 0.4rem; }
 .ct-value { margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 0.03em; }
+.react-colorful{margin: 1rem;}

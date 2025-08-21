@@ -8,7 +8,7 @@ export interface ColorTintProps {
 }
 
 // Estado global simple (último color seleccionado) + listeners para suscribir.
-let lastColor = '#000000ff';
+let lastColor = '--(ColorBackground)';
 const listeners = new Set<(hex: string) => void>();
 
 export const getCurrentTint = () => lastColor;
