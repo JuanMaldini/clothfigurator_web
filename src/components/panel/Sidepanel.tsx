@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { generateConfiguratorPDF } from '../pdfConfigurator/pdfGenerator';
 import './Sidepanel.css';
 
 // Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
@@ -29,16 +30,20 @@ const Sidepanel = () => {
           <div onClick={() => setOpen(false)} className="sp-export-btn">Close</div>
 
         </div>
-        <div className="sp-body">
+  <div className="sp-body" id="sp-body">
 
           <section className="sp-export-section">
             <div className="sp-export-row">
               <div>
                 <strong>Save</strong>
               </div>
-              <div style={{ display: 'flex', gap: '0.7rem' }}>
-                <button className="sp-export-btn">Export</button>
-                <button className="sp-export-btn">Screenshoot</button>
+              <div className="sp-export-actions">
+                <button
+                  className="sp-export-btn"
+                  title="Download a pdf with all information"
+                  onClick={() => generateConfiguratorPDF('sp-body')}
+                >Export</button>
+                <button className="sp-export-btn" title="Take a screenshot of the current view">Screenshoot</button>
               </div>
             </div>
           </section>
@@ -133,6 +138,7 @@ const ConfiguratorPanel: React.FC = () => {
                 className="cc-collection-dropdown"
                 value={colIndex}
                 onChange={e => selectCollection(Number(e.target.value))}
+                aria-label="Collections"
               >
                 {data.map((c, i) => <option key={c.name} value={i}>{c.name}</option>)}
               </select>
