@@ -224,5 +224,4 @@
 .sp-collapsible-body { max-height: 0; transition: max-height .28s ease, opacity .25s ease; opacity: 0; }
 .sp-collapsible-body.open { max-height: 260px; opacity: 1; }
 .sp-section { margin: 0.25rem 0 0.4rem; }
-.ct-picker { width: 100%; }
 .ct-value { margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 0.03em; }

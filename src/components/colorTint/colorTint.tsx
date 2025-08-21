@@ -5,7 +5,6 @@ import { HexColorPicker } from 'react-colorful';
 export interface ColorTintProps {
 	value?: string;            // Valor inicial/controlado
 	onChange?: (hex: string) => void; // Callback al cambiar
-	className?: string;
 }
 
 // Estado global simple (último color seleccionado) + listeners para suscribir.
@@ -15,7 +14,7 @@ const listeners = new Set<(hex: string) => void>();
 export const getCurrentTint = () => lastColor;
 export const subscribeTint = (fn: (hex: string) => void) => { listeners.add(fn); return () => listeners.delete(fn); };
 
-const ColorTint: React.FC<ColorTintProps> = ({ value, onChange, className = '' }) => {
+const ColorTint: React.FC<ColorTintProps> = ({ value, onChange}) => {
 	const [color, setColor] = useState(value || lastColor);
 
 	useEffect(() => { if (value && value !== color) setColor(value); }, [value, color]);
@@ -28,7 +27,7 @@ const ColorTint: React.FC<ColorTintProps> = ({ value, onChange, className = '' }
 	};
 
 	return (
-		<div className={`ct-picker ${className}`.trim()}>
+		<div>
 			<HexColorPicker color={color} onChange={handleChange} />
 			<div className="ct-value" aria-label="Selected color" data-color={color}>{color}</div>
 		</div>
