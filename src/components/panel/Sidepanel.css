@@ -17,7 +17,6 @@
     font-size: 1.13rem;
     font-weight: 700;
     color: var(--ColorText);
-    margin-bottom: 0.7rem;
     letter-spacing: 0.01em;
     text-align: left;
 }
@@ -98,7 +97,7 @@
 }
 
 .sp-body {
-    padding: 0.7rem;
+    padding: 1rem;
     flex: 1;
     overflow-y: auto;
     display: flex;
@@ -109,6 +108,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0.5rem 0rem;
     gap: 1rem;
 }
 .sp-export-label {
@@ -147,11 +147,9 @@
 .cc-root {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
     font-size: 0.97rem;
     background: none;
     box-shadow: none;
-    padding: 0;
 }
 .cc-loading {
     font-size: 0.95rem;
@@ -205,3 +203,26 @@
 .cc-var-title {
     font-weight: 600;
 }
+
+/* Collapsible Tint section */
+.sp-collapsible-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: 0;
+    padding: 0.4rem 0;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+.sp-collapsible-header:hover .sp-collapsible-title { text-decoration: underline; }
+.sp-collapsible-title { font-size: 1.05rem; font-weight: 600; }
+.sp-collapsible-title[data-tint] { color: var(--ColorText); }
+.sp-caret { font-size: 0.9rem; opacity: 0.8; margin-left: 0.5rem; }
+.sp-collapsible-body { max-height: 0; transition: max-height .28s ease, opacity .25s ease; opacity: 0; }
+.sp-collapsible-body.open { max-height: 260px; opacity: 1; }
+.sp-section { margin: 0.25rem 0 0.4rem; }
+.ct-picker { width: 100%; }
+.ct-value { margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 0.03em; }

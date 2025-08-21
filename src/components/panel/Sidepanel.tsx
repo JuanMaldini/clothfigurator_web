@@ -1,10 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { generateConfiguratorPDF } from '../pdfConfigurator/pdfGenerator';
+import ColorTint, { getCurrentTint, subscribeTint } from '../colorTint/colorTint';
 import './Sidepanel.css';
 
+
+//TINT
 // Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
 const Sidepanel = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(!false);
+  // Color tint sincronizado globalmente
+  const [tint, setTint] = useState(getCurrentTint());
+  const [tintOpen, setTintOpen] = useState(false);
+  useEffect(() => {
+    const unsubscribe = subscribeTint(setTint);
+    return () => { unsubscribe(); };
+  }, []);
+  // referencia ligera para evitar warning si todavía no se usa
+  // eslint-disable-next-line no-unused-expressions
+  tint;
+
 
   // Evita scroll de fondo cuando está abierto
   useEffect(() => {
@@ -45,6 +59,20 @@ const Sidepanel = () => {
                 >Export</button>
                 <button className="sp-export-btn" title="Take a screenshot of the current view">Screenshoot</button>
               </div>
+            </div>
+          </section>
+
+          <section className="sp-section">
+            <button
+              type="button"
+              className={`sp-collapsible-header${tintOpen ? ' is-open' : ''}`}
+              onClick={() => setTintOpen(o => !o)}
+            >
+              <span className="sp-collapsible-title" style={{color:tint}}data-tint={tint}>Tint</span>
+              <span className="sp-caret" aria-hidden="true">{tintOpen ? '▾' : '▸'}</span>
+            </button>
+            <div className={`sp-collapsible-body${tintOpen ? ' open' : ''}`}> 
+              <ColorTint />
             </div>
           </section>
 
