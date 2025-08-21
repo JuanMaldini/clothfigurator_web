@@ -3,7 +3,7 @@ import './Sidepanel.css';
 
 // Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
 const Sidepanel = () => {
-  const [open, setOpen] = useState(!false);
+  const [open, setOpen] = useState(false);
 
   // Evita scroll de fondo cuando está abierto
   useEffect(() => {
