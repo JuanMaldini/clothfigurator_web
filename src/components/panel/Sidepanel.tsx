@@ -3,7 +3,7 @@ import './Sidepanel.css';
 
 // Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
 const Sidepanel = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(!false);
 
   // Evita scroll de fondo cuando está abierto
   useEffect(() => {
@@ -29,21 +29,24 @@ const Sidepanel = () => {
           <button onClick={() => setOpen(false)}>✕</button>
         </div>
         <div className="sp-body">
+
           <section className="sp-export-section">
             <div className="sp-export-row">
-              <span className="sp-export-label">Export configuration</span>
-              <button className="sp-export-btn">PDF</button>
-            </div>
-            <div className="sp-export-row">
-              <span className="sp-export-label">Save Image</span>
-              <button className="sp-export-btn">Render</button>
+              <div>
+                <strong>Save</strong>
+              </div>
+              <div style={{ display: 'flex', gap: '0.7rem' }}>
+                <button className="sp-export-btn">Export</button>
+                <button className="sp-export-btn">Screenshoot</button>
+              </div>
             </div>
           </section>
+
           <section>
             <ConfiguratorPanel />
           </section>
         </div>
-        <div className="sp-footer">Sidepanel básico (sin librería externa)</div>
+        <div className="sp-footer">Soy el pie del panel</div>
       </div>
     </div>
   );
