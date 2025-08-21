@@ -8,7 +8,7 @@
 .sp-panel-open-btn {
     position: fixed;
     top: 1.2rem;
-    right: 1.5rem;
+    right: 0.7rem;
     z-index: 1100;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
@@ -82,12 +82,15 @@
 .sp-panel.open {
     transform: translateX(0);
 }
-
+.sp-export-actions{
+    display: flex;
+    gap: 0.7rem;
+}
 .sp-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 1.5rem 1rem 1.5rem;
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
     border-bottom: 1px solid var(--ColorBackgroundSelected);
     font-size: 1.1rem;
     font-weight: 600;

@@ -30,7 +30,7 @@ const Sidepanel = () => {
           <div onClick={() => setOpen(false)} className="sp-export-btn">Close</div>
 
         </div>
-  <div className="sp-body" id="sp-body">
+          <div className="sp-body" id="sp-body">
 
           <section className="sp-export-section">
             <div className="sp-export-row">
