@@ -17,7 +17,11 @@ const Sidepanel = () => {
 
   return (
     <div className="sp-root">
-      <button onClick={() => setOpen(true)}>Open</button>
+      {!open && (
+        <button className="sp-btn sp-panel-open-btn" onClick={() => setOpen(true)}>
+          Open
+        </button>
+      )}
       {open && <div className="sp-backdrop" onClick={() => setOpen(false)} />}
       <div className={`sp-panel ${open ? 'open' : ''}`}>
         <div className="sp-header">
@@ -25,20 +29,19 @@ const Sidepanel = () => {
           <button onClick={() => setOpen(false)}>✕</button>
         </div>
         <div className="sp-body">
-
-        <div>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-            <p>Export configuration</p>
-            <button>PDF</button>
-          </div>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-            <p>Save Image</p>
-            <button>Render</button>
-          </div>
-        </div>
-
-        <ConfiguratorPanel />
-
+          <section className="sp-export-section">
+            <div className="sp-export-row">
+              <span className="sp-export-label">Export configuration</span>
+              <button className="sp-export-btn">PDF</button>
+            </div>
+            <div className="sp-export-row">
+              <span className="sp-export-label">Save Image</span>
+              <button className="sp-export-btn">Render</button>
+            </div>
+          </section>
+          <section>
+            <ConfiguratorPanel />
+          </section>
         </div>
         <div className="sp-footer">Sidepanel básico (sin librería externa)</div>
       </div>
@@ -116,38 +119,52 @@ const ConfiguratorPanel: React.FC = () => {
 
   return (
     <div aria-label="Configurador" className="cc-root">
-      <div className="cc-header-row">
-        <div className="cc-select-col">
-          <label className="cc-collection-label" style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}} >collections
-            <select className="cc-collection-dropdown" value={colIndex} onChange={e => selectCollection(Number(e.target.value))}>
-              {data.map((c, i) => <option key={c.name} value={i}>{c.name}</option>)}
-            </select>
-          </label>
+      <div>
+        <h2 className="cc-section-title">Collections</h2>
+        <div className="cc-header-row">
+          <div className="cc-select-col">
+            <label className="cc-collection-label" htmlFor="collection-select">
+              <select
+                id="collection-select"
+                className="cc-collection-dropdown"
+                value={colIndex}
+                onChange={e => selectCollection(Number(e.target.value))}
+              >
+                {data.map((c, i) => <option key={c.name} value={i}>{c.name}</option>)}
+              </select>
+            </label>
+          </div>
         </div>
       </div>
-      <div className="cc-subcollections">
-        {subcollections.map(sc => (
-          <button
-            key={sc.name}
-            type="button"
-            className={`cc-sub-btn${sc.name === subName ? ' is-selected' : ''}`}
-            onClick={() => setSubName(sc.name)}
-            aria-current={sc.name === subName || undefined}
-          >{sc.name}</button>
-        ))}
+      <div >
+        <h2 className="cc-section-title">Subcollections</h2>
+        <div className="cc-subcollections">
+          {subcollections.map(sc => (
+            <button
+              key={sc.name}
+              type="button"
+              className={`cc-sub-btn${sc.name === subName ? ' is-selected' : ''}`}
+              onClick={() => setSubName(sc.name)}
+              aria-current={sc.name === subName || undefined}
+            >{sc.name}</button>
+          ))}
+        </div>
       </div>
-  <div className="cc-var-grid" aria-label="Variaciones">
-        {variations.map(v => (
-          <button
-            key={v}
-            type="button"
-            className="cc-var-box"
-            onClick={() => sendVariation(v)}
-            title={v}
-          >
-            <span className="cc-var-box-label">{v}</span>
-          </button>
-        ))}
+      <div >
+        <h2 className="cc-section-title">Variations</h2>
+        <div className="cc-var-grid" aria-label="Variaciones">
+          {variations.map(v => (
+            <button
+              key={v}
+              type="button"
+              className="cc-var-box"
+              onClick={() => sendVariation(v)}
+              title={v}
+            >
+              <span className="cc-var-box-label">{v}</span>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
