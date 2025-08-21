@@ -68,7 +68,7 @@ const Sidepanel = () => {
               className={`sp-collapsible-header${tintOpen ? ' is-open' : ''}`}
               onClick={() => setTintOpen(o => !o)}
             >
-              <span className="sp-collapsible-title" style={{color:tint}}data-tint={tint}>Tint</span>
+              <span className="sp-collapsible-title">Tint</span>
               <span className="sp-caret" aria-hidden="true">{tintOpen ? '▾' : '▸'}</span>
             </button>
             <div className={`sp-collapsible-body${tintOpen ? ' open' : ''}`}> 

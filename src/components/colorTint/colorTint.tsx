@@ -27,9 +27,8 @@ const ColorTint: React.FC<ColorTintProps> = ({ value, onChange}) => {
 	};
 
 	return (
-		<div>
+		<div style={{background: color, display: 'flex', justifyContent: 'center'}}>
 			<HexColorPicker color={color} onChange={handleChange} />
-			<div className="ct-value" aria-label="Selected color" data-color={color}>{color}</div>
 		</div>
 	);
 };
