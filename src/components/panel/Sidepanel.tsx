@@ -4,6 +4,86 @@ import ColorTint, { getCurrentTint, subscribeTint } from '../colorTint/colorTint
 import './Sidepanel.css';
 
 
+// ================== PIXEL STREAMING MESSAGING LAYER ==================
+// Centraliza la construcción, serialización, logging y envío del mensaje
+// que viaja hacia Unreal por Pixel Streaming (o fallback).
+// Garantiza que el mismo string que se envía es el que se imprime en consola.
+
+interface VariationMessage {
+  type: 'variation-select';
+  collection: string;
+  subcollection: string;
+  variation: string;      // nombre legible
+  variationId: string;    // id interno (aquí igual que variation por ahora)
+  tint?: string;          // ejemplo de campo adicional opcional (color actual)
+  timestamp: number;      // epoch ms para trazabilidad
+}
+
+// Construye el objeto de mensaje
+function buildVariationMessage(collection: string, subcollection: string, variation: string, tint?: string): VariationMessage {
+  return {
+    type: 'variation-select',
+    collection,
+    subcollection,
+    variation,
+    variationId: variation,
+    tint,
+    timestamp: Date.now()
+  };
+}
+
+// Serializa (si quisieras mutar formato/orden centralizas aquí)
+function serializeVariationMessage(msg: VariationMessage): string {
+  return JSON.stringify(msg);
+}
+
+// Intenta múltiples APIs conocidas del ecosistema Pixel Streaming / fallbacks.
+function emitToPixelStreaming(serialized: string): boolean {
+  const w = window as any;
+  try {
+    if (typeof w.emitUIInteraction === 'function') { // algunas integraciones exponen esto global
+      w.emitUIInteraction(serialized);
+      return true;
+    }
+    // Epic sample (webRtcPlayerObj) suele tener emitUIInteraction
+    if (w.webRtcPlayerObj?.emitUIInteraction) {
+      w.webRtcPlayerObj.emitUIInteraction(serialized);
+      return true;
+    }
+    // Algunas versiones antiguas solo tienen sendMessage
+    if (w.webRtcPlayerObj?.sendMessage) {
+      w.webRtcPlayerObj.sendMessage(serialized);
+      return true;
+    }
+    // PureWeb InputEmitter estilo props.InputEmitter.EmitUIInteraction
+    if (w.InputEmitter?.EmitUIInteraction) {
+      w.InputEmitter.EmitUIInteraction(serialized);
+      return true;
+    }
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.warn('[PS][emit-error]', err);
+  }
+  return false;
+}
+
+// Punto único para log + envío. Retorna true si se envió por canal PS.
+export function logAndSendVariation(collection: string, subcollection: string, variation: string, tint?: string): boolean {
+  const msgObj = buildVariationMessage(collection, subcollection, variation, tint);
+  const serialized = serializeVariationMessage(msgObj);
+  // Log EXACTO: lo que sale por el canal.
+  // eslint-disable-next-line no-console
+  console.log('[Configurator][SEND]', serialized);
+  const psOk = emitToPixelStreaming(serialized);
+  if (!psOk) {
+    // Fallback broadcast (debug / integraciones locales)
+    window.postMessage(msgObj, '*');
+  }
+  return psOk;
+}
+// ================== /PIXEL STREAMING MESSAGING LAYER ==================
+
+
 //TINT
 // Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
 const Sidepanel = () => {
@@ -20,7 +100,7 @@ const Sidepanel = () => {
   tint;
 
 
-  // Evita scroll de fondo cuando está abierto
+  // Evita scroll de fondo cuando está abiertoEmitUIInteraction
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
@@ -139,17 +219,8 @@ const ConfiguratorPanel: React.FC = () => {
 
   const sendVariation = (variation: string) => {
     if (!current || !subName) return;
-    const payload = { type: 'variation-select', collection: current.name, subcollection: subName, variation, variationId: variation };
-    const anyWin = window as any;
-    if (anyWin.webRtcPlayerObj?.sendMessage) {
-      try { anyWin.webRtcPlayerObj.sendMessage(JSON.stringify(payload)); } catch { /* ignore */ }
-    } else {
-      window.postMessage(payload, '*');
-    }
-    if (process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line no-console
-      console.log('[Configurator] Variation', payload);
-    }
+    // Podemos agregar tint actual (si se quisiera) leyendo getCurrentTint()
+    try { logAndSendVariation(current.name, subName, variation /*, getCurrentTint() */); } catch { /* ignore */ }
   };
 
   if (!data.length) return <div className="cc-loading">Cargando configurador…</div>;

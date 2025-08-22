@@ -1,5 +1,5 @@
 // Central Arcware configuration (single place to change values)
-export const ARCWARE_SHARE_ID = 'share-0be4620b-77aa-42b1-98cb-f7ee61be443';
+export const ARCWARE_SHARE_ID = 'share-51d14dfe-3b21-4bcd-9a4e-9f212983f79e';
 export const ARCWARE_AUTO_CONNECT = true;
 export const ARCWARE_OPTIONS = {
   initialSettings: { AutoConnect: ARCWARE_AUTO_CONNECT },
