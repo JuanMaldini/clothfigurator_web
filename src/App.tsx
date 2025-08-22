@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom"
-import Sidepanel from "./components/panel/Sidepanel"
 
 function App() {
   return (
     <div style={{background: '#18181a'}} className="centered-container">
-      <Sidepanel />
       <div className="centered-content">
         <h1 style={{color: "white"}}>Demo</h1>
         <Link  to="/ConfiguratorSystem" className="sp-btn" style={{display: 'flex', alignItems: 'center', gap: '0.7rem', color: "white", background: 'var(--ColorBackgroundSelected)'}}>
