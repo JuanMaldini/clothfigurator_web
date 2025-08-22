@@ -2,21 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { generateConfiguratorPDF } from '../pdfConfigurator/pdfGenerator';
 import ColorTint, { getCurrentTint, subscribeTint } from '../colorTint/colorTint';
 import './Sidepanel.css';
-
-
-// ================== PIXEL STREAMING MESSAGING LAYER ==================
-// Centraliza la construcción, serialización, logging y envío del mensaje
-// que viaja hacia Unreal por Pixel Streaming (o fallback).
-// Garantiza que el mismo string que se envía es el que se imprime en consola.
-
 interface VariationMessage {
   type: 'variation-select';
   collection: string;
   subcollection: string;
-  variation: string;      // nombre legible
-  variationId: string;    // id interno (aquí igual que variation por ahora)
-  tint?: string;          // ejemplo de campo adicional opcional (color actual)
-  timestamp: number;      // epoch ms para trazabilidad
+  variation: string;
+  tint?: string;
 }
 
 // Construye el objeto de mensaje
@@ -26,9 +17,7 @@ function buildVariationMessage(collection: string, subcollection: string, variat
     collection,
     subcollection,
     variation,
-    variationId: variation,
-    tint,
-    timestamp: Date.now()
+    tint
   };
 }
 
@@ -36,58 +25,6 @@ function buildVariationMessage(collection: string, subcollection: string, variat
 function serializeVariationMessage(msg: VariationMessage): string {
   return JSON.stringify(msg);
 }
-
-// Intenta múltiples APIs conocidas del ecosistema Pixel Streaming / fallbacks.
-function emitToPixelStreaming(serialized: string): boolean {
-  const w = window as any;
-  try {
-    // Arcware Application wrapper (preferido si está disponible)
-    try {
-      sendUIInteraction(serialized);
-      return true;
-    } catch {}
-    if (typeof w.emitUIInteraction === 'function') { // algunas integraciones exponen esto global
-      w.emitUIInteraction(serialized);
-      return true;
-    }
-    // Epic sample (webRtcPlayerObj) suele tener emitUIInteraction
-    if (w.webRtcPlayerObj?.emitUIInteraction) {
-      w.webRtcPlayerObj.emitUIInteraction(serialized);
-      return true;
-    }
-    // Algunas versiones antiguas solo tienen sendMessage
-    if (w.webRtcPlayerObj?.sendMessage) {
-      w.webRtcPlayerObj.sendMessage(serialized);
-      return true;
-    }
-    // PureWeb InputEmitter estilo props.InputEmitter.EmitUIInteraction
-    if (w.InputEmitter?.EmitUIInteraction) {
-      w.InputEmitter.EmitUIInteraction(serialized);
-      return true;
-    }
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.warn('[PS][emit-error]', err);
-  }
-  return false;
-}
-
-// Punto único para log + envío. Retorna true si se envió por canal PS.
-export function logAndSendVariation(collection: string, subcollection: string, variation: string, tint?: string): boolean {
-  const msgObj = buildVariationMessage(collection, subcollection, variation, tint);
-  const serialized = serializeVariationMessage(msgObj);
-  // Log EXACTO: lo que sale por el canal.
-  // eslint-disable-next-line no-console
-  console.log('[Configurator][SEND]', serialized);
-  const psOk = emitToPixelStreaming(serialized);
-  if (!psOk) {
-    // Fallback broadcast (debug / integraciones locales)
-    window.postMessage(msgObj, '*');
-  }
-  return psOk;
-}
-// ================== /PIXEL STREAMING MESSAGING LAYER ==================
-
 
 //TINT
 // Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
@@ -103,7 +40,6 @@ const Sidepanel = () => {
   // referencia ligera para evitar warning si todavía no se usa
   // eslint-disable-next-line no-unused-expressions
   tint;
-
 
   // Evita scroll de fondo cuando está abiertoEmitUIInteraction
   useEffect(() => {
@@ -224,8 +160,20 @@ const ConfiguratorPanel: React.FC = () => {
 
   const sendVariation = (variation: string) => {
     if (!current || !subName) return;
-    // Podemos agregar tint actual (si se quisiera) leyendo getCurrentTint()
-    try { logAndSendVariation(current.name, subName, variation /*, getCurrentTint() */); } catch { /* ignore */ }
+    // Construye y envía el JSON al Pixel Streaming usando el puente global expuesto por ArcwarePlayer
+    try {
+      const payload = serializeVariationMessage(
+        buildVariationMessage(current.name, subName, variation)
+      );
+      // Prefiere la función global expuesta por ArcwarePlayer
+      if (typeof sendUIInteraction === 'function') {
+        sendUIInteraction(payload);
+      } else if ((window as any).emitUIInteraction) {
+        (window as any).emitUIInteraction(payload);
+      }
+    } catch {
+      // ignore
+    }
   };
 
   if (!data.length) return <div className="cc-loading">Cargando configurador…</div>;
