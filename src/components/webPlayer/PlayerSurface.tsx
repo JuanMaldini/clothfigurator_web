@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePixelStreaming } from '../core/PixelStreamingContext';
+import { usePixelStreaming } from './PixelStreamingContext';
 
 export const PlayerSurface: React.FC = () => {
   const { videoRef, isConnected, connect, disconnect } = usePixelStreaming();

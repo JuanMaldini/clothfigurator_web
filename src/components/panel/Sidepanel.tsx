@@ -41,6 +41,11 @@ function serializeVariationMessage(msg: VariationMessage): string {
 function emitToPixelStreaming(serialized: string): boolean {
   const w = window as any;
   try {
+    // Arcware Application wrapper (preferido si está disponible)
+    try {
+      sendUIInteraction(serialized);
+      return true;
+    } catch {}
     if (typeof w.emitUIInteraction === 'function') { // algunas integraciones exponen esto global
       w.emitUIInteraction(serialized);
       return true;
