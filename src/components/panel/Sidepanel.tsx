@@ -222,7 +222,6 @@ const ConfiguratorPanel: React.FC = () => {
               className="cc-var-box"
               data-label={v}
               onClick={() => sendVariation(v)}
-              title={v}
             >
               <span style={{ fontSize: '12px' }}>{v}</span>
             </button>
