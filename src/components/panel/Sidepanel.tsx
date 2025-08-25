@@ -78,7 +78,7 @@ const Sidepanel = () => {
                   title="Download a pdf with all information"
                   onClick={() => generateConfiguratorPDF('sp-body')}
                 >Export</button>
-                <button className="sp-export-btn" title="Take a screenshot of the current view">Screenshoot</button>
+                <button className="sp-export-btn" title="Take a screenshot of the current view DISABLED">Screenshoot</button>
               </div>
             </div>
           </section>
@@ -171,6 +171,8 @@ const ConfiguratorPanel: React.FC = () => {
       } else if ((window as any).emitUIInteraction) {
         (window as any).emitUIInteraction(payload);
       }
+      //PRINT payload TO CONSOLE
+      console.log(payload);
     } catch {
       // ignore
     }
