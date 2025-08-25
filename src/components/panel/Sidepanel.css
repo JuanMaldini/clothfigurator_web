@@ -75,8 +75,9 @@ body {
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
-    width: 340px;
+    min-width: 340px;
+    height: 100dvh;
+    width: 40dvw;
     max-width: 90vw;
     background: var(--ColorBackground);
     color: var(--ColorText);
@@ -126,10 +127,11 @@ body {
     font-weight: 500;
     letter-spacing: 0.01em;
 }
+
 .sp-btn, .sp-export-btn, .cc-sub-btn, .cc-var-box {
     color: var(--ColorText);
-    border: 1px solid #2c2c36;
     border-radius: 6px;
+    border: 1px solid #2c2c36;
     padding: 0.45rem 1.1rem;
     font-size: 0.98rem;
     font-weight: 500;
@@ -137,6 +139,18 @@ body {
     transition: background 0.15s, color 0.15s, border 0.15s;
     outline: none;
 }
+
+.cc-var-box{
+    position: relative; /* anchor hover label */
+    overflow: visible;
+    border-radius: 0px;
+    border: 0px solid #2c2c36;
+    padding: 0rem;
+    width: 64px;
+    height: 64px;
+    background-color: #2495b3;
+}
+
 .sp-btn:hover, .sp-export-btn:hover, .cc-sub-btn:hover, .cc-var-box:hover, .cc-sub-btn.is-selected, .cc-var-box:focus {
     background: var(--ColorBackgroundSelected);
     color: var(--ColorText);
@@ -206,8 +220,8 @@ body {
 }
 .cc-var-grid {
     margin-top: 0.75rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.7rem;
 }
 .cc-var-title {
@@ -236,3 +250,41 @@ body {
 .sp-section { margin: 0.25rem 0 0.4rem; }
 .ct-value { margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 0.03em; }
 .react-colorful{margin: 1rem;}
+
+/* Hover label above variation box (CSS-only, reads from data-label) */
+.cc-var-box::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, -6px);
+    background: rgba(20, 20, 20, 0.92);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 2;
+}
+.cc-var-box::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, 0);
+    border: 6px solid transparent;
+    border-top-color: rgba(20, 20, 20, 0.92);
+    opacity: 0;
+    transition: opacity .15s ease;
+    z-index: 2;
+}
+.cc-var-box:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -10px);
+}
+.cc-var-box:hover::before {
+    opacity: 1;
+}
