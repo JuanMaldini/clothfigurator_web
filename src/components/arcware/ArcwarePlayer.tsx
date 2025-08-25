@@ -1,15 +1,9 @@
 import Sidepanel from "../panel/Sidepanel";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
 
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
-  // Keep typing simple to minimize coupling with SDK types
-  const [arcwareApplication, setArcwareApplication] = useState<any>(null);
-
-  const handleSendCommand = (descriptor: unknown) => {
-    arcwareApplication?.emitUIInteraction?.(descriptor as any);
-  };
 
   useEffect(() => {
     const { Application } = ArcwareInit(
@@ -32,8 +26,7 @@ function ArcwarePlayer() {
           },
         }
       );
-      
-    setArcwareApplication(Application);
+    
 
     // Append the application's root element to the video container ref
     if (videoContainerRef?.current) {
