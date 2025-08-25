@@ -77,7 +77,7 @@ body {
     right: 0;
     min-width: 340px;
     height: 100dvh;
-    width: 40dvw;
+    width: 30dvw;
     max-width: 90vw;
     background: var(--ColorBackground);
     color: var(--ColorText);

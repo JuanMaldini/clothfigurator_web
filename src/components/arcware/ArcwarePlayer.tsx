@@ -52,28 +52,12 @@ function ArcwarePlayer() {
     }
   }, []);
   
-  // console.log("applicationResponse", applicationResponse);
-
   return (
     <div>
       <div
         ref={videoContainerRef}
-        style={{ width: "100vw", height: "100vh" }}
       />
       <Sidepanel />
-      <button
-        style={{
-          position: "absolute",
-          right: "100px",
-          bottom: 20,
-          margin: "auto",
-          zIndex: 9,
-          width: "200px",
-        }}
-        onClick={() => handleSendCommand({ test: "Send command" })}
-      >
-        Emit command to Unreal
-      </button>
     </div>
   );
 }
