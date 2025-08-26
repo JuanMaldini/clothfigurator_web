@@ -108,19 +108,58 @@ const Sidepanel = () => {
 };
 
 
-interface RawVariationSubcollection { name?: string; variation?: string[]; variations?: string[] }
-interface RawCollection { collection?: string; name?: string; subcollection?: RawVariationSubcollection[]; subcollections?: RawVariationSubcollection[] }
+
+interface RawVariation {
+  value?: string;
+  /** normalized keys */
+  "variation-name"?: string;
+  "variation-pattern"?: string;
+  "variation-image"?: string;
+  /** legacy keys */
+  label?: string;
+  code?: string;
+  image?: string;
+}
+
+interface RawVariationSubcollection {
+  name?: string;
+  "subcollection-name"?: string;
+  variation?: Array<string | RawVariation>;
+  variations?: Array<string | RawVariation>;
+}
+
+interface RawCollection {
+  collection?: string;
+  "collection-name"?: string;
+  name?: string;
+  subcollection?: RawVariationSubcollection[];
+  subcollections?: RawVariationSubcollection[];
+}
+
 interface NormalizedSubcollection { name: string; variations: string[] }
 interface NormalizedCollection { name: string; subcollections: NormalizedSubcollection[] }
 
+const composeVariationString = (v: any): string => {
+  if (typeof v === 'string') return v.trim();
+  if (!v || typeof v !== 'object') return '';
+  if (v.value) return String(v.value).trim();
+  const name = (v["variation-name"] || v.label || '').trim();
+  const code = (v["variation-pattern"] || v.code || '').trim();
+  if (name && code) return code.includes(name) ? name : `${name} ${code}`;
+  return (name || code || '').trim();
+};
+
 const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
   (raw || []).map(r => ({
-    name: r.collection || r.name || 'Unnamed',
-    subcollections: (r.subcollections || r.subcollection || []).map(s => ({
-      name: s.name || 'Unnamed',
-      variations: s.variations || s.variation || []
-    }))
+    name: (r["collection-name"] || r.collection || r.name || 'Unnamed').trim(),
+    subcollections: ((r.subcollections || r.subcollection || []) as RawVariationSubcollection[]).map(s => {
+      const subName = (s["subcollection-name"] || s.name || 'Unnamed').trim();
+      const rawVars = (s.variations || s.variation || []) as Array<string | RawVariation>;
+      const variations = rawVars.map(composeVariationString).filter(Boolean) as string[];
+      return { name: subName, variations };
+    })
   })).filter(c => c.subcollections.length);
+
 
 const ConfiguratorPanel: React.FC = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
@@ -131,9 +170,20 @@ const ConfiguratorPanel: React.FC = () => {
     let alive = true;
     (async () => {
       try {
-        const url = new URL('./collections.json', import.meta.url).href;
-        const res = await fetch(url, { cache: 'no-cache' });
-        const json = await res.json();
+        
+        const tryUrls = ['./collections.normalized.json', './collections.json'];
+        let json: any = null;
+        for (const rel of tryUrls) {
+          try {
+            const url = new URL(rel, import.meta.url).href;
+            const res = await fetch(url, { cache: 'no-cache' });
+            if (!res.ok) continue;
+            json = await res.json();
+            if (json) break;
+          } catch {}
+        }
+        if (!json) throw new Error('No collections JSON found');
+
         if (!alive) return;
         const norm = normalizeData(json);
         setData(norm);
