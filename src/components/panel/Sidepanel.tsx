@@ -67,7 +67,7 @@ const Sidepanel = () => {
     <div className="sp-root">
       {!open && (
         <button
-          className="sp-btn sp-panel-open-btn"
+          className="sp-export-btn sp-panel-open-btn"
           onClick={() => setOpen(true)}
         >
           Open
