@@ -1,18 +1,18 @@
 [
   {
     "collection-name": "Impact",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1569/impact-collection-page-list-image.jpg",
     "subcollection": [
       {
         "subcollection-name": "Fuse",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "Fuse is meticulously crafted with exquisite detail, employing a variety of yarn types to introduce captivating texture and dimension. Through the skillful blending of different yarn textures, it forms a unique pattern featuring both a linear broken stripe and geometric blocks. This intriguing fabric is available in a palette of 5 distinctive multi-color colorways.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/804-004/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "Berry", "variation-pattern": "804-001", "variation-image": "" },
-          { "variation-name": "Jungle", "variation-pattern": "804-003", "variation-image": "" },
-          { "variation-name": "Oceanic", "variation-pattern": "804-004", "variation-image": "" },
-          { "variation-name": "Piano", "variation-pattern": "804-006", "variation-image": "" },
-          { "variation-name": "Parchment", "variation-pattern": "804-007", "variation-image": "" }
+          { "variation-name": "Berry", "variation-pattern": "804-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/804-001/image/thumbnail" },
+          { "variation-name": "Jungle", "variation-pattern": "804-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/804-003/image/thumbnail" },
+          { "variation-name": "Oceanic", "variation-pattern": "804-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/804-004/image/thumbnail" },
+          { "variation-name": "Piano", "variation-pattern": "804-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/804-006/image/thumbnail" },
+          { "variation-name": "Parchment", "variation-pattern": "804-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/804-007/image/thumbnail" }
         ]
       },
       {
@@ -20,14 +20,14 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Cement", "variation-pattern": "305-016", "variation-image": "" },
-          { "variation-name": "Oyster", "variation-pattern": "305-007", "variation-image": "" },
-          { "variation-name": "Reef", "variation-pattern": "305-024", "variation-image": "" },
-          { "variation-name": "Pacific", "variation-pattern": "305-014", "variation-image": "" },
-          { "variation-name": "Orchid", "variation-pattern": "305-008", "variation-image": "" },
-          { "variation-name": "Blush", "variation-pattern": "305-001", "variation-image": "" },
-          { "variation-name": "Moss", "variation-pattern": "305-003", "variation-image": "" },
-          { "variation-name": "Storm", "variation-pattern": "305-026", "variation-image": "" }
+          { "variation-name": "Cement", "variation-pattern": "305-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Oyster", "variation-pattern": "305-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Reef", "variation-pattern": "305-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Pacific", "variation-pattern": "305-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Orchid", "variation-pattern": "305-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Blush", "variation-pattern": "305-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Moss", "variation-pattern": "305-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Storm", "variation-pattern": "305-026", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -35,14 +35,14 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Ash", "variation-pattern": "PIV-005", "variation-image": "" },
-          { "variation-name": "Slate", "variation-pattern": "PIV-006", "variation-image": "" },
-          { "variation-name": "Harbor", "variation-pattern": "PIV-004", "variation-image": "" },
-          { "variation-name": "Chutney", "variation-pattern": "PIV-008", "variation-image": "" },
-          { "variation-name": "Tarmac", "variation-pattern": "PIV-007", "variation-image": "" },
-          { "variation-name": "Petrol", "variation-pattern": "PIV-014", "variation-image": "" },
-          { "variation-name": "Willow", "variation-pattern": "PIV-003", "variation-image": "" },
-          { "variation-name": "Root", "variation-pattern": "PIV-013", "variation-image": "" }
+          { "variation-name": "Ash", "variation-pattern": "PIV-005", "variation-image-thumbnail": "" },
+          { "variation-name": "Slate", "variation-pattern": "PIV-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Harbor", "variation-pattern": "PIV-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Chutney", "variation-pattern": "PIV-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Tarmac", "variation-pattern": "PIV-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Petrol", "variation-pattern": "PIV-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Willow", "variation-pattern": "PIV-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Root", "variation-pattern": "PIV-013", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -50,12 +50,12 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Sequoia", "variation-pattern": "SU-014", "variation-image": "" },
-          { "variation-name": "Tundra", "variation-pattern": "SU-006", "variation-image": "" },
-          { "variation-name": "Pinyon", "variation-pattern": "SU-009", "variation-image": "" },
-          { "variation-name": "Cactus", "variation-pattern": "SU-003", "variation-image": "" },
-          { "variation-name": "Lake", "variation-pattern": "SU-004", "variation-image": "" },
-          { "variation-name": "Nightfall", "variation-pattern": "SU-007", "variation-image": "" }
+          { "variation-name": "Sequoia", "variation-pattern": "SU-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Tundra", "variation-pattern": "SU-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Pinyon", "variation-pattern": "SU-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Cactus", "variation-pattern": "SU-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Lake", "variation-pattern": "SU-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Nightfall", "variation-pattern": "SU-007", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -63,51 +63,51 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Sangria", "variation-pattern": "TW-001", "variation-image": "" },
-          { "variation-name": "Pine", "variation-pattern": "TW-003", "variation-image": "" },
-          { "variation-name": "Carbon", "variation-pattern": "TW-006", "variation-image": "" },
-          { "variation-name": "Marine", "variation-pattern": "TW-004", "variation-image": "" },
-          { "variation-name": "Mermaid", "variation-pattern": "TW-009", "variation-image": "" },
-          { "variation-name": "Smoke", "variation-pattern": "TW-007", "variation-image": "" },
-          { "variation-name": "Macaron", "variation-pattern": "TW-008", "variation-image": "" },
-          { "variation-name": "Eucalyptus", "variation-pattern": "TW-002", "variation-image": "" }
+          { "variation-name": "Sangria", "variation-pattern": "TW-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Pine", "variation-pattern": "TW-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Carbon", "variation-pattern": "TW-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Marine", "variation-pattern": "TW-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Mermaid", "variation-pattern": "TW-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Smoke", "variation-pattern": "TW-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Macaron", "variation-pattern": "TW-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Eucalyptus", "variation-pattern": "TW-002", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "Hyphyn",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1568/impact-collection-page-main-image.jpg",
     "subcollection": [
       {
         "subcollection-name": "Cosmos",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Black", "variation-pattern": "CO-006", "variation-image": "" },
-          { "variation-name": "Truffle", "variation-pattern": "CO-060", "variation-image": "" },
-          { "variation-name": "Burgundy", "variation-pattern": "CO-001", "variation-image": "" },
-          { "variation-name": "Dark Green", "variation-pattern": "CO-023", "variation-image": "" },
-          { "variation-name": "Midnight", "variation-pattern": "CO-024", "variation-image": "" },
-          { "variation-name": "Peat", "variation-pattern": "CO-036", "variation-image": "" },
-          { "variation-name": "Brownie", "variation-pattern": "CO-030", "variation-image": "" },
-          { "variation-name": "Cognac", "variation-pattern": "CO-009", "variation-image": "" },
-          { "variation-name": "Pine", "variation-pattern": "CO-013", "variation-image": "" },
-          { "variation-name": "Thunder", "variation-pattern": "CO-014", "variation-image": "" },
-          { "variation-name": "Cinder", "variation-pattern": "CO-026", "variation-image": "" },
-          { "variation-name": "Mocha", "variation-pattern": "CO-020", "variation-image": "" },
-          { "variation-name": "Buckskin", "variation-pattern": "CO-050", "variation-image": "" },
-          { "variation-name": "Moss", "variation-pattern": "CO-003", "variation-image": "" },
-          { "variation-name": "Bluestone", "variation-pattern": "CO-004", "variation-image": "" },
-          { "variation-name": "Quarry", "variation-pattern": "CO-016", "variation-image": "" },
-          { "variation-name": "Clove", "variation-pattern": "CO-010", "variation-image": "" },
-          { "variation-name": "Chestnut", "variation-pattern": "CO-040", "variation-image": "" },
-          { "variation-name": "Limestone", "variation-pattern": "CO-027", "variation-image": "" },
-          { "variation-name": "Cement", "variation-pattern": "CO-037", "variation-image": "" },
-          { "variation-name": "Porcelain", "variation-pattern": "CO-007", "variation-image": "" },
-          { "variation-name": "Aged Oak", "variation-pattern": "CO-000", "variation-image": "" },
-          { "variation-name": "Honey", "variation-pattern": "CO-002", "variation-image": "" },
-          { "variation-name": "Morel", "variation-pattern": "CO-017", "variation-image": "" }
+          { "variation-name": "Black", "variation-pattern": "CO-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Truffle", "variation-pattern": "CO-060", "variation-image-thumbnail": "" },
+          { "variation-name": "Burgundy", "variation-pattern": "CO-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Dark Green", "variation-pattern": "CO-023", "variation-image-thumbnail": "" },
+          { "variation-name": "Midnight", "variation-pattern": "CO-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Peat", "variation-pattern": "CO-036", "variation-image-thumbnail": "" },
+          { "variation-name": "Brownie", "variation-pattern": "CO-030", "variation-image-thumbnail": "" },
+          { "variation-name": "Cognac", "variation-pattern": "CO-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Pine", "variation-pattern": "CO-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Thunder", "variation-pattern": "CO-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Cinder", "variation-pattern": "CO-026", "variation-image-thumbnail": "" },
+          { "variation-name": "Mocha", "variation-pattern": "CO-020", "variation-image-thumbnail": "" },
+          { "variation-name": "Buckskin", "variation-pattern": "CO-050", "variation-image-thumbnail": "" },
+          { "variation-name": "Moss", "variation-pattern": "CO-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Bluestone", "variation-pattern": "CO-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Quarry", "variation-pattern": "CO-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Clove", "variation-pattern": "CO-010", "variation-image-thumbnail": "" },
+          { "variation-name": "Chestnut", "variation-pattern": "CO-040", "variation-image-thumbnail": "" },
+          { "variation-name": "Limestone", "variation-pattern": "CO-027", "variation-image-thumbnail": "" },
+          { "variation-name": "Cement", "variation-pattern": "CO-037", "variation-image-thumbnail": "" },
+          { "variation-name": "Porcelain", "variation-pattern": "CO-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Aged Oak", "variation-pattern": "CO-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Honey", "variation-pattern": "CO-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Morel", "variation-pattern": "CO-017", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -115,16 +115,16 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Rootbeer", "variation-pattern": "GT-000", "variation-image": "" },
-          { "variation-name": "Claret", "variation-pattern": "GT-005", "variation-image": "" },
-          { "variation-name": "Fir", "variation-pattern": "GT-003", "variation-image": "" },
-          { "variation-name": "Gears", "variation-pattern": "GT-016", "variation-image": "" },
-          { "variation-name": "Iron", "variation-pattern": "GT-006", "variation-image": "" },
-          { "variation-name": "Biscotti", "variation-pattern": "GT-002", "variation-image": "" },
-          { "variation-name": "Sepia", "variation-pattern": "GT-009", "variation-image": "" },
-          { "variation-name": "Cool Blue", "variation-pattern": "GT-004", "variation-image": "" },
-          { "variation-name": "Nile", "variation-pattern": "GT-014", "variation-image": "" },
-          { "variation-name": "Pumice", "variation-pattern": "GT-007", "variation-image": "" }
+          { "variation-name": "Rootbeer", "variation-pattern": "GT-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Claret", "variation-pattern": "GT-005", "variation-image-thumbnail": "" },
+          { "variation-name": "Fir", "variation-pattern": "GT-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Gears", "variation-pattern": "GT-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Iron", "variation-pattern": "GT-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Biscotti", "variation-pattern": "GT-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Sepia", "variation-pattern": "GT-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Cool Blue", "variation-pattern": "GT-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Nile", "variation-pattern": "GT-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Pumice", "variation-pattern": "GT-007", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -132,34 +132,34 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Pumice", "variation-pattern": "GI-007", "variation-image": "" },
-          { "variation-name": "Mist", "variation-pattern": "GI-027", "variation-image": "" },
-          { "variation-name": "Bedrock", "variation-pattern": "GI-017", "variation-image": "" },
-          { "variation-name": "Chardonnay", "variation-pattern": "GI-002", "variation-image": "" },
-          { "variation-name": "Dove Grey", "variation-pattern": "GI-037", "variation-image": "" },
-          { "variation-name": "Metal", "variation-pattern": "GI-016", "variation-image": "" },
-          { "variation-name": "Bronze", "variation-pattern": "GI-000", "variation-image": "" },
-          { "variation-name": "Penny", "variation-pattern": "GI-009", "variation-image": "" },
-          { "variation-name": "Blush", "variation-pattern": "GI-001", "variation-image": "" },
-          { "variation-name": "Willow", "variation-pattern": "GI-013", "variation-image": "" },
-          { "variation-name": "Mint", "variation-pattern": "GI-003", "variation-image": "" },
-          { "variation-name": "Isle", "variation-pattern": "GI-014", "variation-image": "" },
-          { "variation-name": "Agate", "variation-pattern": "GI-004", "variation-image": "" },
-          { "variation-name": "Ash", "variation-pattern": "GI-026", "variation-image": "" },
-          { "variation-name": "Teak", "variation-pattern": "GI-010", "variation-image": "" },
-          { "variation-name": "Malbec", "variation-pattern": "GI-011", "variation-image": "" },
-          { "variation-name": "Celery", "variation-pattern": "GI-023", "variation-image": "" },
-          { "variation-name": "Ocean", "variation-pattern": "GI-024", "variation-image": "" },
-          { "variation-name": "Coal", "variation-pattern": "GI-036", "variation-image": "" },
-          { "variation-name": "Earth", "variation-pattern": "GI-020", "variation-image": "" },
-          { "variation-name": "Brick", "variation-pattern": "GI-021", "variation-image": "" },
-          { "variation-name": "Alpine", "variation-pattern": "GI-033", "variation-image": "" },
-          { "variation-name": "Naval", "variation-pattern": "GI-034", "variation-image": "" },
-          { "variation-name": "Shadow", "variation-pattern": "GI-006", "variation-image": "" },
-          { "variation-name": "Mahogany", "variation-pattern": "GI-030", "variation-image": "" },
-          { "variation-name": "Raisin", "variation-pattern": "GI-005", "variation-image": "" },
-          { "variation-name": "Billiard", "variation-pattern": "GI-043", "variation-image": "" },
-          { "variation-name": "Midnight", "variation-pattern": "GI-044", "variation-image": "" }
+          { "variation-name": "Pumice", "variation-pattern": "GI-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Mist", "variation-pattern": "GI-027", "variation-image-thumbnail": "" },
+          { "variation-name": "Bedrock", "variation-pattern": "GI-017", "variation-image-thumbnail": "" },
+          { "variation-name": "Chardonnay", "variation-pattern": "GI-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Dove Grey", "variation-pattern": "GI-037", "variation-image-thumbnail": "" },
+          { "variation-name": "Metal", "variation-pattern": "GI-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Bronze", "variation-pattern": "GI-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Penny", "variation-pattern": "GI-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Blush", "variation-pattern": "GI-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Willow", "variation-pattern": "GI-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Mint", "variation-pattern": "GI-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Isle", "variation-pattern": "GI-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Agate", "variation-pattern": "GI-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Ash", "variation-pattern": "GI-026", "variation-image-thumbnail": "" },
+          { "variation-name": "Teak", "variation-pattern": "GI-010", "variation-image-thumbnail": "" },
+          { "variation-name": "Malbec", "variation-pattern": "GI-011", "variation-image-thumbnail": "" },
+          { "variation-name": "Celery", "variation-pattern": "GI-023", "variation-image-thumbnail": "" },
+          { "variation-name": "Ocean", "variation-pattern": "GI-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Coal", "variation-pattern": "GI-036", "variation-image-thumbnail": "" },
+          { "variation-name": "Earth", "variation-pattern": "GI-020", "variation-image-thumbnail": "" },
+          { "variation-name": "Brick", "variation-pattern": "GI-021", "variation-image-thumbnail": "" },
+          { "variation-name": "Alpine", "variation-pattern": "GI-033", "variation-image-thumbnail": "" },
+          { "variation-name": "Naval", "variation-pattern": "GI-034", "variation-image-thumbnail": "" },
+          { "variation-name": "Shadow", "variation-pattern": "GI-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Mahogany", "variation-pattern": "GI-030", "variation-image-thumbnail": "" },
+          { "variation-name": "Raisin", "variation-pattern": "GI-005", "variation-image-thumbnail": "" },
+          { "variation-name": "Billiard", "variation-pattern": "GI-043", "variation-image-thumbnail": "" },
+          { "variation-name": "Midnight", "variation-pattern": "GI-044", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -167,28 +167,28 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Tradewind", "variation-pattern": "TE-034", "variation-image": "" },
-          { "variation-name": "Blue Jeans", "variation-pattern": "TE-024", "variation-image": "" },
-          { "variation-name": "Inky Blue", "variation-pattern": "TE-014", "variation-image": "" },
-          { "variation-name": "Naval", "variation-pattern": "TE-004", "variation-image": "" },
-          { "variation-name": "Pesto", "variation-pattern": "TE-023", "variation-image": "" },
-          { "variation-name": "Hunter", "variation-pattern": "TE-033", "variation-image": "" },
-          { "variation-name": "Caviar", "variation-pattern": "TE-016", "variation-image": "" },
-          { "variation-name": "Charcoal", "variation-pattern": "TE-006", "variation-image": "" },
-          { "variation-name": "Goldfinch", "variation-pattern": "TE-002", "variation-image": "" },
-          { "variation-name": "Bittersweet", "variation-pattern": "TE-009", "variation-image": "" },
-          { "variation-name": "Garnet", "variation-pattern": "TE-001", "variation-image": "" },
-          { "variation-name": "Merlot", "variation-pattern": "TE-005", "variation-image": "" },
-          { "variation-name": "Khaki", "variation-pattern": "TE-030", "variation-image": "" },
-          { "variation-name": "Glacier", "variation-pattern": "TE-027", "variation-image": "" },
-          { "variation-name": "Bamboo", "variation-pattern": "TE-013", "variation-image": "" },
-          { "variation-name": "Storm", "variation-pattern": "TE-026", "variation-image": "" },
-          { "variation-name": "Emerald", "variation-pattern": "TE-003", "variation-image": "" },
-          { "variation-name": "Linen", "variation-pattern": "TE-017", "variation-image": "" },
-          { "variation-name": "Alabaster", "variation-pattern": "TE-007", "variation-image": "" },
-          { "variation-name": "Cobblestone", "variation-pattern": "TE-020", "variation-image": "" },
-          { "variation-name": "Branch", "variation-pattern": "TE-010", "variation-image": "" },
-          { "variation-name": "Allspice", "variation-pattern": "TE-000", "variation-image": "" }
+          { "variation-name": "Tradewind", "variation-pattern": "TE-034", "variation-image-thumbnail": "" },
+          { "variation-name": "Blue Jeans", "variation-pattern": "TE-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Inky Blue", "variation-pattern": "TE-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Naval", "variation-pattern": "TE-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Pesto", "variation-pattern": "TE-023", "variation-image-thumbnail": "" },
+          { "variation-name": "Hunter", "variation-pattern": "TE-033", "variation-image-thumbnail": "" },
+          { "variation-name": "Caviar", "variation-pattern": "TE-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Charcoal", "variation-pattern": "TE-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Goldfinch", "variation-pattern": "TE-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Bittersweet", "variation-pattern": "TE-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Garnet", "variation-pattern": "TE-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Merlot", "variation-pattern": "TE-005", "variation-image-thumbnail": "" },
+          { "variation-name": "Khaki", "variation-pattern": "TE-030", "variation-image-thumbnail": "" },
+          { "variation-name": "Glacier", "variation-pattern": "TE-027", "variation-image-thumbnail": "" },
+          { "variation-name": "Bamboo", "variation-pattern": "TE-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Storm", "variation-pattern": "TE-026", "variation-image-thumbnail": "" },
+          { "variation-name": "Emerald", "variation-pattern": "TE-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Linen", "variation-pattern": "TE-017", "variation-image-thumbnail": "" },
+          { "variation-name": "Alabaster", "variation-pattern": "TE-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Cobblestone", "variation-pattern": "TE-020", "variation-image-thumbnail": "" },
+          { "variation-name": "Branch", "variation-pattern": "TE-010", "variation-image-thumbnail": "" },
+          { "variation-name": "Allspice", "variation-pattern": "TE-000", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -196,42 +196,42 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Fern", "variation-pattern": "UN-003", "variation-image": "" },
-          { "variation-name": "Pacific", "variation-pattern": "UN-014", "variation-image": "" },
-          { "variation-name": "Isle", "variation-pattern": "UN-004", "variation-image": "" },
-          { "variation-name": "Orchid", "variation-pattern": "UN-008", "variation-image": "" },
-          { "variation-name": "Coral", "variation-pattern": "UN-001", "variation-image": "" },
-          { "variation-name": "Earth", "variation-pattern": "UN-000", "variation-image": "" },
-          { "variation-name": "Mineral", "variation-pattern": "UN-006", "variation-image": "" }
+          { "variation-name": "Fern", "variation-pattern": "UN-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Pacific", "variation-pattern": "UN-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Isle", "variation-pattern": "UN-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Orchid", "variation-pattern": "UN-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Coral", "variation-pattern": "UN-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Earth", "variation-pattern": "UN-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Mineral", "variation-pattern": "UN-006", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "Keystone",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1520/keystone-collection-page-hero-image.jpg",
     "subcollection": [
       {
         "subcollection-name": "Chev",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Linen", "variation-pattern": "CV-007", "variation-image": "" },
-          { "variation-name": "Marble", "variation-pattern": "CV-017", "variation-image": "" },
-          { "variation-name": "Cement", "variation-pattern": "CV-016", "variation-image": "" },
-          { "variation-name": "Airy", "variation-pattern": "CV-034", "variation-image": "" },
-          { "variation-name": "Malt", "variation-pattern": "CV-000", "variation-image": "" },
-          { "variation-name": "Wheat", "variation-pattern": "CV-002", "variation-image": "" },
-          { "variation-name": "Willow", "variation-pattern": "CV-003", "variation-image": "" },
-          { "variation-name": "Jeans", "variation-pattern": "CV-024", "variation-image": "" },
-          { "variation-name": "Bison", "variation-pattern": "CV-010", "variation-image": "" },
-          { "variation-name": "Harvest", "variation-pattern": "CV-009", "variation-image": "" },
-          { "variation-name": "Ocean", "variation-pattern": "CV-044", "variation-image": "" },
-          { "variation-name": "Hydro", "variation-pattern": "CV-014", "variation-image": "" },
-          { "variation-name": "Pepper", "variation-pattern": "CV-006", "variation-image": "" },
-          { "variation-name": "Raisin", "variation-pattern": "CV-008", "variation-image": "" },
-          { "variation-name": "Pesto", "variation-pattern": "CV-013", "variation-image": "" },
-          { "variation-name": "Imperial", "variation-pattern": "CV-004", "variation-image": "" }
+          { "variation-name": "Linen", "variation-pattern": "CV-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Marble", "variation-pattern": "CV-017", "variation-image-thumbnail": "" },
+          { "variation-name": "Cement", "variation-pattern": "CV-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Airy", "variation-pattern": "CV-034", "variation-image-thumbnail": "" },
+          { "variation-name": "Malt", "variation-pattern": "CV-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Wheat", "variation-pattern": "CV-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Willow", "variation-pattern": "CV-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Jeans", "variation-pattern": "CV-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Bison", "variation-pattern": "CV-010", "variation-image-thumbnail": "" },
+          { "variation-name": "Harvest", "variation-pattern": "CV-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Ocean", "variation-pattern": "CV-044", "variation-image-thumbnail": "" },
+          { "variation-name": "Hydro", "variation-pattern": "CV-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Pepper", "variation-pattern": "CV-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Raisin", "variation-pattern": "CV-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Pesto", "variation-pattern": "CV-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Imperial", "variation-pattern": "CV-004", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -239,14 +239,14 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Buttercream", "variation-pattern": "PC9-012", "variation-image": "" },
-          { "variation-name": "Taupe", "variation-pattern": "PC9-006", "variation-image": "" },
-          { "variation-name": "Abalone", "variation-pattern": "PC9-017", "variation-image": "" },
-          { "variation-name": "Fog", "variation-pattern": "PC9-016", "variation-image": "" },
-          { "variation-name": "Seafoam", "variation-pattern": "PC9-043", "variation-image": "" },
-          { "variation-name": "Arctic", "variation-pattern": "PC9-024", "variation-image": "" },
-          { "variation-name": "Ocean", "variation-pattern": "PC9-013", "variation-image": "" },
-          { "variation-name": "Iris", "variation-pattern": "PC9-008", "variation-image": "" }
+          { "variation-name": "Buttercream", "variation-pattern": "PC9-012", "variation-image-thumbnail": "" },
+          { "variation-name": "Taupe", "variation-pattern": "PC9-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Abalone", "variation-pattern": "PC9-017", "variation-image-thumbnail": "" },
+          { "variation-name": "Fog", "variation-pattern": "PC9-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Seafoam", "variation-pattern": "PC9-043", "variation-image-thumbnail": "" },
+          { "variation-name": "Arctic", "variation-pattern": "PC9-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Ocean", "variation-pattern": "PC9-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Iris", "variation-pattern": "PC9-008", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -254,27 +254,27 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Tundra", "variation-pattern": "474-007", "variation-image": "" },
-          { "variation-name": "Honey", "variation-pattern": "474-002", "variation-image": "" },
-          { "variation-name": "Waterfall", "variation-pattern": "474-004", "variation-image": "" },
-          { "variation-name": "Dune", "variation-pattern": "474-017", "variation-image": "" },
-          { "variation-name": "Umber", "variation-pattern": "474-012", "variation-image": "" },
-          { "variation-name": "Baltic", "variation-pattern": "474-014", "variation-image": "" },
-          { "variation-name": "Heron", "variation-pattern": "474-027", "variation-image": "" },
-          { "variation-name": "Maple", "variation-pattern": "474-009", "variation-image": "" },
-          { "variation-name": "Tidal", "variation-pattern": "474-024", "variation-image": "" },
-          { "variation-name": "Pewter", "variation-pattern": "474-006", "variation-image": "" },
-          { "variation-name": "Bittersweet", "variation-pattern": "474-019", "variation-image": "" },
-          { "variation-name": "Mallard", "variation-pattern": "474-003", "variation-image": "" },
-          { "variation-name": "Piano", "variation-pattern": "474-016", "variation-image": "" },
-          { "variation-name": "Sandstone", "variation-pattern": "474-029", "variation-image": "" },
-          { "variation-name": "Raintree", "variation-pattern": "474-013", "variation-image": "" },
-          { "variation-name": "Carbon", "variation-pattern": "474-026", "variation-image": "" },
-          { "variation-name": "Flare", "variation-pattern": "474-001", "variation-image": "" },
-          { "variation-name": "Lagoon", "variation-pattern": "474-034", "variation-image": "" },
-          { "variation-name": "Peppercorn", "variation-pattern": "474-036", "variation-image": "" },
-          { "variation-name": "Wildberry", "variation-pattern": "474-008", "variation-image": "" },
-          { "variation-name": "Midnight", "variation-pattern": "474-044", "variation-image": "" }
+          { "variation-name": "Tundra", "variation-pattern": "474-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Honey", "variation-pattern": "474-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Waterfall", "variation-pattern": "474-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Dune", "variation-pattern": "474-017", "variation-image-thumbnail": "" },
+          { "variation-name": "Umber", "variation-pattern": "474-012", "variation-image-thumbnail": "" },
+          { "variation-name": "Baltic", "variation-pattern": "474-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Heron", "variation-pattern": "474-027", "variation-image-thumbnail": "" },
+          { "variation-name": "Maple", "variation-pattern": "474-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Tidal", "variation-pattern": "474-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Pewter", "variation-pattern": "474-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Bittersweet", "variation-pattern": "474-019", "variation-image-thumbnail": "" },
+          { "variation-name": "Mallard", "variation-pattern": "474-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Piano", "variation-pattern": "474-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Sandstone", "variation-pattern": "474-029", "variation-image-thumbnail": "" },
+          { "variation-name": "Raintree", "variation-pattern": "474-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Carbon", "variation-pattern": "474-026", "variation-image-thumbnail": "" },
+          { "variation-name": "Flare", "variation-pattern": "474-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Lagoon", "variation-pattern": "474-034", "variation-image-thumbnail": "" },
+          { "variation-name": "Peppercorn", "variation-pattern": "474-036", "variation-image-thumbnail": "" },
+          { "variation-name": "Wildberry", "variation-pattern": "474-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Midnight", "variation-pattern": "474-044", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -282,13 +282,13 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Newsprint", "variation-pattern": "FO-006", "variation-image": "" },
-          { "variation-name": "Lunar", "variation-pattern": "FO-007", "variation-image": "" },
-          { "variation-name": "Habanero", "variation-pattern": "FO-009", "variation-image": "" },
-          { "variation-name": "Currant", "variation-pattern": "FO-008", "variation-image": "" },
-          { "variation-name": "Wintergreen", "variation-pattern": "FO-003", "variation-image": "" },
-          { "variation-name": "Tidal", "variation-pattern": "FO-004", "variation-image": "" },
-          { "variation-name": "Olive", "variation-pattern": "FO-013", "variation-image": "" }
+          { "variation-name": "Newsprint", "variation-pattern": "FO-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Lunar", "variation-pattern": "FO-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Habanero", "variation-pattern": "FO-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Currant", "variation-pattern": "FO-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Wintergreen", "variation-pattern": "FO-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Tidal", "variation-pattern": "FO-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Olive", "variation-pattern": "FO-013", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -296,34 +296,34 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Pearl", "variation-pattern": "PM-037", "variation-image": "" },
-          { "variation-name": "Dove", "variation-pattern": "PM-026", "variation-image": "" },
-          { "variation-name": "Fossil", "variation-pattern": "PM-036", "variation-image": "" },
-          { "variation-name": "Overcast", "variation-pattern": "PM-024", "variation-image": "" },
-          { "variation-name": "Shell", "variation-pattern": "PM-047", "variation-image": "" },
-          { "variation-name": "Storm", "variation-pattern": "PM-016", "variation-image": "" },
-          { "variation-name": "River Rock", "variation-pattern": "PM-034", "variation-image": "" },
-          { "variation-name": "Thyme", "variation-pattern": "PM-023", "variation-image": "" },
-          { "variation-name": "Clove", "variation-pattern": "PM-030", "variation-image": "" },
-          { "variation-name": "Buff", "variation-pattern": "PM-027", "variation-image": "" },
-          { "variation-name": "Ecru", "variation-pattern": "PM-007", "variation-image": "" },
-          { "variation-name": "Bronze", "variation-pattern": "PM-050", "variation-image": "" },
-          { "variation-name": "Coin", "variation-pattern": "PM-012", "variation-image": "" },
-          { "variation-name": "Ash", "variation-pattern": "PM-046", "variation-image": "" },
-          { "variation-name": "Regatta", "variation-pattern": "PM-044", "variation-image": "" },
-          { "variation-name": "Pine", "variation-pattern": "PM-033", "variation-image": "" },
-          { "variation-name": "Otter", "variation-pattern": "PM-020", "variation-image": "" },
-          { "variation-name": "Tawny", "variation-pattern": "PM-019", "variation-image": "" },
-          { "variation-name": "Carbon", "variation-pattern": "PM-056", "variation-image": "" },
-          { "variation-name": "Sapphire", "variation-pattern": "PM-004", "variation-image": "" },
-          { "variation-name": "Alligator", "variation-pattern": "PM-043", "variation-image": "" },
-          { "variation-name": "Mink", "variation-pattern": "PM-040", "variation-image": "" },
-          { "variation-name": "Russet", "variation-pattern": "PM-029", "variation-image": "" },
-          { "variation-name": "Ebony", "variation-pattern": "PM-006", "variation-image": "" },
-          { "variation-name": "Naval", "variation-pattern": "PM-054", "variation-image": "" },
-          { "variation-name": "Ivy", "variation-pattern": "PM-053", "variation-image": "" },
-          { "variation-name": "Saddle", "variation-pattern": "PM-010", "variation-image": "" },
-          { "variation-name": "Rootbeer", "variation-pattern": "PM-060", "variation-image": "" }
+          { "variation-name": "Pearl", "variation-pattern": "PM-037", "variation-image-thumbnail": "" },
+          { "variation-name": "Dove", "variation-pattern": "PM-026", "variation-image-thumbnail": "" },
+          { "variation-name": "Fossil", "variation-pattern": "PM-036", "variation-image-thumbnail": "" },
+          { "variation-name": "Overcast", "variation-pattern": "PM-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Shell", "variation-pattern": "PM-047", "variation-image-thumbnail": "" },
+          { "variation-name": "Storm", "variation-pattern": "PM-016", "variation-image-thumbnail": "" },
+          { "variation-name": "River Rock", "variation-pattern": "PM-034", "variation-image-thumbnail": "" },
+          { "variation-name": "Thyme", "variation-pattern": "PM-023", "variation-image-thumbnail": "" },
+          { "variation-name": "Clove", "variation-pattern": "PM-030", "variation-image-thumbnail": "" },
+          { "variation-name": "Buff", "variation-pattern": "PM-027", "variation-image-thumbnail": "" },
+          { "variation-name": "Ecru", "variation-pattern": "PM-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Bronze", "variation-pattern": "PM-050", "variation-image-thumbnail": "" },
+          { "variation-name": "Coin", "variation-pattern": "PM-012", "variation-image-thumbnail": "" },
+          { "variation-name": "Ash", "variation-pattern": "PM-046", "variation-image-thumbnail": "" },
+          { "variation-name": "Regatta", "variation-pattern": "PM-044", "variation-image-thumbnail": "" },
+          { "variation-name": "Pine", "variation-pattern": "PM-033", "variation-image-thumbnail": "" },
+          { "variation-name": "Otter", "variation-pattern": "PM-020", "variation-image-thumbnail": "" },
+          { "variation-name": "Tawny", "variation-pattern": "PM-019", "variation-image-thumbnail": "" },
+          { "variation-name": "Carbon", "variation-pattern": "PM-056", "variation-image-thumbnail": "" },
+          { "variation-name": "Sapphire", "variation-pattern": "PM-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Alligator", "variation-pattern": "PM-043", "variation-image-thumbnail": "" },
+          { "variation-name": "Mink", "variation-pattern": "PM-040", "variation-image-thumbnail": "" },
+          { "variation-name": "Russet", "variation-pattern": "PM-029", "variation-image-thumbnail": "" },
+          { "variation-name": "Ebony", "variation-pattern": "PM-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Naval", "variation-pattern": "PM-054", "variation-image-thumbnail": "" },
+          { "variation-name": "Ivy", "variation-pattern": "PM-053", "variation-image-thumbnail": "" },
+          { "variation-name": "Saddle", "variation-pattern": "PM-010", "variation-image-thumbnail": "" },
+          { "variation-name": "Rootbeer", "variation-pattern": "PM-060", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -331,30 +331,30 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Sisal", "variation-pattern": "PV-007", "variation-image": "" },
-          { "variation-name": "Eucalyptus", "variation-pattern": "PV-003", "variation-image": "" },
-          { "variation-name": "Wheat", "variation-pattern": "PV-002", "variation-image": "" },
-          { "variation-name": "Neptune", "variation-pattern": "PV-004", "variation-image": "" },
-          { "variation-name": "Elderberry", "variation-pattern": "PV-008", "variation-image": "" },
-          { "variation-name": "Nightfall", "variation-pattern": "PV-006", "variation-image": "" }
+          { "variation-name": "Sisal", "variation-pattern": "PV-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Eucalyptus", "variation-pattern": "PV-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Wheat", "variation-pattern": "PV-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Neptune", "variation-pattern": "PV-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Elderberry", "variation-pattern": "PV-008", "variation-image-thumbnail": "" },
+          { "variation-name": "Nightfall", "variation-pattern": "PV-006", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "Vitality",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1443/vitaliaty-collection-page-hero-image.jpg",
     "subcollection": [
       {
         "subcollection-name": "Foliage",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "1", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "2", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "3", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "4", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "5", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "1", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "2", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "3", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "4", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "5", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -362,11 +362,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "1", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "2", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "3", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "4", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "5", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "1", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "2", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "3", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "4", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "5", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -374,11 +374,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "1", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "2", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "3", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "4", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "5", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "1", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "2", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "3", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "4", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "5", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -386,11 +386,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "1", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "2", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "3", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "4", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "5", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "1", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "2", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "3", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "4", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "5", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -398,30 +398,30 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "1", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "2", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "3", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "4", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "5", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "1", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "2", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "3", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "4", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "5", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "Botanique",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1375/botanique-collection-page-main-banner.jpg",
     "subcollection": [
       {
         "subcollection-name": "Bloom",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Dogwood", "variation-pattern": "800-000", "variation-image": "" },
-          { "variation-name": "Goldfinch", "variation-pattern": "800-002", "variation-image": "" },
-          { "variation-name": "Auburn", "variation-pattern": "800-001", "variation-image": "" },
-          { "variation-name": "White Oleander", "variation-pattern": "800-006", "variation-image": "" },
-          { "variation-name": "Sprout", "variation-pattern": "800-003", "variation-image": "" },
-          { "variation-name": "Juniper", "variation-pattern": "800-013", "variation-image": "" }
+          { "variation-name": "Dogwood", "variation-pattern": "800-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Goldfinch", "variation-pattern": "800-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Auburn", "variation-pattern": "800-001", "variation-image-thumbnail": "" },
+          { "variation-name": "White Oleander", "variation-pattern": "800-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Sprout", "variation-pattern": "800-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Juniper", "variation-pattern": "800-013", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -429,12 +429,12 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Vapor", "variation-pattern": "801-006", "variation-image": "" },
-          { "variation-name": "Bluegrass", "variation-pattern": "801-003", "variation-image": "" },
-          { "variation-name": "Mustard Seed", "variation-pattern": "801-002", "variation-image": "" },
-          { "variation-name": "Clover", "variation-pattern": "801-013", "variation-image": "" },
-          { "variation-name": "Scarlet", "variation-pattern": "801-001", "variation-image": "" },
-          { "variation-name": "Cornflower", "variation-pattern": "801-004", "variation-image": "" }
+          { "variation-name": "Vapor", "variation-pattern": "801-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Bluegrass", "variation-pattern": "801-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Mustard Seed", "variation-pattern": "801-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Clover", "variation-pattern": "801-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Scarlet", "variation-pattern": "801-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Cornflower", "variation-pattern": "801-004", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -442,21 +442,21 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Ivory", "variation-pattern": "643-007", "variation-image": "" },
-          { "variation-name": "Honey", "variation-pattern": "643-002", "variation-image": "" },
-          { "variation-name": "Platinum", "variation-pattern": "643-016", "variation-image": "" },
-          { "variation-name": "Hazelnut", "variation-pattern": "643-000", "variation-image": "" },
-          { "variation-name": "Orchid", "variation-pattern": "643-005", "variation-image": "" },
-          { "variation-name": "Dew", "variation-pattern": "643-006", "variation-image": "" },
-          { "variation-name": "Atlantis", "variation-pattern": "643-004", "variation-image": "" },
-          { "variation-name": "Taupe", "variation-pattern": "643-010", "variation-image": "" },
-          { "variation-name": "Rosewood", "variation-pattern": "643-001", "variation-image": "" },
-          { "variation-name": "Palmetto", "variation-pattern": "643-003", "variation-image": "" },
-          { "variation-name": "Riptide", "variation-pattern": "643-014", "variation-image": "" },
-          { "variation-name": "Meteorite", "variation-pattern": "643-026", "variation-image": "" },
-          { "variation-name": "Bordeaux", "variation-pattern": "643-011", "variation-image": "" },
-          { "variation-name": "Evergreen", "variation-pattern": "643-013", "variation-image": "" },
-          { "variation-name": "Prussian", "variation-pattern": "643-024", "variation-image": "" }
+          { "variation-name": "Ivory", "variation-pattern": "643-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Honey", "variation-pattern": "643-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Platinum", "variation-pattern": "643-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Hazelnut", "variation-pattern": "643-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Orchid", "variation-pattern": "643-005", "variation-image-thumbnail": "" },
+          { "variation-name": "Dew", "variation-pattern": "643-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Atlantis", "variation-pattern": "643-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Taupe", "variation-pattern": "643-010", "variation-image-thumbnail": "" },
+          { "variation-name": "Rosewood", "variation-pattern": "643-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Palmetto", "variation-pattern": "643-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Riptide", "variation-pattern": "643-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Meteorite", "variation-pattern": "643-026", "variation-image-thumbnail": "" },
+          { "variation-name": "Bordeaux", "variation-pattern": "643-011", "variation-image-thumbnail": "" },
+          { "variation-name": "Evergreen", "variation-pattern": "643-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Prussian", "variation-pattern": "643-024", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -464,12 +464,12 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Sienna", "variation-pattern": "802-001", "variation-image": "" },
-          { "variation-name": "Almond", "variation-pattern": "802-002", "variation-image": "" },
-          { "variation-name": "Fern", "variation-pattern": "802-003", "variation-image": "" },
-          { "variation-name": "Aegean", "variation-pattern": "802-004", "variation-image": "" },
-          { "variation-name": "Cloud", "variation-pattern": "802-006", "variation-image": "" },
-          { "variation-name": "Charcoal", "variation-pattern": "802-007", "variation-image": "" }
+          { "variation-name": "Sienna", "variation-pattern": "802-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Almond", "variation-pattern": "802-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Fern", "variation-pattern": "802-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Aegean", "variation-pattern": "802-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Cloud", "variation-pattern": "802-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Charcoal", "variation-pattern": "802-007", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -477,34 +477,34 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Porcelain", "variation-pattern": "803-007", "variation-image": "" },
-          { "variation-name": "Butterscotch", "variation-pattern": "803-002", "variation-image": "" },
-          { "variation-name": "Leaf", "variation-pattern": "803-003", "variation-image": "" },
-          { "variation-name": "Denim", "variation-pattern": "803-004", "variation-image": "" },
-          { "variation-name": "Lilac", "variation-pattern": "803-005", "variation-image": "" },
-          { "variation-name": "Slate", "variation-pattern": "803-006", "variation-image": "" }
+          { "variation-name": "Porcelain", "variation-pattern": "803-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Butterscotch", "variation-pattern": "803-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Leaf", "variation-pattern": "803-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Denim", "variation-pattern": "803-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Lilac", "variation-pattern": "803-005", "variation-image-thumbnail": "" },
+          { "variation-name": "Slate", "variation-pattern": "803-006", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "Getaway",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1326/banner-getaway.jpg",
     "subcollection": [
       {
         "subcollection-name": "Amalfi",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Rosy", "variation-pattern": "325-011", "variation-image": "" },
-          { "variation-name": "Beachcomber", "variation-pattern": "325-002", "variation-image": "" },
-          { "variation-name": "Breeze", "variation-pattern": "325-024", "variation-image": "" },
-          { "variation-name": "Vineyard", "variation-pattern": "325-001", "variation-image": "" },
-          { "variation-name": "Garden", "variation-pattern": "325-013", "variation-image": "" },
-          { "variation-name": "Shoreline", "variation-pattern": "325-014", "variation-image": "" },
-          { "variation-name": "Bedrock", "variation-pattern": "325-006", "variation-image": "" },
-          { "variation-name": "Grove", "variation-pattern": "325-003", "variation-image": "" },
-          { "variation-name": "Waterfall", "variation-pattern": "325-004", "variation-image": "" }
+          { "variation-name": "Rosy", "variation-pattern": "325-011", "variation-image-thumbnail": "" },
+          { "variation-name": "Beachcomber", "variation-pattern": "325-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Breeze", "variation-pattern": "325-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Vineyard", "variation-pattern": "325-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Garden", "variation-pattern": "325-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Shoreline", "variation-pattern": "325-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Bedrock", "variation-pattern": "325-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Grove", "variation-pattern": "325-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Waterfall", "variation-pattern": "325-004", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -512,20 +512,20 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Shell", "variation-pattern": "326-007", "variation-image": "" },
-          { "variation-name": "Lagoon", "variation-pattern": "326-034", "variation-image": "" },
-          { "variation-name": "Shoreline", "variation-pattern": "326-017", "variation-image": "" },
-          { "variation-name": "Palm", "variation-pattern": "326-003", "variation-image": "" },
-          { "variation-name": "Dijon", "variation-pattern": "326-002", "variation-image": "" },
-          { "variation-name": "Driftwood", "variation-pattern": "326-000", "variation-image": "" },
-          { "variation-name": "Seaside", "variation-pattern": "326-024", "variation-image": "" },
-          { "variation-name": "Oleander", "variation-pattern": "326-011", "variation-image": "" },
-          { "variation-name": "Haze", "variation-pattern": "326-006", "variation-image": "" },
-          { "variation-name": "Fog", "variation-pattern": "326-016", "variation-image": "" },
-          { "variation-name": "Tidal", "variation-pattern": "326-014", "variation-image": "" },
-          { "variation-name": "Admiral", "variation-pattern": "326-004", "variation-image": "" },
-          { "variation-name": "Papaya", "variation-pattern": "326-009", "variation-image": "" },
-          { "variation-name": "Hibiscus", "variation-pattern": "326-001", "variation-image": "" }
+          { "variation-name": "Shell", "variation-pattern": "326-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Lagoon", "variation-pattern": "326-034", "variation-image-thumbnail": "" },
+          { "variation-name": "Shoreline", "variation-pattern": "326-017", "variation-image-thumbnail": "" },
+          { "variation-name": "Palm", "variation-pattern": "326-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Dijon", "variation-pattern": "326-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Driftwood", "variation-pattern": "326-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Seaside", "variation-pattern": "326-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Oleander", "variation-pattern": "326-011", "variation-image-thumbnail": "" },
+          { "variation-name": "Haze", "variation-pattern": "326-006", "variation-image-thumbnail": "" },
+          { "variation-name": "Fog", "variation-pattern": "326-016", "variation-image-thumbnail": "" },
+          { "variation-name": "Tidal", "variation-pattern": "326-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Admiral", "variation-pattern": "326-004", "variation-image-thumbnail": "" },
+          { "variation-name": "Papaya", "variation-pattern": "326-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Hibiscus", "variation-pattern": "326-001", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -533,15 +533,15 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Shoreline", "variation-pattern": "327-007", "variation-image": "" },
-          { "variation-name": "Gold Coast", "variation-pattern": "327-002", "variation-image": "" },
-          { "variation-name": "Daybreak", "variation-pattern": "327-024", "variation-image": "" },
-          { "variation-name": "Petal", "variation-pattern": "327-011", "variation-image": "" },
-          { "variation-name": "Kelp", "variation-pattern": "327-013", "variation-image": "" },
-          { "variation-name": "Scuba", "variation-pattern": "327-014", "variation-image": "" },
-          { "variation-name": "Coral", "variation-pattern": "327-001", "variation-image": "" },
-          { "variation-name": "Jade", "variation-pattern": "327-003", "variation-image": "" },
-          { "variation-name": "Baltic", "variation-pattern": "327-004", "variation-image": "" }
+          { "variation-name": "Shoreline", "variation-pattern": "327-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Gold Coast", "variation-pattern": "327-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Daybreak", "variation-pattern": "327-024", "variation-image-thumbnail": "" },
+          { "variation-name": "Petal", "variation-pattern": "327-011", "variation-image-thumbnail": "" },
+          { "variation-name": "Kelp", "variation-pattern": "327-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Scuba", "variation-pattern": "327-014", "variation-image-thumbnail": "" },
+          { "variation-name": "Coral", "variation-pattern": "327-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Jade", "variation-pattern": "327-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Baltic", "variation-pattern": "327-004", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -549,33 +549,33 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Seasalt", "variation-pattern": "328-007", "variation-image": "" },
-          { "variation-name": "Sunrise", "variation-pattern": "328-002", "variation-image": "" },
-          { "variation-name": "Coconut", "variation-pattern": "328-000", "variation-image": "" },
-          { "variation-name": "Tangelo", "variation-pattern": "328-009", "variation-image": "" },
-          { "variation-name": "Sangria", "variation-pattern": "328-001", "variation-image": "" },
-          { "variation-name": "Palmetto", "variation-pattern": "328-013", "variation-image": "" },
-          { "variation-name": "Paradise", "variation-pattern": "328-003", "variation-image": "" },
-          { "variation-name": "Dew Drop", "variation-pattern": "328-014", "variation-image": "" },
-          { "variation-name": "River", "variation-pattern": "328-004", "variation-image": "" }
+          { "variation-name": "Seasalt", "variation-pattern": "328-007", "variation-image-thumbnail": "" },
+          { "variation-name": "Sunrise", "variation-pattern": "328-002", "variation-image-thumbnail": "" },
+          { "variation-name": "Coconut", "variation-pattern": "328-000", "variation-image-thumbnail": "" },
+          { "variation-name": "Tangelo", "variation-pattern": "328-009", "variation-image-thumbnail": "" },
+          { "variation-name": "Sangria", "variation-pattern": "328-001", "variation-image-thumbnail": "" },
+          { "variation-name": "Palmetto", "variation-pattern": "328-013", "variation-image-thumbnail": "" },
+          { "variation-name": "Paradise", "variation-pattern": "328-003", "variation-image-thumbnail": "" },
+          { "variation-name": "Dew Drop", "variation-pattern": "328-014", "variation-image-thumbnail": "" },
+          { "variation-name": "River", "variation-pattern": "328-004", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "SEAQUAL INITIATIVE",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1286/seaqual-initiative-banner.jpg",
     "subcollection": [
       {
         "subcollection-name": "Caspian",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -583,11 +583,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -595,11 +595,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -607,11 +607,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -619,11 +619,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -631,29 +631,29 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "Cambridge",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1198/collectionpagemainbanner.jpg",
     "subcollection": [
       {
         "subcollection-name": "Adler",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -661,11 +661,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -673,11 +673,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -685,11 +685,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -697,11 +697,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -709,29 +709,29 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
   },
   {
     "collection-name": "Prestige",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/1187/prestige-collectionpage-mainbanner.jpg",
     "subcollection": [
       {
         "subcollection-name": "Fitz",
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -739,11 +739,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -751,11 +751,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -763,11 +763,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -775,11 +775,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -787,11 +787,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -805,11 +805,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -817,11 +817,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -829,11 +829,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -847,11 +847,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -859,11 +859,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -871,11 +871,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -883,11 +883,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -901,11 +901,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -913,11 +913,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -925,11 +925,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -937,11 +937,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -955,11 +955,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -967,11 +967,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -979,11 +979,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -991,11 +991,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1003,11 +1003,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1015,11 +1015,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1033,11 +1033,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1045,11 +1045,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1057,11 +1057,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1069,11 +1069,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1087,11 +1087,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1099,11 +1099,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1111,11 +1111,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1123,11 +1123,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1135,11 +1135,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1147,11 +1147,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1165,11 +1165,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1177,11 +1177,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1189,11 +1189,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1201,11 +1201,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1219,11 +1219,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1231,11 +1231,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1243,11 +1243,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1255,11 +1255,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1267,11 +1267,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1285,11 +1285,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1297,11 +1297,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1309,11 +1309,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1321,11 +1321,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1333,11 +1333,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1351,11 +1351,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1363,11 +1363,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1375,11 +1375,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1387,11 +1387,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1399,11 +1399,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1411,11 +1411,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1423,11 +1423,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1441,11 +1441,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1453,11 +1453,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1465,11 +1465,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1477,11 +1477,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1495,11 +1495,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1507,11 +1507,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1519,11 +1519,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1531,11 +1531,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1543,11 +1543,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1555,11 +1555,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]
@@ -1573,11 +1573,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1585,11 +1585,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1597,11 +1597,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1609,11 +1609,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1621,11 +1621,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       },
       {
@@ -1633,11 +1633,11 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image": "" }
+          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
+          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
         ]
       }
     ]

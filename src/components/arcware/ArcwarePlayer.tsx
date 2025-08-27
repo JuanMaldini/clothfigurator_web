@@ -47,9 +47,7 @@ function ArcwarePlayer() {
   
   return (
     <div>
-      <div
-        ref={videoContainerRef}
-      />
+      <div ref={videoContainerRef}/>
       <Sidepanel />
     </div>
   );

@@ -1,290 +1,432 @@
-*{
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+/* Mini rectángulo para mostrar el color actual de tint */
+.sp-tint-mini {
+  display: inline-block;
+  width: 22px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #444;
+  margin: 0 0.5rem 0 0.7rem;
+  vertical-align: middle;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background: var(--ColorBackground);
+/* Botón para resetear el tint a blanco */
+.sp-tint-reset {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.1rem;
+  margin-left: 0.2rem;
+  cursor: pointer;
+  padding: 0 0.2rem;
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s;
+}
+.sp-tint-reset:hover {
+  color: #fff;
+  background: #353545;
+}
+.rcp-body {
+  margin: 0px;
+  padding: 8px;
+}
+.rcp-field-input {
+  display: none;
+}
+.rcp-field-label {
+  display: none;
+}
+
+* {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+body,
+html {
+  background: var(--ColorBackground);
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-    --ColorText: #000000;
-    --ColorBackground: #ebebeb;
-    --ColorBackgroundSelected: #2495b3;
+  --ColorText: #000000;
+  --ColorBackground: #ebebeb;
+  --ColorBackgroundSelected: #2495b3;
 }
 
 /* Botón flotante para abrir el panel en la esquina superior derecha */
 .sp-panel-open-btn {
-    position: fixed;
-    top: 1.2rem;
-    right: 0.7rem;
-    z-index: 1100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  position: fixed;
+  top: 1.2rem;
+  right: 0.7rem;
+  z-index: 1100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón principal compacto y minimalista */
+.sp-btn {
+  color: var(--ColorText);
+  background: var(--ColorBackgroundSelected);
+  border-radius: 5px;
+  border: none;
+  padding: 0.38rem 1.1rem;
+  font-size: 0.97rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+.sp-btn:hover {
+  background: #197a91;
+  color: #fff;
+}
+
+/* Botón secundario compacto */
+.sp-export-btn,
+.cc-sub-btn {
+  color: var(--ColorText);
+  background: #e0e0e0;
+  border-radius: 5px;
+  border: none;
+  padding: 0.32rem 0.8rem;
+  font-size: 0.93rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  outline: none;
+}
+.sp-export-btn:hover,
+.cc-sub-btn:hover {
+  background: #d1d1d1;
+  color: #2495b3;
 }
 
 .cc-section-title {
-    font-size: 1.13rem;
-    font-weight: 700;
-    color: var(--ColorText);
-    letter-spacing: 0.01em;
-    text-align: left;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ColorText);
+  letter-spacing: 0.01em;
+  text-align: left;
 }
 /* Utilidad para ancho responsivo en pantallas grandes y medianas */
 .centered-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .centered-content {
-    text-align: center;
-    width: 80vw;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  text-align: center;
+  width: 60vw;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .centered-content h1 {
-    font-weight: 700;
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    letter-spacing: .01em;
-}
-
-.sp-btn {
-    font-size: 1.1rem;
-    padding: 0.7rem 2.2rem;
-    text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.01em;
 }
 
 .sp-root {
-    position: relative;
-    z-index: 1000;
+  position: relative;
+  z-index: 1000;
 }
 
 .sp-backdrop {
-    position: fixed;
-    inset: 0;
+  position: fixed;
+  inset: 0;
 }
 
 .sp-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    min-width: 340px;
-    height: 100dvh;
-    width: 30dvw;
-    max-width: 90vw;
-    background: var(--ColorBackground);
-    color: var(--ColorText);
-    box-shadow: -4px 0 24px rgba(0,0,0,0.25);
-    transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-width: 340px;
+  height: 100dvh;
+  width: 30dvw;
+  max-width: 90vw;
+  background: var(--ColorBackground);
+  color: var(--ColorText);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .sp-panel.open {
-    transform: translateX(0);
+  transform: translateX(0);
 }
-.sp-export-actions{
-    display: flex;
-    gap: 0.7rem;
+.sp-export-actions {
+  display: flex;
+  gap: 0.7rem;
 }
 .sp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 0.7rem 1rem 0.7rem;
-    border-bottom: 1px solid var(--ColorBackgroundSelected);
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--ColorBackgroundSelected);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .sp-body {
-    padding: 1rem;
-    flex: 1;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+  padding: 0.75rem;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .sp-export-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0rem;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  gap: 0.5rem;
 }
 .sp-export-label {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
-.sp-btn, .sp-export-btn, .cc-sub-btn, .cc-var-box {
-    color: var(--ColorText);
-    border-radius: 6px;
-    border: 1px solid #2c2c36;
-    padding: 0.45rem 1.1rem;
-    font-size: 0.98rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s, border 0.15s;
-    outline: none;
-}
-
-.cc-var-box{
-    position: relative; /* anchor hover label */
-    overflow: visible;
-    border-radius: 0px;
-    border: 0px solid #2c2c36;
-    padding: 0rem;
-    width: 64px;
-    height: 64px;
-    background-color: #2495b3;
-}
-
-.sp-btn:hover, .sp-export-btn:hover, .cc-sub-btn:hover, .cc-var-box:hover, .cc-sub-btn.is-selected, .cc-var-box:focus {
-    background: var(--ColorBackgroundSelected);
-    color: var(--ColorText);
-    border-color: var(--ColorBackgroundSelected);
-}
-.sp-footer {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.8rem;
-    opacity: 0.6;
-    padding: 0.7rem 1.5rem 1.1rem 1.5rem;
-    border-top: 1px solid var(--ColorBackgroundSelected);
-    text-align: right;
-}
-
-/* ===== Configurator minimal styles (restored) ===== */
+/* Configurator root container */
 .cc-root {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.97rem;
-    background: none;
-    box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.97rem;
+  background: none;
+  box-shadow: none;
+}
+
+/* Unified button base for secondary buttons */
+.sp-export-btn,
+.cc-sub-btn {
+  color: var(--ColorText);
+  border-radius: 6px;
+  border: 1px solid #2c2c36;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border 0.15s;
+  outline: none;
+}
+
+.sp-export-btn:hover,
+.cc-sub-btn:hover,
+.cc-sub-btn.is-selected {
+  background: var(--ColorBackgroundSelected);
+  color: var(--ColorText);
+  border-color: var(--ColorBackgroundSelected);
+}
+
+/* Compact, image-friendly variation box */
+.cc-var-box {
+  position: relative; /* anchor hover label */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* let tooltip appear outside */
+  border: 1px solid #2c2c36;
+  border-radius: 6px;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  background-color: #e0e0e0; /* fallback when no image/color */
+  cursor: pointer;
+}
+.cc-var-box:hover,
+.cc-var-box:focus {
+  border-color: var(--ColorBackgroundSelected);
+  outline: none;
+}
+/* Inner wrapper that clips the image to rounded corners */
+.cc-var-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.cc-var-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .cc-loading {
-    font-size: 0.95rem;
-    opacity: 0.8;
-    padding: 1.2rem 0;
-    text-align: center;
-    color: var(--ColorText);
+  font-size: 0.95rem;
+  opacity: 0.8;
+  padding: 1.2rem 0;
+  text-align: center;
+  color: var(--ColorText);
 }
 /* Eliminados estilos duplicados y antiguos de botones y cajas */
+/* Wrapper para que el color picker de Tint ocupe todo el ancho del contenedor */
+.sp-tint-picker-wrap {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 1rem 1rem 0rem 1rem;
+}
+.sp-tint-picker-wrap .rcp-root {
+  flex: 1 1 0%;
+  width: 100%;
+  min-width: 0;
+}
 /* Layout refinements */
 .cc-header-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: flex-end;
-    margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.8rem;
+  align-items: flex-end;
+  margin-bottom: 0.6rem;
+}
+.cc-sub-desc {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--ColorText);
+  opacity: 0.9;
 }
 .cc-select-col {
-    flex: 1 1 160px;
+  flex: 1 1 160px;
 }
 .cc-collection-label {
-    width: 100%;
+  width: 100%;
 }
 
 .cc-collection-dropdown {
-    width: 100%;
-    background: none;
-    color: var(--ColorText);
-    border-radius: 6px;
-    border: 1px solid #2c2c36;
-    padding: 0.45rem 0.7rem;
-    font-size: 1rem;
-    font-weight: 500;
-    outline: none;
-    transition: border 0.15s, background 0.15s;
+  width: 100%;
+  background: none;
+  color: var(--ColorText);
+  border-radius: 6px;
+  border: 1px solid #2c2c36;
+  padding: 0.45rem 0.7rem;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: border 0.15s, background 0.15s;
 }
 .cc-collection-dropdown:focus {
-    border-color: #44445a;
+  border-color: #44445a;
 }
 .cc-subcollections {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .cc-var-grid {
-    margin-top: 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 .cc-var-title {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 /* Collapsible Tint section */
 .sp-collapsible-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: none;
-    border: 0;
-    padding: 0.4rem 0;
-    cursor: pointer;
-    font: inherit;
-    text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+  align-items: center;
+  background: none;
+  border: 0;
+  padding: 0.4rem 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
 }
-.sp-collapsible-header:hover .sp-collapsible-title { text-decoration: underline; }
-.sp-collapsible-title { font-size: 1.05rem; font-weight: 600; }
-.sp-collapsible-title[data-tint] { color: var(--ColorText); }
-.sp-caret { font-size: 0.9rem; opacity: 0.8; margin-left: 0.5rem; }
-.sp-collapsible-body { max-height: 0; overflow: hidden; transition: max-height .28s ease, opacity .25s ease; opacity: 0; pointer-events: none; }
-.sp-collapsible-body.open { max-height: 260px; opacity: 1; pointer-events: auto; display: flex; }
-.sp-section { margin: 0.25rem 0 0.4rem; }
-.ct-value { margin-top: 0.35rem; font-size: 0.8rem; letter-spacing: 0.03em; }
-.react-colorful{margin: 1rem;}
+.sp-collapsible-header:hover .sp-collapsible-title {
+  text-decoration: underline;
+}
+.sp-collapsible-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.sp-collapsible-title[data-tint] {
+  color: var(--ColorText);
+}
+.sp-caret {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-left: 0.5rem;
+}
+.sp-collapsible-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease, opacity 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.sp-collapsible-body.open {
+  max-height: 260px;
+  opacity: 1;
+  pointer-events: auto;
+  display: flex;
+}
+.sp-section {
+  margin: 0.15rem 0 0.25rem;
+}
+.ct-value {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+}
+.react-colorful {
+  margin: 1rem;
+}
 
 /* Hover label above variation box (CSS-only, reads from data-label) */
 .cc-var-box::after {
-    content: attr(data-label);
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    transform: translate(-50%, -6px);
-    background: rgba(20, 20, 20, 0.92);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 12px;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity .15s ease, transform .15s ease;
-    z-index: 2;
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -6px);
+  background: rgba(20, 20, 20, 0.92);
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 2;
 }
 .cc-var-box::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    transform: translate(-50%, 0);
-    border: 6px solid transparent;
-    border-top-color: rgba(20, 20, 20, 0.92);
-    opacity: 0;
-    transition: opacity .15s ease;
-    z-index: 2;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, 0);
+  border: 6px solid transparent;
+  border-top-color: rgba(20, 20, 20, 0.92);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 2;
 }
 .cc-var-box:hover::after {
-    opacity: 1;
-    transform: translate(-50%, -10px);
+  opacity: 1;
+  transform: translate(-50%, -12px);
 }
 .cc-var-box:hover::before {
-    opacity: 1;
+  opacity: 1;
 }

@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { generateConfiguratorPDF } from '../pdfConfigurator/pdfGenerator';
-import ColorTint, { getCurrentTint, subscribeTint } from '../colorTint/colorTint';
-import './Sidepanel.css';
+import React, { useState, useEffect, useCallback } from "react";
+import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
+import ColorTint, {
+  getCurrentTint,
+  subscribeTint,
+} from "../colorTint/colorTint";
+import "./Sidepanel.css";
 interface VariationMessage {
-  type: 'variation-select';
+  type: "variation-select";
   collection: string;
   subcollection: string;
   variation: string;
@@ -11,13 +14,18 @@ interface VariationMessage {
 }
 
 // Construye el objeto de mensaje
-function buildVariationMessage(collection: string, subcollection: string, variation: string, tint?: string): VariationMessage {
+function buildVariationMessage(
+  collection: string,
+  subcollection: string,
+  variation: string,
+  tint?: string
+): VariationMessage {
   return {
-    type: 'variation-select',
+    type: "variation-select",
     collection,
     subcollection,
     variation,
-    tint
+    tint,
   };
 }
 
@@ -35,7 +43,9 @@ const Sidepanel = () => {
   const [tintOpen, setTintOpen] = useState(false);
   useEffect(() => {
     const unsubscribe = subscribeTint(setTint);
-    return () => { unsubscribe(); };
+    return () => {
+      unsubscribe();
+    };
   }, []);
   // referencia ligera para evitar warning si todavía no se usa
   // eslint-disable-next-line no-unused-expressions
@@ -44,29 +54,34 @@ const Sidepanel = () => {
   // Evita scroll de fondo cuando está abiertoEmitUIInteraction
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
     <div className="sp-root">
       {!open && (
-        <button className="sp-btn sp-panel-open-btn" onClick={() => setOpen(true)}>
+        <button
+          className="sp-btn sp-panel-open-btn"
+          onClick={() => setOpen(true)}
+        >
           Open
         </button>
       )}
       {open && <div className="sp-backdrop" onClick={() => setOpen(false)} />}
-      <div className={`sp-panel ${open ? 'open' : ''}`}>
+      <div className={`sp-panel ${open ? "open" : ""}`}>
         <div className="sp-header">
           <strong>Configurat System</strong>
-          <div onClick={() => setOpen(false)} className="sp-export-btn">Close</div>
-
+          <div onClick={() => setOpen(false)} className="sp-export-btn">
+            Close
+          </div>
         </div>
-          <div className="sp-body" id="sp-body">
-
+        <div className="sp-body" id="sp-body">
           <section className="sp-export-section">
             <div className="sp-export-row">
               <div>
@@ -76,9 +91,16 @@ const Sidepanel = () => {
                 <button
                   className="sp-export-btn"
                   title="Download a pdf with all information"
-                  onClick={() => generateConfiguratorPDF('sp-body')}
-                >Export</button>
-                <button className="sp-export-btn" title="Take a screenshot of the current view DISABLED">Screenshoot</button>
+                  onClick={() => generateConfiguratorPDF("sp-body")}
+                >
+                  Export
+                </button>
+                <button
+                  className="sp-export-btn"
+                  title="Take a screenshot of the current view DISABLED"
+                >
+                  Screenshoot
+                </button>
               </div>
             </div>
           </section>
@@ -86,13 +108,25 @@ const Sidepanel = () => {
           <section className="sp-section">
             <button
               type="button"
-              className={`sp-collapsible-header${tintOpen ? ' is-open' : ''}`}
-              onClick={() => setTintOpen(o => !o)}
+              className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
+              onClick={() => setTintOpen((o) => !o)}
             >
               <span className="sp-collapsible-title">Tint</span>
-              <span className="sp-caret" aria-hidden="true">{tintOpen ? '▾' : '▸'}</span>
+              <span className="sp-tint-mini" style={{ background: tint }} />
+              <span
+                className="sp-tint-reset"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setTint("#ffffffff");
+                }}
+              >
+                ⟳
+              </span>
+              <span className="sp-caret" aria-hidden="true">
+                {tintOpen ? "▾" : "▸"}
+              </span>
             </button>
-            <div className={`sp-collapsible-body${tintOpen ? ' open' : ''}`}> 
+            <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
               <ColorTint />
             </div>
           </section>
@@ -106,8 +140,6 @@ const Sidepanel = () => {
     </div>
   );
 };
-
-
 
 interface RawVariation {
   value?: string;
@@ -136,30 +168,85 @@ interface RawCollection {
   subcollections?: RawVariationSubcollection[];
 }
 
-interface NormalizedSubcollection { name: string; variations: string[] }
-interface NormalizedCollection { name: string; subcollections: NormalizedSubcollection[] }
+interface NormalizedSubcollection {
+  name: string;
+  description?: string;
+  variations: NormalizedVariation[];
+}
+interface NormalizedCollection {
+  name: string;
+  subcollections: NormalizedSubcollection[];
+}
+
+interface NormalizedVariation {
+  label: string;
+  imageThumbnail?: string;
+  color?: string;
+  pattern?: string;
+  name?: string;
+}
 
 const composeVariationString = (v: any): string => {
-  if (typeof v === 'string') return v.trim();
-  if (!v || typeof v !== 'object') return '';
+  if (typeof v === "string") return v.trim();
+  if (!v || typeof v !== "object") return "";
   if (v.value) return String(v.value).trim();
-  const name = (v["variation-name"] || v.label || '').trim();
-  const code = (v["variation-pattern"] || v.code || '').trim();
+  const name = (v["variation-name"] || v.label || "").trim();
+  const code = (v["variation-pattern"] || v.code || "").trim();
   if (name && code) return code.includes(name) ? name : `${name} ${code}`;
-  return (name || code || '').trim();
+  return (name || code || "").trim();
 };
 
 const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
-  (raw || []).map(r => ({
-    name: (r["collection-name"] || r.collection || r.name || 'Unnamed').trim(),
-    subcollections: ((r.subcollections || r.subcollection || []) as RawVariationSubcollection[]).map(s => {
-      const subName = (s["subcollection-name"] || s.name || 'Unnamed').trim();
-      const rawVars = (s.variations || s.variation || []) as Array<string | RawVariation>;
-      const variations = rawVars.map(composeVariationString).filter(Boolean) as string[];
-      return { name: subName, variations };
-    })
-  })).filter(c => c.subcollections.length);
-
+  (raw || [])
+    .map((r) => ({
+      name: (
+        r["collection-name"] ||
+        r.collection ||
+        r.name ||
+        "Unnamed"
+      ).trim(),
+      subcollections: (
+        (r.subcollections ||
+          r.subcollection ||
+          []) as RawVariationSubcollection[]
+      ).map((s) => {
+        const subName = (s["subcollection-name"] || s.name || "Unnamed").trim();
+        const description = (s as any)["subcollection-description"]
+          ? String((s as any)["subcollection-description"]).trim()
+          : undefined;
+        const rawVars = (s.variations || s.variation || []) as Array<
+          string | RawVariation
+        >;
+        const variations = rawVars
+          .map((v) => {
+            if (typeof v === "string") {
+              const label = v.trim();
+              return label
+                ? ({ label, name: label } as NormalizedVariation)
+                : null;
+            }
+            if (!v || typeof v !== "object") return null;
+            const obj = v as RawVariation & { [k: string]: any };
+            const name = (obj["variation-name"] || obj.label || "").trim();
+            const label = composeVariationString(obj);
+            if (!label) return null;
+            const imageThumbnail =
+              obj["variation-image-thumbnail"] || obj.image || undefined;
+            const color = (obj as any)["variation-color"] || undefined;
+            const pattern = obj["variation-pattern"] || obj.code || undefined;
+            return {
+              label,
+              imageThumbnail,
+              color,
+              pattern,
+              name,
+            } as NormalizedVariation;
+          })
+          .filter(Boolean) as NormalizedVariation[];
+        return { name: subName, description, variations };
+      }),
+    }))
+    .filter((c) => c.subcollections.length);
 
 const ConfiguratorPanel: React.FC = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
@@ -170,19 +257,18 @@ const ConfiguratorPanel: React.FC = () => {
     let alive = true;
     (async () => {
       try {
-        
-        const tryUrls = ['./collections.normalized.json', './collections.json'];
+        const tryUrls = ["./collections.normalized.json", "./collections.json"];
         let json: any = null;
         for (const rel of tryUrls) {
           try {
             const url = new URL(rel, import.meta.url).href;
-            const res = await fetch(url, { cache: 'no-cache' });
+            const res = await fetch(url, { cache: "no-cache" });
             if (!res.ok) continue;
             json = await res.json();
             if (json) break;
           } catch {}
         }
-        if (!json) throw new Error('No collections JSON found');
+        if (!json) throw new Error("No collections JSON found");
 
         if (!alive) return;
         const norm = normalizeData(json);
@@ -190,23 +276,31 @@ const ConfiguratorPanel: React.FC = () => {
         setColIndex(0);
         setSubName(norm[0]?.subcollections[0]?.name || null);
       } catch (e) {
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV !== "production") {
           // eslint-disable-next-line no-console
-            console.warn('[Configurator] load error', e);
+          console.warn("[Configurator] load error", e);
         }
       }
     })();
-    return () => { alive = false; };
+    return () => {
+      alive = false;
+    };
   }, []);
 
   const current = data[colIndex];
   const subcollections = current?.subcollections || [];
-  const variations = (subcollections.find(s => s.name === subName) || subcollections[0])?.variations || [];
+  const currentSub =
+    subcollections.find((s) => s.name === subName) || subcollections[0] || null;
+  // Variations normalizadas preservando label, thumbnail y color
+  const variations = currentSub?.variations || [];
 
-  const selectCollection = useCallback((idx: number) => {
-    setColIndex(idx);
-    setSubName(data[idx]?.subcollections[0]?.name || null);
-  }, [data]);
+  const selectCollection = useCallback(
+    (idx: number) => {
+      setColIndex(idx);
+      setSubName(data[idx]?.subcollections[0]?.name || null);
+    },
+    [data]
+  );
 
   const sendVariation = (variation: string) => {
     if (!current || !subName) return;
@@ -216,7 +310,7 @@ const ConfiguratorPanel: React.FC = () => {
         buildVariationMessage(current.name, subName, variation)
       );
       // Prefiere la función global expuesta por ArcwarePlayer
-      if (typeof sendUIInteraction === 'function') {
+      if (typeof sendUIInteraction === "function") {
         sendUIInteraction(payload);
       } else if ((window as any).emitUIInteraction) {
         (window as any).emitUIInteraction(payload);
@@ -228,7 +322,8 @@ const ConfiguratorPanel: React.FC = () => {
     }
   };
 
-  if (!data.length) return <div className="cc-loading">Cargando configurador…</div>;
+  if (!data.length)
+    return <div className="cc-loading">Cargando configurador…</div>;
 
   return (
     <div aria-label="Configurador" className="cc-root">
@@ -241,43 +336,69 @@ const ConfiguratorPanel: React.FC = () => {
                 id="collection-select"
                 className="cc-collection-dropdown"
                 value={colIndex}
-                onChange={e => selectCollection(Number(e.target.value))}
+                onChange={(e) => selectCollection(Number(e.target.value))}
                 aria-label="Collections"
               >
-                {data.map((c, i) => <option key={c.name} value={i}>{c.name}</option>)}
+                {data.map((c, i) => (
+                  <option key={c.name} value={i}>
+                    {c.name}
+                  </option>
+                ))}
               </select>
             </label>
           </div>
         </div>
       </div>
-      <div >
-        <h2 className="cc-section-title">Subcollections</h2>
+      {currentSub?.description ? (
+        <div className="cc-sub-desc" aria-live="polite">
+          {currentSub.description}
+        </div>
+      ) : null}
+      <div>
         <div className="cc-subcollections">
-          {subcollections.map(sc => (
+          {subcollections.map((sc) => (
             <button
               key={sc.name}
               type="button"
-              className={`cc-sub-btn${sc.name === subName ? ' is-selected' : ''}`}
+              className={`cc-sub-btn${
+                sc.name === subName ? " is-selected" : ""
+              }`}
               onClick={() => setSubName(sc.name)}
               aria-current={sc.name === subName || undefined}
-            >{sc.name}</button>
-          ))}
-        </div>
-      </div>
-      <div >
-        <h2 className="cc-section-title">Variations</h2>
-        <div className="cc-var-grid" aria-label="Variaciones">
-          {variations.map(v => (
-            <button
-              key={v}
-              type="button"
-              className="cc-var-box"
-              data-label={v}
-              onClick={() => sendVariation(v)}
             >
-              <span style={{ fontSize: '12px' }}>{v}</span>
+              {sc.name}
             </button>
           ))}
+        </div>
+        <div>{/*subcollection-description*/}</div>
+      </div>
+      <div>
+        <div className="cc-var-grid" aria-label="Variaciones">
+          {variations.map((v, idx) => {
+            const label = v.label;
+            const img = v.imageThumbnail || "";
+            const color = v.color || "#eee";
+            const tooltip =
+              v.name && v.pattern ? `${v.name} ${v.pattern}` : label;
+            return (
+              <button
+                key={label + idx}
+                type="button"
+                className="cc-var-box"
+                data-label={tooltip}
+                onClick={() => sendVariation(label)}
+                style={!img ? { background: color } : {}}
+              >
+                {img ? (
+                  <span className="cc-var-img">
+                    <img src={img} alt={label} />
+                  </span>
+                ) : label ? (
+                  <span style={{ fontSize: "10px" }}>{label}</span>
+                ) : null}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { HexColorPicker } from 'react-colorful';
-
-// Versión mínima del selector de color.
-export interface ColorTintProps {
-	value?: string;            // Valor inicial/controlado
-	onChange?: (hex: string) => void; // Callback al cambiar
+// Stubs para compatibilidad con el import del Sidepanel
+export function getCurrentTint() {
+  return "#00ff80";
 }
 
-// Estado global simple (último color seleccionado) + listeners para suscribir.
-let lastColor = '--(ColorBackground)';
-const listeners = new Set<(hex: string) => void>();
+export function subscribeTint(cb: (t: string) => void) {
+  // No hay gestión global real, solo stub para evitar errores
+  return () => {};
+}
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/dist/css/rcp.css";
 
-export const getCurrentTint = () => lastColor;
-export const subscribeTint = (fn: (hex: string) => void) => { listeners.add(fn); return () => listeners.delete(fn); };
+export function ColorTint() {
+  const [color, setColor] = useColor("#00ff80");
 
-const ColorTint: React.FC<ColorTintProps> = ({ value, onChange}) => {
-	const [color, setColor] = useState(value || lastColor);
+  return (
+    <div className="sp-tint-picker-wrap">
+      <ColorPicker
+        height={180}
+        color={color}
+        onChange={setColor}
+        hideAlpha
+        hideInput={["rgb", "hsv"]}
+      />
+    </div>
+  );
+}
 
-	useEffect(() => { if (value && value !== color) setColor(value); }, [value, color]);
-
-	const handleChange = (c: string) => {
-		setColor(c);
-		lastColor = c;
-		onChange?.(c);
-		listeners.forEach(l => { try { l(c); } catch { /* ignore */ } });
-	};
-
-	return (
-		<div style={{background: color, display: 'flex', justifyContent: 'center'}}>
-			<HexColorPicker color={color} onChange={handleChange} />
-		</div>
-	);
-};
-
+export { useColor };
 export default ColorTint;
-
-
-
-
-
-
-
- 
