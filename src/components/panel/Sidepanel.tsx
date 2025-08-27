@@ -83,10 +83,27 @@ const Sidepanel = () => {
         </div>
         <div className="sp-body" id="sp-body">
           <section className="sp-export-section">
-            <div className="sp-export-row">
-              <div>
-                <strong>Save</strong>
-              </div>
+            <div className="sp-export-row"></div>
+          </section>
+
+          <section className="sp-section">
+            <div className="sp-row">
+              <button
+                type="button"
+                className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
+                onClick={() => setTintOpen((o) => !o)}
+              >
+                <span className="sp-collapsible-title">Tint</span>
+                <span
+                  className="sp-tint-reset"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setTint("#ffffffff");
+                  }}
+                >
+                  ⟳
+                </span>
+              </button>
               <div className="sp-export-actions">
                 <button
                   className="sp-export-btn"
@@ -103,29 +120,6 @@ const Sidepanel = () => {
                 </button>
               </div>
             </div>
-          </section>
-
-          <section className="sp-section">
-            <button
-              type="button"
-              className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
-              onClick={() => setTintOpen((o) => !o)}
-            >
-              <span className="sp-collapsible-title">Tint</span>
-              <span className="sp-tint-mini" style={{ background: tint }} />
-              <span
-                className="sp-tint-reset"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setTint("#ffffffff");
-                }}
-              >
-                ⟳
-              </span>
-              <span className="sp-caret" aria-hidden="true">
-                {tintOpen ? "▾" : "▸"}
-              </span>
-            </button>
             <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
               <ColorTint />
             </div>
@@ -335,9 +329,6 @@ const ConfiguratorPanel: React.FC = () => {
     }
   };
 
-  if (!data.length)
-    return <div className="cc-loading">Cargando configurador…</div>;
-
   return (
     <div aria-label="Configurador" className="cc-root">
       <div>
@@ -348,10 +339,16 @@ const ConfiguratorPanel: React.FC = () => {
               <select
                 id="collection-select"
                 className="cc-collection-dropdown"
-                value={colIndex}
+                value={data.length ? colIndex : ""}
                 onChange={(e) => selectCollection(Number(e.target.value))}
+                disabled={!data.length}
                 aria-label="Collections"
               >
+                {!data.length && (
+                  <option value="" disabled>
+                    Loading…
+                  </option>
+                )}
                 {data.map((c, i) => (
                   <option key={c.name} value={i}>
                     {c.name}
@@ -362,11 +359,6 @@ const ConfiguratorPanel: React.FC = () => {
           </div>
         </div>
       </div>
-      {currentSub?.description ? (
-        <div className="cc-sub-desc" aria-live="polite">
-          {renderDesc(currentSub.description)}
-        </div>
-      ) : null}
       <div>
         <div className="cc-subcollections">
           {subcollections.map((sc) => (
@@ -385,6 +377,11 @@ const ConfiguratorPanel: React.FC = () => {
         </div>
         <div>{/*subcollection-description*/}</div>
       </div>
+      {currentSub?.description ? (
+        <div className="cc-sub-desc" aria-live="polite">
+          {renderDesc(currentSub.description)}
+        </div>
+      ) : null}
       <div>
         <div className="cc-var-grid" aria-label="Variaciones">
           {variations.map((v, idx) => {

@@ -1,13 +1,6 @@
-/* Mini rectángulo para mostrar el color actual de tint */
-.sp-tint-mini {
-  display: inline-block;
-  width: 22px;
-  height: 16px;
-  border-radius: 4px;
-  border: 1.5px solid #444;
-  margin: 0 0.5rem 0 0.7rem;
-  vertical-align: middle;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.noUnderline {
+  text-decoration: none;
+  underline: none;
 }
 
 /* Botón para resetear el tint a blanco */
@@ -170,6 +163,20 @@ html {
   display: flex;
   gap: 0.7rem;
 }
+/* Generic inline row for header + actions */
+.sp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+}
+.sp-row .sp-collapsible-header {
+  flex: 1 1 auto;
+}
+.sp-row .sp-export-actions {
+  flex: 0 0 auto;
+}
 .sp-header {
   display: flex;
   justify-content: space-between;
@@ -265,13 +272,7 @@ html {
   object-fit: cover;
   display: block;
 }
-.cc-loading {
-  font-size: 0.95rem;
-  opacity: 0.8;
-  padding: 1.2rem 0;
-  text-align: center;
-  color: var(--ColorText);
-}
+
 /* Eliminados estilos duplicados y antiguos de botones y cajas */
 /* Wrapper para que el color picker de Tint ocupe todo el ancho del contenedor */
 .sp-tint-picker-wrap {
@@ -362,11 +363,7 @@ html {
 .sp-collapsible-title[data-tint] {
   color: var(--ColorText);
 }
-.sp-caret {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-left: 0.5rem;
-}
+
 .sp-collapsible-body {
   max-height: 0;
   overflow: hidden;
