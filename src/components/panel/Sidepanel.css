@@ -240,8 +240,7 @@ html {
   align-items: center;
   justify-content: center;
   overflow: visible; /* let tooltip appear outside */
-  border: 1px solid #2c2c36;
-  border-radius: 6px;
+  border: none;
   padding: 0;
   width: 64px;
   height: 64px;
@@ -259,7 +258,6 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: inherit;
 }
 .cc-var-img img {
   width: 100%;

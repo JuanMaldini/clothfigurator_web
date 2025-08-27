@@ -253,6 +253,19 @@ const ConfiguratorPanel: React.FC = () => {
   const [colIndex, setColIndex] = useState(0);
   const [subName, setSubName] = useState<string | null>(null);
 
+  // Render helper: first word in bold
+  const renderDesc = useCallback((desc?: string) => {
+    if (!desc) return null;
+    const m = desc.match(/^\s*(\S+)([\s\S]*)$/);
+    if (!m) return desc;
+    return (
+      <>
+        <strong>{m[1]}</strong>
+        {m[2]}
+      </>
+    );
+  }, []);
+
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -351,7 +364,7 @@ const ConfiguratorPanel: React.FC = () => {
       </div>
       {currentSub?.description ? (
         <div className="cc-sub-desc" aria-live="polite">
-          {currentSub.description}
+          {renderDesc(currentSub.description)}
         </div>
       ) : null}
       <div>
