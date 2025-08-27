@@ -246,7 +246,7 @@ html {
   align-items: center;
   justify-content: center;
   overflow: visible; /* let tooltip appear outside */
-  border: none;
+  border: 2px solid transparent;
   padding: 0;
   width: 56px;
   height: 56px;
@@ -259,7 +259,8 @@ html {
   outline: none;
 }
 .cc-var-box.is-selected {
-  box-shadow: 0 0 0 2px var(--ColorBackgroundSelected) inset;
+  border-color: var(--ColorBackgroundSelected);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05) inset;
 }
 /* Inner wrapper that clips the image to rounded corners */
 .cc-var-img {

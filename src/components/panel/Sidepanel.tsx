@@ -3,29 +3,36 @@ import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
 import ColorTint, {
   getCurrentTint,
   subscribeTint,
+  subscribeTintCommit,
+  setGlobalTint,
+  commitTint,
 } from "../colorTint/colorTint";
 import "./Sidepanel.css";
 interface VariationMessage {
   type: "variation-select";
-  collection: string;
-  subcollection: string;
-  variation: string;
-  tint?: string;
+  "collection-name": string;
+  "subcollection-name": string;
+  "variation-name": string;
+  "variation-pattern": string;
+  tint: string;
 }
 
 // Construye el objeto de mensaje
 function buildVariationMessage(
-  collection: string,
-  subcollection: string,
-  variation: string,
-  tint?: string
+  collectionName: string | undefined,
+  subcollectionName: string | undefined,
+  _variationLabel: string | undefined, // kept for signature compatibility
+  tint: string | undefined,
+  variationName?: string,
+  variationPattern?: string
 ): VariationMessage {
   return {
     type: "variation-select",
-    collection,
-    subcollection,
-    variation,
-    tint,
+    "collection-name": collectionName ?? "",
+    "subcollection-name": subcollectionName ?? "",
+    "variation-name": variationName ?? "",
+    "variation-pattern": variationPattern ?? "",
+    tint: tint ?? "",
   };
 }
 
@@ -107,7 +114,9 @@ const Sidepanel = () => {
                   className="sp-tint-reset"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setTint("#ffffffff");
+                    setGlobalTint("#ffffff");
+                    // trigger commit so current selection is resent with white tint
+                    commitTint();
                   }}
                 >
                   ⟳
@@ -135,7 +144,7 @@ const Sidepanel = () => {
           </section>
 
           <section>
-            <ConfiguratorPanel />
+            <ConfiguratorPanel tint={tint} />
           </section>
         </div>
         <div className="sp-footer">Soy el pie del panel</div>
@@ -258,7 +267,10 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
     })
     .filter((c) => c.subcollections.length);
 
-const ConfiguratorPanel: React.FC = () => {
+interface ConfiguratorPanelProps {
+  tint: string;
+}
+const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
   const [colIndex, setColIndex] = useState(0);
   const [subName, setSubName] = useState<string | null>(null);
@@ -306,6 +318,40 @@ const ConfiguratorPanel: React.FC = () => {
     };
   }, []);
 
+  // Re-emit current selection when user commits a tint change in the picker
+  useEffect(() => {
+    const uncommit = subscribeTintCommit((t: string) => {
+      try {
+        const current = data[colIndex];
+        const sub = current?.subcollections.find(
+          (s: NormalizedSubcollection) => s.name === subName
+        );
+        const selectedLabel = subName ? selectedVarBySub[subName] : null;
+        if (!current || !sub || !subName || !selectedLabel) return;
+        const variationObj = sub.variations.find(
+          (v: NormalizedVariation) => v.label === selectedLabel
+        );
+        const payload = serializeVariationMessage(
+          buildVariationMessage(
+            current.name,
+            subName,
+            selectedLabel,
+            t,
+            variationObj?.name,
+            variationObj?.pattern
+          )
+        );
+        if (typeof sendUIInteraction === "function") {
+          sendUIInteraction(payload);
+        } else if ((window as any).emitUIInteraction) {
+          (window as any).emitUIInteraction(payload);
+        }
+        console.log(payload);
+      } catch {}
+    });
+    return () => uncommit();
+  }, [data, colIndex, subName, selectedVarBySub]);
+
   const current = data[colIndex];
   const subcollections = current?.subcollections || [];
   const currentSub =
@@ -325,12 +371,19 @@ const ConfiguratorPanel: React.FC = () => {
     [data]
   );
 
-  const sendVariation = (variation: string) => {
+  const sendVariation = (variation: NormalizedVariation) => {
     if (!current || !subName) return;
     // Construye y envía el JSON al Pixel Streaming usando el puente global expuesto por ArcwarePlayer
     try {
       const payload = serializeVariationMessage(
-        buildVariationMessage(current.name, subName, variation)
+        buildVariationMessage(
+          current.name,
+          subName,
+          variation.label,
+          tint,
+          variation.name,
+          variation.pattern
+        )
       );
       // Prefiere la función global expuesta por ArcwarePlayer
       if (typeof sendUIInteraction === "function") {
@@ -341,7 +394,7 @@ const ConfiguratorPanel: React.FC = () => {
       //PRINT payload TO CONSOLE
       console.log(payload);
       // marca selección local
-      setSelectedVarBySub((m) => ({ ...m, [subName]: variation }));
+      setSelectedVarBySub((m) => ({ ...m, [subName]: variation.label }));
     } catch {
       // ignore
     }
@@ -411,15 +464,29 @@ const ConfiguratorPanel: React.FC = () => {
                 type="button"
                 className={`cc-var-box${isSelected ? " is-selected" : ""}`}
                 data-label={tooltip}
-                onClick={() => sendVariation(label)}
+                onClick={() => sendVariation(v)}
                 style={!img ? { background: color } : {}}
+                aria-pressed={isSelected}
               >
                 {img ? (
                   <span className="cc-var-img">
-                    <img src={img} alt={label} />
+                    <img src={img} alt={tooltip} loading="lazy" />
                   </span>
                 ) : label ? (
-                  <span style={{ fontSize: "10px" }}>{label}</span>
+                  <span
+                    className="cc-var-img"
+                    aria-hidden
+                    style={{
+                      fontSize: "10px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    {label}
+                  </span>
                 ) : null}
               </button>
             );
