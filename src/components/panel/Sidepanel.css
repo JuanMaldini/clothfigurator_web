@@ -1,4 +1,4 @@
-.noUnderline{
+.noUnderline {
   text-decoration: none;
 }
 
@@ -257,6 +257,9 @@ html {
 .cc-var-box:focus {
   border-color: var(--ColorBackgroundSelected);
   outline: none;
+}
+.cc-var-box.is-selected {
+  box-shadow: 0 0 0 2px var(--ColorBackgroundSelected) inset;
 }
 /* Inner wrapper that clips the image to rounded corners */
 .cc-var-img {

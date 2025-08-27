@@ -41,6 +41,15 @@ const Sidepanel = () => {
   // Color tint sincronizado globalmente
   const [tint, setTint] = useState(getCurrentTint());
   const [tintOpen, setTintOpen] = useState(false);
+  const handleExport = useCallback(() => {
+    try {
+      generateConfiguratorPDF("sp-body");
+    } catch (e) {
+      try {
+        window.print();
+      } catch {}
+    }
+  }, []);
   useEffect(() => {
     const unsubscribe = subscribeTint(setTint);
     return () => {
@@ -108,7 +117,7 @@ const Sidepanel = () => {
                 <button
                   className="sp-export-btn"
                   title="Download a pdf with all information"
-                  onClick={() => generateConfiguratorPDF("sp-body")}
+                  onClick={handleExport}
                 >
                   Export
                 </button>
@@ -194,10 +203,15 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
   (raw || [])
     .map((r) => {
       const name = (
-        r["collection-name"] || r.collection || r.name || "Unnamed"
+        r["collection-name"] ||
+        r.collection ||
+        r.name ||
+        "Unnamed"
       ).trim();
       const subcollections = (
-        (r.subcollections || r.subcollection || []) as RawVariationSubcollection[]
+        (r.subcollections ||
+          r.subcollection ||
+          []) as RawVariationSubcollection[]
       ).map((s) => {
         const subName = (s["subcollection-name"] || s.name || "Unnamed").trim();
         const description = (s as any)["subcollection-description"]
@@ -220,7 +234,9 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
             const label = composeVariationString(obj);
             if (!label) return null;
             const imageThumbnail =
-              (obj as any)["variation-image-thumbnail"] || obj.image || undefined;
+              (obj as any)["variation-image-thumbnail"] ||
+              obj.image ||
+              undefined;
             const color = (obj as any)["variation-color"] || undefined;
             const pattern = obj["variation-pattern"] || obj.code || undefined;
             return {
@@ -232,7 +248,11 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
             } as NormalizedVariation;
           })
           .filter(Boolean) as NormalizedVariation[];
-        return { name: subName, description, variations } as NormalizedSubcollection;
+        return {
+          name: subName,
+          description,
+          variations,
+        } as NormalizedSubcollection;
       });
       return { name, subcollections } as NormalizedCollection;
     })
@@ -242,6 +262,9 @@ const ConfiguratorPanel: React.FC = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
   const [colIndex, setColIndex] = useState(0);
   const [subName, setSubName] = useState<string | null>(null);
+  const [selectedVarBySub, setSelectedVarBySub] = useState<
+    Record<string, string | null>
+  >({});
 
   // Render helper: first word in bold
   const renderDesc = useCallback((desc?: string) => {
@@ -293,7 +316,11 @@ const ConfiguratorPanel: React.FC = () => {
   const selectCollection = useCallback(
     (idx: number) => {
       setColIndex(idx);
-      setSubName(data[idx]?.subcollections[0]?.name || null);
+      const first = data[idx]?.subcollections[0]?.name || null;
+      setSubName(first);
+      if (first) {
+        setSelectedVarBySub((m) => ({ ...m, [first]: null }));
+      }
     },
     [data]
   );
@@ -313,6 +340,8 @@ const ConfiguratorPanel: React.FC = () => {
       }
       //PRINT payload TO CONSOLE
       console.log(payload);
+      // marca selección local
+      setSelectedVarBySub((m) => ({ ...m, [subName]: variation }));
     } catch {
       // ignore
     }
@@ -375,11 +404,12 @@ const ConfiguratorPanel: React.FC = () => {
             const color = v.color || "#eee";
             const tooltip =
               v.name && v.pattern ? `${v.name} ${v.pattern}` : label;
+            const isSelected = selectedVarBySub[subName || ""] === label;
             return (
               <button
                 key={label + idx}
                 type="button"
-                className="cc-var-box"
+                className={`cc-var-box${isSelected ? " is-selected" : ""}`}
                 data-label={tooltip}
                 onClick={() => sendVariation(label)}
                 style={!img ? { background: color } : {}}
