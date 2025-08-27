@@ -320,33 +320,29 @@ const ConfiguratorPanel: React.FC = () => {
 
   return (
     <div aria-label="Configurador" className="cc-root">
-      <div>
+      <div className="cc-collections-row">
         <h2 className="cc-section-title">Collections</h2>
-        <div className="cc-header-row">
-          <div className="cc-select-col">
-            <label className="cc-collection-label" htmlFor="collection-select">
-              <select
-                id="collection-select"
-                className="cc-collection-dropdown"
-                value={data.length ? colIndex : ""}
-                onChange={(e) => selectCollection(Number(e.target.value))}
-                disabled={!data.length}
-                aria-label="Collections"
-              >
-                {!data.length && (
-                  <option value="" disabled>
-                    Loading…
-                  </option>
-                )}
-                {data.map((c, i) => (
-                  <option key={c.name} value={i}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-        </div>
+        <label className="cc-collection-label" htmlFor="collection-select">
+          <select
+            id="collection-select"
+            className="cc-collection-dropdown"
+            value={data.length ? colIndex : ""}
+            onChange={(e) => selectCollection(Number(e.target.value))}
+            disabled={!data.length}
+            aria-label="Collections"
+          >
+            {!data.length && (
+              <option value="" disabled>
+                Loading…
+              </option>
+            )}
+            {data.map((c, i) => (
+              <option key={c.name} value={i}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       <div>
         <div className="cc-subcollections">
