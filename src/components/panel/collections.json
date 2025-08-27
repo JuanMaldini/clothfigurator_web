@@ -262,27 +262,20 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Tundra", "variation-pattern": "474-007", "variation-image-thumbnail": "" },
-          { "variation-name": "Honey", "variation-pattern": "474-002", "variation-image-thumbnail": "" },
-          { "variation-name": "Waterfall", "variation-pattern": "474-004", "variation-image-thumbnail": "" },
-          { "variation-name": "Dune", "variation-pattern": "474-017", "variation-image-thumbnail": "" },
-          { "variation-name": "Umber", "variation-pattern": "474-012", "variation-image-thumbnail": "" },
-          { "variation-name": "Baltic", "variation-pattern": "474-014", "variation-image-thumbnail": "" },
-          { "variation-name": "Heron", "variation-pattern": "474-027", "variation-image-thumbnail": "" },
-          { "variation-name": "Maple", "variation-pattern": "474-009", "variation-image-thumbnail": "" },
-          { "variation-name": "Tidal", "variation-pattern": "474-024", "variation-image-thumbnail": "" },
-          { "variation-name": "Pewter", "variation-pattern": "474-006", "variation-image-thumbnail": "" },
-          { "variation-name": "Bittersweet", "variation-pattern": "474-019", "variation-image-thumbnail": "" },
-          { "variation-name": "Mallard", "variation-pattern": "474-003", "variation-image-thumbnail": "" },
-          { "variation-name": "Piano", "variation-pattern": "474-016", "variation-image-thumbnail": "" },
-          { "variation-name": "Sandstone", "variation-pattern": "474-029", "variation-image-thumbnail": "" },
-          { "variation-name": "Raintree", "variation-pattern": "474-013", "variation-image-thumbnail": "" },
-          { "variation-name": "Carbon", "variation-pattern": "474-026", "variation-image-thumbnail": "" },
-          { "variation-name": "Flare", "variation-pattern": "474-001", "variation-image-thumbnail": "" },
-          { "variation-name": "Lagoon", "variation-pattern": "474-034", "variation-image-thumbnail": "" },
-          { "variation-name": "Peppercorn", "variation-pattern": "474-036", "variation-image-thumbnail": "" },
-          { "variation-name": "Wildberry", "variation-pattern": "474-008", "variation-image-thumbnail": "" },
-          { "variation-name": "Midnight", "variation-pattern": "474-044", "variation-image-thumbnail": "" }
+          { "variation-name": "Blue Jay",    "variation-pattern": "474-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-004/image/thumbnail" },
+          { "variation-name": "Bay Blue",    "variation-pattern": "474-024", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-024/image/thumbnail" },
+          { "variation-name": "Cyan",        "variation-pattern": "474-014", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-014/image/thumbnail" },
+          { "variation-name": "Wintergreen", "variation-pattern": "474-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-003/image/thumbnail" },
+          { "variation-name": "Forest",      "variation-pattern": "474-013", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-013/image/thumbnail" },
+          { "variation-name": "Plum",        "variation-pattern": "474-005", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-005/image/thumbnail" },
+          { "variation-name": "Copper",      "variation-pattern": "474-009", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-009/image/thumbnail" },
+          { "variation-name": "Auburn",      "variation-pattern": "474-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-001/image/thumbnail" },
+          { "variation-name": "Marigold",    "variation-pattern": "474-002", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-002/image/thumbnail" },
+          { "variation-name": "Charcoal",    "variation-pattern": "474-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-006/image/thumbnail" },
+          { "variation-name": "Graphite",    "variation-pattern": "474-036", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-036/image/thumbnail" },
+          { "variation-name": "Cinder",      "variation-pattern": "474-026", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-026/image/thumbnail" },
+          { "variation-name": "Platinum",    "variation-pattern": "474-016", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-016/image/thumbnail" },
+          { "variation-name": "Ivory",       "variation-pattern": "474-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/474-007/image/thumbnail" }
         ]
       },
       {
@@ -290,13 +283,13 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Newsprint", "variation-pattern": "FO-006", "variation-image-thumbnail": "" },
-          { "variation-name": "Lunar", "variation-pattern": "FO-007", "variation-image-thumbnail": "" },
-          { "variation-name": "Habanero", "variation-pattern": "FO-009", "variation-image-thumbnail": "" },
-          { "variation-name": "Currant", "variation-pattern": "FO-008", "variation-image-thumbnail": "" },
-          { "variation-name": "Wintergreen", "variation-pattern": "FO-003", "variation-image-thumbnail": "" },
-          { "variation-name": "Tidal", "variation-pattern": "FO-004", "variation-image-thumbnail": "" },
-          { "variation-name": "Olive", "variation-pattern": "FO-013", "variation-image-thumbnail": "" }
+          { "variation-name": "Wintergreen", "variation-pattern": "FO-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/FO-003/image/thumbnail" },
+          { "variation-name": "Olive",       "variation-pattern": "FO-013", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/FO-013/image/thumbnail" },
+          { "variation-name": "Tidal",       "variation-pattern": "FO-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/FO-004/image/thumbnail" },
+          { "variation-name": "Newsprint",   "variation-pattern": "FO-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/FO-006/image/thumbnail" },
+          { "variation-name": "Lunar",       "variation-pattern": "FO-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/FO-007/image/thumbnail" },
+          { "variation-name": "Currant",     "variation-pattern": "FO-008", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/FO-008/image/thumbnail" },
+          { "variation-name": "Habanero",    "variation-pattern": "FO-009", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/FO-009/image/thumbnail" }
         ]
       },
       {
@@ -304,34 +297,16 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Pearl", "variation-pattern": "PM-037", "variation-image-thumbnail": "" },
-          { "variation-name": "Dove", "variation-pattern": "PM-026", "variation-image-thumbnail": "" },
-          { "variation-name": "Fossil", "variation-pattern": "PM-036", "variation-image-thumbnail": "" },
-          { "variation-name": "Overcast", "variation-pattern": "PM-024", "variation-image-thumbnail": "" },
-          { "variation-name": "Shell", "variation-pattern": "PM-047", "variation-image-thumbnail": "" },
-          { "variation-name": "Storm", "variation-pattern": "PM-016", "variation-image-thumbnail": "" },
-          { "variation-name": "River Rock", "variation-pattern": "PM-034", "variation-image-thumbnail": "" },
-          { "variation-name": "Thyme", "variation-pattern": "PM-023", "variation-image-thumbnail": "" },
-          { "variation-name": "Clove", "variation-pattern": "PM-030", "variation-image-thumbnail": "" },
-          { "variation-name": "Buff", "variation-pattern": "PM-027", "variation-image-thumbnail": "" },
-          { "variation-name": "Ecru", "variation-pattern": "PM-007", "variation-image-thumbnail": "" },
-          { "variation-name": "Bronze", "variation-pattern": "PM-050", "variation-image-thumbnail": "" },
-          { "variation-name": "Coin", "variation-pattern": "PM-012", "variation-image-thumbnail": "" },
-          { "variation-name": "Ash", "variation-pattern": "PM-046", "variation-image-thumbnail": "" },
-          { "variation-name": "Regatta", "variation-pattern": "PM-044", "variation-image-thumbnail": "" },
-          { "variation-name": "Pine", "variation-pattern": "PM-033", "variation-image-thumbnail": "" },
-          { "variation-name": "Otter", "variation-pattern": "PM-020", "variation-image-thumbnail": "" },
-          { "variation-name": "Tawny", "variation-pattern": "PM-019", "variation-image-thumbnail": "" },
-          { "variation-name": "Carbon", "variation-pattern": "PM-056", "variation-image-thumbnail": "" },
-          { "variation-name": "Sapphire", "variation-pattern": "PM-004", "variation-image-thumbnail": "" },
-          { "variation-name": "Alligator", "variation-pattern": "PM-043", "variation-image-thumbnail": "" },
-          { "variation-name": "Mink", "variation-pattern": "PM-040", "variation-image-thumbnail": "" },
-          { "variation-name": "Russet", "variation-pattern": "PM-029", "variation-image-thumbnail": "" },
-          { "variation-name": "Ebony", "variation-pattern": "PM-006", "variation-image-thumbnail": "" },
-          { "variation-name": "Naval", "variation-pattern": "PM-054", "variation-image-thumbnail": "" },
-          { "variation-name": "Ivy", "variation-pattern": "PM-053", "variation-image-thumbnail": "" },
-          { "variation-name": "Saddle", "variation-pattern": "PM-010", "variation-image-thumbnail": "" },
-          { "variation-name": "Rootbeer", "variation-pattern": "PM-060", "variation-image-thumbnail": "" }
+          { "variation-name": "Ruby",       "variation-pattern": "PL-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-001/image/thumbnail" },
+          { "variation-name": "Turmeric",   "variation-pattern": "PL-002", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-002/image/thumbnail" },
+          { "variation-name": "Olive",      "variation-pattern": "PL-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-003/image/thumbnail" },
+          { "variation-name": "Teal",       "variation-pattern": "PL-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-004/image/thumbnail" },
+          { "variation-name": "Onyx",       "variation-pattern": "PL-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-006/image/thumbnail" },
+          { "variation-name": "Wool",       "variation-pattern": "PL-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-007/image/thumbnail" },
+          { "variation-name": "Driftwood",  "variation-pattern": "PL-016", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-016/image/thumbnail" },
+          { "variation-name": "Vanilla",    "variation-pattern": "PL-017", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-017/image/thumbnail" },
+          { "variation-name": "Sapphire",   "variation-pattern": "PL-014", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-014/image/thumbnail" },
+          { "variation-name": "Mist",       "variation-pattern": "PL-027", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PL-027/image/thumbnail" }
         ]
       },
       {
@@ -339,12 +314,12 @@
         "subcollection-description": "",
         "subcollection-image": "",
         "variations": [
-          { "variation-name": "Sisal", "variation-pattern": "PV-007", "variation-image-thumbnail": "" },
-          { "variation-name": "Eucalyptus", "variation-pattern": "PV-003", "variation-image-thumbnail": "" },
-          { "variation-name": "Wheat", "variation-pattern": "PV-002", "variation-image-thumbnail": "" },
-          { "variation-name": "Neptune", "variation-pattern": "PV-004", "variation-image-thumbnail": "" },
-          { "variation-name": "Elderberry", "variation-pattern": "PV-008", "variation-image-thumbnail": "" },
-          { "variation-name": "Nightfall", "variation-pattern": "PV-006", "variation-image-thumbnail": "" }
+          { "variation-name": "Wheat",       "variation-pattern": "PV-002", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PV-002/image/thumbnail" },
+          { "variation-name": "Eucalyptus",  "variation-pattern": "PV-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PV-003/image/thumbnail" },
+          { "variation-name": "Neptune",     "variation-pattern": "PV-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PV-004/image/thumbnail" },
+          { "variation-name": "Nightfall",   "variation-pattern": "PV-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PV-006/image/thumbnail" },
+          { "variation-name": "Sisal",       "variation-pattern": "PV-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PV-007/image/thumbnail" },
+          { "variation-name": "Elderberry",  "variation-pattern": "PV-008", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PV-008/image/thumbnail" }
         ]
       }
     ]
