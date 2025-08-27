@@ -192,17 +192,12 @@ const composeVariationString = (v: any): string => {
 
 const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
   (raw || [])
-    .map((r) => ({
-      name: (
-        r["collection-name"] ||
-        r.collection ||
-        r.name ||
-        "Unnamed"
-      ).trim(),
-      subcollections: (
-        (r.subcollections ||
-          r.subcollection ||
-          []) as RawVariationSubcollection[]
+    .map((r) => {
+      const name = (
+        r["collection-name"] || r.collection || r.name || "Unnamed"
+      ).trim();
+      const subcollections = (
+        (r.subcollections || r.subcollection || []) as RawVariationSubcollection[]
       ).map((s) => {
         const subName = (s["subcollection-name"] || s.name || "Unnamed").trim();
         const description = (s as any)["subcollection-description"]
@@ -221,11 +216,11 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
             }
             if (!v || typeof v !== "object") return null;
             const obj = v as RawVariation & { [k: string]: any };
-            const name = (obj["variation-name"] || obj.label || "").trim();
+            const vname = (obj["variation-name"] || obj.label || "").trim();
             const label = composeVariationString(obj);
             if (!label) return null;
             const imageThumbnail =
-              obj["variation-image-thumbnail"] || obj.image || undefined;
+              (obj as any)["variation-image-thumbnail"] || obj.image || undefined;
             const color = (obj as any)["variation-color"] || undefined;
             const pattern = obj["variation-pattern"] || obj.code || undefined;
             return {
@@ -233,13 +228,14 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
               imageThumbnail,
               color,
               pattern,
-              name,
+              name: vname,
             } as NormalizedVariation;
           })
           .filter(Boolean) as NormalizedVariation[];
-        return { name: subName, description, variations };
-      }),
-    }))
+        return { name: subName, description, variations } as NormalizedSubcollection;
+      });
+      return { name, subcollections } as NormalizedCollection;
+    })
     .filter((c) => c.subcollections.length);
 
 const ConfiguratorPanel: React.FC = () => {
@@ -264,18 +260,11 @@ const ConfiguratorPanel: React.FC = () => {
     let alive = true;
     (async () => {
       try {
-        const tryUrls = ["./collections.normalized.json", "./collections.json"];
-        let json: any = null;
-        for (const rel of tryUrls) {
-          try {
-            const url = new URL(rel, import.meta.url).href;
-            const res = await fetch(url, { cache: "no-cache" });
-            if (!res.ok) continue;
-            json = await res.json();
-            if (json) break;
-          } catch {}
-        }
-        if (!json) throw new Error("No collections JSON found");
+        // Único JSON con ruta estática para que Vite lo incluya en el build
+        const url = new URL("./collections.json", import.meta.url).href;
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) throw new Error("No collections JSON found");
+        const json = (await res.json()) as RawCollection[];
 
         if (!alive) return;
         const norm = normalizeData(json);
