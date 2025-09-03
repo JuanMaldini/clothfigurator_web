@@ -1,7 +1,7 @@
-import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App';
-import APlayer from './components/arcware/ArcwarePlayer';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import App from "./App";
+import APlayer from "./components/arcware/ArcwarePlayer";
 
 const AppRouter: React.FC = () => (
   <Router>

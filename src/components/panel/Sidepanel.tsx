@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
-import ColorTint, {
-  getCurrentTint,
-  subscribeTint,
-  subscribeTintCommit,
-  setGlobalTint,
-  commitTint,
-} from "../colorTint/colorTint";
+import ColorTint, {   getCurrentTint, subscribeTint, subscribeTintCommit, setGlobalTint, commitTint,} from "../colorTint/colorTint";
 import "./Sidepanel.css";
 interface VariationMessage {
   type: "variation-select";
