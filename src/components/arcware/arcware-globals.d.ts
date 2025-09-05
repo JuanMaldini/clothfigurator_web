@@ -8,7 +8,8 @@ declare global {
    * Arcware wrapper may expose a global sendUIInteraction for convenience.
    * We declare it so Sidepanel can call it when available.
    */
-  function sendUIInteraction(message: string): void;
+  // Accept unknown to allow passing plain objects; the SDK will serialize once.
+  function sendUIInteraction(message: unknown): void;
 
   interface Window {
     webRtcPlayerObj?: {

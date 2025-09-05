@@ -1,47 +1,86 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
-import ColorTint, {   getCurrentTint, subscribeTint, subscribeTintCommit, setGlobalTint, commitTint,} from "../colorTint/colorTint";
+import ColorTint, {
+  getCurrentTint,
+  subscribeTint,
+  subscribeTintCommit,
+  setGlobalTint,
+  commitTint,
+} from "../colorTint/colorTint";
 import "./Sidepanel.css";
-interface VariationMessage {
-  type: "variation-select";
-  "collection-name": string;
-  "subcollection-name": string;
-  "variation-name": string;
-  "variation-pattern": string;
-  tint: string;
+
+declare global {
+  interface Window {
+    emitUIInteraction?: (payload: string) => void;
+    sendUIInteraction?: (payload: any) => void;
+  }
 }
 
-// Construye el objeto de mensaje
-function buildVariationMessage(
-  collectionName: string | undefined,
-  subcollectionName: string | undefined,
-  _variationLabel: string | undefined, // kept for signature compatibility
-  tint: string | undefined,
+// ---------------- Naming (mirror of Python create_materials.py) ----------------
+// Python logic builds names like: MI_<COLL>_<SUB>_<VAR>
+// where each token is sanitized:
+//  - replace spaces with '-'
+//  - remove non A-Z0-9-
+//  - collapse multiple '-'
+//  - trim '-'
+//  - uppercase
+// Variation raw token: if variation-name & variation-pattern => "<variation-name>-<variation-pattern>"
+// else whichever exists.
+// We replicate that here so UE receives EXACT same identifier the Python script would generate.
+
+function stripAccents(text: string): string {
+  return text
+    .normalize("NFKD")
+    .split("")
+    .filter((ch) => !(ch as any).match(/\p{M}/u))
+    .join("");
+}
+
+function sanitizeToken(input?: string): string {
+  if (!input) return "";
+  let t = stripAccents(String(input).trim());
+  t = t.replace(/\s+/g, "-");
+  t = t.replace(/[^A-Za-z0-9-]/g, "");
+  t = t.replace(/-{2,}/g, "-");
+  t = t.replace(/^-+|-+$/g, "");
+  return t.toUpperCase();
+}
+
+function buildMaterialInstanceName(
+  collectionName?: string,
+  subcollectionName?: string,
   variationName?: string,
   variationPattern?: string
-): VariationMessage {
-  return {
-    type: "variation-select",
-    "collection-name": collectionName ?? "",
-    "subcollection-name": subcollectionName ?? "",
-    "variation-name": variationName ?? "",
-    "variation-pattern": variationPattern ?? "",
-    tint: tint ?? "",
-  };
+): string {
+  const collTok = sanitizeToken(collectionName);
+  const subTok = sanitizeToken(subcollectionName);
+  // Variation raw representation like Python's _get_variation_label
+  let varRaw = "";
+  if (variationName && variationPattern)
+    varRaw = `${variationName}-${variationPattern}`;
+  else varRaw = variationName || variationPattern || "";
+  const varTok = sanitizeToken(varRaw);
+  if (!(collTok && subTok && varTok)) return ""; // incomplete; skip sending
+  return `MI_${collTok}_${subTok}_${varTok}`;
 }
 
-// Serializa (si quisieras mutar formato/orden centralizas aquí)
-function serializeVariationMessage(msg: VariationMessage): string {
-  return JSON.stringify(msg);
-}
+// Unified send: now always a single string (the MI name). If empty, we don't send.
+const sendToUE = (payload: any) => {
+  const w = window as any;
+  if (typeof w.sendUIInteraction === "function") {
+    w.sendUIInteraction(payload);
+  } else if (typeof w.emitUIInteraction === "function") {
+    w.emitUIInteraction(
+      typeof payload === "string" ? payload : JSON.stringify(payload)
+    );
+  }
+};
 
-//TINT
-// Panel deslizante ligero sin dependencias externas para evitar duplicados de React.
 const Sidepanel = () => {
   const [open, setOpen] = useState(false);
-  // Color tint sincronizado globalmente
   const [tint, setTint] = useState(getCurrentTint());
   const [tintOpen, setTintOpen] = useState(false);
+
   const handleExport = useCallback(() => {
     try {
       generateConfiguratorPDF("sp-body");
@@ -51,17 +90,15 @@ const Sidepanel = () => {
       } catch {}
     }
   }, []);
+
   useEffect(() => {
     const unsubscribe = subscribeTint(setTint);
     return () => {
       unsubscribe();
     };
   }, []);
-  // referencia ligera para evitar warning si todavía no se usa
-  // eslint-disable-next-line no-unused-expressions
   tint;
 
-  // Evita scroll de fondo cuando está abiertoEmitUIInteraction
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -109,7 +146,6 @@ const Sidepanel = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     setGlobalTint("#ffffff");
-                    // trigger commit so current selection is resent with white tint
                     commitTint();
                   }}
                 >
@@ -138,7 +174,7 @@ const Sidepanel = () => {
           </section>
 
           <section>
-            <ConfiguratorPanel tint={tint} />
+            <ConfiguratorPanel />
           </section>
         </div>
         <div className="sp-footer">Soy el pie del panel</div>
@@ -149,11 +185,9 @@ const Sidepanel = () => {
 
 interface RawVariation {
   value?: string;
-  /** normalized keys */
   "variation-name"?: string;
   "variation-pattern"?: string;
   "variation-image"?: string;
-  /** legacy keys */
   label?: string;
   code?: string;
   image?: string;
@@ -262,9 +296,9 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
     .filter((c) => c.subcollections.length);
 
 interface ConfiguratorPanelProps {
-  tint: string;
+  // Tint already not part of MI name; kept for future if needed.
 }
-const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
+const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
   const [colIndex, setColIndex] = useState(0);
   const [subName, setSubName] = useState<string | null>(null);
@@ -272,7 +306,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
     Record<string, string | null>
   >({});
 
-  // Render helper: first word in bold
   const renderDesc = useCallback((desc?: string) => {
     if (!desc) return null;
     const m = desc.match(/^\s*(\S+)([\s\S]*)$/);
@@ -289,7 +322,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
     let alive = true;
     (async () => {
       try {
-        // Único JSON con ruta estática para que Vite lo incluya en el build
         const url = new URL("./collections.json", import.meta.url).href;
         const res = await fetch(url, { cache: "no-cache" });
         if (!res.ok) throw new Error("No collections JSON found");
@@ -302,7 +334,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
         setSubName(norm[0]?.subcollections[0]?.name || null);
       } catch (e) {
         if (process.env.NODE_ENV !== "production") {
-          // eslint-disable-next-line no-console
           console.warn("[Configurator] load error", e);
         }
       }
@@ -312,35 +343,29 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
     };
   }, []);
 
-  // Re-emit current selection when user commits a tint change in the picker
+  // On tint commit we re-emit current selection using the same MI identifier (tint no longer in payload)
   useEffect(() => {
-    const uncommit = subscribeTintCommit((t: string) => {
+    const uncommit = subscribeTintCommit(() => {
       try {
         const current = data[colIndex];
-        const sub = current?.subcollections.find(
+        const selectedLabel = subName ? selectedVarBySub[subName] : null;
+        if (!current || !subName || !selectedLabel) return;
+        const sub = current.subcollections.find(
           (s: NormalizedSubcollection) => s.name === subName
         );
-        const selectedLabel = subName ? selectedVarBySub[subName] : null;
-        if (!current || !sub || !subName || !selectedLabel) return;
+        if (!sub) return;
         const variationObj = sub.variations.find(
           (v: NormalizedVariation) => v.label === selectedLabel
         );
-        const payload = serializeVariationMessage(
-          buildVariationMessage(
-            current.name,
-            subName,
-            selectedLabel,
-            t,
-            variationObj?.name,
-            variationObj?.pattern
-          )
+        const miName = buildMaterialInstanceName(
+          current.name,
+          subName,
+          variationObj?.name,
+          variationObj?.pattern
         );
-        if (typeof sendUIInteraction === "function") {
-          sendUIInteraction(payload);
-        } else if ((window as any).emitUIInteraction) {
-          (window as any).emitUIInteraction(payload);
-        }
-        console.log(payload);
+        if (!miName) return;
+        sendToUE(miName);
+        console.log(miName);
       } catch {}
     });
     return () => uncommit();
@@ -350,7 +375,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
   const subcollections = current?.subcollections || [];
   const currentSub =
     subcollections.find((s) => s.name === subName) || subcollections[0] || null;
-  // Variations normalizadas preservando label, thumbnail y color
   const variations = currentSub?.variations || [];
 
   const selectCollection = useCallback(
@@ -367,31 +391,18 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
 
   const sendVariation = (variation: NormalizedVariation) => {
     if (!current || !subName) return;
-    // Construye y envía el JSON al Pixel Streaming usando el puente global expuesto por ArcwarePlayer
     try {
-      const payload = serializeVariationMessage(
-        buildVariationMessage(
-          current.name,
-          subName,
-          variation.label,
-          tint,
-          variation.name,
-          variation.pattern
-        )
+      const miName = buildMaterialInstanceName(
+        current.name,
+        subName,
+        variation.name,
+        variation.pattern
       );
-      // Prefiere la función global expuesta por ArcwarePlayer
-      if (typeof sendUIInteraction === "function") {
-        sendUIInteraction(payload);
-      } else if ((window as any).emitUIInteraction) {
-        (window as any).emitUIInteraction(payload);
-      }
-      //PRINT payload TO CONSOLE
-      console.log(payload);
-      // marca selección local
+      if (!miName) return;
+      sendToUE(miName);
+      console.log(miName);
       setSelectedVarBySub((m) => ({ ...m, [subName]: variation.label }));
-    } catch {
-      // ignore
-    }
+    } catch {}
   };
 
   return (
@@ -436,7 +447,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
             </button>
           ))}
         </div>
-        <div>{/*subcollection-description*/}</div>
+        <div></div>
       </div>
       {currentSub?.description ? (
         <div className="cc-sub-desc" aria-live="polite">
@@ -490,5 +501,4 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ tint }) => {
     </div>
   );
 };
-
 export default Sidepanel;

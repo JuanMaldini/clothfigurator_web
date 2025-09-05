@@ -7,26 +7,25 @@ function ArcwarePlayer() {
 
   useEffect(() => {
     const { Application } = ArcwareInit(
-        {
-          shareId: "share-6b91e33a-c882-44a2-a0f5-b864eb1d6cf1"
+      {
+        shareId: "share-6b91e33a-c882-44a2-a0f5-b864eb1d6cf1",
+      },
+      {
+        initialSettings: {
+          StartVideoMuted: true,
+          AutoConnect: true,
+          AutoPlayVideo: true,
         },
-        {
-          initialSettings: {
-            StartVideoMuted: true,
-            AutoConnect: true,
-            AutoPlayVideo: true
-          },
-          settings: {
-            infoButton: true,
-            micButton: true,
-            audioButton: true,
-            fullscreenButton: true,
-            settingsButton: true,
-            connectionStrengthIcon: true
-          },
-        }
-      );
-    
+        settings: {
+          infoButton: true,
+          micButton: true,
+          audioButton: true,
+          fullscreenButton: true,
+          settingsButton: true,
+          connectionStrengthIcon: true,
+        },
+      }
+    );
 
     // Append the application's root element to the video container ref
     if (videoContainerRef?.current) {
@@ -35,19 +34,31 @@ function ArcwarePlayer() {
     }
 
     // Expose a thin global bridge so other components (e.g., Sidepanel) can emit UI interactions
-    // without prop drilling or extra context. This mirrors common Pixel Streaming globals.
+    // without prop drilling or extra context. Pass plain objects; the SDK will serialize them once.
     try {
-      (window as any).emitUIInteraction = Application.emitUIInteraction?.bind(Application);
-      (window as any).sendUIInteraction = (message: unknown) =>
+      (window as any).emitUIInteraction =
+        Application.emitUIInteraction?.bind(Application);
+      (window as any).sendUIInteraction = (message: unknown) => {
+        // If message is a string that looks like JSON, parse it so Unreal gets an object once.
+        try {
+          if (typeof message === "string" && message.trim().startsWith("{")) {
+            const obj = JSON.parse(message);
+            Application.emitUIInteraction?.(obj as any);
+            return;
+          }
+        } catch {
+          // fall through and send as-is
+        }
         Application.emitUIInteraction?.(message as any);
+      };
     } catch {
       // ignore if window is not writable (shouldn't happen in browser)
     }
   }, []);
-  
+
   return (
     <div>
-      <div ref={videoContainerRef}/>
+      <div ref={videoContainerRef} />
       <Sidepanel />
     </div>
   );
