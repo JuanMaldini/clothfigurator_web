@@ -5,7 +5,7 @@ function App() {
     <div className="landing-root centered-container">
       <div className="centered-content">
         <h1 className="landing-title">Clothfigurator</h1>
-        <Link to="/ConfiguratorSystem" className="sp-btn landing-link">
+        <Link to="/clothfigurator" className="sp-btn landing-link">
           <div className="noUnderline">START DEMO</div>
           <img src="../icons/Logo.png" alt="Arrow Right" className="landing-icon" />
         </Link>

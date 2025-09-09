@@ -35,13 +35,12 @@ function buildMaterialInstanceName(
 ): string {
   const collTok = sanitizeToken(collectionName);
   const subTok = sanitizeToken(subcollectionName);
-  // Variation raw representation like Python's _get_variation_label
   let varRaw = "";
   if (variationName && variationPattern)
     varRaw = `${variationName}-${variationPattern}`;
   else varRaw = variationName || variationPattern || "";
   const varTok = sanitizeToken(varRaw);
-  if (!(collTok && subTok && varTok)) return ""; // incomplete; skip sending
+  if (!(collTok && subTok && varTok)) return "";
   return `MI_${collTok}_${subTok}_${varTok}`;
 }
 

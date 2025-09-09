@@ -9,11 +9,12 @@ function ArcwarePlayer() {
     const { Application } = ArcwareInit(
       {
         shareId: "share-0451edf9-0bd6-43d3-969c-9647a2ee19eb",
+        projectId: "e3c24e9f-fe87-462c-bc58-52612604c1b7",
       },
       {
         initialSettings: {
-          StartVideoMuted: true,
           AutoConnect: true,
+          StartVideoMuted: true,
           AutoPlayVideo: true,
         },
         settings: {
@@ -30,17 +31,12 @@ function ArcwarePlayer() {
     if (videoContainerRef?.current) {
       videoContainerRef.current.appendChild(Application.rootElement);
     }
-
-    // Expose solo un puente global simple: esperamos un string crudo (ej: "MI_COLLECTION_SUB_VARIATION")
-    // Sidepanel ahora llama window.emitUIInteraction directamente con el nombre MI.
     try {
       (window as any).emitUIInteraction = (payload: string) => {
-        if (typeof payload !== "string") return; // guard estricto
+        if (typeof payload !== "string") return;
         Application.emitUIInteraction?.(payload as any);
       };
-    } catch {
-      // ignorar si window no es escribible
-    }
+    } catch {}
   }, []);
 
   return (
