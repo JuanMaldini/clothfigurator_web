@@ -441,3 +441,10 @@ html {
 .cc-var-box:hover::before {
   opacity: 1;
 }
+
+
+.landing-root { background:#18181a; min-height:100vh; }
+.landing-title { color:#fff; margin:0 0 1.2rem; }
+.landing-link { display:flex; align-items:center; gap:0.7rem; color:#fff; background:var(--ColorBackgroundSelected); text-decoration:none; padding:0.6rem 1rem; border-radius:6px; }
+.landing-link:hover { filter:brightness(1.1); }
+.landing-icon { width:1rem; display:block; }
