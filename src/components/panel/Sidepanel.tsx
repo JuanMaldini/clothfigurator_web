@@ -46,9 +46,8 @@ function buildMaterialInstanceName(
 }
 
 const sendToUE = (data: any) => {
-  const json = typeof data === "string" ? data : JSON.stringify(data);
-  window.emitUIInteraction?.(json);
-  console.log(json); // debug opcional
+  window.emitUIInteraction?.(data);
+  console.log(data);
 };
 
 const Sidepanel = () => {
