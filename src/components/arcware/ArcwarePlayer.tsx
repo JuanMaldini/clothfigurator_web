@@ -8,7 +8,7 @@ function ArcwarePlayer() {
   useEffect(() => {
     const { Application } = ArcwareInit(
       {
-        shareId: "share-592dbc2c-3475-4321-898c-a8d6abe5b835",
+        shareId: "share-0451edf9-0bd6-43d3-969c-9647a2ee19eb",
       },
       {
         initialSettings: {
@@ -17,42 +17,29 @@ function ArcwarePlayer() {
           AutoPlayVideo: true,
         },
         settings: {
-          infoButton: true,
-          micButton: true,
-          audioButton: true,
+          infoButton: false,
+          micButton: false,
+          audioButton: false,
           fullscreenButton: true,
-          settingsButton: true,
-          connectionStrengthIcon: true,
+          settingsButton: false,
+          connectionStrengthIcon: false,
         },
       }
     );
 
-    // Append the application's root element to the video container ref
     if (videoContainerRef?.current) {
-      console.log("appendChild");
       videoContainerRef.current.appendChild(Application.rootElement);
     }
 
-    // Expose a thin global bridge so other components (e.g., Sidepanel) can emit UI interactions
-    // without prop drilling or extra context. Pass plain objects; the SDK will serialize them once.
+    // Expose solo un puente global simple: esperamos un string crudo (ej: "MI_COLLECTION_SUB_VARIATION")
+    // Sidepanel ahora llama window.emitUIInteraction directamente con el nombre MI.
     try {
-      (window as any).emitUIInteraction =
-        Application.emitUIInteraction?.bind(Application);
-      (window as any).sendUIInteraction = (message: unknown) => {
-        // If message is a string that looks like JSON, parse it so Unreal gets an object once.
-        try {
-          if (typeof message === "string" && message.trim().startsWith("{")) {
-            const obj = JSON.parse(message);
-            Application.emitUIInteraction?.(obj as any);
-            return;
-          }
-        } catch {
-          // fall through and send as-is
-        }
-        Application.emitUIInteraction?.(message as any);
+      (window as any).emitUIInteraction = (payload: string) => {
+        if (typeof payload !== "string") return; // guard estricto
+        Application.emitUIInteraction?.(payload as any);
       };
     } catch {
-      // ignore if window is not writable (shouldn't happen in browser)
+      // ignorar si window no es escribible
     }
   }, []);
 
