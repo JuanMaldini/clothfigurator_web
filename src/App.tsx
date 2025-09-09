@@ -1,28 +1,14 @@
 import { Link } from "react-router-dom";
+import './App.css';
 
 function App() {
   return (
-    <div style={{ background: "#18181a" }} className="centered-container">
+    <div className="landing-root centered-container">
       <div className="centered-content">
-        <h1 style={{ color: "white" }}>Demo</h1>
-        <Link
-          to="/ConfiguratorSystem"
-          className="sp-btn"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.7rem",
-            color: "white",
-            background: "var(--ColorBackgroundSelected)",
-            textDecoration: "none",
-          }}
-        >
+        <h1 className="landing-title">Demo</h1>
+        <Link to="/ConfiguratorSystem" className="sp-btn landing-link">
           <div className="noUnderline">Configurator System</div>
-          <img
-            src="../icons/Logo.png"
-            alt="Arrow Right"
-            style={{ width: "1rem" }}
-          />
+          <img src="../icons/Logo.png" alt="Arrow Right" className="landing-icon" />
         </Link>
       </div>
     </div>

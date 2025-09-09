@@ -13,12 +13,12 @@
     "@arcware-cloud/pixelstreaming-websdk": "^1.2.13",
     "@epicgames-ps/lib-pixelstreamingfrontend-ue5.6": "^0.2.0",
     "@epicgames-ps/lib-pixelstreamingfrontend-ui-ue5.6": "^0.2.0",
-    "react": "^19.1.1",
-    "react-color-palette": "^7.3.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.8.1",
-    "react-sidebar": "^3.0.2",
-    "react-to-pdf": "^2.0.1"
+  "react": "^19.1.1",
+  "react-color-palette": "^7.3.1",
+  "react-dom": "^19.1.1",
+  "react-router-dom": "^7.8.1",
+  "react-sidebar": "^3.0.2",
+  "react-to-pdf": "^2.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

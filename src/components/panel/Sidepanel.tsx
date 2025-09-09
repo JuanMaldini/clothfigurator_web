@@ -1,32 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
-import ColorTint, {
-  getCurrentTint,
-  subscribeTint,
-  subscribeTintCommit,
-  setGlobalTint,
-  commitTint,
-} from "../colorTint/colorTint";
+import ColorTint from "../colorTint/colorTint";
 import "./Sidepanel.css";
 
 declare global {
   interface Window {
     emitUIInteraction?: (payload: string) => void;
-    sendUIInteraction?: (payload: any) => void;
   }
 }
-
-// ---------------- Naming (mirror of Python create_materials.py) ----------------
-// Python logic builds names like: MI_<COLL>_<SUB>_<VAR>
-// where each token is sanitized:
-//  - replace spaces with '-'
-//  - remove non A-Z0-9-
-//  - collapse multiple '-'
-//  - trim '-'
-//  - uppercase
-// Variation raw token: if variation-name & variation-pattern => "<variation-name>-<variation-pattern>"
-// else whichever exists.
-// We replicate that here so UE receives EXACT same identifier the Python script would generate.
 
 function stripAccents(text: string): string {
   return text
@@ -64,21 +45,14 @@ function buildMaterialInstanceName(
   return `MI_${collTok}_${subTok}_${varTok}`;
 }
 
-// Unified send: now always a single string (the MI name). If empty, we don't send.
-const sendToUE = (payload: any) => {
-  const w = window as any;
-  if (typeof w.sendUIInteraction === "function") {
-    w.sendUIInteraction(payload);
-  } else if (typeof w.emitUIInteraction === "function") {
-    w.emitUIInteraction(
-      typeof payload === "string" ? payload : JSON.stringify(payload)
-    );
-  }
+const sendToUE = (data: any) => {
+  const json = typeof data === "string" ? data : JSON.stringify(data);
+  window.emitUIInteraction?.(json);
+  console.log(json); // debug opcional
 };
 
 const Sidepanel = () => {
   const [open, setOpen] = useState(false);
-  const [tint, setTint] = useState(getCurrentTint());
   const [tintOpen, setTintOpen] = useState(false);
 
   const handleExport = useCallback(() => {
@@ -90,14 +64,6 @@ const Sidepanel = () => {
       } catch {}
     }
   }, []);
-
-  useEffect(() => {
-    const unsubscribe = subscribeTint(setTint);
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-  tint;
 
   useEffect(() => {
     if (open) {
@@ -141,16 +107,6 @@ const Sidepanel = () => {
                 onClick={() => setTintOpen((o) => !o)}
               >
                 <span className="sp-collapsible-title">Tint</span>
-                <span
-                  className="sp-tint-reset"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setGlobalTint("#ffffff");
-                    commitTint();
-                  }}
-                >
-                  ⟳
-                </span>
               </button>
               <div className="sp-export-actions">
                 <button
@@ -172,12 +128,10 @@ const Sidepanel = () => {
               <ColorTint />
             </div>
           </section>
-
           <section>
             <ConfiguratorPanel />
           </section>
         </div>
-        <div className="sp-footer">Soy el pie del panel</div>
       </div>
     </div>
   );
@@ -296,12 +250,11 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
     .filter((c) => c.subcollections.length);
 
 interface ConfiguratorPanelProps {
-  // Tint already not part of MI name; kept for future if needed.
 }
 const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
-  const [colIndex, setColIndex] = useState(0);
-  const [subName, setSubName] = useState<string | null>(null);
+  // Unificado: índice de colección y subcolección seleccionada
+  const [selection, setSelection] = useState<{ colIndex: number; subName: string | null }>({ colIndex: 0, subName: null });
   const [selectedVarBySub, setSelectedVarBySub] = useState<
     Record<string, string | null>
   >({});
@@ -329,9 +282,8 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
 
         if (!alive) return;
         const norm = normalizeData(json);
-        setData(norm);
-        setColIndex(0);
-        setSubName(norm[0]?.subcollections[0]?.name || null);
+  setData(norm);
+  setSelection({ colIndex: 0, subName: norm[0]?.subcollections[0]?.name || null });
       } catch (e) {
         if (process.env.NODE_ENV !== "production") {
           console.warn("[Configurator] load error", e);
@@ -343,65 +295,40 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     };
   }, []);
 
-  // On tint commit we re-emit current selection using the same MI identifier (tint no longer in payload)
-  useEffect(() => {
-    const uncommit = subscribeTintCommit(() => {
-      try {
-        const current = data[colIndex];
-        const selectedLabel = subName ? selectedVarBySub[subName] : null;
-        if (!current || !subName || !selectedLabel) return;
-        const sub = current.subcollections.find(
-          (s: NormalizedSubcollection) => s.name === subName
-        );
-        if (!sub) return;
-        const variationObj = sub.variations.find(
-          (v: NormalizedVariation) => v.label === selectedLabel
-        );
-        const miName = buildMaterialInstanceName(
-          current.name,
-          subName,
-          variationObj?.name,
-          variationObj?.pattern
-        );
-        if (!miName) return;
-        sendToUE(miName);
-        console.log(miName);
-      } catch {}
-    });
-    return () => uncommit();
-  }, [data, colIndex, subName, selectedVarBySub]);
-
-  const current = data[colIndex];
-  const subcollections = current?.subcollections || [];
-  const currentSub =
-    subcollections.find((s) => s.name === subName) || subcollections[0] || null;
-  const variations = currentSub?.variations || [];
-
-  const selectCollection = useCallback(
-    (idx: number) => {
-      setColIndex(idx);
-      const first = data[idx]?.subcollections[0]?.name || null;
-      setSubName(first);
-      if (first) {
-        setSelectedVarBySub((m) => ({ ...m, [first]: null }));
-      }
-    },
-    [data]
+  const current = useMemo(() => data[selection.colIndex], [data, selection.colIndex]);
+  const subcollections = useMemo(
+    () => current?.subcollections || [],
+    [current]
   );
+  const currentSub = useMemo(() => {
+    if (!subcollections.length) return null;
+    if (selection.subName && subcollections.some(s => s.name === selection.subName)) {
+      return subcollections.find(s => s.name === selection.subName) || null;
+    }
+    return subcollections[0] || null;
+  }, [subcollections, selection.subName]);
+  const variations = useMemo(() => currentSub?.variations || [], [currentSub]);
+
+  const selectCollection = useCallback((idx: number) => {
+    const first = data[idx]?.subcollections[0]?.name || null;
+    setSelection({ colIndex: idx, subName: first });
+    if (first) {
+      setSelectedVarBySub(m => ({ ...m, [first]: null }));
+    }
+  }, [data]);
 
   const sendVariation = (variation: NormalizedVariation) => {
-    if (!current || !subName) return;
+    if (!current || !selection.subName) return;
     try {
       const miName = buildMaterialInstanceName(
         current.name,
-        subName,
+        selection.subName,
         variation.name,
         variation.pattern
       );
       if (!miName) return;
-      sendToUE(miName);
-      console.log(miName);
-      setSelectedVarBySub((m) => ({ ...m, [subName]: variation.label }));
+      sendToUE({ "material-change": miName });
+      setSelectedVarBySub((m) => ({ ...m, [selection.subName as string]: variation.label }));
     } catch {}
   };
 
@@ -413,7 +340,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
           <select
             id="collection-select"
             className="cc-collection-dropdown"
-            value={data.length ? colIndex : ""}
+            value={data.length ? selection.colIndex : ""}
             onChange={(e) => selectCollection(Number(e.target.value))}
             disabled={!data.length}
             aria-label="Collections"
@@ -438,10 +365,10 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
               key={sc.name}
               type="button"
               className={`cc-sub-btn${
-                sc.name === subName ? " is-selected" : ""
+                sc.name === selection.subName ? " is-selected" : ""
               }`}
-              onClick={() => setSubName(sc.name)}
-              aria-current={sc.name === subName || undefined}
+              onClick={() => setSelection(s => ({ ...s, subName: sc.name }))}
+              aria-current={sc.name === selection.subName || undefined}
             >
               {sc.name}
             </button>
@@ -449,7 +376,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
         </div>
         <div></div>
       </div>
-      {currentSub?.description ? (
+  {currentSub?.description ? (
         <div className="cc-sub-desc" aria-live="polite">
           {renderDesc(currentSub.description)}
         </div>
@@ -459,37 +386,23 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
           {variations.map((v, idx) => {
             const label = v.label;
             const img = v.imageThumbnail || "";
-            const color = v.color || "#eee";
             const tooltip =
               v.name && v.pattern ? `${v.name} ${v.pattern}` : label;
-            const isSelected = selectedVarBySub[subName || ""] === label;
+      const isSelected = selectedVarBySub[selection.subName || ""] === label;
             return (
               <button
                 key={label + idx}
                 type="button"
-                className={`cc-var-box${isSelected ? " is-selected" : ""}`}
+        className={`cc-var-box${isSelected ? " is-selected" : ""}`}
                 data-label={tooltip}
                 onClick={() => sendVariation(v)}
-                style={!img ? { background: color } : {}}
-                aria-pressed={isSelected}
               >
                 {img ? (
                   <span className="cc-var-img">
                     <img src={img} alt={tooltip} loading="lazy" />
                   </span>
                 ) : label ? (
-                  <span
-                    className="cc-var-img"
-                    aria-hidden
-                    style={{
-                      fontSize: "10px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  >
+                  <span className="cc-var-img cc-var-fallback" aria-hidden>
                     {label}
                   </span>
                 ) : null}
