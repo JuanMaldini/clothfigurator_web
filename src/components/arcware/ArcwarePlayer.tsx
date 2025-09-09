@@ -8,7 +8,7 @@ function ArcwarePlayer() {
   useEffect(() => {
     const { Application } = ArcwareInit(
       {
-        shareId: "share-0451edf9-0bd6-43d3-969c-9647a2ee19eb",
+        shareId: "share-02d001ba-3f86-4e67-beee-04b3c48846c1",
         projectId: "e3c24e9f-fe87-462c-bc58-52612604c1b7",
       },
       {
