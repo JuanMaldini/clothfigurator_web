@@ -57,7 +57,7 @@ html {
 
 /* Botón principal compacto y minimalista */
 .sp-btn {
-  color: var(--ColorText);
+  color: white;
   background: var(--ColorBackgroundSelected);
   border-radius: 5px;
   border: none;
@@ -68,6 +68,7 @@ html {
   transition: background 0.15s, color 0.15s;
   outline: none;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  transition: all 0.15s;
 }
 .sp-btn:hover {
   background: #197a91;
