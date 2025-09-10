@@ -46,7 +46,6 @@ function buildMaterialInstanceName(
 
 const sendToUE = (data: any) => {
   window.emitUIInteraction?.(data);
-  console.log(data);
 };
 
 const Sidepanel = () => {
@@ -327,6 +326,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
       if (!miName) return;
       sendToUE({ "material-change": miName });
       setSelectedVarBySub((m) => ({ ...m, [selection.subName as string]: variation.label }));
+      console.log(miName);
     } catch {}
   };
 

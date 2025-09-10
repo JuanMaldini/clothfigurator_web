@@ -32,8 +32,12 @@ function ArcwarePlayer() {
       videoContainerRef.current.appendChild(Application.rootElement);
     }
     try {
-      (window as any).emitUIInteraction = (payload: string) => {
-        if (typeof payload !== "string") return;
+      (window as any).emitUIInteraction = (payload: unknown) => {
+        // Arcware expects an object or string; prefer object (SDK serializes once)
+        if (typeof payload === "string") {
+          Application.emitUIInteraction?.(payload as any);
+          return;
+        }
         Application.emitUIInteraction?.(payload as any);
       };
     } catch {}

@@ -1,6 +1,6 @@
 export {};
 declare global {
   interface Window {
-    emitUIInteraction?: (payload: string) => void;
+    emitUIInteraction?: (payload: unknown) => void;
   }
 }
