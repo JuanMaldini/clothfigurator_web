@@ -7,7 +7,7 @@ const AppRouter: React.FC = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/clothfigurator" element={<APlayer />} />
+      <Route path="/mayerfabrics" element={<APlayer />} />
     </Routes>
   </Router>
 );
