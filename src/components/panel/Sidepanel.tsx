@@ -5,7 +5,8 @@ import "./Sidepanel.css";
 
 declare global {
   interface Window {
-    emitUIInteraction?: (payload: string) => void;
+    // Accept objects or strings; Arcware SDK will serialize objects once
+    emitUIInteraction?: (payload: unknown) => void;
   }
 }
 
@@ -115,7 +116,11 @@ const Sidepanel = () => {
                 </button>
                 <button
                   className="sp-export-btn"
-                  title="Take a screenshot of the current view DISABLED"
+                  title="Take a screenshot of the current view"
+                  onClick={() => {
+                    sendToUE({ screenshot: "res-01" });
+                    console.log({ screenshot: "res-01" });
+                  }}
                 >
                   Screenshoot
                 </button>
@@ -246,12 +251,14 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
     })
     .filter((c) => c.subcollections.length);
 
-interface ConfiguratorPanelProps {
-}
+interface ConfiguratorPanelProps {}
 const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
   // Unificado: índice de colección y subcolección seleccionada
-  const [selection, setSelection] = useState<{ colIndex: number; subName: string | null }>({ colIndex: 0, subName: null });
+  const [selection, setSelection] = useState<{
+    colIndex: number;
+    subName: string | null;
+  }>({ colIndex: 0, subName: null });
   const [selectedVarBySub, setSelectedVarBySub] = useState<
     Record<string, string | null>
   >({});
@@ -279,8 +286,11 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
 
         if (!alive) return;
         const norm = normalizeData(json);
-  setData(norm);
-  setSelection({ colIndex: 0, subName: norm[0]?.subcollections[0]?.name || null });
+        setData(norm);
+        setSelection({
+          colIndex: 0,
+          subName: norm[0]?.subcollections[0]?.name || null,
+        });
       } catch (e) {
         if (process.env.NODE_ENV !== "production") {
           console.warn("[Configurator] load error", e);
@@ -292,27 +302,36 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     };
   }, []);
 
-  const current = useMemo(() => data[selection.colIndex], [data, selection.colIndex]);
+  const current = useMemo(
+    () => data[selection.colIndex],
+    [data, selection.colIndex]
+  );
   const subcollections = useMemo(
     () => current?.subcollections || [],
     [current]
   );
   const currentSub = useMemo(() => {
     if (!subcollections.length) return null;
-    if (selection.subName && subcollections.some(s => s.name === selection.subName)) {
-      return subcollections.find(s => s.name === selection.subName) || null;
+    if (
+      selection.subName &&
+      subcollections.some((s) => s.name === selection.subName)
+    ) {
+      return subcollections.find((s) => s.name === selection.subName) || null;
     }
     return subcollections[0] || null;
   }, [subcollections, selection.subName]);
   const variations = useMemo(() => currentSub?.variations || [], [currentSub]);
 
-  const selectCollection = useCallback((idx: number) => {
-    const first = data[idx]?.subcollections[0]?.name || null;
-    setSelection({ colIndex: idx, subName: first });
-    if (first) {
-      setSelectedVarBySub(m => ({ ...m, [first]: null }));
-    }
-  }, [data]);
+  const selectCollection = useCallback(
+    (idx: number) => {
+      const first = data[idx]?.subcollections[0]?.name || null;
+      setSelection({ colIndex: idx, subName: first });
+      if (first) {
+        setSelectedVarBySub((m) => ({ ...m, [first]: null }));
+      }
+    },
+    [data]
+  );
 
   const sendVariation = (variation: NormalizedVariation) => {
     if (!current || !selection.subName) return;
@@ -325,8 +344,11 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
       );
       if (!miName) return;
       sendToUE({ "material-change": miName });
-      setSelectedVarBySub((m) => ({ ...m, [selection.subName as string]: variation.label }));
-      console.log(miName);
+      setSelectedVarBySub((m) => ({
+        ...m,
+        [selection.subName as string]: variation.label,
+      }));
+      console.log({ "material-change": miName });
     } catch {}
   };
 
@@ -365,7 +387,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
               className={`cc-sub-btn${
                 sc.name === selection.subName ? " is-selected" : ""
               }`}
-              onClick={() => setSelection(s => ({ ...s, subName: sc.name }))}
+              onClick={() => setSelection((s) => ({ ...s, subName: sc.name }))}
               aria-current={sc.name === selection.subName || undefined}
             >
               {sc.name}
@@ -374,7 +396,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
         </div>
         <div></div>
       </div>
-  {currentSub?.description ? (
+      {currentSub?.description ? (
         <div className="cc-sub-desc" aria-live="polite">
           {renderDesc(currentSub.description)}
         </div>
@@ -386,12 +408,13 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
             const img = v.imageThumbnail || "";
             const tooltip =
               v.name && v.pattern ? `${v.name} ${v.pattern}` : label;
-      const isSelected = selectedVarBySub[selection.subName || ""] === label;
+            const isSelected =
+              selectedVarBySub[selection.subName || ""] === label;
             return (
               <button
                 key={label + idx}
                 type="button"
-        className={`cc-var-box${isSelected ? " is-selected" : ""}`}
+                className={`cc-var-box${isSelected ? " is-selected" : ""}`}
                 data-label={tooltip}
                 onClick={() => sendVariation(v)}
               >
