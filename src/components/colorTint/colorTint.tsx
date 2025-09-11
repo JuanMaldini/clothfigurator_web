@@ -1,5 +1,5 @@
 import { ColorPicker, useColor, type IColor } from "react-color-palette";
-// import "react-color-palette/css";
+import "react-color-palette/css";
 
 export default function ColorTint() {
   const [color, setColor] = useColor("#123123");

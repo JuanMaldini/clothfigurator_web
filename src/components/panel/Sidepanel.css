@@ -11,7 +11,7 @@
   margin-left: 0.2rem;
   cursor: pointer;
   padding: 0 0.2rem;
-  border-radius: 3px;
+  border-radius: 6px;
   transition: color 0.15s, background 0.15s;
 }
 .sp-tint-reset:hover {
@@ -19,8 +19,8 @@
   background: #353545;
 }
 .rcp-body {
-  margin: 0px;
-  padding: 8px;
+  margin: 0;
+  padding: 0;
 }
 .rcp-field-input {
   display: none;
@@ -49,8 +49,8 @@ html {
 /* Botón flotante para abrir el panel en la esquina superior derecha */
 .sp-panel-open-btn {
   position: fixed;
-  top: 1.2rem;
-  right: 0.7rem;
+  top: 0.75rem;
+  right: 1rem;
   z-index: 1100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -59,7 +59,7 @@ html {
 .sp-btn {
   color: white;
   background: var(--ColorBackgroundSelected);
-  border-radius: 5px;
+  border-radius: 8px;
   border: none;
   padding: 0.3rem 0.85rem;
   font-size: 0.9rem;
@@ -67,32 +67,30 @@ html {
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   outline: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
-  transition: all 0.15s;
+  box-shadow: none;
 }
 .sp-btn:hover {
   background: #197a91;
   color: #fff;
 }
 
-/* Botón secundario compacto */
+/* Botones secundarios minimalistas (sin bordes) */
 .sp-export-btn,
 .cc-sub-btn {
-  color: var(--ColorText);
-  background: #e0e0e0;
-  border-radius: 5px;
+  background: #f2f2f2;
+  color: #111;
   border: none;
-  padding: 0.28rem 0.7rem;
-  font-size: 0.88rem;
-  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   outline: none;
 }
 .sp-export-btn:hover,
 .cc-sub-btn:hover {
-  background: #d1d1d1;
-  color: #2495b3;
+  background: #e6e6e6;
 }
 
 .cc-section-title {
@@ -161,14 +159,14 @@ html {
 }
 .sp-export-actions {
   display: flex;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 /* Generic inline row for header + actions */
 .sp-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 1rem;
   flex-wrap: nowrap;
 }
 .sp-row .sp-collapsible-header {
@@ -181,7 +179,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.45rem 0.65rem;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--ColorBackgroundSelected);
   font-size: 0.95rem;
   font-weight: 600;
@@ -189,7 +187,7 @@ html {
 }
 
 .sp-body {
-  padding: 0.75rem;
+  padding: 1rem;
   flex: 1;
   overflow-y: auto;
   display: flex;
@@ -218,26 +216,10 @@ html {
   box-shadow: none;
 }
 
-/* Unified button base for secondary buttons */
-.sp-export-btn,
-.cc-sub-btn {
-  color: var(--ColorText);
-  border-radius: 6px;
-  border: 1px solid #2c2c36;
-  padding: 0.33rem 0.8rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border 0.15s;
-  outline: none;
-}
-
-.sp-export-btn:hover,
-.cc-sub-btn:hover,
+/* Estado seleccionado para sub-botones */
 .cc-sub-btn.is-selected {
   background: var(--ColorBackgroundSelected);
-  color: var(--ColorText);
-  border-color: var(--ColorBackgroundSelected);
+  color: #fff;
 }
 
 /* Compact, image-friendly variation box */
@@ -287,11 +269,9 @@ html {
 /* Eliminados estilos duplicados y antiguos de botones y cajas */
 /* Wrapper para que el color picker de Tint ocupe todo el ancho del contenedor */
 .sp-tint-picker-wrap {
-  display: flex;
+  display: block;
   width: 100%;
-  align-items: stretch;
-  justify-content: stretch;
-  padding: 0.6rem 0.6rem 0 0.6rem;
+  padding: 0.5rem 0 0 0;
 }
 .sp-tint-disabled-msg {
   padding: 8px;
@@ -300,7 +280,6 @@ html {
   font-style: italic;
 }
 .sp-tint-picker-wrap .rcp-root {
-  flex: 1 1 0%;
   width: 100%;
   min-width: 0;
 }
@@ -327,18 +306,18 @@ html {
 
 .cc-collection-dropdown {
   width: 100%;
-  background: none;
   color: var(--ColorText);
-  border-radius: 6px;
-  border: 1px solid #2c2c36;
-  padding: 0.32rem 0.6rem;
+  border-radius: 8px;
+  border: none;
+  background: #f2f2f2;
+  padding: 0.5rem 0.75rem;
   font-size: 0.95rem;
   font-weight: 500;
   outline: none;
-  transition: border 0.15s, background 0.15s;
+  transition: background 0.15s;
 }
 .cc-collection-dropdown:focus {
-  border-color: #44445a;
+  background: #e6e6e6;
 }
 .cc-subcollections {
   display: flex;
@@ -388,10 +367,12 @@ html {
   pointer-events: none;
 }
 .sp-collapsible-body.open {
-  max-height: 260px;
+  max-height: 1000px;
   opacity: 1;
+  width: 100%;
   pointer-events: auto;
-  display: flex;
+  display: block;
+  padding: 0.5rem 0 0;
 }
 .sp-section {
   margin: 0.15rem 0 0.25rem;
@@ -402,7 +383,15 @@ html {
   letter-spacing: 0.03em;
 }
 .react-colorful {
-  margin: 1rem;
+  margin: 0;
+  width: 100%;
+}
+
+/* Ensure react-color-palette root stretches full width regardless of wrapper */
+.rcp-root,
+.rcp {
+  width: 100%;
+  min-width: 0;
 }
 
 /* Hover label above variation box (CSS-only, reads from data-label) */
@@ -414,7 +403,7 @@ html {
   transform: translate(-50%, -6px);
   background: rgba(20, 20, 20, 0.92);
   color: #fff;
-  padding: 2px 8px;
+  padding: 0.25rem 0.5rem;
   font-size: 12px;
   white-space: nowrap;
   pointer-events: none;
@@ -442,9 +431,28 @@ html {
   opacity: 1;
 }
 
-
-.landing-root { background:#18181a; min-height:100vh; }
-.landing-title { color:#fff; margin:0 0 1.2rem; }
-.landing-link { display:flex; align-items:center; gap:0.7rem; color:#fff; background:var(--ColorBackgroundSelected); text-decoration:none; padding:0.6rem 1rem; border-radius:6px; }
-.landing-link:hover { filter:brightness(1.1); }
-.landing-icon { width:1rem; display:block; }
+.landing-root {
+  background: #18181a;
+  min-height: 100vh;
+}
+.landing-title {
+  color: #fff;
+  margin: 0 0 1.2rem;
+}
+.landing-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #fff;
+  background: var(--ColorBackgroundSelected);
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+}
+.landing-link:hover {
+  filter: brightness(1.1);
+}
+.landing-icon {
+  width: 1rem;
+  display: block;
+}
