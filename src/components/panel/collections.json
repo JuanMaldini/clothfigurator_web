@@ -202,5 +202,24 @@
         ]
       }
     ]
+  },
+    {
+    "collection-name": "Paradox",
+    "collection-image": "https://images.mayerfabrics.com/item/PX-002/image?height=768&quality=85",
+    "subcollection": [
+      {
+        "subcollection-name": "Paradox",
+        "subcollection-description": "Description.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/PX-002/image?height=768&quality=85",
+        "variations": [
+          { "variation-name": "Harvest",    "variation-pattern": "PX-002", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PX-002/image/thumbnail" },
+          { "variation-name": "Iceberg",    "variation-pattern": "PX-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PX-004/image/thumbnail" },
+          { "variation-name": "Bluestone",  "variation-pattern": "PX-014", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PX-014/image/thumbnail" },
+          { "variation-name": "Patina",     "variation-pattern": "PX-024", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PX-024/image/thumbnail" },
+          { "variation-name": "Cloud",      "variation-pattern": "PX-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PX-007/image/thumbnail" },
+          { "variation-name": "Plumberry",  "variation-pattern": "PX-008", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/PX-008/image/thumbnail" }
+        ]
+      }
+    ]
   }
 ]
