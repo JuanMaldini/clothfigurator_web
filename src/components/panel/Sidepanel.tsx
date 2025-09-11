@@ -124,7 +124,13 @@ const Sidepanel = () => {
               </div>
             </div>
             <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
-              <ColorTint />
+              <ColorTint
+                onTintChange={(r, g, b) => {
+                  const payload = { "tint-change": `${r},${g},${b}` };
+                  sendToUE(payload);
+                  console.log(payload);
+                }}
+              />
             </div>
           </section>
           <section>
@@ -164,6 +170,7 @@ interface RawCollection {
 interface NormalizedSubcollection {
   name: string;
   description?: string;
+  image?: string;
   variations: NormalizedVariation[];
 }
 interface NormalizedCollection {
@@ -174,6 +181,7 @@ interface NormalizedCollection {
 interface NormalizedVariation {
   label: string;
   imageThumbnail?: string;
+  imageLarge?: string;
   color?: string;
   pattern?: string;
   name?: string;
@@ -207,6 +215,11 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
         const description = (s as any)["subcollection-description"]
           ? String((s as any)["subcollection-description"]).trim()
           : undefined;
+        const image =
+          (s as any)["subcollection-image"] ||
+          (s as any)["subcollection-image-thumbnail"] ||
+          (s as any).image ||
+          undefined;
         const rawVars = (s.variations || s.variation || []) as Array<
           string | RawVariation
         >;
@@ -227,11 +240,18 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
               (obj as any)["variation-image-thumbnail"] ||
               obj.image ||
               undefined;
+            const imageLarge =
+              (obj as any)["variation-image"] ||
+              (obj as any)["image-large"] ||
+              obj.image ||
+              imageThumbnail ||
+              undefined;
             const color = (obj as any)["variation-color"] || undefined;
             const pattern = obj["variation-pattern"] || obj.code || undefined;
             return {
               label,
               imageThumbnail,
+              imageLarge,
               color,
               pattern,
               name: vname,
@@ -241,6 +261,7 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
         return {
           name: subName,
           description,
+          image,
           variations,
         } as NormalizedSubcollection;
       });
@@ -453,6 +474,13 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
             );
           })}
         </div>
+        {selectedVar?.imageLarge ? (
+          <div className="cc-var-preview">
+            <div className="cc-var-preview-img-wrap">
+              <img src={selectedVar.imageLarge} alt={selectedVar.label} />
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -2015,90 +2015,99 @@
   },
   {
     "collection-name": "Wonderlust",
-    "collection-image": "",
+    "collection-image": "https://s3.mayerfabrics.com/medialibrary/218/wanderlust-l.jpg",
     "subcollection": [
       {
         "subcollection-name": "Acuco",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "The fine crosshatching pattern on this fabric, Acuco, takes its cue from a similar allover pattern meticulously hand-painted on a pottery vase made by an artist from Acoma Pueblo in New Mexico. In further exploration into Alexander Girard’s sketches, one can find similarities between some of his pen drawings and this detailed pottery.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/445-004/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
+          { "variation-name": "Zebra", "variation-pattern": "445-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/445-006/image/thumbnail" },
+          { "variation-name": "Almond", "variation-pattern": "445-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/445-007/image/thumbnail" },
+          { "variation-name": "Coral", "variation-pattern": "445-009", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/445-009/image/thumbnail" },
+          { "variation-name": "Cobalt", "variation-pattern": "445-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/445-004/image/thumbnail" },
+          { "variation-name": "Poppy", "variation-pattern": "445-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/445-001/image/thumbnail" },
+          { "variation-name": "Raisin", "variation-pattern": "445-000", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/445-000/image/thumbnail" },
+          { "variation-name": "Peacock", "variation-pattern": "445-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/445-003/image/thumbnail" }
         ]
       },
       {
         "subcollection-name": "Comalapa",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "Inspiration for this delightful fabric, Comalapa, was adapted from a woven and embroidered Guatemalan blouse, or again huipil, made by the Cakchiquel people of Chimaltenango, Guatemala. This crafty interpretation features playful, abstract birds floating among small geometric shapes, highlighted with intentional stitches to create a fanciful version of the original.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/449-004/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
+          { "variation-name": "Rose Quartz", "variation-pattern": "449-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/449-001/image/thumbnail" },
+          { "variation-name": "Stone", "variation-pattern": "449-000", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/449-000/image/thumbnail" },
+          { "variation-name": "Indian Ink", "variation-pattern": "449-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/449-004/image/thumbnail" },
+          { "variation-name": "Charcoal", "variation-pattern": "449-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/449-006/image/thumbnail" },
+          { "variation-name": "Jade", "variation-pattern": "449-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/449-003/image/thumbnail" }
         ]
       },
       {
         "subcollection-name": "Haarlem",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "Young women of the 18th and 19th centuries learned to mend and repair worn and torn cloth by recreating different stitches on what are known as darning samplers. These small, delicate “practice pieces” are now works of art featuring various woven patterns in patches of colored thread on linen ground cloth. The inspiration for Haarlem, made in 1750 in the Netherlands, is part of a larger collection amassed by Girard’s grandfather.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/447-014/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
+          { "variation-name": "Modern", "variation-pattern": "447-014", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/447-014/image/thumbnail" },
+          { "variation-name": "Desert", "variation-pattern": "447-000", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/447-000/image/thumbnail" },
+          { "variation-name": "Sunset", "variation-pattern": "447-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/447-001/image/thumbnail" },
+          { "variation-name": "Spring", "variation-pattern": "447-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/447-003/image/thumbnail" },
+          { "variation-name": "Primary", "variation-pattern": "447-011", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/447-011/image/thumbnail" },
+          { "variation-name": "Big Sky", "variation-pattern": "447-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/447-004/image/thumbnail" }
         ]
       },
       {
         "subcollection-name": "Huipil",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "The colorful, micro zig-zag pattern featured on Huipil [wi’pil] takes its cue from a handwoven blouse, or huipil, as they are known in San Lucas Tolimán, the highland village in Guatemala. Huipils are made from simple, solid-colored cotton with embroidered symbols and characters and are also woven in multiple colors and patterns. Like our Huipil color combinations, no matter the assemblage of pattern, the end result is always colorful.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/450-004/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
+          { "variation-name": "Spring", "variation-pattern": "450-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/450-003/image/thumbnail" },
+          { "variation-name": "Peacock", "variation-pattern": "450-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/450-004/image/thumbnail" },
+          { "variation-name": "Sunset", "variation-pattern": "450-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/450-001/image/thumbnail" },
+          { "variation-name": "Charcoal", "variation-pattern": "450-006", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/450-006/image/thumbnail" },
+          { "variation-name": "Fiesta", "variation-pattern": "450-011", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/450-011/image/thumbnail" },
+          { "variation-name": "Stone", "variation-pattern": "450-000", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/450-000/image/thumbnail" }
         ]
       },
       {
         "subcollection-name": "Milagro",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "Inspired by the folklore around Milagro, meaning “miracle” in Spanish, our bold, multi-colored interpretation of the “eye” will definitely ward off evil spirits. Cultures all over the world believe in the healing and protective powers of Milagros. They are made of silver and or pewter and come in a variety of forms. Milagros also bring good luck in love, travel or general well-being. In the lobby of the Museum of International Folk Art, one can see the extensive collection of Milagros collected by Alexander Girard.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/448-014/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
+          { "variation-name": "Desert", "variation-pattern": "448-000", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/448-000/image/thumbnail" },
+          { "variation-name": "Spring", "variation-pattern": "448-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/448-003/image/thumbnail" },
+          { "variation-name": "Sunset", "variation-pattern": "448-009", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/448-009/image/thumbnail" },
+          { "variation-name": "Big Sky", "variation-pattern": "448-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/448-004/image/thumbnail" },
+          { "variation-name": "Rose Quartz", "variation-pattern": "448-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/448-001/image/thumbnail" },
+          { "variation-name": "Primary", "variation-pattern": "448-011", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/448-011/image/thumbnail" },
+          { "variation-name": "Modern", "variation-pattern": "448-014", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/448-014/image/thumbnail" }
         ]
       },
       {
         "subcollection-name": "Puno",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "Puno is a regional travel hub, considered Peru’s “folkloric capital,” and is known for its distinct music, dance and wool products. This versatile striped fabric, of the same name, was inspired by a solid wool poncho featuring wide bands of color running through the center and along the sides. To further achieve the look, feel and color saturation of wool, two different acrylic yarns were used: one plain and one mélange.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/444-002/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
+          { "variation-name": "Stone", "variation-pattern": "444-000", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/444-000/image/thumbnail" },
+          { "variation-name": "Spring", "variation-pattern": "444-002", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/444-002/image/thumbnail" },
+          { "variation-name": "Cacti", "variation-pattern": "444-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/444-003/image/thumbnail" },
+          { "variation-name": "Fiesta", "variation-pattern": "444-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/444-001/image/thumbnail" },
+          { "variation-name": "Sunset", "variation-pattern": "444-008", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/444-008/image/thumbnail" },
+          { "variation-name": "Modern", "variation-pattern": "444-007", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/444-007/image/thumbnail" }
         ]
       },
       {
         "subcollection-name": "Sula",
-        "subcollection-description": "",
-        "subcollection-image": "",
+        "subcollection-description": "A wall hanging or “chakla” from Gujarat, India was the inspiration for this playful grid pattern. On the original textile, the black and white checkerboard is strategically colored and punctuated with small, mirrored circles embroidered into the textile to create a formal grid-like flower. Sula means “sun” and is associated with peace. Our happy interpretation pays homage to the original pattern and Girard’s passionate collecting of sun symbols and motifs.",
+        "subcollection-image": "https://images.mayerfabrics.com/item/446-008/image/thumbnail?size=350",
         "variations": [
-          { "variation-name": "1", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "2", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "3", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "4", "variation-pattern": "", "variation-image-thumbnail": "" },
-          { "variation-name": "5", "variation-pattern": "", "variation-image-thumbnail": "" }
+          { "variation-name": "Mocha", "variation-pattern": "446-000", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/446-000/image/thumbnail" },
+          { "variation-name": "Spring", "variation-pattern": "446-003", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/446-003/image/thumbnail" },
+          { "variation-name": "Spark", "variation-pattern": "446-009", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/446-009/image/thumbnail" },
+          { "variation-name": "Marine", "variation-pattern": "446-004", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/446-004/image/thumbnail" },
+          { "variation-name": "Flame", "variation-pattern": "446-001", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/446-001/image/thumbnail" },
+          { "variation-name": "Americana", "variation-pattern": "446-014", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/446-014/image/thumbnail" },
+          { "variation-name": "Confetti", "variation-pattern": "446-008", "variation-image-thumbnail": "https://images.mayerfabrics.com/item/446-008/image/thumbnail" }
         ]
       }
     ]

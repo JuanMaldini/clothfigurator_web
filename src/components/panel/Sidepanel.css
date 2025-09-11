@@ -322,7 +322,7 @@ html {
   margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.05rem;
+  gap: 0.5rem;
 }
 .cc-var-selected {
   margin-top: 0.4rem;
@@ -335,6 +335,22 @@ html {
   font-size: 0.95rem;
   color: #5b5b5b;
   margin-left: 0.25rem;
+}
+
+/* Large selected-variation preview below the grid */
+.cc-var-preview {
+  margin-top: 0.6rem;
+}
+.cc-var-preview-img-wrap {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ddd;
+}
+.cc-var-preview-img-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .cc-var-title {
   font-weight: 600;
