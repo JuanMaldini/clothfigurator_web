@@ -359,9 +359,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     (idx: number) => {
       const first = data[idx]?.subcollections[0]?.name || null;
       setSelection({ colIndex: idx, subName: first });
-      if (first) {
-        setSelectedVarBySub((m) => ({ ...m, [first]: null }));
-      }
+      // La selección de la primera variación se maneja en un useEffect al cambiar la subcolección
     },
     [data]
   );
@@ -384,6 +382,15 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
       console.log({ "material-change": miName });
     } catch {}
   };
+
+  // Al cambiar de subcolección, autoseleccionar la primera variación disponible
+  // y disparar la misma lógica de selección (incluye envío a Unreal)
+  useEffect(() => {
+    if (!selection.subName) return;
+    const first = variations[0];
+    if (!first) return;
+    sendVariation(first);
+  }, [selection.subName, variations]);
 
   return (
     <div aria-label="Configurador" className="cc-root">
