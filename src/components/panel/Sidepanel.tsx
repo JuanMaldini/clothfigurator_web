@@ -93,9 +93,6 @@ const Sidepanel = () => {
           </div>
         </div>
         <div className="sp-body" id="sp-body">
-          <section className="sp-export-section">
-            <div className="sp-export-row"></div>
-          </section>
 
           <section className="sp-section">
             <div className="sp-row">
@@ -263,16 +260,26 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     Record<string, string | null>
   >({});
 
-  const renderDesc = useCallback((desc?: string) => {
+  const renderDesc = useCallback((desc?: string, subName?: string) => {
     if (!desc) return null;
-    const m = desc.match(/^\s*(\S+)([\s\S]*)$/);
-    if (!m) return desc;
-    return (
-      <>
-        <strong>{m[1]}</strong>
-        {m[2]}
-      </>
-    );
+    if (!subName) return desc;
+    // Bold all whole-word occurrences of the subcollection name (case-insensitive)
+    const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(`\\b(${escapeRegExp(subName)})\\b`, "gi");
+    const parts: React.ReactNode[] = [];
+    let last = 0;
+    let idx = 0;
+    desc.replace(re, (match, _g1, offset: number) => {
+      if (last < offset) parts.push(desc.slice(last, offset));
+      parts.push(
+        <strong key={`h-${idx++}`}>{desc.slice(offset, offset + match.length)}</strong>
+      );
+      last = offset + match.length;
+      return match;
+    });
+    if (!parts.length) return desc; // No matches
+    if (last < desc.length) parts.push(desc.slice(last));
+    return <>{parts}</>;
   }, []);
 
   useEffect(() => {
@@ -321,6 +328,11 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     return subcollections[0] || null;
   }, [subcollections, selection.subName]);
   const variations = useMemo(() => currentSub?.variations || [], [currentSub]);
+  const selectedLabel = selectedVarBySub[selection.subName || ""] || null;
+  const selectedVar = useMemo(() => {
+    if (!selectedLabel) return null;
+    return variations.find((v) => v.label === selectedLabel) || null;
+  }, [variations, selectedLabel]);
 
   const selectCollection = useCallback(
     (idx: number) => {
@@ -398,7 +410,17 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
       </div>
       {currentSub?.description ? (
         <div className="cc-sub-desc" aria-live="polite">
-          {renderDesc(currentSub.description)}
+      {renderDesc(currentSub.description, currentSub.name)}
+        </div>
+      ) : null}
+      {selectedVar ? (
+        <div className="cc-var-selected" aria-live="polite">
+          <span className="cc-var-selected-name">
+            {selectedVar.name || selectedVar.label}
+          </span>
+          {selectedVar.pattern ? (
+            <span className="cc-var-selected-pattern"> {selectedVar.pattern}</span>
+          ) : null}
         </div>
       ) : null}
       <div>

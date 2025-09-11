@@ -8,7 +8,6 @@ export default function ColorTint() {
     localStorage.setItem("color", color.hex);
 
   return <ColorPicker
-  hideInput={["rgb", "hsv"]}
   color={color}
   onChange={setColor}
   onChangeComplete={onChangeComplete}

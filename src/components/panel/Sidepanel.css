@@ -22,12 +22,6 @@
   margin: 0;
   padding: 0;
 }
-.rcp-field-input {
-  display: none;
-}
-.rcp-field-label {
-  display: none;
-}
 
 * {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -328,7 +322,19 @@ html {
   margin-top: 0.75rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.05rem;
+}
+.cc-var-selected {
+  margin-top: 0.4rem;
+  margin-bottom: -0.1rem; /* tuck closer to grid */
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ColorText);
+}
+.cc-var-selected-pattern {
+  font-size: 0.95rem;
+  color: #5b5b5b;
+  margin-left: 0.25rem;
 }
 .cc-var-title {
   font-weight: 600;
@@ -369,7 +375,6 @@ html {
 .sp-collapsible-body.open {
   max-height: 1000px;
   opacity: 1;
-  width: 100%;
   pointer-events: auto;
   display: block;
   padding: 0.5rem 0 0;
@@ -455,4 +460,7 @@ html {
 .landing-icon {
   width: 1rem;
   display: block;
+}
+.rcp-body{
+  padding: 0.5rem;
 }
