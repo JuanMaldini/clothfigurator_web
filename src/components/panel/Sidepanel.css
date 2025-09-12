@@ -131,25 +131,14 @@ html {
 }
 
 .sp-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  min-width: 340px;
-  height: 100dvh;
-  width: 30dvw;
-  max-width: 90vw;
-  background: var(--ColorBackground);
-  color: var(--ColorText);
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.25);
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  background: var(--ColorBackground);
+  color: var(--ColorText);
   overflow: hidden;
-}
-
-.sp-panel.open {
-  transform: translateX(0);
+  width: 100%;
 }
 .sp-export-actions {
   display: flex;
@@ -384,20 +373,23 @@ html {
 .sp-collapsible-body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.28s ease, opacity 0.25s ease;
-  opacity: 0;
-  pointer-events: none;
+  transition: max-height 0.28s ease;
 }
 .sp-collapsible-body.open {
   max-height: 1000px;
-  opacity: 1;
-  pointer-events: auto;
   display: block;
   padding: 0.5rem 0 0;
 }
 .sp-section {
   margin: 0.15rem 0 0.25rem;
 }
+
+/* Arcware video area when sidebar pushes content */
+.arcware-video-wrapper, .arcware-video {
+  width: 100%;
+  height: 100%;
+}
+
 .ct-value {
   margin-top: 0.35rem;
   font-size: 0.8rem;

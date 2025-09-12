@@ -49,8 +49,17 @@ const sendToUE = (data: any) => {
   window.emitUIInteraction?.(data);
 };
 
-const Sidepanel = () => {
-  const [open, setOpen] = useState(false);
+interface SidepanelProps {
+  onRequestClose?: () => void;
+  showClose?: boolean;
+  heading?: string;
+}
+
+const Sidepanel: React.FC<SidepanelProps> = ({
+  onRequestClose,
+  showClose = true,
+  heading = "Configurat System",
+}) => {
   const [tintOpen, setTintOpen] = useState(false);
 
   const handleExport = useCallback(() => {
@@ -63,84 +72,65 @@ const Sidepanel = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
   return (
-    <div className="sp-root">
-      {!open && (
-        <button
-          className="sp-export-btn sp-panel-open-btn"
-          onClick={() => setOpen(true)}
-        >
-          Open
-        </button>
-      )}
-      {open && <div className="sp-backdrop" onClick={() => setOpen(false)} />}
-      <div className={`sp-panel ${open ? "open" : ""}`}>
-        <div className="sp-header">
-          <strong>Configurat System</strong>
-          <div onClick={() => setOpen(false)} className="sp-export-btn">
+    <div className="sp-panel sp-panel-embedded open"> {/* always rendered, parent maneja animación/push */}
+      <div className="sp-header">
+        <strong>{heading}</strong>
+        {showClose && (
+          <div onClick={onRequestClose} className="sp-export-btn" role="button" tabIndex={0}>
             Close
           </div>
-        </div>
-        <div className="sp-body" id="sp-body">
-
-          <section className="sp-section">
-            <div className="sp-row">
+        )}
+      </div>
+      <div className="sp-body" id="sp-body">
+        <section className="sp-section">
+          <div className="sp-row">
+            <button
+              type="button"
+              className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
+              onClick={() => setTintOpen((o) => !o)}
+            >
+              <span className="sp-collapsible-title">Tint</span>
+            </button>
+            <div className="sp-export-actions">
               <button
-                type="button"
-                className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
-                onClick={() => setTintOpen((o) => !o)}
+                className="sp-export-btn"
+                title="Download a pdf with all information"
+                onClick={handleExport}
               >
-                <span className="sp-collapsible-title">Tint</span>
+                Export
               </button>
-              <div className="sp-export-actions">
-                <button
-                  className="sp-export-btn"
-                  title="Download a pdf with all information"
-                  onClick={handleExport}
-                >
-                  Export
-                </button>
-                <button
-                  className="sp-export-btn"
-                  title="Take a screenshot of the current view"
-                  onClick={() => {
-                    sendToUE({ screenshot: "res-01" });
-                    console.log({ screenshot: "res-01" });
-                  }}
-                >
-                  Screenshoot
-                </button>
-              </div>
-            </div>
-            <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
-              <ColorTint
-                onTintChange={(r, g, b) => {
-                  // Convert 0-255 ints to 0-1 floats with 4 decimal precision
-                  const rf = (r / 255).toFixed(4);
-                  const gf = (g / 255).toFixed(4);
-                  const bf = (b / 255).toFixed(4);
-                  const payload = { "tint-change": `${rf},${gf},${bf}` };
-                  sendToUE(payload);
-                  console.log(payload);
+              <button
+                className="sp-export-btn"
+                title="Take a screenshot of the current view"
+                onClick={() => {
+                  sendToUE({ screenshot: "res-01" });
+                  console.log({ screenshot: "res-01" });
                 }}
-              />
+              >
+                Screenshoot
+              </button>
             </div>
-          </section>
-          <section className="sp-section" aria-label="Camera Views">
-            <ViewSection />
-          </section>
-          <section>
-            <ConfiguratorPanel />
-          </section>
-        </div>
+          </div>
+          <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
+            <ColorTint
+              onTintChange={(r, g, b) => {
+                const rf = (r / 255).toFixed(4);
+                const gf = (g / 255).toFixed(4);
+                const bf = (b / 255).toFixed(4);
+                const payload = { "tint-change": `${rf},${gf},${bf}` };
+                sendToUE(payload);
+                console.log(payload);
+              }}
+            />
+          </div>
+        </section>
+        <section className="sp-section" aria-label="Camera Views">
+          <ViewSection />
+        </section>
+        <section>
+          <ConfiguratorPanel />
+        </section>
       </div>
     </div>
   );

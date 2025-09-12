@@ -1,9 +1,11 @@
 import Sidepanel from "../panel/Sidepanel";
-import { useRef, useEffect } from "react";
+import Sidebar from "react-sidebar";
+import { useRef, useEffect, useState } from "react";
 import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
 
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
+  const [docked, setDocked] = useState(false);
   useEffect(() => {
     const { Application } = ArcwareInit(
       {
@@ -40,10 +42,38 @@ function ArcwarePlayer() {
     } catch {}
   }, []);
   return (
-    <div>
-      <div ref={videoContainerRef} />
-      <Sidepanel />
-    </div>
+    <Sidebar
+      sidebar={<Sidepanel onRequestClose={() => setDocked(false)} />}
+      docked={docked}
+      open={docked}
+      onSetOpen={(o) => setDocked(o)}
+      pullRight
+      styles={{
+        sidebar: {
+          width: "30dvw",
+          maxWidth: "440px",
+          minWidth: "320px",
+          background: "var(--ColorBackground, #ebebeb)",
+          boxShadow: "-4px 0 24px rgba(0,0,0,0.25)",
+          display: "flex",
+          flexDirection: "column",
+          transition: "transform .25s ease, opacity .25s ease",
+        },
+        content: { transition: "margin .25s ease" },
+      }}
+    >
+      {!docked && (
+        <button
+          className="sp-export-btn sp-panel-open-btn"
+          onClick={() => setDocked(true)}
+        >
+          Open
+        </button>
+      )}
+      <div className="arcware-video-wrapper">
+        <div ref={videoContainerRef} className="arcware-video" />
+      </div>
+    </Sidebar>
   );
 }
 export default ArcwarePlayer;
