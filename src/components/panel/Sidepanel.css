@@ -480,3 +480,8 @@ html {
 .rcp-body{
   padding: 0.5rem;
 }
+/* View section (camera loop) */
+.cc-views-root { padding-bottom: 0.4rem; }
+.cc-views-title { margin-top: 0; }
+.cc-views-bar { display: flex; align-items: center; gap: 0.5rem; }
+.cc-views-label { flex: 1; text-align: center; font-weight: 600; }

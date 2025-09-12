@@ -133,6 +133,9 @@ const Sidepanel = () => {
               />
             </div>
           </section>
+          <section className="sp-section" aria-label="Camera Views">
+            <ViewSection />
+          </section>
           <section>
             <ConfiguratorPanel />
           </section>
@@ -270,6 +273,42 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
     .filter((c) => c.subcollections.length);
 
 interface ConfiguratorPanelProps {}
+interface ViewSectionProps {}
+
+const ViewSection: React.FC<ViewSectionProps> = () => {
+  const views = ["01", "02", "03", "04"];
+  const [idx, setIdx] = useState(0);
+
+  const sendView = useCallback(
+    (newIdx: number) => {
+      const norm = ((newIdx % views.length) + views.length) % views.length;
+      setIdx(norm);
+      const label = `view-${views[norm]}`;
+      sendToUE({ view: label });
+      console.log({ view: label });
+    },
+    [views]
+  );
+
+  const prev = useCallback(() => sendView(idx - 1), [idx, sendView]);
+  const next = useCallback(() => sendView(idx + 1), [idx, sendView]);
+
+  return (
+    <div className="cc-root cc-views-root">
+      <div className="cc-views-bar">
+        <button type="button" className="sp-export-btn" onClick={prev} aria-label="Previous view">
+          &lt;
+        </button>
+        <div className="cc-views-label" aria-live="polite">
+          {`< view-${views[idx]} >`}
+        </div>
+        <button type="button" className="sp-export-btn" onClick={next} aria-label="Next view">
+          &gt;
+        </button>
+      </div>
+    </div>
+  );
+};
 const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
   // Unificado: índice de colección y subcolección seleccionada
