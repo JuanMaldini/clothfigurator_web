@@ -64,11 +64,8 @@ const Sidepanel = () => {
   }, []);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -126,7 +123,11 @@ const Sidepanel = () => {
             <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
               <ColorTint
                 onTintChange={(r, g, b) => {
-                  const payload = { "tint-change": `${r},${g},${b}` };
+                  // Convert 0-255 ints to 0-1 floats with 4 decimal precision
+                  const rf = (r / 255).toFixed(4);
+                  const gf = (g / 255).toFixed(4);
+                  const bf = (b / 255).toFixed(4);
+                  const payload = { "tint-change": `${rf},${gf},${bf}` };
                   sendToUE(payload);
                   console.log(payload);
                 }}

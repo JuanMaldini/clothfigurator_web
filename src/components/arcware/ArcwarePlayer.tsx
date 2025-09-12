@@ -4,7 +4,6 @@ import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
 
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
     const { Application } = ArcwareInit(
       {
@@ -27,13 +26,11 @@ function ArcwarePlayer() {
         },
       }
     );
-
     if (videoContainerRef?.current) {
       videoContainerRef.current.appendChild(Application.rootElement);
     }
     try {
       (window as any).emitUIInteraction = (payload: unknown) => {
-        // Arcware expects an object or string; prefer object (SDK serializes once)
         if (typeof payload === "string") {
           Application.emitUIInteraction?.(payload as any);
           return;
@@ -42,7 +39,6 @@ function ArcwarePlayer() {
       };
     } catch {}
   }, []);
-
   return (
     <div>
       <div ref={videoContainerRef} />
@@ -50,5 +46,4 @@ function ArcwarePlayer() {
     </div>
   );
 }
-
 export default ArcwarePlayer;
