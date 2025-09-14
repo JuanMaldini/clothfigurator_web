@@ -41,7 +41,7 @@ body {
 }
 
 .separatorSection {
-  height: 0.05rem;
+  height: 1px;
   background-color: hsl(0, 0%, 85%);
 }
 
@@ -433,12 +433,6 @@ body {
   margin-top: 0.35rem;
   font-size: var(--font-xs);
   letter-spacing: 0.03em;
-}
-/* Larger desktop refinement */
-@media (min-width: 1400px) {
-  :root {
-    --panel-width: clamp(320px, 26dvw, 520px);
-  }
 }
 /* Standard desktop */
 @media (max-width: 1200px) {

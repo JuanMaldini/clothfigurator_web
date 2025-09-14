@@ -3,14 +3,13 @@ import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
 import { sendUE } from "../arcware/ps-functions";
 import "./Sidepanel.css";
+import ViewRotator from "../view-rotator/view-rotator";
 
 declare global {
   interface Window {
-    // Accept objects or strings; Arcware SDK will serialize objects once
     emitUIInteraction?: (payload: unknown) => void;
   }
 }
-
 function stripAccents(text: string): string {
   return text
     .normalize("NFKD")
@@ -18,7 +17,6 @@ function stripAccents(text: string): string {
     .filter((ch) => !(ch as any).match(/\p{M}/u))
     .join("");
 }
-
 function sanitizeToken(input?: string): string {
   if (!input) return "";
   let t = stripAccents(String(input).trim());
@@ -28,7 +26,6 @@ function sanitizeToken(input?: string): string {
   t = t.replace(/^-+|-+$/g, "");
   return t.toUpperCase();
 }
-
 function buildMaterialInstanceName(
   collectionName?: string,
   subcollectionName?: string,
@@ -45,20 +42,19 @@ function buildMaterialInstanceName(
   if (!(collTok && subTok && varTok)) return "";
   return `MI_${collTok}_${subTok}_${varTok}`;
 }
-
 interface SidepanelProps {
   onRequestClose?: () => void;
   showClose?: boolean;
   heading?: string;
+  data: RawCollection[];
 }
-
 const Sidepanel: React.FC<SidepanelProps> = ({
   onRequestClose,
   showClose = true,
   heading = "Configurator System",
+  data,
 }) => {
   const [tintOpen, setTintOpen] = useState(false);
-
   const handleExport = useCallback(() => {
     try {
       generateConfiguratorPDF("sp-body");
@@ -68,7 +64,6 @@ const Sidepanel: React.FC<SidepanelProps> = ({
       } catch {}
     }
   }, []);
-
   return (
     <div className="sp-panel sp-panel-embedded open">
       {" "}
@@ -127,11 +122,13 @@ const Sidepanel: React.FC<SidepanelProps> = ({
             />
           </div>
         </section>
-
-        <section className="separatorSection"></section>
-
+        <div className="separatorSection"></div>
+        <section style={{'padding':' 0.25rem 0rem'}}>
+          <ViewRotator />
+        </section>
+        <div className="separatorSection"></div>
         <section>
-          <ConfiguratorPanel />
+          <ConfiguratorPanel raw={data} />
         </section>
       </div>
     </div>
@@ -147,14 +144,12 @@ interface RawVariation {
   code?: string;
   image?: string;
 }
-
 interface RawVariationSubcollection {
   name?: string;
   "subcollection-name"?: string;
   variation?: Array<string | RawVariation>;
   variations?: Array<string | RawVariation>;
 }
-
 interface RawCollection {
   collection?: string;
   "collection-name"?: string;
@@ -162,7 +157,6 @@ interface RawCollection {
   subcollection?: RawVariationSubcollection[];
   subcollections?: RawVariationSubcollection[];
 }
-
 interface NormalizedSubcollection {
   name: string;
   description?: string;
@@ -173,7 +167,6 @@ interface NormalizedCollection {
   name: string;
   subcollections: NormalizedSubcollection[];
 }
-
 interface NormalizedVariation {
   label: string;
   imageThumbnail?: string;
@@ -182,7 +175,6 @@ interface NormalizedVariation {
   pattern?: string;
   name?: string;
 }
-
 const composeVariationString = (v: any): string => {
   if (typeof v === "string") return v.trim();
   if (!v || typeof v !== "object") return "";
@@ -192,7 +184,6 @@ const composeVariationString = (v: any): string => {
   if (name && code) return code.includes(name) ? name : `${name} ${code}`;
   return (name || code || "").trim();
 };
-
 const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
   (raw || [])
     .map((r) => {
@@ -264,10 +255,11 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
       return { name, subcollections } as NormalizedCollection;
     })
     .filter((c) => c.subcollections.length);
-
-interface ConfiguratorPanelProps {}
-const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
-  const [data, setData] = useState<NormalizedCollection[]>([]);
+interface ConfiguratorPanelProps {
+  raw: RawCollection[];
+}
+const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
+  const data = useMemo(() => normalizeData(raw), [raw]);
   // Unificado: índice de colección y subcolección seleccionada
   const [selection, setSelection] = useState<{
     colIndex: number;
@@ -276,7 +268,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
   const [selectedVarBySub, setSelectedVarBySub] = useState<
     Record<string, string | null>
   >({});
-
   const renderDesc = useCallback((desc?: string, subName?: string) => {
     if (!desc) return null;
     if (!subName) return desc;
@@ -301,34 +292,14 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     if (last < desc.length) parts.push(desc.slice(last));
     return <>{parts}</>;
   }, []);
-
+  // set default selection when data changes
   useEffect(() => {
-    let alive = true;
-    (async () => {
-      try {
-        const url = new URL("./collections.json", import.meta.url).href;
-        const res = await fetch(url, { cache: "no-cache" });
-        if (!res.ok) throw new Error("No collections JSON found");
-        const json = (await res.json()) as RawCollection[];
-
-        if (!alive) return;
-        const norm = normalizeData(json);
-        setData(norm);
-        setSelection({
-          colIndex: 0,
-          subName: norm[0]?.subcollections[0]?.name || null,
-        });
-      } catch (e) {
-        if (process.env.NODE_ENV !== "production") {
-          console.warn("[Configurator] load error", e);
-        }
-      }
-    })();
-    return () => {
-      alive = false;
-    };
-  }, []);
-
+    if (!data.length) return;
+    setSelection({
+      colIndex: 0,
+      subName: data[0]?.subcollections[0]?.name || null,
+    });
+  }, [data]);
   const current = useMemo(
     () => data[selection.colIndex],
     [data, selection.colIndex]
@@ -353,7 +324,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     if (!selectedLabel) return null;
     return variations.find((v) => v.label === selectedLabel) || null;
   }, [variations, selectedLabel]);
-
   const selectCollection = useCallback(
     (idx: number) => {
       const first = data[idx]?.subcollections[0]?.name || null;
@@ -362,7 +332,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     },
     [data]
   );
-
   const sendVariation = (variation: NormalizedVariation) => {
     if (!current || !selection.subName) return;
     try {
@@ -380,7 +349,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
       }));
     } catch {}
   };
-
   // Al cambiar de subcolección, autoseleccionar la primera variación disponible
   // y disparar la misma lógica de selección (incluye envío a Unreal)
   useEffect(() => {

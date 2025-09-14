@@ -3,6 +3,8 @@ import { useRef, useEffect, useState } from "react";
 import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
 import ViewRotator from "../view-rotator/view-rotator";
 
+import collections from "../panel/collections.json";
+
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(true); //AQUI DEFINIR INITIAL STATE
@@ -62,7 +64,12 @@ function ArcwarePlayer() {
         </div>
       </main>
       <aside className="aw-aside">
-        {open && <Sidepanel onRequestClose={() => setOpen(false)} />}
+        {open && (
+          <Sidepanel
+            data={collections as any}
+            onRequestClose={() => setOpen(false)}
+          />
+        )}
       </aside>
     </div>
   );
