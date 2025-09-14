@@ -5,7 +5,7 @@ import ViewRotator from "../view-rotator/view-rotator";
 
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true); //AQUI DEFINIR INITIAL STATE
   useEffect(() => {
     const { Application } = ArcwareInit(
       {

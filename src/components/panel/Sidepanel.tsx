@@ -130,8 +130,6 @@ const Sidepanel: React.FC<SidepanelProps> = ({
 
         <section className="separatorSection"></section>
 
-        <section className="separatorSection"></section>
-
         <section>
           <ConfiguratorPanel />
         </section>
