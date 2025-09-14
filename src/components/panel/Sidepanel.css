@@ -1,6 +1,3 @@
-/* ==========================================
-   Sidepanel Styling (Clean Refactor)
-   ========================================== */
 :root {
   --ColorText: #111;
   --ColorBackground: #f4f5f6;
@@ -27,7 +24,7 @@
   --tr-med: 220ms ease;
   /* Adaptive sizing */
   --panel-width: clamp(300px, 30dvw, 440px);
-  --var-size: 54px; /* base variation square */
+  --var-size: clamp(40px, 10vw, 56px); /* responsive variation square */
 }
 * {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -42,12 +39,18 @@ body {
 .noUnderline {
   text-decoration: none;
 }
+
+.separatorSection {
+  height: 0.05rem;
+  background-color: hsl(0, 0%, 85%);
+}
+
 /* Removed: .sp-root, .sp-backdrop (unused in current React structure) */
 .sp-panel-open-btn {
   position: fixed;
   top: var(--sp-3);
   right: var(--sp-4);
-  z-index: 1100;
+  z-index: 1; /* below sidebar */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   font-size: var(--font-sm);
 }
@@ -97,21 +100,7 @@ body {
   color: #fff;
   border-color: var(--ColorBackgroundSelected);
 }
-.sp-tint-reset {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 1.05rem;
-  margin-left: 0.25rem;
-  cursor: pointer;
-  padding: 0 var(--sp-1);
-  border-radius: var(--radius-sm);
-  transition: color var(--tr-fast), background var(--tr-fast);
-}
-.sp-tint-reset:hover {
-  color: #fff;
-  background: #3a3a46;
-}
+
 .sp-panel {
   position: relative;
   display: flex;
@@ -133,22 +122,18 @@ body {
   letter-spacing: 0.01em;
   background: var(--ColorBackgroundAlt);
 }
+
 .sp-body {
-  padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  padding: 0px var(--sp-1);
   flex: 1;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
 }
 .sp-section {
-  margin: var(--sp-2) 0 var(--sp-3);
-  padding-bottom: var(--sp-2);
-  border-bottom: 1px solid var(--ColorBorderSoft);
+  margin: var(--sp-1);
 }
-.sp-section:last-of-type {
-  border-bottom: none;
-}
+
 .sp-collapsible-header {
   width: 100%;
   display: flex;
@@ -165,8 +150,8 @@ body {
 .sp-collapsible-header:hover .sp-collapsible-title {
   text-decoration: underline;
 }
-.sp-collapsible-title {
-  font-size: var(--font-lg);
+.sp-title {
+  font-size: 14px;
   font-weight: 600;
 }
 .sp-collapsible-body {
@@ -188,7 +173,6 @@ body {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
-  margin-bottom: var(--sp-2);
 }
 .cc-sub-desc {
   margin: var(--sp-1) 0 var(--sp-3);
@@ -196,6 +180,7 @@ body {
   line-height: 1.35;
   color: var(--ColorText);
   opacity: 0.9;
+  overflow-wrap: anywhere; /* prevent clipping on long words */
 }
 .cc-select-col {
   flex: 1 1 160px;
@@ -238,14 +223,14 @@ body {
   overflow: visible;
   border: 1px solid var(--ColorBorderSoft);
   padding: 0;
-  width: var(--var-size);
-  height: var(--var-size);
+  width: 100%;
+  aspect-ratio: 1 / 1; /* keep square but fluid */
   background: #e2e5e7;
   cursor: pointer;
   border-radius: var(--radius-sm);
   transition: border-color var(--tr-fast), box-shadow var(--tr-fast),
     background var(--tr-fast);
-  margin: 0 auto;
+  margin: 0;
 }
 .cc-var-box:hover,
 .cc-var-box:focus {
@@ -341,7 +326,6 @@ body {
   width: 100%;
   height: auto;
 }
-/* Removed unused .cc-var-title (not referenced) */
 .sp-tint-picker-wrap {
   display: block;
   width: 100%;
@@ -361,12 +345,7 @@ body {
   width: 100%;
   min-width: 0;
 }
-.cc-views-root {
-  padding-bottom: var(--sp-2);
-}
-.cc-views-title {
-  margin-top: 0;
-}
+
 .cc-views-bar {
   display: flex;
   align-items: center;
@@ -381,13 +360,63 @@ body {
 /* Removed .sp-export-row / .sp-export-label (legacy layout) */
 .sp-export-actions {
   display: flex;
-  gap: var(--sp-3);
+  flex-direction: row;
+  gap: var(--sp-2);
 }
 /* Retained landing styles below (deduplicated) */
 .arcware-video-wrapper,
 .arcware-video {
   width: 100%;
   height: 100%;
+  background: #000; /* avoid visible gap during slide */
+}
+
+/* HUD overlay for ViewRotator over the video */
+.arcware-video-wrapper {
+  position: relative;
+}
+.arcware-video {
+  position: relative;
+  z-index: 0; /* ensure HUD can layer above */
+}
+.hud-view-rotator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1; /* under sidebar */
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  pointer-events: none;
+}
+.hud-card {
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+  background: color-mix(in srgb, #000 45%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  padding: 0.4rem 0.6rem;
+  max-width: min(560px, 92vw);
+}
+.hud-card .cc-views-bar {
+  gap: 0.6rem;
+}
+.hud-card .sp-export-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.hud-card .cc-views-label {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 600px) {
+  .hud-card {
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+  }
 }
 .sp-row {
   display: flex;
@@ -399,9 +428,7 @@ body {
 .sp-row .sp-collapsible-header {
   flex: 1 1 auto;
 }
-.sp-row .sp-export-actions {
-  flex: 0 0 auto;
-}
+
 .ct-value {
   margin-top: 0.35rem;
   font-size: var(--font-xs);
@@ -423,7 +450,7 @@ body {
 @media (max-width: 900px) {
   :root {
     --panel-width: clamp(280px, 38dvw, 400px);
-    --var-size: 50px;
+    --var-size: clamp(44px, 12vw, 50px);
   }
   .sp-panel-open-btn {
     top: var(--sp-2);
@@ -432,37 +459,25 @@ body {
   .sp-header {
     padding: var(--sp-2) var(--sp-3);
   }
-  .sp-body {
-    padding: var(--sp-2) var(--sp-3) var(--sp-3);
-  }
 }
 /* Tablet portrait */
 @media (max-width: 740px) {
   :root {
     --panel-width: clamp(260px, 46dvw, 380px);
-    --var-size: 48px;
+    --var-size: clamp(44px, 14vw, 48px);
   }
   .sp-row {
     gap: var(--sp-2);
-  }
-  .sp-export-actions {
-    gap: var(--sp-2);
-  }
-  .sp-collapsible-title {
-    font-size: var(--font-md);
   }
 }
 /* Large phones */
 @media (max-width: 600px) {
   :root {
     --panel-width: clamp(240px, 52dvw, 360px);
-    --var-size: 46px;
+    --var-size: clamp(42px, 16vw, 46px);
   }
   .sp-panel {
     font-size: var(--font-sm);
-  }
-  .sp-body {
-    padding: var(--sp-2) var(--sp-3) var(--sp-3);
   }
   .sp-header {
     padding: var(--sp-2) var(--sp-3);
@@ -472,10 +487,7 @@ body {
 @media (max-width: 480px) {
   :root {
     --panel-width: clamp(220px, 70dvw, 340px);
-    --var-size: 44px;
-  }
-  .sp-body {
-    padding: var(--sp-2) var(--sp-2) var(--sp-3);
+    --var-size: clamp(40px, 22vw, 44px);
   }
   .sp-header {
     padding: var(--sp-2) var(--sp-2);
@@ -485,143 +497,10 @@ body {
     align-items: stretch;
     gap: var(--sp-1);
   }
-  .sp-export-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-.cc-var-selected {
-  margin-top: 0.4rem;
-  margin-bottom: -0.1rem; /* tuck closer to grid */
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ColorText);
-}
-.cc-var-selected-pattern {
-  font-size: 0.95rem;
-  color: #5b5b5b;
-  margin-left: 0.25rem;
 }
 
-/* Large selected-variation preview below the grid */
-.cc-var-preview {
-  margin-top: 0.6rem;
-}
-.cc-var-preview-img-wrap {
-  width: 100%;
-  border-radius: 6px;
-  overflow: hidden;
-  background: #ddd;
-}
-.cc-var-preview-img-wrap img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.cc-var-title {
-  font-weight: 600;
-}
-
-/* Collapsible Tint section */
-.sp-collapsible-header {
-  width: 100%;
-  display: flex;
-  justify-content: start;
-  gap: 0.6rem;
-  align-items: center;
-  background: none;
-  border: 0;
-  padding: 0.3rem 0;
-  cursor: pointer;
-  font: inherit;
-  text-align: left;
-}
-.sp-collapsible-header:hover .sp-collapsible-title {
-  text-decoration: underline;
-}
-.sp-collapsible-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-.sp-collapsible-title[data-tint] {
-  color: var(--ColorText);
-}
-
-.sp-collapsible-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.28s ease;
-}
-.sp-collapsible-body.open {
-  max-height: 1000px;
-  display: block;
-  padding: 0.5rem 0 0;
-}
-.sp-section {
-  margin: 0.15rem 0 0.25rem;
-}
-
-/* Arcware video area when sidebar pushes content */
-.arcware-video-wrapper,
-.arcware-video {
-  width: 100%;
-  height: 100%;
-}
-
-.ct-value {
-  margin-top: 0.35rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.03em;
-}
-.react-colorful {
-  margin: 0;
-  width: 100%;
-}
-
-/* Ensure react-color-palette root stretches full width regardless of wrapper */
-.rcp-root,
-.rcp {
-  width: 100%;
-  min-width: 0;
-}
-
-/* Hover label above variation box (CSS-only, reads from data-label) */
-.cc-var-box::after {
-  content: attr(data-label);
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translate(-50%, -6px);
-  background: rgba(20, 20, 20, 0.92);
-  color: #fff;
-  padding: 0.25rem 0.5rem;
-  font-size: 12px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  z-index: 2;
-}
-.cc-var-box::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translate(-50%, 0);
-  border: 6px solid transparent;
-  border-top-color: rgba(20, 20, 20, 0.92);
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  z-index: 2;
-}
-.cc-var-box:hover::after {
-  opacity: 1;
-  transform: translate(-50%, -12px);
-}
-.cc-var-box:hover::before {
-  opacity: 1;
-}
-
+/* Removed old react-sidebar width tweaks (unused) */
+/* Landing styles */
 .landing-root {
   background: #18181a;
   min-height: 100vh;
@@ -672,20 +551,35 @@ body {
 .rcp-body {
   padding: 0.5rem;
 }
-/* View section (camera loop) */
-.cc-views-root {
-  padding-bottom: 0.4rem;
+
+/* Arcware player layout (grid shell that pushes when open) */
+.aw-shell {
+  display: grid;
+  grid-template-columns: 1fr 0px;
+  grid-template-rows: 100dvh;
+  width: 100%;
+  transition: grid-template-columns var(--tr-med);
+  will-change: grid-template-columns;
 }
-.cc-views-title {
-  margin-top: 0;
+.aw-shell.is-open {
+  grid-template-columns: 1fr var(--panel-width);
 }
-.cc-views-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.aw-main {
+  position: relative;
+  min-width: 0;
 }
-.cc-views-label {
-  flex: 1;
-  text-align: center;
-  font-weight: 600;
+.aw-aside {
+  min-width: 0;
+  overflow: hidden;
+  border-left: 1px solid var(--ColorBorderSoft);
 }
+
+/* Removed legacy react-sidebar shells */
+
+/* topmost close button inside header */
+.sp-close-btn {
+  z-index: 3;
+  position: relative;
+}
+
+/* Removed old two-column HUD layout (unused) */

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
+import { sendUE } from "../arcware/ps-functions";
 import "./Sidepanel.css";
 
 declare global {
@@ -45,10 +46,6 @@ function buildMaterialInstanceName(
   return `MI_${collTok}_${subTok}_${varTok}`;
 }
 
-const sendToUE = (data: any) => {
-  window.emitUIInteraction?.(data);
-};
-
 interface SidepanelProps {
   onRequestClose?: () => void;
   showClose?: boolean;
@@ -58,7 +55,7 @@ interface SidepanelProps {
 const Sidepanel: React.FC<SidepanelProps> = ({
   onRequestClose,
   showClose = true,
-  heading = "Configurat System",
+  heading = "Configurator System",
 }) => {
   const [tintOpen, setTintOpen] = useState(false);
 
@@ -73,11 +70,18 @@ const Sidepanel: React.FC<SidepanelProps> = ({
   }, []);
 
   return (
-    <div className="sp-panel sp-panel-embedded open"> {/* always rendered, parent maneja animación/push */}
+    <div className="sp-panel sp-panel-embedded open">
+      {" "}
+      {/* always rendered, parent maneja animación/push */}
       <div className="sp-header">
         <strong>{heading}</strong>
         {showClose && (
-          <div onClick={onRequestClose} className="sp-export-btn" role="button" tabIndex={0}>
+          <div
+            onClick={onRequestClose}
+            className="sp-export-btn sp-close-btn"
+            role="button"
+            tabIndex={0}
+          >
             Close
           </div>
         )}
@@ -90,7 +94,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
               className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
               onClick={() => setTintOpen((o) => !o)}
             >
-              <span className="sp-collapsible-title">Tint</span>
+              <span className="sp-title">Tint</span>
             </button>
             <div className="sp-export-actions">
               <button
@@ -104,11 +108,10 @@ const Sidepanel: React.FC<SidepanelProps> = ({
                 className="sp-export-btn"
                 title="Take a screenshot of the current view"
                 onClick={() => {
-                  sendToUE({ screenshot: "res-01" });
-                  console.log({ screenshot: "res-01" });
+                  sendUE({ screenshot: "res-01" });
                 }}
               >
-                Screenshoot
+                Screenshot
               </button>
             </div>
           </div>
@@ -119,15 +122,16 @@ const Sidepanel: React.FC<SidepanelProps> = ({
                 const gf = (g / 255).toFixed(4);
                 const bf = (b / 255).toFixed(4);
                 const payload = { "tint-change": `${rf},${gf},${bf}` };
-                sendToUE(payload);
-                console.log(payload);
+                sendUE(payload);
               }}
             />
           </div>
         </section>
-        <section className="sp-section" aria-label="Camera Views">
-          <ViewSection />
-        </section>
+
+        <section className="separatorSection"></section>
+
+        <section className="separatorSection"></section>
+
         <section>
           <ConfiguratorPanel />
         </section>
@@ -264,42 +268,6 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
     .filter((c) => c.subcollections.length);
 
 interface ConfiguratorPanelProps {}
-interface ViewSectionProps {}
-
-const ViewSection: React.FC<ViewSectionProps> = () => {
-  const views = ["01", "02", "03", "04"];
-  const [idx, setIdx] = useState(0);
-
-  const sendView = useCallback(
-    (newIdx: number) => {
-      const norm = ((newIdx % views.length) + views.length) % views.length;
-      setIdx(norm);
-      const label = `view-${views[norm]}`;
-      sendToUE({ view: label });
-      console.log({ view: label });
-    },
-    [views]
-  );
-
-  const prev = useCallback(() => sendView(idx - 1), [idx, sendView]);
-  const next = useCallback(() => sendView(idx + 1), [idx, sendView]);
-
-  return (
-    <div className="cc-root cc-views-root">
-      <div className="cc-views-bar">
-        <button type="button" className="sp-export-btn" onClick={prev} aria-label="Previous view">
-          &lt;
-        </button>
-        <div className="cc-views-label" aria-live="polite">
-          {`< view-${views[idx]} >`}
-        </div>
-        <button type="button" className="sp-export-btn" onClick={next} aria-label="Next view">
-          &gt;
-        </button>
-      </div>
-    </div>
-  );
-};
 const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
   const [data, setData] = useState<NormalizedCollection[]>([]);
   // Unificado: índice de colección y subcolección seleccionada
@@ -315,7 +283,8 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     if (!desc) return null;
     if (!subName) return desc;
     // Bold all whole-word occurrences of the subcollection name (case-insensitive)
-    const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const escapeRegExp = (s: string) =>
+      s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const re = new RegExp(`\\b(${escapeRegExp(subName)})\\b`, "gi");
     const parts: React.ReactNode[] = [];
     let last = 0;
@@ -323,7 +292,9 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
     desc.replace(re, (match, _g1, offset: number) => {
       if (last < offset) parts.push(desc.slice(last, offset));
       parts.push(
-        <strong key={`h-${idx++}`}>{desc.slice(offset, offset + match.length)}</strong>
+        <strong key={`h-${idx++}`}>
+          {desc.slice(offset, offset + match.length)}
+        </strong>
       );
       last = offset + match.length;
       return match;
@@ -404,12 +375,11 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
         variation.pattern
       );
       if (!miName) return;
-      sendToUE({ "material-change": miName });
+      sendUE({ "material-change": miName });
       setSelectedVarBySub((m) => ({
         ...m,
         [selection.subName as string]: variation.label,
       }));
-      console.log({ "material-change": miName });
     } catch {}
   };
 
@@ -425,7 +395,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
   return (
     <div aria-label="Configurador" className="cc-root">
       <div className="cc-collections-row">
-        <h2 className="cc-section-title">Collections</h2>
+        <h2 className="sp-title">Collections</h2>
         <label className="cc-collection-label" htmlFor="collection-select">
           <select
             id="collection-select"
@@ -468,7 +438,7 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
       </div>
       {currentSub?.description ? (
         <div className="cc-sub-desc" aria-live="polite">
-      {renderDesc(currentSub.description, currentSub.name)}
+          {renderDesc(currentSub.description, currentSub.name)}
         </div>
       ) : null}
       {selectedVar ? (
@@ -477,7 +447,10 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = () => {
             {selectedVar.name || selectedVar.label}
           </span>
           {selectedVar.pattern ? (
-            <span className="cc-var-selected-pattern"> {selectedVar.pattern}</span>
+            <span className="cc-var-selected-pattern">
+              {" "}
+              {selectedVar.pattern}
+            </span>
           ) : null}
         </div>
       ) : null}

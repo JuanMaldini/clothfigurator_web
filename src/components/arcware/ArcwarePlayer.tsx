@@ -1,11 +1,11 @@
 import Sidepanel from "../panel/Sidepanel";
-import Sidebar from "react-sidebar";
 import { useRef, useEffect, useState } from "react";
 import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
+import ViewRotator from "../view-rotator/view-rotator";
 
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
-  const [docked, setDocked] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const { Application } = ArcwareInit(
       {
@@ -42,38 +42,29 @@ function ArcwarePlayer() {
     } catch {}
   }, []);
   return (
-    <Sidebar
-      sidebar={<Sidepanel onRequestClose={() => setDocked(false)} />}
-      docked={docked}
-      open={docked}
-      onSetOpen={(o) => setDocked(o)}
-      pullRight
-      styles={{
-        sidebar: {
-          width: "30dvw",
-          maxWidth: "440px",
-          minWidth: "320px",
-          background: "var(--ColorBackground, #ebebeb)",
-          boxShadow: "-4px 0 24px rgba(0,0,0,0.25)",
-          display: "flex",
-          flexDirection: "column",
-          transition: "transform .25s ease, opacity .25s ease",
-        },
-        content: { transition: "margin .25s ease" },
-      }}
-    >
-      {!docked && (
-        <button
-          className="sp-export-btn sp-panel-open-btn"
-          onClick={() => setDocked(true)}
-        >
-          Open
-        </button>
-      )}
-      <div className="arcware-video-wrapper">
-        <div ref={videoContainerRef} className="arcware-video" />
-      </div>
-    </Sidebar>
+    <div className={"aw-shell" + (open ? " is-open" : "")}>
+      <main className="aw-main">
+        {!open && (
+          <button
+            className="sp-export-btn sp-panel-open-btn"
+            onClick={() => setOpen(true)}
+          >
+            Open
+          </button>
+        )}
+        <div className="arcware-video-wrapper">
+          <div ref={videoContainerRef} className="arcware-video" />
+          <div className="hud-view-rotator">
+            <div className="hud-card">
+              <ViewRotator />
+            </div>
+          </div>
+        </div>
+      </main>
+      <aside className="aw-aside">
+        {open && <Sidepanel onRequestClose={() => setOpen(false)} />}
+      </aside>
+    </div>
   );
 }
 export default ArcwarePlayer;
