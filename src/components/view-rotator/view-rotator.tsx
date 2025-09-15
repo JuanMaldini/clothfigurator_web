@@ -14,7 +14,7 @@ type ViewRotatorProps = {
 };
 
 const ViewRotator: React.FC<ViewRotatorProps> = ({
-  views = ["1", "2", "3", "4"],
+  views = ["0", "1", "2", "3"],
 }) => {
   const activeViews = views;
   const [idx, setIdx] = useState(sharedIndex);
