@@ -576,3 +576,8 @@ body {
 }
 
 /* Removed old two-column HUD layout (unused) */
+
+/* Section spacing for view rotator (replaces inline style in JSX) */
+.sp-viewrotator-section {
+  padding: 0.25rem 0rem;
+}

@@ -55,15 +55,22 @@ const Sidepanel: React.FC<SidepanelProps> = ({
   data,
 }) => {
   const [tintOpen, setTintOpen] = useState(false);
-  const handleExport = useCallback(() => {
+  const [isExporting, setIsExporting] = useState(false);
+  const handleExport = useCallback(async () => {
+    if (isExporting) return;
+    setIsExporting(true);
     try {
-      generateConfiguratorPDF("sp-body");
+      // Await in case generateConfiguratorPDF returns a Promise; Promise.resolve handles void as well
+      await Promise.resolve(generateConfiguratorPDF("sp-body"));
     } catch (e) {
+      // Fallback to browser print if PDF generation fails
       try {
         window.print();
       } catch {}
+    } finally {
+      setIsExporting(false);
     }
-  }, []);
+  }, [isExporting]);
   return (
     <div className="sp-panel sp-panel-embedded open">
       {" "}
@@ -94,10 +101,15 @@ const Sidepanel: React.FC<SidepanelProps> = ({
             <div className="sp-export-actions">
               <button
                 className="sp-export-btn"
-                title="Download a pdf with all information"
+                title={
+                  isExporting
+                    ? "Generating PDF..."
+                    : "Download a pdf with all information"
+                }
+                disabled={isExporting}
                 onClick={handleExport}
               >
-                Export
+                {isExporting ? "Creating pdf..." : "Export"}
               </button>
               <button
                 className="sp-export-btn"
@@ -106,7 +118,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
                   sendUE({ screenshot: "res-01" });
                 }}
               >
-                Screenshot
+                Render
               </button>
             </div>
           </div>
@@ -123,7 +135,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
           </div>
         </section>
         <div className="separatorSection"></div>
-        <section style={{'padding':' 0.25rem 0rem'}}>
+        <section className="sp-viewrotator-section">
           <ViewRotator />
         </section>
         <div className="separatorSection"></div>
