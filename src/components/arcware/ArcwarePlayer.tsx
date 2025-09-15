@@ -2,7 +2,6 @@ import Sidepanel from "../panel/Sidepanel";
 import { useRef, useEffect, useState } from "react";
 import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
 import ViewRotator from "../view-rotator/view-rotator";
-
 import collections from "../panel/collections.json";
 
 function ArcwarePlayer() {
@@ -11,7 +10,7 @@ function ArcwarePlayer() {
   useEffect(() => {
     const { Application } = ArcwareInit(
       {
-        shareId: "share-0f9aa231-983a-4163-9f8d-7741f5b3d6af",
+        shareId: "share-0fs9aa231-983a-4163-9f8d-7741f5b3d6af",
         projectId: "e212120e-c599-415c-b304-b89ff342557a",
       },
       {
