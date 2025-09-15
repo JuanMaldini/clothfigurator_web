@@ -24,7 +24,7 @@ function ArcwarePlayer() {
           infoButton: false,
           micButton: false,
           audioButton: false,
-          fullscreenButton: true,
+          fullscreenButton: false,
           settingsButton: false,
           connectionStrengthIcon: false,
         },
