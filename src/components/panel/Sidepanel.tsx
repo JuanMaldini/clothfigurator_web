@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
+import { RxReset } from "react-icons/rx";
 import { sendUE } from "../arcware/ps-functions";
 import "./Sidepanel.css";
 import ViewRotator from "../view-rotator/view-rotator";
@@ -55,6 +56,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
   data,
 }) => {
   const [tintOpen, setTintOpen] = useState(false);
+  const [tintResetCounter, setTintResetCounter] = useState(0);
   const [isExporting, setIsExporting] = useState(false);
   const handleExport = useCallback(async () => {
     if (isExporting) return;
@@ -91,13 +93,24 @@ const Sidepanel: React.FC<SidepanelProps> = ({
       <div className="sp-body" id="sp-body">
         <section className="sp-section">
           <div className="sp-row">
-            <button
-              type="button"
-              className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
-              onClick={() => setTintOpen((o) => !o)}
-            >
-              <span className="sp-title">Tint</span>
-            </button>
+            <div className="tint-header-wrap">
+              <button
+                type="button"
+                className={`sp-collapsible-header${tintOpen ? " is-open" : ""}`}
+                onClick={() => setTintOpen((o) => !o)}
+              >
+                <span className="sp-title">Tint</span>
+              </button>
+              <button
+                type="button"
+                className="tint-reset-btn"
+                aria-label="Reset tint to white"
+                title="Reset tint to white"
+                onClick={() => setTintResetCounter(c => c + 1)}
+              >
+                <RxReset />
+              </button>
+            </div>
             <div className="sp-export-actions">
               <button
                 className="sp-export-btn"
@@ -124,12 +137,9 @@ const Sidepanel: React.FC<SidepanelProps> = ({
           </div>
           <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
             <ColorTint
-              onTintChange={(r, g, b) => {
-                const rf = (r / 255).toFixed(4);
-                const gf = (g / 255).toFixed(4);
-                const bf = (b / 255).toFixed(4);
-                const payload = { "tint-change": `R=${rf},G=${gf},B=${bf}` };
-                sendUE(payload);
+              resetCounter={tintResetCounter}
+              onTintChange={(formatted) => {
+                sendUE({ "tint-change": formatted });
               }}
             />
           </div>
