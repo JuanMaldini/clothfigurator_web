@@ -128,7 +128,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
                 const rf = (r / 255).toFixed(4);
                 const gf = (g / 255).toFixed(4);
                 const bf = (b / 255).toFixed(4);
-                const payload = { "tint-change": `${rf},${gf},${bf}` };
+                const payload = { "tint-change": `R=${rf},G=${gf},B=${bf}` };
                 sendUE(payload);
               }}
             />
