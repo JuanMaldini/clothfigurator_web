@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { sendUE } from "../arcware/ps-functions";
+import { sendUE } from "../arcware/ps-functions"; // still used for view change events
+import { triggerScreenshot } from "../screenshot/screenshot";
 import { TbCapture } from "react-icons/tb";
 
 // Simple module-level event bus to synchronize index across all instances
@@ -75,7 +76,7 @@ const ViewRotator: React.FC<ViewRotatorProps> = ({
           className="sp-export-btn"
           aria-label="Screenshot"
           title="Take a screenshot of the current view"
-          onClick={() => sendUE({ screenshot: "res-01" })}
+          onClick={triggerScreenshot}
           onMouseDown={(e) => e.preventDefault()}
         >
           <TbCapture />

@@ -1,9 +1,10 @@
 import { ColorPicker, useColor, type IColor } from "react-color-palette";
 import { useEffect } from "react";
+import { sendUE } from "../arcware/ps-functions";
 import "react-color-palette/css";
 
 type Props = {
-  /** Devuelve el string ya formateado: R=...,G=...,B=... */
+  /** Callback opcional si el padre quiere enterarse; el envío a Unreal se hace internamente */
   onTintChange?: (formatted: string) => void;
   /** Incrementar este número desde fuera para forzar reset a blanco */
   resetCounter?: number;
@@ -22,7 +23,15 @@ export default function ColorTint({ onTintChange, resetCounter }: Props) {
   };
 
   const notify = (c: IColor) => {
-    onTintChange?.(buildFormatted(c));
+    const formatted = buildFormatted(c);
+    // Emitir a Unreal directamente aquí para modularidad
+    try {
+      sendUE({ "tint-change": formatted });
+    } catch (e) {
+      console.warn("Failed to send tint-change", e);
+    }
+    // Callback externo opcional
+    onTintChange?.(formatted);
   };
 
   const onChange = (c: IColor) => {

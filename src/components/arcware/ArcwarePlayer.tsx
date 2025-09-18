@@ -1,6 +1,7 @@
 import Sidepanel from "../panel/Sidepanel";
 import { useRef, useEffect, useState } from "react";
 import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
+import { registerScreenshotApplication } from "../screenshot/screenshot";
 import ViewRotator from "../view-rotator/view-rotator";
 import collections from "../panel/collections.json";
 
@@ -32,6 +33,8 @@ function ArcwarePlayer() {
     if (videoContainerRef?.current) {
       videoContainerRef.current.appendChild(Application.rootElement);
     }
+    // Register screenshot listener once
+    registerScreenshotApplication(Application as any);
     try {
       (window as any).emitUIInteraction = (payload: unknown) => {
         if (typeof payload === "string") {

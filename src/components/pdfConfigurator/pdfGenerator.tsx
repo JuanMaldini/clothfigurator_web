@@ -1,55 +1,67 @@
+import React, { useState, useCallback } from 'react';
 import generatePDF, { Resolution, Margin } from 'react-to-pdf';
-
 const options = {
-   // default is `save`
    method: 'open' as const,
-   // default is Resolution.MEDIUM = 3, which should be enough, higher values
-   // increases the image quality but also the size of the PDF, so be careful
-   // using values higher than 10 when having multiple pages generated, it
-   // might cause the page to crash or hang.
    resolution: Resolution.HIGH,
    page: {
-      // margin is in MM, default is Margin.NONE = 0
       margin: Margin.SMALL,
-      // default is 'A4'
       format: 'letter',
-      // default is 'portrait'
-      //orientation: 'landscape',
    orientation: 'portrait' as const,
    },
    canvas: {
-      // default is 'image/jpeg' for better size performance
       mimeType: 'image/png' as const,
       qualityRatio: 1
    },
-   // Customize any value passed to the jsPDF instance and html2canvas
-   // function. You probably will not need this and things can break, 
-   // so use with caution.
    overrides: {
-      // see https://artskydj.github.io/jsPDF/docs/jsPDF.html for more options
       pdf: {
          compress: true
       },
-      // see https://html2canvas.hertzen.com/configuration for more options
       canvas: {
          useCORS: true
       }
    },
 };
-
-// (helper eliminado para evitar warning de no uso)
-
-// Función utilitaria para usar desde otros componentes (Sidepanel)
 export const generateConfiguratorPDF = (targetId: string = 'sp-body') => {
    const fn = () => document.getElementById(targetId) as HTMLElement | null;
    return generatePDF(fn, options);
 };
-
-// (Mantener demo local comentada si se quisiera reutilizar)
-// const Component = () => (
-//   <div>
-//     <button onClick={() => generatePDF(getTargetElement, options)}>Generate PDF</button>
-//     <div id="content-id">Content to be generated to PDF</div>
-//   </div>
-// );
-// export default Component;
+interface ExportPDFButtonProps {
+   targetId?: string;
+   className?: string;
+   idleLabel?: string;
+   busyLabel?: string;
+   titleIdle?: string;
+   titleBusy?: string;
+}
+export const ExportPDFButton: React.FC<ExportPDFButtonProps> = ({
+   targetId = 'sp-body',
+   className = 'sp-export-btn',
+   idleLabel = 'Export',
+   busyLabel = 'Creating pdf...',
+   titleIdle = 'Download a pdf with all information',
+   titleBusy = 'Generating PDF...',
+}) => {
+   const [busy, setBusy] = useState(false);
+   const handleClick = useCallback(async () => {
+      if (busy) return;
+      setBusy(true);
+      try {
+         await Promise.resolve(generateConfiguratorPDF(targetId));
+      } catch (e) {
+         try { window.print(); } catch {}
+      } finally {
+         setBusy(false);
+      }
+   }, [busy, targetId]);
+   return (
+         <button
+            type="button"
+            className={className}
+            disabled={busy}
+            onClick={handleClick}
+            title={busy ? titleBusy : titleIdle}
+         >
+         {busy ? busyLabel : idleLabel}
+      </button>
+   );
+};

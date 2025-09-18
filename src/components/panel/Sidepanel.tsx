@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { generateConfiguratorPDF } from "../pdfConfigurator/pdfGenerator";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
 import { RxReset } from "react-icons/rx";
 import { sendUE } from "../arcware/ps-functions";
+import { triggerScreenshot } from "../screenshot/screenshot";
 import "./Sidepanel.css";
 import ViewRotator from "../view-rotator/view-rotator";
 
@@ -57,26 +58,8 @@ const Sidepanel: React.FC<SidepanelProps> = ({
 }) => {
   const [tintOpen, setTintOpen] = useState(false);
   const [tintResetCounter, setTintResetCounter] = useState(0);
-  const [isExporting, setIsExporting] = useState(false);
-  const handleExport = useCallback(async () => {
-    if (isExporting) return;
-    setIsExporting(true);
-    try {
-      // Await in case generateConfiguratorPDF returns a Promise; Promise.resolve handles void as well
-      await Promise.resolve(generateConfiguratorPDF("sp-body"));
-    } catch (e) {
-      // Fallback to browser print if PDF generation fails
-      try {
-        window.print();
-      } catch {}
-    } finally {
-      setIsExporting(false);
-    }
-  }, [isExporting]);
   return (
     <div className="sp-panel sp-panel-embedded open">
-      {" "}
-      {/* always rendered, parent maneja animación/push */}
       <div className="sp-header">
         <strong>{heading}</strong>
         {showClose && (
@@ -112,36 +95,18 @@ const Sidepanel: React.FC<SidepanelProps> = ({
               </button>
             </div>
             <div className="sp-export-actions">
-              <button
-                className="sp-export-btn"
-                title={
-                  isExporting
-                    ? "Generating PDF..."
-                    : "Download a pdf with all information"
-                }
-                disabled={isExporting}
-                onClick={handleExport}
-              >
-                {isExporting ? "Creating pdf..." : "Export"}
-              </button>
+              <ExportPDFButton />
               <button
                 className="sp-export-btn"
                 title="Take a screenshot of the current view"
-                onClick={() => {
-                  sendUE({ screenshot: "res-01" });
-                }}
+                onClick={triggerScreenshot}
               >
                 Render
               </button>
             </div>
           </div>
           <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
-            <ColorTint
-              resetCounter={tintResetCounter}
-              onTintChange={(formatted) => {
-                sendUE({ "tint-change": formatted });
-              }}
-            />
+            <ColorTint resetCounter={tintResetCounter} />
           </div>
         </section>
         <div className="separatorSection"></div>
