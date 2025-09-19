@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-// import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
+import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
 import { RxReset } from "react-icons/rx";
 import { sendUE } from "../arcware/ps-functions";
 import { triggerScreenshot } from "../screenshot/screenshot";
 import "./Sidepanel.css";
-import ViewRotator from "../view-rotator/view-rotator";
+// import ViewRotator from "../view-rotator/view-rotator";
 import { setCurrentVariation } from "../../state/currentVariation";
 import { buildMaterialInstanceName } from "../../utils/text";
+import { LiaTintSolid } from "react-icons/lia";
+
 
 declare global {
   interface Window {
@@ -53,7 +55,9 @@ const Sidepanel: React.FC<SidepanelProps> = ({
                 onClick={() => setTintOpen((o) => !o)}
               >
                 <span className="sp-title">Tint</span>
+                <LiaTintSolid />
               </button>
+              |
               <button
                 type="button"
                 className="tint-reset-btn"
@@ -65,7 +69,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
               </button>
             </div>
             <div className="sp-export-actions">
-              {/* <ExportPDFButton mode="screenshot" /> */}
+              <ExportPDFButton mode="screenshot" />
               <button
                 className="sp-export-btn"
                 title="Take a screenshot of the current view"
@@ -79,10 +83,10 @@ const Sidepanel: React.FC<SidepanelProps> = ({
             <ColorTint resetCounter={tintResetCounter} />
           </div>
         </section>
-        <div className="separatorSection"></div>
-        <section className="sp-viewrotator-section">
+        {/* <div className="separatorSection"></div>
+         <section className="sp-viewrotator-section">
           <ViewRotator />
-        </section>
+        </section> */}
         <div className="separatorSection"></div>
         <section>
           <ConfiguratorPanel raw={data} />

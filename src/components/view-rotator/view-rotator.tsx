@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { sendUE } from "../arcware/ps-functions"; // still used for view change events
-import { triggerScreenshot } from "../screenshot/screenshot";
-import { TbCapture } from "react-icons/tb";
+// import { triggerScreenshot } from "../screenshot/screenshot";
+// import { LiaTintSolid } from "react-icons/lia";
 
 // Simple module-level event bus to synchronize index across all instances
 type Listener = (idx: number) => void;
@@ -50,6 +50,12 @@ const ViewRotator: React.FC<ViewRotatorProps> = ({
   return (
     <div>
       <div className="cc-views-bar">
+        {/* <button
+          type="button"
+          className="sp-export-btn"
+          >
+            <LiaTintSolid />
+        </button> */}
         <button
           type="button"
           className="sp-export-btn"
@@ -71,7 +77,7 @@ const ViewRotator: React.FC<ViewRotatorProps> = ({
         >
           &gt;
         </button>
-        <button
+        {/* <button
           type="button"
           className="sp-export-btn"
           aria-label="Screenshot"
@@ -80,7 +86,7 @@ const ViewRotator: React.FC<ViewRotatorProps> = ({
           onMouseDown={(e) => e.preventDefault()}
         >
           <TbCapture />
-        </button>
+        </button> */}
       </div>
     </div>
   );

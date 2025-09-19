@@ -198,7 +198,7 @@ body {
 }
 .cc-sub-desc {
   margin: var(--sp-1) 0 var(--sp-3);
-  font-size: var(--font-sm);
+  font-size: var(--font-base);
   line-height: 1.35;
   color: var(--ColorText);
   opacity: 0.9;
@@ -597,10 +597,8 @@ body {
   position: relative;
 }
 
-/* Removed old two-column HUD layout (unused) */
-
-/* Section spacing for view rotator (replaces inline style in JSX) */
+/*
 .sp-viewrotator-section {
   padding: 0.25rem 0rem;
 }
-
+ */

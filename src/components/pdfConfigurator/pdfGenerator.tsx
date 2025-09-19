@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import generatePDF, { Resolution, Margin } from 'react-to-pdf';
 import { captureScreenshotBlob } from "../screenshot/screenshot";
+import { GrDocumentPdf } from "react-icons/gr";
+
 const options = {
    method: 'open' as const,
    resolution: Resolution.HIGH,
@@ -38,7 +40,7 @@ interface ExportPDFButtonProps {
 export const ExportPDFButton: React.FC<ExportPDFButtonProps> = ({
    targetId = 'sp-body',
    className = 'sp-export-btn',
-   idleLabel = 'Export',
+   idleLabel = <GrDocumentPdf size={18} />,
    busyLabel = 'Creating pdf...',
    titleIdle = 'Download a pdf with all information',
    titleBusy = 'Generating PDF...',
