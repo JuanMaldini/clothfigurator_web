@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
+// import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
 import { RxReset } from "react-icons/rx";
 import { sendUE } from "../arcware/ps-functions";
