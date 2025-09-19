@@ -169,23 +169,6 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
-.tint-reset-btn {
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  color: #333;
-  font-size: 1rem;
-}
-.tint-reset-btn:hover {
-  color: #000;
-}
-.tint-reset-btn:focus-visible {
-  outline: 2px solid var(--ColorFocus);
-  outline-offset: 2px;
-}
 .cc-root {
   display: flex;
   flex-direction: column;
@@ -445,6 +428,11 @@ body {
   justify-content: space-between;
   gap: var(--sp-4);
   flex-wrap: nowrap;
+}
+.nowrap{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 .sp-row .sp-collapsible-header {
   flex: 1 1 auto;
