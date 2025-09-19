@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import generatePDF, { Resolution, Margin } from 'react-to-pdf';
+import { captureScreenshotBlob } from "../screenshot/screenshot";
 const options = {
    method: 'open' as const,
    resolution: Resolution.HIGH,
@@ -32,6 +33,7 @@ interface ExportPDFButtonProps {
    busyLabel?: string;
    titleIdle?: string;
    titleBusy?: string;
+   mode?: 'target' | 'screenshot';
 }
 export const ExportPDFButton: React.FC<ExportPDFButtonProps> = ({
    targetId = 'sp-body',
@@ -40,19 +42,47 @@ export const ExportPDFButton: React.FC<ExportPDFButtonProps> = ({
    busyLabel = 'Creating pdf...',
    titleIdle = 'Download a pdf with all information',
    titleBusy = 'Generating PDF...',
+   mode = 'target',
 }) => {
    const [busy, setBusy] = useState(false);
    const handleClick = useCallback(async () => {
       if (busy) return;
       setBusy(true);
       try {
-         await Promise.resolve(generateConfiguratorPDF(targetId));
+         if (mode === 'screenshot') {
+            const { blob } = await captureScreenshotBlob();
+            const url = URL.createObjectURL(blob);
+            // Offscreen container to render image into PDF
+            const container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.left = '-10000px';
+            container.style.top = '0';
+            container.style.width = '960px'; // tune for quality/size
+            container.style.padding = '8px';
+
+            const img = new Image();
+            img.src = url;
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            await new Promise<void>((resolve, reject) => {
+               img.onload = () => resolve();
+               img.onerror = () => reject(new Error('Failed to load screenshot image'));
+            });
+            container.appendChild(img);
+            document.body.appendChild(container);
+            await generatePDF(() => container, options);
+            document.body.removeChild(container);
+            URL.revokeObjectURL(url);
+         } else {
+            await Promise.resolve(generateConfiguratorPDF(targetId));
+         }
       } catch (e) {
-         try { window.print(); } catch {}
+         // Optionally fallback
+         // try { window.print(); } catch {}
       } finally {
          setBusy(false);
       }
-   }, [busy, targetId]);
+   }, [busy, targetId, mode]);
    return (
          <button
             type="button"

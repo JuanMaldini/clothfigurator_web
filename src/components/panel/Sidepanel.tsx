@@ -6,43 +6,13 @@ import { sendUE } from "../arcware/ps-functions";
 import { triggerScreenshot } from "../screenshot/screenshot";
 import "./Sidepanel.css";
 import ViewRotator from "../view-rotator/view-rotator";
+import { setCurrentVariation } from "../../state/currentVariation";
+import { buildMaterialInstanceName } from "../../utils/text";
 
 declare global {
   interface Window {
     emitUIInteraction?: (payload: unknown) => void;
   }
-}
-function stripAccents(text: string): string {
-  return text
-    .normalize("NFKD")
-    .split("")
-    .filter((ch) => !(ch as any).match(/\p{M}/u))
-    .join("");
-}
-function sanitizeToken(input?: string): string {
-  if (!input) return "";
-  let t = stripAccents(String(input).trim());
-  t = t.replace(/\s+/g, "-");
-  t = t.replace(/[^A-Za-z0-9-]/g, "");
-  t = t.replace(/-{2,}/g, "-");
-  t = t.replace(/^-+|-+$/g, "");
-  return t.toUpperCase();
-}
-function buildMaterialInstanceName(
-  collectionName?: string,
-  subcollectionName?: string,
-  variationName?: string,
-  variationPattern?: string
-): string {
-  const collTok = sanitizeToken(collectionName);
-  const subTok = sanitizeToken(subcollectionName);
-  let varRaw = "";
-  if (variationName && variationPattern)
-    varRaw = `${variationName}-${variationPattern}`;
-  else varRaw = variationName || variationPattern || "";
-  const varTok = sanitizeToken(varRaw);
-  if (!(collTok && subTok && varTok)) return "";
-  return `MI_${collTok}_${subTok}_${varTok}`;
 }
 interface SidepanelProps {
   onRequestClose?: () => void;
@@ -95,7 +65,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
               </button>
             </div>
             <div className="sp-export-actions">
-              <ExportPDFButton />
+              {/* <ExportPDFButton mode="screenshot" /> */}
               <button
                 className="sp-export-btn"
                 title="Take a screenshot of the current view"
@@ -322,6 +292,14 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
   const sendVariation = (variation: NormalizedVariation) => {
     if (!current || !selection.subName) return;
     try {
+      // Persist current variation context for naming screenshots, etc.
+      setCurrentVariation({
+        collection: current.name,
+        subcollection: selection.subName,
+        variation: variation.name || variation.label,
+        pattern: variation.pattern,
+      });
+
       const miName = buildMaterialInstanceName(
         current.name,
         selection.subName,
@@ -342,6 +320,13 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
     if (!selection.subName) return;
     const first = variations[0];
     if (!first) return;
+    // Ensure state is captured for initial default selection as well
+    setCurrentVariation({
+      collection: current?.name,
+      subcollection: selection.subName,
+      variation: first.name || first.label,
+      pattern: first.pattern,
+    });
     sendVariation(first);
   }, [selection.subName, variations]);
 
