@@ -311,6 +311,62 @@ body {
   display: flex;
   align-items: baseline;
   gap: var(--sp-1);
+  position: relative;
+}
+.cc-icon-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--ColorBorderSoft);
+  background: #f4f6f7;
+  color: inherit;
+  cursor: pointer;
+}
+.cc-icon-btn:hover {
+  background: #eef1f2;
+}
+.cc-icon-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ColorBackground), 0 0 0 4px var(--ColorFocus);
+}
+.cc-more {
+  position: relative;
+  margin-left: auto;
+  display: inline-flex;
+}
+.cc-more-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  min-width: 200px;
+  background: var(--ColorBackgroundAlt);
+  border: 1px solid var(--ColorBorderSoft);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  z-index: 3;
+  padding: 4px;
+}
+.cc-more-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 8px 10px;
+  font-size: var(--font-xs);
+  color: var(--ColorText);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cc-more-item:hover,
+.cc-more-item:focus-visible {
+  background: #eef1f2;
+  outline: none;
 }
 .cc-var-selected-pattern {
   font-size: var(--font-sm);
@@ -429,7 +485,7 @@ body {
   gap: var(--sp-4);
   flex-wrap: nowrap;
 }
-.nowrap{
+.nowrap {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
