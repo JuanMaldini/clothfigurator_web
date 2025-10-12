@@ -55,8 +55,7 @@ body {
   font-size: var(--font-sm);
 }
 .sp-btn,
-.sp-export-btn,
-.cc-sub-btn {
+.sp-export-btn {
   --_bg: #eef1f2;
   --_bg-hover: #e3e7e9;
   --_bg-active: #d8dde0;
@@ -74,31 +73,101 @@ body {
   transition: background var(--tr-fast), border-color var(--tr-fast),
     color var(--tr-fast), box-shadow var(--tr-fast);
 }
-.sp-btn:hover,
-.sp-export-btn:hover,
-.cc-sub-btn:hover {
-  background: var(--_bg-hover);
+@media (hover: hover) and (pointer: fine) {
+  .sp-btn:hover,
+  .sp-export-btn:hover {
+    background: var(--_bg-hover);
+  }
 }
 .sp-btn:active,
-.sp-export-btn:active,
-.cc-sub-btn:active {
+.sp-export-btn:active {
   background: var(--_bg-active);
 }
 .sp-btn:focus-visible,
-.sp-export-btn:focus-visible,
-.cc-sub-btn:focus-visible {
+.sp-export-btn:focus-visible {
   box-shadow: 0 0 0 2px var(--ColorBackground), 0 0 0 4px var(--ColorFocus);
 }
 .sp-export-btn {
   font-weight: 600;
 }
+
+/* Minimal link-style subcollection buttons with animated underline */
 .cc-sub-btn {
-  font-weight: 500;
+  /* reset the shared button chrome */
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  /* text presentation */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--ColorText);
+  font-weight: 600;
+  line-height: 1.2;
+  position: relative;
+}
+.cc-sub-btn:active {
+  background: transparent;
+}
+.cc-sub-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: var(--ColorBackgroundSelected);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--tr-fast);
+  border-radius: 1px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cc-sub-btn:hover::after {
+    transform: scaleX(1);
+  }
 }
 .cc-sub-btn.is-selected {
-  background: var(--ColorBackgroundSelected);
-  color: #fff;
-  border-color: var(--ColorBackgroundSelected);
+  color: var(--ColorBackgroundSelected);
+  background: transparent;
+  border-color: transparent;
+}
+.cc-sub-btn.is-selected::after {
+  transform: scaleX(1);
+}
+.cc-sub-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ColorBackground), 0 0 0 4px var(--ColorFocus);
+}
+
+/* Reduced motion: make all transitions near-instant */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+}
+
+.altura{
+  min-height: 2rem;
+}
+
+.nobuttonstyle{
+  border: none;
+  background: none;
+  padding: .5rem;
+  transition: background var(--tr-med);
+}
+.nobuttonstyle:hover{
+  background: hsl(0, 0%, 90%);
+  border-radius: var(--radius-sm);
+}
+
+.cursorpointer{
+  cursor: pointer;
 }
 
 .sp-panel {
@@ -295,12 +364,14 @@ body {
   transition: opacity 0.15s ease;
   z-index: 2;
 }
-.cc-var-box:hover::after {
-  opacity: 1;
-  transform: translate(-50%, -12px);
-}
-.cc-var-box:hover::before {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .cc-var-box:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -12px);
+  }
+  .cc-var-box:hover::before {
+    opacity: 1;
+  }
 }
 .cc-var-selected {
   margin-top: var(--sp-2);
@@ -551,15 +622,18 @@ body {
   .sp-header {
     padding: var(--sp-2) var(--sp-2);
   }
-  .sp-export-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--sp-1);
-  }
 }
+/* .sp-export-row layout override removed (legacy) */
 
 /* Removed old react-sidebar width tweaks (unused) */
 /* Landing styles */
+@media (hover: none) and (pointer: coarse) {
+  .cc-var-box::after,
+  .cc-var-box::before {
+    content: none;
+  }
+}
+
 .landing-root {
   background: #18181a;
   min-height: 100vh;
@@ -636,10 +710,7 @@ body {
 /* Removed legacy react-sidebar shells */
 
 /* topmost close button inside header */
-.sp-close-btn {
-  z-index: 3;
-  position: relative;
-}
+
 
 /*
 .sp-viewrotator-section {
