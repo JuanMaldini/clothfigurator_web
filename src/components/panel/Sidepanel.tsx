@@ -5,16 +5,17 @@ import React, {
   useCallback,
   useRef,
 } from "react";
-import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
+// RxDotsHorizontal
+// import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
-import { RxReset, RxDotsHorizontal } from "react-icons/rx";
+import { RxReset } from "react-icons/rx";
 import { sendUE } from "../arcware/ps-functions";
 import { triggerScreenshot } from "../screenshot/screenshot";
 import "./Sidepanel.css";
 import { setCurrentVariation } from "../../state/currentVariation";
 import { buildMaterialInstanceName } from "../../utils/text";
 import { LiaTintSolid } from "react-icons/lia";
-import { importModel, importTexture } from "./importActions";
+// import { importModel, importTexture } from "./importActions";
 
 declare global {
   interface Window {
