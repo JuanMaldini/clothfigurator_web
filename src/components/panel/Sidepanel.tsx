@@ -1,13 +1,20 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef,
+} from "react";
 import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
-import { RxReset } from "react-icons/rx";
+import { RxReset, RxDotsHorizontal } from "react-icons/rx";
 import { sendUE } from "../arcware/ps-functions";
 import { triggerScreenshot } from "../screenshot/screenshot";
 import "./Sidepanel.css";
 import { setCurrentVariation } from "../../state/currentVariation";
 import { buildMaterialInstanceName } from "../../utils/text";
 import { LiaTintSolid } from "react-icons/lia";
+import { importModel, importTexture } from "./importActions";
 
 declare global {
   interface Window {
@@ -35,40 +42,42 @@ const Sidepanel: React.FC<SidepanelProps> = ({
         {showClose && (
           <div
             onClick={onRequestClose}
-            className="sp-export-btn sp-close-btn"
+            className="nobuttonstyle"
             role="button"
             tabIndex={0}
           >
-            Close
+            X
           </div>
         )}
       </div>
       <div className="sp-body" id="sp-body">
         <section className="sp-section">
-          <div className="sp-row">
+          <div className="altura  sp-row">
             <div className="tint-header-wrap">
               <button
                 type="button"
-                className={`sp-export-btn nowrap ${tintOpen ? " is-open" : ""}`}
+                className={`cc-sub-btn nowrap ${tintOpen ? " is-open" : ""}`}
                 onClick={() => setTintOpen((o) => !o)}
               >
-                <span className="sp-title">Tint</span>
+                <span className="sp-title cursorpointer">Tint</span>
                 <LiaTintSolid />
               </button>
               <button
                 type="button"
-                className="sp-export-btn nowrap "
+                className="nobuttonstyle nowrap "
                 aria-label="Reset tint to white"
                 title="Reset tint to white"
-                onClick={() => setTintResetCounter(c => c + 1)}
+                onClick={() => setTintResetCounter((c) => c + 1)}
               >
                 <RxReset />
               </button>
             </div>
             <div className="sp-export-actions">
-              <ExportPDFButton mode="screenshot" />
+              {/*}
+              <ExportPDFButton className="nobuttonstyle" mode="screenshot" />
+              */}
               <button
-                className="sp-export-btn"
+                className="cc-sub-btn"
                 title="Take a screenshot of the current view"
                 onClick={triggerScreenshot}
               >
@@ -138,6 +147,7 @@ const composeVariationString = (v: any): string => {
   if (name && code) return code.includes(name) ? name : `${name} ${code}`;
   return (name || code || "").trim();
 };
+
 const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
   (raw || [])
     .map((r) => {
@@ -209,9 +219,11 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
       return { name, subcollections } as NormalizedCollection;
     })
     .filter((c) => c.subcollections.length);
+
 interface ConfiguratorPanelProps {
   raw: RawCollection[];
 }
+
 const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
   const data = useMemo(() => normalizeData(raw), [raw]);
   // Unificado: índice de colección y subcolección seleccionada
@@ -278,6 +290,9 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
     if (!selectedLabel) return null;
     return variations.find((v) => v.label === selectedLabel) || null;
   }, [variations, selectedLabel]);
+  // Popover menu for more actions (no functionality yet)
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLSpanElement | null>(null);
   const selectCollection = useCallback(
     (idx: number) => {
       const first = data[idx]?.subcollections[0]?.name || null;
@@ -327,6 +342,31 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
     sendVariation(first);
   }, [selection.subName, variations]);
 
+  // Close menu when selection changes
+  useEffect(() => {
+    setMoreOpen(false);
+  }, [selectedVar?.label, selection.subName]);
+
+  // Close on outside click and on Escape
+  useEffect(() => {
+    if (!moreOpen) return;
+    const onDocClick = (e: MouseEvent) => {
+      const target = e.target as Node | null;
+      if (moreRef.current && target && !moreRef.current.contains(target)) {
+        setMoreOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMoreOpen(false);
+    };
+    document.addEventListener("mousedown", onDocClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDocClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [moreOpen]);
+
   return (
     <div aria-label="Configurador" className="cc-root">
       <div className="cc-collections-row">
@@ -371,11 +411,9 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
         </div>
         <div></div>
       </div>
-      {currentSub?.description ? (
-        <div className="cc-sub-desc" aria-live="polite">
-          {renderDesc(currentSub.description, currentSub.name)}
-        </div>
-      ) : null}
+
+{/*
+}
       {selectedVar ? (
         <div className="cc-var-selected" aria-live="polite">
           <span className="cc-var-selected-name">
@@ -387,8 +425,52 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
               {selectedVar.pattern}
             </span>
           ) : null}
+
+          <span className="cc-more" ref={moreRef}>
+            <button
+              type="button"
+              className="cc-icon-btn"
+              title="Más opciones"
+              aria-label="Más opciones"
+              aria-haspopup="menu"
+              aria-expanded={moreOpen}
+              aria-controls="cc-more-menu"
+              onClick={() => setMoreOpen((o) => !o)}
+            >
+              <RxDotsHorizontal />
+            </button>
+            {moreOpen ? (
+              <div className="cc-more-menu" role="menu" id="cc-more-menu">
+                <button
+                  type="button"
+                  className="cc-more-item"
+                  role="menuitem"
+                  onClick={async () => {
+                    await importModel();
+                    setMoreOpen(false);
+                  }}
+                >
+                  Import Model
+                </button>
+                <button
+                  type="button"
+                  className="cc-more-item"
+                  role="menuitem"
+                  onClick={async () => {
+                    await importTexture();
+                    setMoreOpen(false);
+                  }}
+                >
+                  Import Texture
+                </button>
+              </div>
+            ) : null}
+          </span>
+
         </div>
       ) : null}
+*/}
+
       <div>
         <div className="cc-var-grid" aria-label="Variaciones">
           {variations.map((v, idx) => {
@@ -419,14 +501,21 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
             );
           })}
         </div>
-        {selectedVar?.imageLarge ? (
-          <div className="cc-var-preview">
-            <div className="cc-var-preview-img-wrap">
-              <img src={selectedVar.imageLarge} alt={selectedVar.label} />
-            </div>
-          </div>
-        ) : null}
       </div>
+
+      {currentSub?.description ? (
+        <div className="cc-sub-desc" aria-live="polite">
+          {renderDesc(currentSub.description, currentSub.name)}
+        </div>
+      ) : null}
+
+      {selectedVar?.imageLarge ? (
+        <div className="cc-var-preview">
+          <div className="cc-var-preview-img-wrap">
+            <img src={selectedVar.imageLarge} alt={selectedVar.label} />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };
