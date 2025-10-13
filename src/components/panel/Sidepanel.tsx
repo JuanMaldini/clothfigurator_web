@@ -5,17 +5,17 @@ import React, {
   useCallback,
   useRef,
 } from "react";
-// RxDotsHorizontal
-// import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
+import { ExportPDFButton } from "../pdfConfigurator/pdfGenerator";
 import ColorTint from "../colorTint/colorTint";
-import { RxReset } from "react-icons/rx";
+import { RxReset, RxDotsHorizontal } from "react-icons/rx";
 import { sendUE } from "../arcware/ps-functions";
 import { triggerScreenshot } from "../screenshot/screenshot";
 import "./Sidepanel.css";
 import { setCurrentVariation } from "../../state/currentVariation";
 import { buildMaterialInstanceName } from "../../utils/text";
 import { LiaTintSolid } from "react-icons/lia";
-// import { importModel, importTexture } from "./importActions";
+import { importModel, importTexture } from "./importActions";
+
 
 declare global {
   interface Window {
@@ -74,9 +74,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
               </button>
             </div>
             <div className="sp-export-actions">
-              {/*}
               <ExportPDFButton className="nobuttonstyle" mode="screenshot" />
-              */}
               <button
                 className="cc-sub-btn"
                 title="Take a screenshot of the current view"
@@ -95,6 +93,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
           <ConfiguratorPanel raw={data} />
         </section>
       </div>
+
     </div>
   );
 };
@@ -413,8 +412,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
         <div></div>
       </div>
 
-{/*
-}
       {selectedVar ? (
         <div className="cc-var-selected" aria-live="polite">
           <span className="cc-var-selected-name">
@@ -426,7 +423,6 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
               {selectedVar.pattern}
             </span>
           ) : null}
-
           <span className="cc-more" ref={moreRef}>
             <button
               type="button"
@@ -467,10 +463,8 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
               </div>
             ) : null}
           </span>
-
         </div>
       ) : null}
-*/}
 
       <div>
         <div className="cc-var-grid" aria-label="Variaciones">
