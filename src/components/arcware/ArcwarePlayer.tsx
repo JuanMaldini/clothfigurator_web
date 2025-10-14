@@ -8,11 +8,21 @@ import collections from "../panel/collections.json";
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(true); //AQUI DEFINIR INITIAL STATE
+  // In editor (dev) mode, do not load Arcware: make IDs undefined
+  const isEditor = import.meta.env.DEV;
+  const shareId = isEditor
+    ? undefined
+    : (import.meta.env.VITE_ARCWARE_SHARE_ID as string | undefined);
+  const projectId = isEditor
+    ? undefined
+    : (import.meta.env.VITE_ARCWARE_PROJECT_ID as string | undefined);
   useEffect(() => {
+    // Skip initializing Arcware when IDs are not available (e.g., editor/preview)
+    if (!shareId || !projectId) return;
     const { Application } = ArcwareInit(
       {
-        shareId: import.meta.env.VITE_ARCWARE_SHARE_ID as string,
-        projectId: import.meta.env.VITE_ARCWARE_PROJECT_ID as string,
+        shareId: shareId as string,
+        projectId: projectId as string,
       },
       {
         initialSettings: {
@@ -44,7 +54,7 @@ function ArcwarePlayer() {
         Application.emitUIInteraction?.(payload as any);
       };
     } catch {}
-  }, []);
+  }, [shareId, projectId]);
   return (
     <div className={"aw-shell" + (open ? " is-open" : "")}>
       <main className="aw-main">
