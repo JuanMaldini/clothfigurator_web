@@ -1,11 +1,8 @@
-
-
 function App() {
-
 
   return (
     <main>
-
+      <p>Hello</p>
     </main>
   );
 }
