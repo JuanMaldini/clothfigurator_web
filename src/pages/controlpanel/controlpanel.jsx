@@ -61,6 +61,10 @@ function usePanelState(storageKey) {
       };
       if (f.type.startsWith("image/")) {
         item.url = URL.createObjectURL(f);
+        item.imgLoading = true;
+      } else if (ext === ".fbx") {
+        // Precompute object URL for FBX preview; we'll revoke on removal/clear
+        item.url = URL.createObjectURL(f);
       }
       accepted.push(item);
     }
@@ -74,6 +78,11 @@ function usePanelState(storageKey) {
   const accept = () => {
     const meta = items.map(({ id, name, size, type, ext }) => ({ id, name, size, type, ext }));
     saveItems(storageKey, meta);
+    // Persist array of integer indices for models only (.fbx/.glb)
+    const indices = items
+      .filter((it) => (it.ext === ".fbx" || it.ext === ".glb") && Number.isFinite(it.index))
+      .map((it) => Number(it.index));
+    saveItems(`${storageKey}_indices`, indices);
     setMessage("Saved locally (metadata)");
   };
 
@@ -82,14 +91,28 @@ function usePanelState(storageKey) {
     items.forEach((it) => it.url && URL.revokeObjectURL(it.url));
     setItems([]);
     clearItems(storageKey);
+    clearItems(`${storageKey}_indices`);
     setMessage("Cleared");
   };
 
   const removeById = (id) => {
-    setItems((curr) => curr.filter((it) => it.id !== id));
+    setItems((curr) => {
+      const it = curr.find((x) => x.id === id);
+      if (it?.url) try { URL.revokeObjectURL(it.url); } catch {}
+      return curr.filter((x) => x.id !== id);
+    });
   };
 
-  return { items, setItems, message, setMessage, addFiles, accept, clear, removeById };
+  const markLoaded = (id) => {
+    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, imgLoading: false } : it)));
+  };
+
+  const setItemIndex = (id, value) => {
+    const intVal = Number.parseInt(value, 10);
+    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, index: Number.isFinite(intVal) ? intVal : undefined } : it)));
+  };
+
+  return { items, setItems, message, setMessage, addFiles, accept, clear, removeById, markLoaded, setItemIndex };
 }
 
 function DropZone({ title, description, acceptExts, state }) {
@@ -152,8 +175,24 @@ function DropZone({ title, description, acceptExts, state }) {
         {state.items.map((it) => (
           <li key={it.id} className="item">
             <div className="thumb">
-              {it.url ? (
-                <img src={it.url} alt={it.name} />
+              {it.ext === ".fbx" && it.url ? (
+                <div className="thumb-loading">
+                  <div className="bar" />
+                </div>
+              ) : it.url ? (
+                <>
+                  {it.imgLoading && (
+                    <div className="thumb-loading">
+                      <div className="bar" />
+                    </div>
+                  )}
+                  <img
+                    src={it.url}
+                    alt={it.name}
+                    onLoad={() => state.markLoaded(it.id)}
+                    className={it.imgLoading ? "is-loading" : ""}
+                  />
+                </>
               ) : (
                 <span className="thumb-icon" aria-hidden>■</span>
               )}
@@ -161,6 +200,19 @@ function DropZone({ title, description, acceptExts, state }) {
             <div className="meta">
               <div className="name" title={it.name}>{it.name}</div>
               <div className="sub">{bytesToKB(it.size)} KB · {it.ext}</div>
+            </div>
+            <div className="index">
+              {(it.ext === ".fbx" || it.ext === ".glb") ? (
+                <input
+                  className="index-input"
+                  type="number"
+                  step={1}
+                  min={0}
+                  placeholder="#"
+                  value={typeof it.index === "number" ? it.index : ""}
+                  onChange={(e) => state.setItemIndex(it.id, e.target.value)}
+                />
+              ) : null}
             </div>
             <button className="delete" type="button" aria-label="Delete" onClick={() => state.removeById(it.id)}>
               ×

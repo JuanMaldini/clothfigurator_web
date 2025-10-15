@@ -4,9 +4,8 @@ import "./Navbar.css";
 const Navbar = () => (
     <section >
         <header className="topsColor" >
-        <h1>Clothfigurator</h1>
+            <Link to="/" className="navbar-brand">Clothfigurator</Link>
             <nav>
-                <Link to="/">Home</Link>
                 <Link to="/projects">Projects</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/controlpanel">Control Panel</Link>
