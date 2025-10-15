@@ -1,12 +1,7 @@
-// Minimal Web Vitals logging without external deps.
-// Measures LCP, FID (approximated as input delay), and CLS via PerformanceObserver.
-
 function log(metric, value) {
-  // Keep logs concise and consistent
   console.log(`[web-vitals] ${metric}:`, value);
 }
 
-// Cumulative Layout Shift
 (function trackCLS() {
   if (!('PerformanceObserver' in window)) return;
   let cls = 0;
@@ -22,7 +17,6 @@ function log(metric, value) {
   } catch {}
 })();
 
-// Largest Contentful Paint
 (function trackLCP() {
   if (!('PerformanceObserver' in window)) return;
   let lcp = 0;
@@ -40,7 +34,6 @@ function log(metric, value) {
   } catch {}
 })();
 
-// First Input Delay (approx): uses Event timing entries, logs processingStart - startTime
 (function trackFID() {
   if (!('PerformanceObserver' in window)) return;
   const entryHandler = (list) => {
@@ -58,4 +51,4 @@ function log(metric, value) {
   } catch {}
 })();
 
-export {}; // keep as ESM module
+export {};
