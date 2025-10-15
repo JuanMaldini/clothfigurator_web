@@ -1,0 +1,35 @@
+html, body, #root {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+}
+
+.app-layout {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+}
+
+.app-header {
+	grid-row: 1;
+}
+
+.app-body {
+	grid-row: 2;
+	min-height: 0;
+}
+
+.app-footer {
+	grid-row: 3;
+}
+
+.backgroundColor {
+  background-color: hsl(0, 0%, 95%);
+}
+
+.topsColor {
+  background-color: hsl(0, 0%, 90%);
+filter: drop-shadow(0px 0px 12px hsl(0, 0%, 80%));
+}
