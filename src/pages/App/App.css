@@ -26,10 +26,10 @@ body {
 }
 
 .backgroundColor {
-  background-color: hsl(0, 0%, 95%);
+  background-color: hsl(0, 0%, 90%);
 }
 
 .topsColor {
-  background-color: hsl(0, 0%, 90%);
+  background-color: hsl(0, 0%, 85%);
 filter: drop-shadow(0px 0px 12px hsl(0, 0%, 80%));
 }
