@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 html, body, #root {
 	height: 100%;
 }
 
 body {
 	margin: 0;
+	font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 }
 
 .app-layout {
@@ -26,10 +29,10 @@ body {
 }
 
 .backgroundColor {
-  background-color: hsl(0, 0%, 90%);
+  background-color: hsl(0, 0%, 85%);
 }
 
 .topsColor {
-	background-color: hsl(0, 0%, 90%);
+	background-color: hsl(0, 0%, 95%);
 	filter: drop-shadow(0px 0px 12px hsl(0, 0%, 70%));
 }

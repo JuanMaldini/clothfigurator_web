@@ -1,11 +1,9 @@
-/* Full-bleed section that centers content */
 .users-page {
 	display: grid;
 	place-items: center;
 	padding: 4rem 1rem;
 }
 
-/* The login card: minimalist, elegant */
 .login-card {
 	width: 100%;
 	max-width: 420px;
@@ -46,7 +44,6 @@
 	border-radius: 8px;
 	background: #fff;
 	color: #111827;
-	outline: none;
 }
 
 .input:focus {

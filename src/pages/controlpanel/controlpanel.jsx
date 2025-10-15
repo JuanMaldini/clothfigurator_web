@@ -35,6 +35,21 @@ function usePanelState(storageKey) {
   useEffect(() => {
     const saved = loadItems(storageKey);
     if (saved?.length) setItems((curr) => dedupeBySignature([...curr, ...saved]));
+
+    // Load saved indices map and merge into items by id (fallback to name if needed)
+    const savedIndices = loadItems(`${storageKey}_indices`);
+    if (Array.isArray(savedIndices) && savedIndices.length) {
+      setItems((curr) => curr.map((it) => {
+        // Support two shapes:
+        // 1) legacy array of numbers (flat) — ignore for per-item mapping
+        // 2) array of { id, name, indices: number[] }
+        const entry = savedIndices.find((e) => (e && typeof e === 'object' && (e.id === it.id || e.name === it.name)));
+        if (entry && Array.isArray(entry.indices)) {
+          return { ...it, indices: entry.indices.slice(0, 50) }; // cap for safety
+        }
+        return it;
+      }));
+    }
   }, [storageKey]);
 
   // Utility to add files (from drop or picker)
@@ -58,6 +73,8 @@ function usePanelState(storageKey) {
         type: f.type,
         ext,
         file: f,
+        indices: [],
+        indexDraft: "",
       };
       if (f.type.startsWith("image/")) {
         item.url = URL.createObjectURL(f);
@@ -78,11 +95,11 @@ function usePanelState(storageKey) {
   const accept = () => {
     const meta = items.map(({ id, name, size, type, ext }) => ({ id, name, size, type, ext }));
     saveItems(storageKey, meta);
-    // Persist array of integer indices for models only (.fbx/.glb)
-    const indices = items
-      .filter((it) => (it.ext === ".fbx" || it.ext === ".glb") && Number.isFinite(it.index))
-      .map((it) => Number(it.index));
-    saveItems(`${storageKey}_indices`, indices);
+    // Persist per-item indices for models only (.fbx/.glb)
+    const indicesMap = items
+      .filter((it) => (it.ext === ".fbx" || it.ext === ".glb") && Array.isArray(it.indices) && it.indices.length)
+      .map((it) => ({ id: it.id, name: it.name, indices: it.indices.map((n) => Number(n)) }));
+    saveItems(`${storageKey}_indices`, indicesMap);
     setMessage("Saved locally (metadata)");
   };
 
@@ -107,16 +124,33 @@ function usePanelState(storageKey) {
     setItems((curr) => curr.map((it) => (it.id === id ? { ...it, imgLoading: false } : it)));
   };
 
-  const setItemIndex = (id, value) => {
-    const intVal = Number.parseInt(value, 10);
-    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, index: Number.isFinite(intVal) ? intVal : undefined } : it)));
+  const setIndexDraft = (id, value) => {
+    // keep only digits and optional spaces/commas, but store raw; actual parse on add
+    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, indexDraft: value } : it)));
   };
 
-  return { items, setItems, message, setMessage, addFiles, accept, clear, removeById, markLoaded, setItemIndex };
+  const addIndexToItem = (id) => {
+    setItems((curr) => curr.map((it) => {
+      if (it.id !== id) return it;
+      const parsed = Number.parseInt(String(it.indexDraft ?? "").trim(), 10);
+      if (!Number.isFinite(parsed)) return { ...it, indexDraft: it.indexDraft };
+      const next = Array.isArray(it.indices) ? it.indices.slice() : [];
+      if (!next.includes(parsed)) next.push(parsed);
+      next.sort((a, b) => a - b);
+      return { ...it, indices: next, indexDraft: "" };
+    }));
+  };
+
+  const removeIndexFromItem = (id, value) => {
+    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, indices: (it.indices || []).filter((n) => n !== value) } : it)));
+  };
+
+  return { items, setItems, message, setMessage, addFiles, accept, clear, removeById, markLoaded, setIndexDraft, addIndexToItem, removeIndexFromItem };
 }
 
 function DropZone({ title, description, acceptExts, state }) {
   const inputRef = useRef(null);
+  const [openForId, setOpenForId] = useState(null);
 
   const onDrop = (e) => {
     e.preventDefault();
@@ -173,7 +207,7 @@ function DropZone({ title, description, acceptExts, state }) {
 
       <ul className="items">
         {state.items.map((it) => (
-          <li key={it.id} className="item">
+          <li key={it.id} className="item" style={{ position: 'relative' }}>
             <div className="thumb">
               {it.ext === ".fbx" && it.url ? (
                 <div className="thumb-loading">
@@ -201,17 +235,47 @@ function DropZone({ title, description, acceptExts, state }) {
               <div className="name" title={it.name}>{it.name}</div>
               <div className="sub">{bytesToKB(it.size)} KB · {it.ext}</div>
             </div>
+            {openForId === it.id && (
+              <div className="index-pop" role="dialog" aria-label="Indices editor">
+                <div className="index-stack">
+                  <div className="index-row">
+                    <input
+                      className="index-input"
+                      type="number"
+                      step={1}
+                      min={0}
+                      placeholder="#"
+                      value={it.indexDraft ?? ""}
+                      onChange={(e) => state.setIndexDraft(it.id, e.target.value)}
+                      onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); state.addIndexToItem(it.id); } }}
+                    />
+                    <button type="button" className="btn small ghost" onClick={() => state.addIndexToItem(it.id)}>+</button>
+                    <button type="button" className="btn small" onClick={() => setOpenForId(null)}>Done</button>
+                  </div>
+                  {!!(it.indices && it.indices.length) && (
+                    <div className="index-chips">
+                      {it.indices.map((num) => (
+                        <span key={num} className="chip" title={`Index ${num}`}>
+                          {num}
+                          <button type="button" className="chip-x" aria-label={`Remove ${num}`} onClick={() => state.removeIndexFromItem(it.id, num)}>×</button>
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
             <div className="index">
               {(it.ext === ".fbx" || it.ext === ".glb") ? (
-                <input
-                  className="index-input"
-                  type="number"
-                  step={1}
-                  min={0}
-                  placeholder="#"
-                  value={typeof it.index === "number" ? it.index : ""}
-                  onChange={(e) => state.setItemIndex(it.id, e.target.value)}
-                />
+                <button
+                  className="icon-btn"
+                  type="button"
+                  aria-label="Set indices"
+                  aria-expanded={openForId === it.id}
+                  onClick={() => setOpenForId(openForId === it.id ? null : it.id)}
+                >
+                  #
+                </button>
               ) : null}
             </div>
             <button className="delete" type="button" aria-label="Delete" onClick={() => state.removeById(it.id)}>
