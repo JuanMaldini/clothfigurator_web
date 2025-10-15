@@ -1,10 +1,13 @@
+
 function App() {
 
   return (
-    <main>
-      <p>Hello</p>
-    </main>
-  );
+    <>
+      <h1>Website</h1>
+      <div>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
