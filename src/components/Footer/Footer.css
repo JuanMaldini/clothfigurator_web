@@ -41,3 +41,16 @@ footer a:focus-visible {
 	outline: 2px solid #93c5fd; /* blue-300 */
 	outline-offset: 2px;
 }
+
+/* transient highlight for footer contact link */
+.contact-link.highlight {
+	animation: footerHighlight 1600ms ease;
+}
+
+@keyframes footerHighlight {
+	0% { background-color: #fef3c7; /* amber-100 */ }
+	25% { background-color: #fde68a; /* amber-200 */ }
+	50% { background-color: #fef3c7; }
+	75% { background-color: #fde68a; }
+	100% { background-color: transparent; }
+}

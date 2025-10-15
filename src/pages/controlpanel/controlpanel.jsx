@@ -292,21 +292,84 @@ export default function ControlPanel() {
   const models = usePanelState(MODELS_KEY);
   const textures = usePanelState(TEXTURES_KEY);
 
+  const selector = [
+    {
+      id: 1,
+      label: 'Clothfigurator',
+      src: '../../../public/projects/clothfiguraor/clothfigurator.png'
+    },
+    {
+      id: 2,
+      label: 'Office',
+      src: '../../../public/projects/v_office_01/office_01.png'
+    },
+    {
+      id: 3,
+      label: 'Podfigurador',
+      src: '../../../public/projects/v_configurator_01/v_configurator_01.png'
+    },
+  ];
+
+  const [selected, setSelected] = useState(1);
+
+  const isEnabled = selected === 1;
+
+  const handleSelect = (id) => {
+    if (id === selected) return;
+    // Clear both panels when switching selection
+    try { models.clear(); } catch {}
+    try { textures.clear(); } catch {}
+    setSelected(id);
+  };
+
   return (
     <section className="control-panel">
-      <div className="panel-grid">
-        <DropZone
-          title="3D Models"
-          description="Drag & drop .glb or .fbx, or click to select."
-          acceptExts={modelsAccept}
-          state={models}
-        />
-        <DropZone
-          title="Textures"
-          description="Drag & drop .png or .jpg/.jpeg images, or click to select."
-          acceptExts={texturesAccept}
-          state={textures}
-        />
+      <div className="selector-grid" role="group" aria-label="Selector de modo">
+        {selector.map((opt) => (
+          <button
+            key={opt.id}
+            type="button"
+            className={`selector-tile${selected === opt.id ? ' is-selected' : ''}`}
+            onClick={() => handleSelect(opt.id)}
+            aria-pressed={selected === opt.id}
+            title={opt.label}
+          >
+            <img src={opt.src} alt={opt.label} />
+            <span className="selector-label">{opt.label}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className={`panel-grid${!isEnabled ? ' is-disabled' : ''}`} aria-disabled={!isEnabled}>
+        <div className="panel-wrap">
+          {!isEnabled && <div className="panel-overlay" aria-hidden />}
+          <DropZone
+            title="3D Models"
+            description="Drag & drop models down here."
+            acceptExts={modelsAccept}
+            state={models}
+          />
+        </div>
+        <div className="panel-wrap">
+          {!isEnabled && <div className="panel-overlay" aria-hidden />}
+          <DropZone
+            title="Textures"
+            description="Drag & drop images down here."
+            acceptExts={texturesAccept}
+            state={textures}
+          />
+        </div>
+      </div>
+
+      {/* bottom mini section: texto | texto | Launch */}
+      <div className="launch-section">
+        <div className="launch-grid">
+          <div className="launch-col">Texto 1</div>
+          <div className="launch-col">Texto 2</div>
+          <div className="launch-col end">
+            <button className="btn launch-btn" type="button">Launch</button>
+          </div>
+        </div>
       </div>
     </section>
   );
