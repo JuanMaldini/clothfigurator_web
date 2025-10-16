@@ -42,7 +42,7 @@ export const cognitoAuthConfig = {
 };
 
 // LOG: Configuración final
-console.log("🔧 OIDC Config - Configuración completa:", cognitoAuthConfig);
+console.log("🔧 OIDC Config - Configuración completa:");
 
 /**
  * Función helper para construir la URL de logout de Cognito
