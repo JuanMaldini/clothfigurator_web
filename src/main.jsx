@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "react-oidc-context";
 import App from "./pages/App/App.jsx";
 import { cognitoAuthConfig } from "./config/oidcConfig.js";
-import "./webVitals.js";
 
 import "react-color-palette/css";
 

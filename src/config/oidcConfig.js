@@ -14,24 +14,18 @@ export const cognitoAuthConfig = {
   // Client ID de la aplicación
   client_id: import.meta.env.VITE_AWS_COGNITO_CLIENT_ID,
 
-  // URL de redirección después del login
   redirect_uri: import.meta.env.VITE_REDIRECT_URI || "http://localhost:5173",
 
-  // URL de redirección después del logout
   post_logout_redirect_uri:
     import.meta.env.VITE_LOGOUT_URI || "http://localhost:5173",
 
-  // Tipo de respuesta (code para Authorization Code Flow)
   response_type: "code",
 
-  // Scopes solicitados
   scope: "openid email profile phone aws.cognito.signin.user.admin",
 
-  // Configuraciones adicionales
-  automaticSilentRenew: true, // Renovación automática de tokens
-  loadUserInfo: true, // Cargar información del usuario
+  automaticSilentRenew: true,
+  loadUserInfo: true,
 
-  // Metadata adicional (opcional)
   metadata: {
     issuer: import.meta.env.VITE_AWS_COGNITO_DOMAIN,
     authorization_endpoint: `${import.meta.env.VITE_AWS_COGNITO_DOMAIN}/oauth2/authorize`,
@@ -41,12 +35,8 @@ export const cognitoAuthConfig = {
   },
 };
 
-// LOG: Configuración final
 console.log("🔧 OIDC Config - Configuración completa:");
 
-/**
- * Función helper para construir la URL de logout de Cognito
- */
 export const getCognitoLogoutUrl = () => {
   const clientId = import.meta.env.VITE_AWS_COGNITO_CLIENT_ID;
   const logoutUri = import.meta.env.VITE_LOGOUT_URI || "http://localhost:5173";

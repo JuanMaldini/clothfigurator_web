@@ -13,12 +13,10 @@ import APrivatenullsample from "../pages/APrivateNull/APrivateNull.jsx";
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Rutas públicas */}
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/login" element={<LoginPage />} />
 
-      {/* Rutas protegidas - Solo accesibles con login */}
       <Route
         path="/controlpanel"
         element={
