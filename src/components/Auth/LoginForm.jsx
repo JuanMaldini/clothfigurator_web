@@ -76,6 +76,7 @@ const LoginForm = () => {
           <div className="auth-error">{error || authError}</div>
         )}
 
+
         <form className="auth-form" onSubmit={handleSubmit}>
           {/* Campo de email/username */}
           <div className="form-field">
