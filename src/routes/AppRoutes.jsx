@@ -6,6 +6,7 @@ import ControlPanel from "../pages/controlpanel/controlpanel.jsx";
 import VConfigurator from "../pages/InteractiveProjects/Configurator_01/V_Configurator_01.jsx";
 import VOffice01 from "../pages/InteractiveProjects/V_Office_01/V_Office_01.jsx";
 import VClothfigurator from "../pages/InteractiveProjects/V_Clothfigurator/V_Clothfigurator.jsx";
+import NotFound from "../pages/NotFound/NotFound.jsx";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
       <Route path="/vconfigurator" element={<VConfigurator />} />
       <Route path="/voffice01" element={<VOffice01 />} />
       <Route path="/vclothfigurator" element={<VClothfigurator />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
