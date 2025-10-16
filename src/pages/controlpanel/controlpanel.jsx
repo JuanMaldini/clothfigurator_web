@@ -404,19 +404,19 @@ export default function ControlPanel() {
     {
       id: 1,
       label: "Clothfigurator",
-      src: "../../../public/projects/clothfiguraor/clothfigurator.png",
+      src: "/projects/clothfiguraor/clothfigurator.png",
       path: "/vclothfigurator",
     },
     {
       id: 2,
       label: "Office",
-      src: "../../../public/projects/v_office_01/office_01.png",
+      src: "/projects/v_office_01/office_01.png",
       path: "/voffice01",
     },
     {
       id: 3,
       label: "Podfigurador",
-      src: "../../../public/projects/v_configurator_01/v_configurator_01.png",
+      src: "/projects/v_configurator_01/v_configurator_01.png",
       path: "/vconfigurator",
     },
   ];
