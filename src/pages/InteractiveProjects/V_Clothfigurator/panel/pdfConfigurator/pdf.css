@@ -1,0 +1,64 @@
+/* Evitar reglas globales que afecten a toda la app */
+.pdf-page {
+    width: 210mm;
+	height: 297mm;
+	background: #fff;
+	color: #111;
+	padding: 4mm;
+	box-sizing: border-box;
+	page-break-after: always;
+}
+.pdf-grid {
+    display: grid;
+	grid-template-rows: 7fr 3fr;
+	height: 100%;
+}
+
+.pdf-row2 {
+    display: grid;
+	grid-template-columns: 1fr 2fr;
+}
+.pdf-section {
+    height: 100%;
+	box-sizing: border-box;
+}
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+@media screen {
+    /* Previsualización sólo del contenedor PDF, sin tocar <body> global */
+    .pdf-page {
+        margin: 16px auto; /* centra horizontalmente la hoja */
+        box-shadow: 0 2px 24px rgba(0, 0, 0, 0.18);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+}
+@media print {
+    html, body {
+        background: transparent;
+	}
+	.pdf-page {
+		box-shadow: none;
+		border: none;
+	}
+}
+
+.red{ background-color: red; }
+.green{ background-color: green; }
+.blue{ background-color: blue; }
+
+.imageFromUnreal{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Solo en el contenedor azul: empujar la imagen hacia abajo */
+.pdf-row2 .blue{
+    display: flex;
+    flex-direction: column;
+}
+.pdf-row2 .blue .imageFromUnreal{
+    margin-top: auto;
+}

@@ -3,19 +3,11 @@ import { useAuth } from "react-oidc-context";
 import "./Navbar.css";
 import Logo from "../../../public/icons/Logo.png";
 
-/**
- * Navbar - Barra de navegación principal con OIDC
- *
- * Muestra enlaces dinámicos basados en el estado de autenticación.
- * - Si está logueado: muestra Control Panel y icono de logout (✕)
- * - Si no está logueado: muestra botón de Login
- */
+
 const Navbar = () => {
   const auth = useAuth();
 
-  /**
-   * Maneja el logout del usuario con Cognito OIDC
-   */
+
   const handleLogout = async () => {
     try {
       await auth.removeUser();

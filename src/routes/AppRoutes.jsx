@@ -8,13 +8,8 @@ import VOffice01 from "../pages/InteractiveProjects/V_Office_01/V_Office_01.jsx"
 import VClothfigurator from "../pages/InteractiveProjects/V_Clothfigurator/V_Clothfigurator.jsx";
 import NotFound from "../pages/NotFound/NotFound.jsx";
 import ProtectedRoute from "../components/Auth/ProtectedRoute.jsx";
+import APrivatenullsample from "../pages/APrivateNull/APrivateNull.jsx";
 
-/**
- * AppRoutes - Configuración de rutas de la aplicación con OIDC
- *
- * Define todas las rutas públicas y privadas.
- * Las rutas privadas están protegidas con ProtectedRoute.
- */
 const AppRoutes = () => {
   return (
     <Routes>
@@ -27,32 +22,40 @@ const AppRoutes = () => {
       <Route
         path="/controlpanel"
         element={
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <ControlPanel />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         }
       />
       <Route
         path="/vconfigurator"
         element={
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <VConfigurator />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         }
       />
       <Route
         path="/voffice01"
         element={
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <VOffice01 />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         }
       />
       <Route
         path="/vclothfigurator"
         element={
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <VClothfigurator />
+          // </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/aprivatenullsample"
+        element={
+          <ProtectedRoute>
+            <APrivatenullsample />
           </ProtectedRoute>
         }
       />

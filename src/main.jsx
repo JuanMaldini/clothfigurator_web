@@ -6,9 +6,17 @@ import App from "./pages/App/App.jsx";
 import { cognitoAuthConfig } from "./config/oidcConfig.js";
 import "./webVitals.js";
 
+// LOG: Eventos de autenticación
+const onSigninCallback = () => {
+  console.log("✅ Auth Provider - onSigninCallback ejecutado");
+  window.history.replaceState({}, document.title, window.location.pathname);
+};
+
+console.log("🚀 Main.jsx - Iniciando aplicación con AuthProvider");
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider {...cognitoAuthConfig}>
+    <AuthProvider {...cognitoAuthConfig} onSigninCallback={onSigninCallback}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
