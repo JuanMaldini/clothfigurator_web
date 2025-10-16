@@ -5,7 +5,7 @@ import Logo from "../../../public/icons/Logo.png";
 const Navbar = () => (
     <section >
         <header className="topsColor" >
-            <Link to="/" className="navbar-brand"><img src={Logo} width={32} alt="Clothfigurator Logo" />Clothfigurator</Link>
+            <Link to="/" className="navbar-brand"><img src={Logo} width={32} alt="Clothfigurator Logo" />Vanishing Point 3D</Link>
             <nav>
                 <Link to="/projects">Projects</Link>
                 <Link to="/login">Login</Link>

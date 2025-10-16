@@ -5,7 +5,7 @@ const Home = () => (
     {/* Hero 1 */}
     <div className="hero hero-1">
       <div className="hero-inner">
-        <h1 className="hero-title">Clothfigurator</h1>
+        <h1 className="hero-title">Configurate your experience</h1>
         <p className="hero-sub">Design. Visualize. Iterate.</p>
         <div className="hero-actions">
           <a className="btn" href="/projects">Explore Projects</a>
