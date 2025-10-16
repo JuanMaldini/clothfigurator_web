@@ -7,13 +7,9 @@ import { cognitoAuthConfig } from "./config/oidcConfig.js";
 
 import "react-color-palette/css";
 
-// LOG: Eventos de autenticación
 const onSigninCallback = () => {
-  console.log("✅ Auth Provider - onSigninCallback ejecutado");
   window.history.replaceState({}, document.title, window.location.pathname);
 };
-
-console.log("🚀 Main.jsx - Iniciando aplicación con AuthProvider");
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

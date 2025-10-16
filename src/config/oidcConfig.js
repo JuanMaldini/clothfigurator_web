@@ -35,8 +35,6 @@ export const cognitoAuthConfig = {
   },
 };
 
-console.log("🔧 OIDC Config - Configuración completa:");
-
 export const getCognitoLogoutUrl = () => {
   const clientId = import.meta.env.VITE_AWS_COGNITO_CLIENT_ID;
   const logoutUri = import.meta.env.VITE_LOGOUT_URI || "http://localhost:5173";
