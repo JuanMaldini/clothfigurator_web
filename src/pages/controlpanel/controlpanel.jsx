@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserInfo from "../../components/Auth/UserInfoOidc";
 import "./controlpanel.css";
 import { loadItems, saveItems, clearItems } from "./storage";
 
@@ -441,6 +442,9 @@ export default function ControlPanel() {
 
   return (
     <section className="control-panel">
+      {/* Información del usuario autenticado */}
+      <UserInfo showLogout={false} />
+
       <div className="selector-grid" role="group" aria-label="Selector de modo">
         {selector.map((opt) => (
           <button
