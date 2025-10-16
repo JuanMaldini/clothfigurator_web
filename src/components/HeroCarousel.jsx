@@ -16,8 +16,26 @@ function normalizeItems(items) {
     .filter(Boolean);
 }
 
-const HeroCarousel = ({ items = [], intervalMs = 3500, label = "Hero" }) => {
-  const slides = useMemo(() => normalizeItems(items), [items]);
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+const HeroCarousel = ({
+  items = [],
+  intervalMs = 3500,
+  label = "Hero",
+  random = true,
+}) => {
+  const slides = useMemo(() => {
+    const normalized = normalizeItems(items);
+    return random ? shuffleArray(normalized) : normalized;
+  }, [items, random]);
+
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
