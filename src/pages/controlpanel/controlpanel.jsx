@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./controlpanel.css";
 import { loadItems, saveItems, clearItems } from "./storage";
 
@@ -34,21 +35,29 @@ function usePanelState(storageKey) {
   // Load previously accepted metadata (not blobs)
   useEffect(() => {
     const saved = loadItems(storageKey);
-    if (saved?.length) setItems((curr) => dedupeBySignature([...curr, ...saved]));
+    if (saved?.length)
+      setItems((curr) => dedupeBySignature([...curr, ...saved]));
 
     // Load saved indices map and merge into items by id (fallback to name if needed)
     const savedIndices = loadItems(`${storageKey}_indices`);
     if (Array.isArray(savedIndices) && savedIndices.length) {
-      setItems((curr) => curr.map((it) => {
-        // Support two shapes:
-        // 1) legacy array of numbers (flat) — ignore for per-item mapping
-        // 2) array of { id, name, indices: number[] }
-        const entry = savedIndices.find((e) => (e && typeof e === 'object' && (e.id === it.id || e.name === it.name)));
-        if (entry && Array.isArray(entry.indices)) {
-          return { ...it, indices: entry.indices.slice(0, 50) }; // cap for safety
-        }
-        return it;
-      }));
+      setItems((curr) =>
+        curr.map((it) => {
+          // Support two shapes:
+          // 1) legacy array of numbers (flat) — ignore for per-item mapping
+          // 2) array of { id, name, indices: number[] }
+          const entry = savedIndices.find(
+            (e) =>
+              e &&
+              typeof e === "object" &&
+              (e.id === it.id || e.name === it.name)
+          );
+          if (entry && Array.isArray(entry.indices)) {
+            return { ...it, indices: entry.indices.slice(0, 50) }; // cap for safety
+          }
+          return it;
+        })
+      );
     }
   }, [storageKey]);
 
@@ -87,18 +96,34 @@ function usePanelState(storageKey) {
     }
 
     setItems((curr) => dedupeBySignature([...curr, ...accepted]));
-    if (rejected.length) setMessage(`${rejected.length} file(s) ignored by type`);
+    if (rejected.length)
+      setMessage(`${rejected.length} file(s) ignored by type`);
     else setMessage("");
   };
 
   // Accept = persist metadata only (files remain in-memory for this session)
   const accept = () => {
-    const meta = items.map(({ id, name, size, type, ext }) => ({ id, name, size, type, ext }));
+    const meta = items.map(({ id, name, size, type, ext }) => ({
+      id,
+      name,
+      size,
+      type,
+      ext,
+    }));
     saveItems(storageKey, meta);
     // Persist per-item indices for models only (.fbx/.glb)
     const indicesMap = items
-      .filter((it) => (it.ext === ".fbx" || it.ext === ".glb") && Array.isArray(it.indices) && it.indices.length)
-      .map((it) => ({ id: it.id, name: it.name, indices: it.indices.map((n) => Number(n)) }));
+      .filter(
+        (it) =>
+          (it.ext === ".fbx" || it.ext === ".glb") &&
+          Array.isArray(it.indices) &&
+          it.indices.length
+      )
+      .map((it) => ({
+        id: it.id,
+        name: it.name,
+        indices: it.indices.map((n) => Number(n)),
+      }));
     saveItems(`${storageKey}_indices`, indicesMap);
     setMessage("Saved locally (metadata)");
   };
@@ -115,37 +140,66 @@ function usePanelState(storageKey) {
   const removeById = (id) => {
     setItems((curr) => {
       const it = curr.find((x) => x.id === id);
-      if (it?.url) try { URL.revokeObjectURL(it.url); } catch {}
+      if (it?.url)
+        try {
+          URL.revokeObjectURL(it.url);
+        } catch {}
       return curr.filter((x) => x.id !== id);
     });
   };
 
   const markLoaded = (id) => {
-    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, imgLoading: false } : it)));
+    setItems((curr) =>
+      curr.map((it) => (it.id === id ? { ...it, imgLoading: false } : it))
+    );
   };
 
   const setIndexDraft = (id, value) => {
     // keep only digits and optional spaces/commas, but store raw; actual parse on add
-    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, indexDraft: value } : it)));
+    setItems((curr) =>
+      curr.map((it) => (it.id === id ? { ...it, indexDraft: value } : it))
+    );
   };
 
   const addIndexToItem = (id) => {
-    setItems((curr) => curr.map((it) => {
-      if (it.id !== id) return it;
-      const parsed = Number.parseInt(String(it.indexDraft ?? "").trim(), 10);
-      if (!Number.isFinite(parsed)) return { ...it, indexDraft: it.indexDraft };
-      const next = Array.isArray(it.indices) ? it.indices.slice() : [];
-      if (!next.includes(parsed)) next.push(parsed);
-      next.sort((a, b) => a - b);
-      return { ...it, indices: next, indexDraft: "" };
-    }));
+    setItems((curr) =>
+      curr.map((it) => {
+        if (it.id !== id) return it;
+        const parsed = Number.parseInt(String(it.indexDraft ?? "").trim(), 10);
+        if (!Number.isFinite(parsed))
+          return { ...it, indexDraft: it.indexDraft };
+        const next = Array.isArray(it.indices) ? it.indices.slice() : [];
+        if (!next.includes(parsed)) next.push(parsed);
+        next.sort((a, b) => a - b);
+        return { ...it, indices: next, indexDraft: "" };
+      })
+    );
   };
 
   const removeIndexFromItem = (id, value) => {
-    setItems((curr) => curr.map((it) => (it.id === id ? { ...it, indices: (it.indices || []).filter((n) => n !== value) } : it)));
+    setItems((curr) =>
+      curr.map((it) =>
+        it.id === id
+          ? { ...it, indices: (it.indices || []).filter((n) => n !== value) }
+          : it
+      )
+    );
   };
 
-  return { items, setItems, message, setMessage, addFiles, accept, clear, removeById, markLoaded, setIndexDraft, addIndexToItem, removeIndexFromItem };
+  return {
+    items,
+    setItems,
+    message,
+    setMessage,
+    addFiles,
+    accept,
+    clear,
+    removeById,
+    markLoaded,
+    setIndexDraft,
+    addIndexToItem,
+    removeIndexFromItem,
+  };
 }
 
 function DropZone({ title, description, acceptExts, state }) {
@@ -174,12 +228,18 @@ function DropZone({ title, description, acceptExts, state }) {
           <p className="panel-desc">{description}</p>
         </div>
         <div className="panel-actions">
-          <button className="btn" type="button" onClick={state.accept}>Accept</button>
-          <button className="btn outline" type="button" onClick={state.clear}>Clear</button>
+          <button className="btn" type="button" onClick={state.accept}>
+            Accept
+          </button>
+          <button className="btn outline" type="button" onClick={state.clear}>
+            Clear
+          </button>
         </div>
       </header>
 
-      {state.message ? <div className="panel-message">{state.message}</div> : null}
+      {state.message ? (
+        <div className="panel-message">{state.message}</div>
+      ) : null}
 
       <div
         className="dropzone"
@@ -191,7 +251,9 @@ function DropZone({ title, description, acceptExts, state }) {
         aria-label={`Drop files or click to select (${acceptExts.join(", ")})`}
       >
         <div className="dropzone-inner">
-          <span className="dz-icon" aria-hidden>＋</span>
+          <span className="dz-icon" aria-hidden>
+            ＋
+          </span>
           <span className="dz-text">Drop files here or click</span>
           <span className="dz-accept">Types: {acceptExts.join(", ")}</span>
         </div>
@@ -207,7 +269,7 @@ function DropZone({ title, description, acceptExts, state }) {
 
       <ul className="items">
         {state.items.map((it) => (
-          <li key={it.id} className="item" style={{ position: 'relative' }}>
+          <li key={it.id} className="item" style={{ position: "relative" }}>
             <div className="thumb">
               {it.ext === ".fbx" && it.url ? (
                 <div className="thumb-loading">
@@ -228,15 +290,25 @@ function DropZone({ title, description, acceptExts, state }) {
                   />
                 </>
               ) : (
-                <span className="thumb-icon" aria-hidden>■</span>
+                <span className="thumb-icon" aria-hidden>
+                  ■
+                </span>
               )}
             </div>
             <div className="meta">
-              <div className="name" title={it.name}>{it.name}</div>
-              <div className="sub">{bytesToKB(it.size)} KB · {it.ext}</div>
+              <div className="name" title={it.name}>
+                {it.name}
+              </div>
+              <div className="sub">
+                {bytesToKB(it.size)} KB · {it.ext}
+              </div>
             </div>
             {openForId === it.id && (
-              <div className="index-pop" role="dialog" aria-label="Indices editor">
+              <div
+                className="index-pop"
+                role="dialog"
+                aria-label="Indices editor"
+              >
                 <div className="index-stack">
                   <div className="index-row">
                     <input
@@ -246,18 +318,46 @@ function DropZone({ title, description, acceptExts, state }) {
                       min={0}
                       placeholder="#"
                       value={it.indexDraft ?? ""}
-                      onChange={(e) => state.setIndexDraft(it.id, e.target.value)}
-                      onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); state.addIndexToItem(it.id); } }}
+                      onChange={(e) =>
+                        state.setIndexDraft(it.id, e.target.value)
+                      }
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          state.addIndexToItem(it.id);
+                        }
+                      }}
                     />
-                    <button type="button" className="btn small ghost" onClick={() => state.addIndexToItem(it.id)}>+</button>
-                    <button type="button" className="btn small" onClick={() => setOpenForId(null)}>Done</button>
+                    <button
+                      type="button"
+                      className="btn small ghost"
+                      onClick={() => state.addIndexToItem(it.id)}
+                    >
+                      +
+                    </button>
+                    <button
+                      type="button"
+                      className="btn small"
+                      onClick={() => setOpenForId(null)}
+                    >
+                      Done
+                    </button>
                   </div>
                   {!!(it.indices && it.indices.length) && (
                     <div className="index-chips">
                       {it.indices.map((num) => (
                         <span key={num} className="chip" title={`Index ${num}`}>
                           {num}
-                          <button type="button" className="chip-x" aria-label={`Remove ${num}`} onClick={() => state.removeIndexFromItem(it.id, num)}>×</button>
+                          <button
+                            type="button"
+                            className="chip-x"
+                            aria-label={`Remove ${num}`}
+                            onClick={() =>
+                              state.removeIndexFromItem(it.id, num)
+                            }
+                          >
+                            ×
+                          </button>
                         </span>
                       ))}
                     </div>
@@ -266,19 +366,26 @@ function DropZone({ title, description, acceptExts, state }) {
               </div>
             )}
             <div className="index">
-              {(it.ext === ".fbx" || it.ext === ".glb") ? (
+              {it.ext === ".fbx" || it.ext === ".glb" ? (
                 <button
                   className="icon-btn"
                   type="button"
                   aria-label="Set indices"
                   aria-expanded={openForId === it.id}
-                  onClick={() => setOpenForId(openForId === it.id ? null : it.id)}
+                  onClick={() =>
+                    setOpenForId(openForId === it.id ? null : it.id)
+                  }
                 >
                   #
                 </button>
               ) : null}
             </div>
-            <button className="delete" type="button" aria-label="Delete" onClick={() => state.removeById(it.id)}>
+            <button
+              className="delete"
+              type="button"
+              aria-label="Delete"
+              onClick={() => state.removeById(it.id)}
+            >
               ×
             </button>
           </li>
@@ -289,36 +396,46 @@ function DropZone({ title, description, acceptExts, state }) {
 }
 
 export default function ControlPanel() {
+  const navigate = useNavigate();
   const models = usePanelState(MODELS_KEY);
   const textures = usePanelState(TEXTURES_KEY);
 
   const selector = [
     {
       id: 1,
-      label: 'Clothfigurator',
-      src: '../../../public/projects/clothfiguraor/clothfigurator.png'
+      label: "Clothfigurator",
+      src: "../../../public/projects/clothfiguraor/clothfigurator.png",
+      path: "/vclothfigurator",
     },
     {
       id: 2,
-      label: 'Office',
-      src: '../../../public/projects/v_office_01/office_01.png'
+      label: "Office",
+      src: "../../../public/projects/v_office_01/office_01.png",
+      path: "/voffice01",
     },
     {
       id: 3,
-      label: 'Podfigurador',
-      src: '../../../public/projects/v_configurator_01/v_configurator_01.png'
+      label: "Podfigurador",
+      src: "../../../public/projects/v_configurator_01/v_configurator_01.png",
+      path: "/vconfigurator",
     },
   ];
 
   const [selected, setSelected] = useState(1);
 
   const isEnabled = selected === 1;
+  const selectedOption = selector.find((opt) => opt.id === selected);
+  const canLaunch = Boolean(selectedOption?.path);
 
   const handleSelect = (id) => {
     if (id === selected) return;
     // Clear both panels when switching selection
-    try { models.clear(); } catch {}
-    try { textures.clear(); } catch {}
+    try {
+      models.clear();
+    } catch {}
+    try {
+      textures.clear();
+    } catch {}
     setSelected(id);
   };
 
@@ -329,7 +446,7 @@ export default function ControlPanel() {
           <button
             key={opt.id}
             type="button"
-            className={`selector-tile${selected === opt.id ? ' is-selected' : ''}`}
+            className={`selector-tile${selected === opt.id ? " is-selected" : ""}`}
             onClick={() => handleSelect(opt.id)}
             aria-pressed={selected === opt.id}
             title={opt.label}
@@ -340,7 +457,10 @@ export default function ControlPanel() {
         ))}
       </div>
 
-      <div className={`panel-grid${!isEnabled ? ' is-disabled' : ''}`} aria-disabled={!isEnabled}>
+      <div
+        className={`panel-grid${!isEnabled ? " is-disabled" : ""}`}
+        aria-disabled={!isEnabled}
+      >
         <div className="panel-wrap">
           {!isEnabled && <div className="panel-overlay" aria-hidden />}
           <DropZone
@@ -367,7 +487,17 @@ export default function ControlPanel() {
           <div className="launch-col">Texto 1</div>
           <div className="launch-col">Texto 2</div>
           <div className="launch-col end">
-            <button className="btn launch-btn" type="button">Launch</button>
+            <button
+              className="btn launch-btn"
+              type="button"
+              onClick={() => {
+                if (canLaunch) navigate(selectedOption.path);
+              }}
+              disabled={!canLaunch}
+              aria-disabled={!canLaunch}
+            >
+              Launch
+            </button>
           </div>
         </div>
       </div>

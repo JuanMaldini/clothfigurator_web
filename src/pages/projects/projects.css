@@ -1,0 +1,123 @@
+.projects-page {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 4rem);
+  background: linear-gradient(180deg, #0f172a 0%, #111827 35%, #0b1120 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+.projects-headline {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  max-width: 52ch;
+  margin: 0 auto;
+}
+
+.projects-headline__eyebrow {
+  margin: 0;
+  font-size: 0.875rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #60a5fa;
+}
+
+.projects-headline__title {
+  margin: 0;
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-weight: 600;
+}
+
+.projects-headline__lead {
+  margin: 0;
+  color: #cbd5f5;
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  line-height: 1.6;
+}
+
+.projects-grid {
+  display: grid;
+  gap: clamp(3rem, 6vw, 4rem);
+}
+
+.projects-block {
+  display: grid;
+  gap: 1rem;
+}
+
+.projects-block__description {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.7;
+  color: #cbd5f5;
+  max-width: 70ch;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  background: #0f172a;
+  box-shadow: 0 32px 80px rgba(15, 23, 42, 0.45);
+  isolation: isolate;
+  min-height: clamp(18rem, 55vh, 32rem);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.1s ease-in-out;
+  will-change: opacity;
+}
+
+.hero__media.is-active {
+  opacity: 1;
+}
+
+.hero__placeholder {
+  display: grid;
+  place-items: center;
+  min-height: clamp(18rem, 55vh, 32rem);
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.hero__indicators {
+  position: absolute;
+  inset: auto 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.hero__indicator {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.6);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.hero__indicator.is-active {
+  background: #38bdf8;
+  transform: scale(1.2);
+}
+
+@media (max-width: 48rem) {
+  .hero {
+    border-radius: clamp(0.75rem, 4vw, 1rem);
+  }
+
+  .projects-page {
+    padding-bottom: clamp(3rem, 8vw, 5rem);
+  }
+}

@@ -1,0 +1,17 @@
+.rooot{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--ColorBackground);
+}
+
+.noUnderline {
+  text-decoration: none;
+}
