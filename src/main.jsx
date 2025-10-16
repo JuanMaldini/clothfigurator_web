@@ -6,6 +6,8 @@ import App from "./pages/App/App.jsx";
 import { cognitoAuthConfig } from "./config/oidcConfig.js";
 import "./webVitals.js";
 
+import "react-color-palette/css";
+
 // LOG: Eventos de autenticación
 const onSigninCallback = () => {
   console.log("✅ Auth Provider - onSigninCallback ejecutado");

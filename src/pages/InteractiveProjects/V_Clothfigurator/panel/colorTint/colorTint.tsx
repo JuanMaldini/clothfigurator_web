@@ -1,7 +1,6 @@
 import { ColorPicker, useColor, type IColor } from "react-color-palette";
 import { useEffect } from "react";
 import { sendUE } from "../arcware/ps-functions";
-import "react-color-palette/css";
 
 type Props = {
   /** Callback opcional si el padre quiere enterarse; el envío a Unreal se hace internamente */
@@ -50,7 +49,11 @@ export default function ColorTint({ onTintChange, resetCounter }: Props) {
     // Set white
     const whiteHex = "#ffffff";
     // El hook useColor acepta set con hex string
-    setColor({ hex: whiteHex, hsv: { h: 0, s: 0, v: 1, a: 1 }, rgb: { r: 255, g: 255, b: 255, a: 1 } } as any);
+    setColor({
+      hex: whiteHex,
+      hsv: { h: 0, s: 0, v: 1, a: 1 },
+      rgb: { r: 255, g: 255, b: 255, a: 1 },
+    } as any);
     const artificial: IColor = {
       hex: whiteHex,
       hsv: { h: 0, s: 0, v: 1, a: 1 },
