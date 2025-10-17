@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Home.jsx";
-import Projects from "../pages/Projects/Projects.jsx";
+import Projects from "../pages/projects/projects.jsx";
 import LoginPage from "../pages/Login/Login.jsx";
 import ControlPanel from "../pages/controlpanel/controlpanel.jsx";
 import VConfigurator from "../pages/InteractiveProjects/Configurator_01/V_Configurator_01.jsx";

@@ -1,6 +1,6 @@
 import "./Home.css";
 import HeroCarousel from "../../components/HeroCarousel";
-import { ALL_PROJECTS_MEDIA } from "../Projects/projectsData";
+import { ALL_PROJECTS_MEDIA } from "../projects/projectsData";
 
 const Home = () => (
   <section className="home">
