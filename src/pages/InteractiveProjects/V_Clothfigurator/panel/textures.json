@@ -2,15 +2,15 @@
   {
     "collection-name": "textures 01",
     "collection-images": [
-          { "collection-image-name": "variation-name1", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name2", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name3", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name4", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name5", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name6", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name7", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name8", "collection-image-url": "variation-image-thumbnail" },
-          { "collection-image-name": "variation-name9", "collection-image-url": "variation-image-thumbnail" }
+          { "collection-image-url": "https://studio.pinotspalette.com/naperville/images/pros-cons-acrylic-paint.jpg" },
+          { "collection-image-url": "https://i.etsystatic.com/39606365/r/il/cc47c8/5920158276/il_fullxfull.5920158276_jxs5.jpg" },
+          { "collection-image-url": "https://thumbs.dreamstime.com/b/hand-drawn-acrylic-painting-abstract-art-background-acrylic-painting-canvas-color-texture-fragment-artwork-brushstrokes-85948742.jpg" },
+          { "collection-image-url": "https://i.etsystatic.com/14381836/r/il/7528be/3698886827/il_570xN.3698886827_hb7o.jpg" },
+          { "collection-image-url": "https://images.pexels.com/photos/1566987/pexels-photo-1566987.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200" },
+          { "collection-image-url": "https://media.istockphoto.com/id/1470228338/photo/colorful-painting.jpg?s=612x612&w=0&k=20&c=hKq42vzwE1SMYxd3-OmNeNNcUQCE9SBBvfJ14Wuv33Y=" },
+          { "collection-image-url": "https://c8.alamy.com/comp/2GJ03WA/color-abstract-acrylic-painting-background-with-blue-white-yellow-and-red-hand-strokes-2GJ03WA.jpg" },
+          { "collection-image-url": "https://png.pngtree.com/background/20250131/original/pngtree-vibrant-neon-colored-abstract-art-a-textured-oil-paint-on-canvas-picture-image_15269265.jpg" },
+          { "collection-image-url": "https://www.singulart.com/images/artworks/v2/cropped/15737/alts/zoom/alt_1584997_a5462d3ce9b489b209453c9537bea0ad.jpeg" }
         ]
   }
 ]

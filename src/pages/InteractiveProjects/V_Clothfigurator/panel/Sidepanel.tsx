@@ -8,6 +8,7 @@ import "./Sidepanel.css";
 import { setCurrentVariation } from "./utils/currentVariation";
 import { buildMaterialInstanceName } from "./utils/text";
 import { LiaTintSolid } from "react-icons/lia";
+import EntitiesPanel from "./entities/EntitiesPanel";
 
 declare global {
   interface Window {
@@ -15,15 +16,11 @@ declare global {
   }
 }
 interface SidepanelProps {
-  onRequestClose?: () => void;
-  showClose?: boolean;
   heading?: string;
   textures: RawCollection[];
   models: RawModelCollection[];
 }
 const Sidepanel: React.FC<SidepanelProps> = ({
-  onRequestClose: _onRequestClose,
-  showClose: _showClose = true,
   heading = "Configurator System",
   textures,
   models,
@@ -31,7 +28,7 @@ const Sidepanel: React.FC<SidepanelProps> = ({
   const [tintOpen, setTintOpen] = useState(false);
   const [tintResetCounter, setTintResetCounter] = useState(0);
   return (
-    <div className="sp-panel sp-panel-embedded open">
+    <div className="sp-panel">
       <div className="sp-header">
         <strong>{heading}</strong>
       </div>
@@ -80,6 +77,9 @@ const Sidepanel: React.FC<SidepanelProps> = ({
         <div className="separatorSection"></div>
         <section>
           <ConfiguratorPanelModels raw={models} />
+        </section>
+        <section>
+          <EntitiesPanel />
         </section>
       </div>
     </div>

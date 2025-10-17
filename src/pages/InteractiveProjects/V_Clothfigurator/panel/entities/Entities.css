@@ -1,0 +1,18 @@
+.en-section { margin-top: var(--sp-3); }
+.en-header { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); }
+.en-actions { display: inline-flex; gap: var(--sp-2); }
+.en-btn { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--ColorBorderSoft); background: #f4f6f7; color: inherit; cursor: pointer; }
+.en-btn:hover { background: #eef1f2; }
+.en-body { display: grid; grid-template-columns: minmax(80px, 1fr) 2fr; gap: var(--sp-2); align-items: start; margin-top: var(--sp-2); min-height: 0; }
+.en-preview { aspect-ratio: 1/1; width: 100%; border: 1px dashed var(--ColorBorderSoft); background: #f6f8f9; border-radius: var(--radius-sm); }
+.en-slots { display: flex; flex-direction: column; gap: var(--sp-2); min-height: 0; max-height: 240px; overflow-y: auto; padding-right: var(--sp-1); }
+.en-slot { display: grid; grid-template-columns: var(--var-size) 1fr; gap: var(--sp-2); align-items: center; }
+.en-slot-thumb { width: 100%; aspect-ratio: 1/1; background: #e2e5e7; border: 1px solid var(--ColorBorderSoft); border-radius: var(--radius-sm); }
+.en-slot-meta { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--font-xs); color: #4b5563; }
+.en-slot-label { font-weight: 600; }
+.en-ids { display: inline-flex; align-items: center; gap: var(--sp-1); flex-wrap: wrap; }
+.en-id-input { width: 28px; height: 24px; text-align: center; border: 1px solid var(--ColorBorderSoft); border-radius: 4px; background: #fff; font-size: 12px; padding: 0; }
+.en-id-add { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 4px; border: 1px dashed var(--ColorBorderSoft); background: #f9fafb; cursor: pointer; color: inherit; }
+.en-id-add:hover { background: #f3f4f6; }
+.en-id-remove { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 4px; border: 1px dashed var(--ColorBorderSoft); background: #f9fafb; cursor: pointer; color: inherit; }
+.en-id-remove:hover { background: #f3f4f6; }
