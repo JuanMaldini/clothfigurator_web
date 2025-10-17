@@ -14,47 +14,41 @@ import PDFLayout from '../pages/InteractiveProjects/V_Clothfigurator/panel/pdfCo
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route" element={<Home />} />
-      <Routeprojects" element={<Projects />} />
-      <Routelogin" element={<LoginPage />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/login" element={<LoginPage />} />
 
-      <Route path="/controlpanel"
-        element={
+      <Route path="/controlpanel" element={
           // <ProtectedRoute>
             <ControlPanel />
           // </ProtectedRoute>
         }
       />
-      <Route path="/vconfigurator"
-        element={
+      <Route path="/vconfigurator" element={
           // <ProtectedRoute>
             <VConfigurator />
           // </ProtectedRoute>
         }
       />
-      <Route path="/voffice01"
-        element={
+      <Route path="/voffice01" element={
           // <ProtectedRoute>
             <VOffice01 />
           // </ProtectedRoute>
         }
       />
-      <Route path="/vclothfigurator"
-        element={
+      <Route path="/vclothfigurator" element={
           // <ProtectedRoute>
             <VClothfigurator />
           // </ProtectedRoute>
         }
       />
-      <Route path="/aprivatenullsample"
-        element={
+      <Route path="/aprivatenullsample" element={
           <ProtectedRoute>
             <APrivatenullsample />
           </ProtectedRoute>
         }
       />
-      <Route path="/pdflayout"
-        element={
+      <Route path="/pdflayout" element={
           // <ProtectedRoute>
             <PDFLayout />
           // </ProtectedRoute>
