@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Home.jsx";
-import Projects from "../pages/Projects/Projects";
+import Projects from "../pages/Projects/Projects.jsx";
 import LoginPage from "../pages/Login/Login.jsx";
 import ControlPanel from "../pages/controlpanel/controlpanel.jsx";
 import VConfigurator from "../pages/InteractiveProjects/Configurator_01/V_Configurator_01.jsx";
@@ -22,38 +22,32 @@ const AppRoutes = () => {
           // <ProtectedRoute>
             <ControlPanel />
           // </ProtectedRoute>
-        }
-      />
+        }/>
       <Route path="/vconfigurator" element={
           // <ProtectedRoute>
             <VConfigurator />
           // </ProtectedRoute>
-        }
-      />
+        }/>
       <Route path="/voffice01" element={
           // <ProtectedRoute>
             <VOffice01 />
           // </ProtectedRoute>
-        }
-      />
+        }/>
       <Route path="/vclothfigurator" element={
           // <ProtectedRoute>
             <VClothfigurator />
           // </ProtectedRoute>
-        }
-      />
+        }/>
       <Route path="/aprivatenullsample" element={
           <ProtectedRoute>
             <APrivatenullsample />
           </ProtectedRoute>
-        }
-      />
+        }/>
       <Route path="/pdflayout" element={
           // <ProtectedRoute>
             <PDFLayout />
           // </ProtectedRoute>
-        }
-      />
+        }/>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
