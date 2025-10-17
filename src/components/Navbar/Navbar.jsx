@@ -32,11 +32,11 @@ const Navbar = () => {
           Vanishing Point 3D
         </Link>
         <nav>
-          <Link to="/projects">Projects</Link>
+          <Link to="/projects" className="nav-link-underline">Projects</Link>
 
           {/* Mostrar Control Panel solo si está logueado */}
           {/* {auth.isAuthenticated && ( */}
-            <Link to="/controlpanel">Control Panel</Link>
+            <Link to="/controlpanel" className="nav-link-underline">Control Panel</Link>
           {/* }) */}
 
           {/* Mostrar Login o icono de Logout (✕) según el estado */}

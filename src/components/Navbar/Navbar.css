@@ -38,6 +38,33 @@ header nav a {
     color 160ms ease;
 }
 
+/* Animated underline + subtle emphasis */
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms ease;
+  opacity: 0.9;
+}
+.nav-link-underline:hover,
+.nav-link-underline:focus-visible {
+  background-color: transparent; /* keep background intact */
+  color: #0b0f1a;
+}
+.nav-link-underline:hover::after,
+.nav-link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
 header nav a:hover,
 header nav a:focus-visible {
   background-color: #f3f4f6;

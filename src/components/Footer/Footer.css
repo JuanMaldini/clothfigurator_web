@@ -32,6 +32,33 @@ footer a {
 	transition: background-color 160ms ease, color 160ms ease;
 }
 
+/* Animated underline + subtle emphasis (footer) */
+.footer-link-underline {
+	position: relative;
+}
+.footer-link-underline::after {
+	content: "";
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom: 4px;
+	height: 2px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 160ms ease;
+	opacity: 0.9;
+}
+.footer-link-underline:hover,
+.footer-link-underline:focus-visible {
+	background-color: transparent;
+	color: #0b0f1a;
+}
+.footer-link-underline:hover::after,
+.footer-link-underline:focus-visible::after {
+	transform: scaleX(1);
+}
+
 footer a:hover,
 footer a:focus-visible {
 	background-color: #f3f4f6; /* slate-100 */

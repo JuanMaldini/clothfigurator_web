@@ -4,17 +4,17 @@ import { ALL_PROJECTS_MEDIA } from "../projects/projectsData";
 
 const Home = () => (
   <section className="home">
-    {/* Hero with carousel + overlay copy */}
+    {/* Hero 1: Carousel random */}
     <div className="hero-carousel-wrapper">
       <HeroCarousel
         items={ALL_PROJECTS_MEDIA}
         label="Projects Showcase"
-        intervalMs={4000}
+        intervalMs={5000}
         random={true}
       />
       <div className="hero-overlay">
         <div className="hero-inner">
-          <h1 className="hero-title">Configurate your experience</h1>
+          <h1 className="hero-title">Clothfigurator</h1>
           <p className="hero-sub">Design. Visualize. Iterate.</p>
           <div className="hero-actions">
             <a className="btn" href="/projects">Explore Projects</a>
@@ -24,12 +24,12 @@ const Home = () => (
       </div>
     </div>
 
-    {/* Second hero with carousel + CTA */}
+    {/* Hero 2: Carousel random + CTA Contact */}
     <div className="hero-carousel-wrapper">
       <HeroCarousel
         items={ALL_PROJECTS_MEDIA}
         label="Create with Confidence"
-        intervalMs={4000}
+        intervalMs={5000}
         random={true}
       />
       <div className="hero-overlay">
