@@ -1,0 +1,16 @@
+[
+  {
+    "collection-name": "models 01",
+    "collection-models": [
+          { "collection-model-name": "variation-name1", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name2", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name3", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name4", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name5", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name6", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name7", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name8", "collection-model-url": "variation-model-thumbnail" },
+          { "collection-model-name": "variation-name9", "collection-model-url": "variation-model-thumbnail" }
+        ]
+  }
+]

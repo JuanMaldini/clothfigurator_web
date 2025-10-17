@@ -1,0 +1,16 @@
+[
+  {
+    "collection-name": "textures 01",
+    "collection-images": [
+          { "collection-image-name": "variation-name1", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name2", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name3", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name4", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name5", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name6", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name7", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name8", "collection-image-url": "variation-image-thumbnail" },
+          { "collection-image-name": "variation-name9", "collection-image-url": "variation-image-thumbnail" }
+        ]
+  }
+]

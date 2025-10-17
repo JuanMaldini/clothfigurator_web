@@ -1,13 +1,13 @@
 import Sidepanel from "../Sidepanel";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { ArcwareInit } from "@arcware-cloud/pixelstreaming-websdk";
 import { registerScreenshotApplication } from "../screenshot/screenshot";
 import ViewRotator from "../view-rotator/view-rotator";
-import collections from "../collections.json";
+import collections from "../textures.json";
+import models from "../models.json";
 
 function ArcwarePlayer() {
   const videoContainerRef = useRef<HTMLDivElement | null>(null);
-  const [open, setOpen] = useState(true); //AQUI DEFINIR INITIAL STATE
   // In editor (dev) mode, do not load Arcware: make IDs undefined
   const isEditor = import.meta.env.DEV;
   const shareId = isEditor
@@ -56,16 +56,8 @@ function ArcwarePlayer() {
     } catch {}
   }, [shareId, projectId]);
   return (
-    <div className={"aw-shell" + (open ? " is-open" : "")}>
+    <div className="aw-shell is-open"> 
       <main className="aw-main">
-        {!open && (
-          <button
-            className="sp-export-btn sp-panel-open-btn"
-            onClick={() => setOpen(true)}
-          >
-            Open
-          </button>
-        )}
         <div className="arcware-video-wrapper">
           <div ref={videoContainerRef} className="arcware-video" />
           <div className="hud-view-rotator">
@@ -76,12 +68,11 @@ function ArcwarePlayer() {
         </div>
       </main>
       <aside className="aw-aside">
-        {open && (
-          <Sidepanel
-            data={collections as any}
-            onRequestClose={() => setOpen(false)}
-          />
-        )}
+        <Sidepanel
+          textures={collections as any}
+          models={models as any}
+          onRequestClose={() => {}}
+        />
       </aside>
     </div>
   );

@@ -1,20 +1,13 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { ExportPDFButton } from "./pdfConfigurator/pdfGenerator";
 import ColorTint from "./colorTint/colorTint";
-import { RxReset, RxDotsHorizontal } from "react-icons/rx";
+import { RxReset } from "react-icons/rx";
 import { sendUE } from "./arcware/ps-functions";
 import { triggerScreenshot } from "./screenshot/screenshot";
 import "./Sidepanel.css";
 import { setCurrentVariation } from "./utils/currentVariation";
 import { buildMaterialInstanceName } from "./utils/text";
 import { LiaTintSolid } from "react-icons/lia";
-import { importModel, importTexture } from "./importActions";
 
 declare global {
   interface Window {
@@ -25,13 +18,15 @@ interface SidepanelProps {
   onRequestClose?: () => void;
   showClose?: boolean;
   heading?: string;
-  data: RawCollection[];
+  textures: RawCollection[];
+  models: RawModelCollection[];
 }
 const Sidepanel: React.FC<SidepanelProps> = ({
-  onRequestClose,
-  showClose = true,
+  onRequestClose: _onRequestClose,
+  showClose: _showClose = true,
   heading = "Configurator System",
-  data,
+  textures,
+  models,
 }) => {
   const [tintOpen, setTintOpen] = useState(false);
   const [tintResetCounter, setTintResetCounter] = useState(0);
@@ -39,16 +34,6 @@ const Sidepanel: React.FC<SidepanelProps> = ({
     <div className="sp-panel sp-panel-embedded open">
       <div className="sp-header">
         <strong>{heading}</strong>
-        {showClose && (
-          <div
-            onClick={onRequestClose}
-            className="nobuttonstyle"
-            role="button"
-            tabIndex={0}
-          >
-            X
-          </div>
-        )}
       </div>
       <div className="sp-body" id="sp-body">
         <section className="sp-section">
@@ -86,65 +71,50 @@ const Sidepanel: React.FC<SidepanelProps> = ({
           <div className={`sp-collapsible-body${tintOpen ? " open" : ""}`}>
             <ColorTint resetCounter={tintResetCounter} />
           </div>
+
         </section>
         <div className="separatorSection"></div>
         <section>
-          <ConfiguratorPanel raw={data} />
+          <ConfiguratorPanel raw={textures} />
+        </section>
+        <div className="separatorSection"></div>
+        <section>
+          <ConfiguratorPanelModels raw={models} />
         </section>
       </div>
     </div>
   );
 };
 
-interface RawVariation {
-  value?: string;
-  "variation-name"?: string;
-  "variation-pattern"?: string;
-  "variation-image"?: string;
-  label?: string;
-  code?: string;
-  image?: string;
-}
-interface RawVariationSubcollection {
-  name?: string;
-  "subcollection-name"?: string;
-  variation?: Array<string | RawVariation>;
-  variations?: Array<string | RawVariation>;
+interface RawCollectionImage {
+  "collection-image-name"?: string;
+  "collection-image-url"?: string;
 }
 interface RawCollection {
   collection?: string;
   "collection-name"?: string;
   name?: string;
-  subcollection?: RawVariationSubcollection[];
-  subcollections?: RawVariationSubcollection[];
+  "collection-images"?: RawCollectionImage[];
 }
-interface NormalizedSubcollection {
-  name: string;
-  description?: string;
-  image?: string;
-  variations: NormalizedVariation[];
+interface RawModelItem {
+  "collection-model-name"?: string;
+  "collection-model-url"?: string;
 }
-interface NormalizedCollection {
-  name: string;
-  subcollections: NormalizedSubcollection[];
+interface RawModelCollection {
+  collection?: string;
+  "collection-name"?: string;
+  name?: string;
+  "collection-models"?: RawModelItem[];
 }
 interface NormalizedVariation {
   label: string;
   imageThumbnail?: string;
-  imageLarge?: string;
-  color?: string;
-  pattern?: string;
   name?: string;
 }
-const composeVariationString = (v: any): string => {
-  if (typeof v === "string") return v.trim();
-  if (!v || typeof v !== "object") return "";
-  if (v.value) return String(v.value).trim();
-  const name = (v["variation-name"] || v.label || "").trim();
-  const code = (v["variation-pattern"] || v.code || "").trim();
-  if (name && code) return code.includes(name) ? name : `${name} ${code}`;
-  return (name || code || "").trim();
-};
+interface NormalizedCollection {
+  name: string;
+  variations: NormalizedVariation[];
+}
 
 const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
   (raw || [])
@@ -155,68 +125,46 @@ const normalizeData = (raw: RawCollection[]): NormalizedCollection[] =>
         r.name ||
         "Unnamed"
       ).trim();
-      const subcollections = (
-        (r.subcollections ||
-          r.subcollection ||
-          []) as RawVariationSubcollection[]
-      ).map((s) => {
-        const subName = (s["subcollection-name"] || s.name || "Unnamed").trim();
-        const description = (s as any)["subcollection-description"]
-          ? String((s as any)["subcollection-description"]).trim()
-          : undefined;
-        const image =
-          (s as any)["subcollection-image"] ||
-          (s as any)["subcollection-image-thumbnail"] ||
-          (s as any).image ||
-          undefined;
-        const rawVars = (s.variations || s.variation || []) as Array<
-          string | RawVariation
-        >;
-        const variations = rawVars
-          .map((v) => {
-            if (typeof v === "string") {
-              const label = v.trim();
-              return label
-                ? ({ label, name: label } as NormalizedVariation)
-                : null;
-            }
-            if (!v || typeof v !== "object") return null;
-            const obj = v as RawVariation & { [k: string]: any };
-            const vname = (obj["variation-name"] || obj.label || "").trim();
-            const label = composeVariationString(obj);
-            if (!label) return null;
-            const imageThumbnail =
-              (obj as any)["variation-image-thumbnail"] ||
-              obj.image ||
-              undefined;
-            const imageLarge =
-              (obj as any)["variation-image"] ||
-              (obj as any)["image-large"] ||
-              obj.image ||
-              imageThumbnail ||
-              undefined;
-            const color = (obj as any)["variation-color"] || undefined;
-            const pattern = obj["variation-pattern"] || obj.code || undefined;
-            return {
-              label,
-              imageThumbnail,
-              imageLarge,
-              color,
-              pattern,
-              name: vname,
-            } as NormalizedVariation;
-          })
-          .filter(Boolean) as NormalizedVariation[];
-        return {
-          name: subName,
-          description,
-          image,
-          variations,
-        } as NormalizedSubcollection;
-      });
-      return { name, subcollections } as NormalizedCollection;
+      const variations = (r["collection-images"] || [])
+        .map((img) => {
+          const label = (img["collection-image-name"] || "").trim();
+          const url = (img["collection-image-url"] || "").trim();
+          if (!label && !url) return null;
+          return {
+            label: label || url,
+            name: label || url,
+            imageThumbnail: url || undefined,
+          } as NormalizedVariation;
+        })
+        .filter(Boolean) as NormalizedVariation[];
+      return { name, variations } as NormalizedCollection;
     })
-    .filter((c) => c.subcollections.length);
+    .filter((c) => c.variations.length);
+
+const normalizeModelsData = (raw: RawModelCollection[]): NormalizedCollection[] =>
+  (raw || [])
+    .map((r) => {
+      const name = (
+        r["collection-name"] ||
+        r.collection ||
+        r.name ||
+        "Unnamed"
+      ).trim();
+      const variations = (r["collection-models"] || [])
+        .map((mdl) => {
+          const label = (mdl["collection-model-name"] || "").trim();
+          const url = (mdl["collection-model-url"] || "").trim();
+          if (!label && !url) return null;
+          return {
+            label: label || url,
+            name: label || url,
+            imageThumbnail: url || undefined,
+          } as NormalizedVariation;
+        })
+        .filter(Boolean) as NormalizedVariation[];
+      return { name, variations } as NormalizedCollection;
+    })
+    .filter((c) => c.variations.length);
 
 interface ConfiguratorPanelProps {
   raw: RawCollection[];
@@ -224,151 +172,57 @@ interface ConfiguratorPanelProps {
 
 const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
   const data = useMemo(() => normalizeData(raw), [raw]);
-  // Unificado: índice de colección y subcolección seleccionada
-  const [selection, setSelection] = useState<{
-    colIndex: number;
-    subName: string | null;
-  }>({ colIndex: 0, subName: null });
-  const [selectedVarBySub, setSelectedVarBySub] = useState<
+  const [selection, setSelection] = useState<{ colIndex: number }>({ colIndex: 0 });
+  const [selectedVarByCollection, setSelectedVarByCollection] = useState<
     Record<string, string | null>
   >({});
-  const renderDesc = useCallback((desc?: string, subName?: string) => {
-    if (!desc) return null;
-    if (!subName) return desc;
-    // Bold all whole-word occurrences of the subcollection name (case-insensitive)
-    const escapeRegExp = (s: string) =>
-      s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const re = new RegExp(`\\b(${escapeRegExp(subName)})\\b`, "gi");
-    const parts: React.ReactNode[] = [];
-    let last = 0;
-    let idx = 0;
-    desc.replace(re, (match, _g1, offset: number) => {
-      if (last < offset) parts.push(desc.slice(last, offset));
-      parts.push(
-        <strong key={`h-${idx++}`}>
-          {desc.slice(offset, offset + match.length)}
-        </strong>
-      );
-      last = offset + match.length;
-      return match;
-    });
-    if (!parts.length) return desc; // No matches
-    if (last < desc.length) parts.push(desc.slice(last));
-    return <>{parts}</>;
-  }, []);
-  // set default selection when data changes
+  
   useEffect(() => {
     if (!data.length) return;
-    setSelection({
-      colIndex: 0,
-      subName: data[0]?.subcollections[0]?.name || null,
-    });
+    setSelection({ colIndex: 0 });
   }, [data]);
-  const current = useMemo(
-    () => data[selection.colIndex],
-    [data, selection.colIndex]
-  );
-  const subcollections = useMemo(
-    () => current?.subcollections || [],
-    [current]
-  );
-  const currentSub = useMemo(() => {
-    if (!subcollections.length) return null;
-    if (
-      selection.subName &&
-      subcollections.some((s) => s.name === selection.subName)
-    ) {
-      return subcollections.find((s) => s.name === selection.subName) || null;
-    }
-    return subcollections[0] || null;
-  }, [subcollections, selection.subName]);
-  const variations = useMemo(() => currentSub?.variations || [], [currentSub]);
-  const selectedLabel = selectedVarBySub[selection.subName || ""] || null;
-  const selectedVar = useMemo(() => {
-    if (!selectedLabel) return null;
-    return variations.find((v) => v.label === selectedLabel) || null;
-  }, [variations, selectedLabel]);
-  // Popover menu for more actions (no functionality yet)
-  const [moreOpen, setMoreOpen] = useState(false);
-  const moreRef = useRef<HTMLSpanElement | null>(null);
-  const selectCollection = useCallback(
-    (idx: number) => {
-      const first = data[idx]?.subcollections[0]?.name || null;
-      setSelection({ colIndex: idx, subName: first });
-      // La selección de la primera variación se maneja en un useEffect al cambiar la subcolección
-    },
-    [data]
-  );
+  const current = useMemo(() => data[selection.colIndex], [data, selection.colIndex]);
+  const variations = useMemo(() => current?.variations || [], [current]);
+  // Track selection via map only; derived vars not used
+  const selectCollection = useCallback((idx: number) => {
+    setSelection({ colIndex: idx });
+  }, [data]);
   const sendVariation = (variation: NormalizedVariation) => {
-    if (!current || !selection.subName) return;
+    if (!current) return;
     try {
-      // Persist current variation context for naming screenshots, etc.
       setCurrentVariation({
         collection: current.name,
-        subcollection: selection.subName,
         variation: variation.name || variation.label,
-        pattern: variation.pattern,
       });
 
       const miName = buildMaterialInstanceName(
         current.name,
-        selection.subName,
-        variation.name,
-        variation.pattern
+        current.name,
+        variation.name
       );
       if (!miName) return;
       sendUE({ "material-change": miName });
-      setSelectedVarBySub((m) => ({
+      setSelectedVarByCollection((m) => ({
         ...m,
-        [selection.subName as string]: variation.label,
+        [current.name]: variation.label,
       }));
     } catch {}
   };
-  // Al cambiar de subcolección, autoseleccionar la primera variación disponible
-  // y disparar la misma lógica de selección (incluye envío a Unreal)
   useEffect(() => {
-    if (!selection.subName) return;
     const first = variations[0];
     if (!first) return;
-    // Ensure state is captured for initial default selection as well
     setCurrentVariation({
       collection: current?.name,
-      subcollection: selection.subName,
       variation: first.name || first.label,
-      pattern: first.pattern,
     });
     sendVariation(first);
-  }, [selection.subName, variations]);
+  }, [selection.colIndex, current?.name, variations]);
 
-  // Close menu when selection changes
-  useEffect(() => {
-    setMoreOpen(false);
-  }, [selectedVar?.label, selection.subName]);
-
-  // Close on outside click and on Escape
-  useEffect(() => {
-    if (!moreOpen) return;
-    const onDocClick = (e: MouseEvent) => {
-      const target = e.target as Node | null;
-      if (moreRef.current && target && !moreRef.current.contains(target)) {
-        setMoreOpen(false);
-      }
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMoreOpen(false);
-    };
-    document.addEventListener("mousedown", onDocClick);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onDocClick);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [moreOpen]);
 
   return (
     <div aria-label="Configurador" className="cc-root">
       <div className="cc-collections-row">
-        <h2 className="sp-title">Collections</h2>
+        <h2 className="sp-title">Textures</h2>
         <label className="cc-collection-label" htmlFor="collection-select">
           <select
             id="collection-select"
@@ -391,88 +245,14 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
           </select>
         </label>
       </div>
-      <div>
-        <div className="cc-subcollections">
-          {subcollections.map((sc) => (
-            <button
-              key={sc.name}
-              type="button"
-              className={`cc-sub-btn${
-                sc.name === selection.subName ? " is-selected" : ""
-              }`}
-              onClick={() => setSelection((s) => ({ ...s, subName: sc.name }))}
-              aria-current={sc.name === selection.subName || undefined}
-            >
-              {sc.name}
-            </button>
-          ))}
-        </div>
-        <div></div>
-      </div>
-
-      {selectedVar ? (
-        <div className="cc-var-selected" aria-live="polite">
-          <span className="cc-var-selected-name">
-            {selectedVar.name || selectedVar.label}
-          </span>
-          {selectedVar.pattern ? (
-            <span className="cc-var-selected-pattern">
-              {" "}
-              {selectedVar.pattern}
-            </span>
-          ) : null}
-          <span className="cc-more" ref={moreRef}>
-            <button
-              type="button"
-              className="cc-icon-btn"
-              title="Más opciones"
-              aria-label="Más opciones"
-              aria-haspopup="menu"
-              aria-expanded={moreOpen}
-              aria-controls="cc-more-menu"
-              onClick={() => setMoreOpen((o) => !o)}
-            >
-              <RxDotsHorizontal />
-            </button>
-            {moreOpen ? (
-              <div className="cc-more-menu" role="menu" id="cc-more-menu">
-                <button
-                  type="button"
-                  className="cc-more-item"
-                  role="menuitem"
-                  onClick={async () => {
-                    await importModel();
-                    setMoreOpen(false);
-                  }}
-                >
-                  Import Model
-                </button>
-                <button
-                  type="button"
-                  className="cc-more-item"
-                  role="menuitem"
-                  onClick={async () => {
-                    await importTexture();
-                    setMoreOpen(false);
-                  }}
-                >
-                  Import Texture
-                </button>
-              </div>
-            ) : null}
-          </span>
-        </div>
-      ) : null}
 
       <div>
         <div className="cc-var-grid" aria-label="Variaciones">
           {variations.map((v, idx) => {
             const label = v.label;
             const img = v.imageThumbnail || "";
-            const tooltip =
-              v.name && v.pattern ? `${v.name} ${v.pattern}` : label;
-            const isSelected =
-              selectedVarBySub[selection.subName || ""] === label;
+            const tooltip = v.name ? v.name : label;
+            const isSelected = selectedVarByCollection[current?.name || ""] === label;
             return (
               <button
                 key={label + idx}
@@ -496,19 +276,119 @@ const ConfiguratorPanel: React.FC<ConfiguratorPanelProps> = ({ raw }) => {
         </div>
       </div>
 
-      {currentSub?.description ? (
-        <div className="cc-sub-desc" aria-live="polite">
-          {renderDesc(currentSub.description, currentSub.name)}
-        </div>
-      ) : null}
+    </div>
+  );
+};
 
-      {selectedVar?.imageLarge ? (
-        <div className="cc-var-preview">
-          <div className="cc-var-preview-img-wrap">
-            <img src={selectedVar.imageLarge} alt={selectedVar.label} />
-          </div>
+interface ConfiguratorPanelModelsProps {
+  raw: RawModelCollection[];
+}
+
+const ConfiguratorPanelModels: React.FC<ConfiguratorPanelModelsProps> = ({ raw }) => {
+  const data = useMemo(() => normalizeModelsData(raw), [raw]);
+  const [selection, setSelection] = useState<{ colIndex: number }>({ colIndex: 0 });
+  const [selectedVarByCollection, setSelectedVarByCollection] = useState<
+    Record<string, string | null>
+  >({});
+
+  useEffect(() => {
+    if (!data.length) return;
+    setSelection({ colIndex: 0 });
+  }, [data]);
+  const current = useMemo(() => data[selection.colIndex], [data, selection.colIndex]);
+  const variations = useMemo(() => current?.variations || [], [current]);
+  // Track selection via map only; derived vars not used
+  const selectCollection = useCallback((idx: number) => {
+    setSelection({ colIndex: idx });
+  }, [data]);
+  const sendVariation = (variation: NormalizedVariation) => {
+    if (!current) return;
+    try {
+      setCurrentVariation({
+        collection: current.name,
+        variation: variation.name || variation.label,
+      });
+
+      const miName = buildMaterialInstanceName(
+        current.name,
+        current.name,
+        variation.name
+      );
+      if (!miName) return;
+      sendUE({ "material-change": miName });
+      setSelectedVarByCollection((m) => ({
+        ...m,
+        [current.name]: variation.label,
+      }));
+    } catch {}
+  };
+  useEffect(() => {
+    const first = variations[0];
+    if (!first) return;
+    setCurrentVariation({
+      collection: current?.name,
+      variation: first.name || first.label,
+    });
+    sendVariation(first);
+  }, [selection.colIndex, current?.name, variations]);
+
+  return (
+    <div aria-label="Configurador" className="cc-root">
+      <div className="cc-collections-row">
+        <h2 className="sp-title">Models</h2>
+        <label className="cc-collection-label" htmlFor="model-collection-select">
+          <select
+            id="model-collection-select"
+            className="cc-collection-dropdown"
+            value={data.length ? selection.colIndex : ""}
+            onChange={(e) => selectCollection(Number(e.target.value))}
+            disabled={!data.length}
+            aria-label="Collections"
+          >
+            {!data.length && (
+              <option value="" disabled>
+                Loading…
+              </option>
+            )}
+            {data.map((c, i) => (
+              <option key={c.name} value={i}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <div>
+        <div className="cc-var-grid" aria-label="Variaciones">
+          {variations.map((v, idx) => {
+            const label = v.label;
+            const img = v.imageThumbnail || "";
+            const tooltip = v.name ? v.name : label;
+            const isSelected = selectedVarByCollection[current?.name || ""] === label;
+            return (
+              <button
+                key={label + idx}
+                type="button"
+                className={`cc-var-box${isSelected ? " is-selected" : ""}`}
+                data-label={tooltip}
+                onClick={() => sendVariation(v)}
+              >
+                {img ? (
+                  <span className="cc-var-img">
+                    <img src={img} alt={tooltip} loading="lazy" />
+                  </span>
+                ) : label ? (
+                  <span className="cc-var-label" title={tooltip}>
+                    {label}
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
         </div>
-      ) : null}
+      </div>
+
     </div>
   );
 };

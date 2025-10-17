@@ -44,52 +44,6 @@ body {
   background-color: hsl(0, 0%, 85%);
 }
 
-/* Removed: .sp-root, .sp-backdrop (unused in current React structure) */
-.sp-panel-open-btn {
-  position: fixed;
-  top: var(--sp-3);
-  right: var(--sp-4);
-  z-index: 1; /* below sidebar */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  font-size: var(--font-sm);
-}
-.sp-btn,
-.sp-export-btn {
-  --_bg: #eef1f2;
-  --_bg-hover: #e3e7e9;
-  --_bg-active: #d8dde0;
-  --_color: var(--ColorText);
-  border: 1px solid var(--ColorBorderSoft);
-  background: var(--_bg);
-  color: var(--_color);
-  padding: var(--sp-2) var(--sp-3);
-  font-size: var(--font-sm);
-  font-weight: 500;
-  line-height: 1.15;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  outline: none;
-  transition: background var(--tr-fast), border-color var(--tr-fast),
-    color var(--tr-fast), box-shadow var(--tr-fast);
-}
-@media (hover: hover) and (pointer: fine) {
-  .sp-btn:hover,
-  .sp-export-btn:hover {
-    background: var(--_bg-hover);
-  }
-}
-.sp-btn:active,
-.sp-export-btn:active {
-  background: var(--_bg-active);
-}
-.sp-btn:focus-visible,
-.sp-export-btn:focus-visible {
-  box-shadow: 0 0 0 2px var(--ColorBackground), 0 0 0 4px var(--ColorFocus);
-}
-.sp-export-btn {
-  font-weight: 600;
-}
-
 /* Minimal link-style subcollection buttons with animated underline */
 .cc-sub-btn {
   /* reset the shared button chrome */
@@ -177,6 +131,7 @@ body {
   color: var(--ColorText);
   overflow: hidden;
   width: 100%;
+  height: 100%;
 }
 .sp-header {
   display: flex;
@@ -192,8 +147,6 @@ body {
 
 .sp-body {
   padding: 0px var(--sp-1);
-  flex: 1;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -245,14 +198,6 @@ body {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
-}
-.cc-sub-desc {
-  margin: var(--sp-1) 0 var(--sp-3);
-  font-size: var(--font-base);
-  line-height: 1.35;
-  color: var(--ColorText);
-  opacity: 0.9;
-  overflow-wrap: anywhere; /* prevent clipping on long words */
 }
 .cc-select-col {
   flex: 1 1 160px;
@@ -322,8 +267,8 @@ body {
 }
 .cc-var-img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 .cc-var-fallback {
@@ -437,25 +382,7 @@ body {
   background: #eef1f2;
   outline: none;
 }
-.cc-var-selected-pattern {
-  font-size: var(--font-sm);
-  color: #5b5b5b;
-  margin-left: var(--sp-1);
-}
-.cc-var-preview {
-  margin-top: var(--sp-3);
-}
-.cc-var-preview-img-wrap {
-  width: 100%;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: linear-gradient(145deg, #dcdfe1, #f3f5f6);
-}
-.cc-var-preview-img-wrap img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+
 .sp-tint-picker-wrap {
   display: block;
   width: 100%;
@@ -532,10 +459,7 @@ body {
 .hud-card .cc-views-bar {
   gap: 0.6rem;
 }
-.hud-card .sp-export-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(255, 255, 255, 0.55);
-}
+
 .hud-card .cc-views-label {
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
@@ -580,10 +504,6 @@ body {
     --panel-width: clamp(280px, 38dvw, 400px);
     --var-size: clamp(44px, 12vw, 50px);
   }
-  .sp-panel-open-btn {
-    top: var(--sp-2);
-    right: var(--sp-2);
-  }
   .sp-header {
     padding: var(--sp-2) var(--sp-3);
   }
@@ -621,10 +541,7 @@ body {
     padding: var(--sp-2) var(--sp-2);
   }
 }
-/* .sp-export-row layout override removed (legacy) */
 
-/* Removed old react-sidebar width tweaks (unused) */
-/* Landing styles */
 @media (hover: none) and (pointer: coarse) {
   .cc-var-box::after,
   .cc-var-box::before {
@@ -632,16 +549,6 @@ body {
   }
 }
 
-.landing-root {
-  background: #18181a;
-  min-height: 100vh;
-}
-.centered-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .centered-content {
   text-align: center;
   width: min(420px, 90vw);
@@ -687,7 +594,6 @@ body {
 .aw-shell {
   display: grid;
   grid-template-columns: 1fr 0px;
-  grid-template-rows: 100dvh;
   width: 100%;
   transition: grid-template-columns var(--tr-med);
   will-change: grid-template-columns;
@@ -704,14 +610,3 @@ body {
   overflow: hidden;
   border-left: 1px solid var(--ColorBorderSoft);
 }
-
-/* Removed legacy react-sidebar shells */
-
-/* topmost close button inside header */
-
-
-/*
-.sp-viewrotator-section {
-  padding: 0.25rem 0rem;
-}
- */
