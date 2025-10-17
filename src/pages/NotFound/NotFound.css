@@ -52,7 +52,7 @@
   flex-wrap: wrap;
 }
 
-.btn {
+.not-found .btn {
   height: 44px;
   padding: 0 24px;
   border-radius: 10px;
@@ -67,7 +67,7 @@
   transition: all 0.2s ease;
 }
 
-.btn:hover {
+.not-found .btn:hover {
   background: #0b1220;
   border-color: #0b1220;
   transform: translateY(-2px);

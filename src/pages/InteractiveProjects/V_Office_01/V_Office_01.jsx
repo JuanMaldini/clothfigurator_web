@@ -9,7 +9,6 @@ function VOffice01() {
         style={{ visibility: "visible", border: "none" }}
         id="iframe_1"
         src={iframeSrc}
-        height="100%"
         width="100%"
         allowFullScreen
         title="Virtual Office"

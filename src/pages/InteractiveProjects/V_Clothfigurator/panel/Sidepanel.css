@@ -22,7 +22,6 @@
   --radius-lg: 10px;
   --tr-fast: 120ms ease;
   --tr-med: 220ms ease;
-  /* Adaptive sizing */
   --panel-width: clamp(300px, 30dvw, 440px);
   --var-size: clamp(40px, 10vw, 56px); /* responsive variation square */
 }
@@ -174,7 +173,6 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
   background: var(--ColorBackground);
   color: var(--ColorText);
   overflow: hidden;

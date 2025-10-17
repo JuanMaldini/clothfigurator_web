@@ -1,4 +1,4 @@
-import "./projects.css";
+import "./Projects.css";
 import HeroCarousel from "../../components/HeroCarousel";
 import {
   CLOTHFIGURATOR_MEDIA,

@@ -36,3 +36,20 @@ body {
 	background-color: hsl(0, 0%, 95%);
 	filter: drop-shadow(0px 0px 12px hsl(0, 0%, 70%));
 }
+
+/* Global button styles (baseline from Control Panel) */
+.btn {
+	height: 34px;
+	padding: 0 12px;
+	border-radius: 8px;
+	border: 1px solid #111827;
+	background: #111827;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+.btn:hover { background: #0b1220; border-color: #0b1220; }
+.btn.ghost { border-color: #e5e7eb; background: #fff; color: #111827; }
+.btn.ghost:hover { background: #f9fafb; }
+.btn.outline { background: #fff; color: #111827; border-color: #111827; }

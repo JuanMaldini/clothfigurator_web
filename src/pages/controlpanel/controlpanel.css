@@ -68,13 +68,13 @@
 .panel-actions { display: flex; gap: 8px; }
 
 .btn {
-    align-content: center;
+  align-content: center;
   height: 34px;
   padding: 0 12px;
   border-radius: 8px;
   border: 1px solid #111827;
   background: #111827;
-  color: #fff;
+  color: #ff0000;
   font-weight: 600;
   cursor: pointer;
 }

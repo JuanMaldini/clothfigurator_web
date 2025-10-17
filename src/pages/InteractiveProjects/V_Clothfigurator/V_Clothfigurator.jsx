@@ -1,4 +1,3 @@
-import "./V_Clothfigurator.css";
 import ArcwarePlayer from "./panel/arcware/ArcwarePlayer.tsx";
 
 const VClothfigurator = () => (

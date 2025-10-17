@@ -35,9 +35,9 @@ const Navbar = () => {
           <Link to="/projects">Projects</Link>
 
           {/* Mostrar Control Panel solo si está logueado */}
-          {auth.isAuthenticated && (
+          {/* {auth.isAuthenticated && ( */}
             <Link to="/controlpanel">Control Panel</Link>
-          )}
+          {/* }) */}
 
           {/* Mostrar Login o icono de Logout (✕) según el estado */}
           {auth.isAuthenticated ? (

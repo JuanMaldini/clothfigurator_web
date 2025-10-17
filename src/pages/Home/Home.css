@@ -68,41 +68,6 @@
   justify-content: center;
 }
 
-.btn {
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 10px;
-  border: 1px solid #111827;
-  background: #111827;
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: #0b1220;
-  border-color: #0b1220;
-}
-
-.btn.ghost {
-  border-color: #e5e7eb;
-  background: #fff;
-  color: #111827;
-}
-
-.btn.ghost:hover {
-  background: #f9fafb;
-}
-
-.btn.outline {
-  background: #fff;
-  color: #111827;
-  border-color: #111827;
-}
-
 @media (max-width: 720px) {
   .hero-title {
     font-size: 32px;
