@@ -26,9 +26,7 @@ const amplifyConfig = {
 export const configureAmplify = () => {
   try {
     Amplify.configure(amplifyConfig);
-    console.log("✅ AWS Amplify configurado correctamente");
   } catch (error) {
-    console.error("❌ Error al configurar AWS Amplify:", error);
   }
 };
 

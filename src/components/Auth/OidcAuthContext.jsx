@@ -45,7 +45,6 @@ export const useAuth = () => {
         window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
         return { success: true };
       } catch (err) {
-        console.error("Error en logout:", err);
         return { success: false, error: err.message };
       }
     },

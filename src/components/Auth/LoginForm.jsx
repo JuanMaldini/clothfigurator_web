@@ -59,7 +59,6 @@ const LoginForm = () => {
         setError(result.error || "Error al iniciar sesión");
       }
     } catch (err) {
-      console.error("Error en handleSubmit:", err);
       setError("Error inesperado al iniciar sesión");
     } finally {
       setLoading(false);
