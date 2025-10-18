@@ -1,11 +1,5 @@
 import { useAuth } from "./AuthContext";
 
-/**
- * UserInfo - Componente para mostrar información del usuario autenticado
- *
- * Muestra el username y un botón de logout.
- * Útil para incluir en páginas protegidas.
- */
 const UserInfo = ({ showLogout = true }) => {
   const { user, logout } = useAuth();
 

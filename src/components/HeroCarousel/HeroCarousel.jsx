@@ -37,15 +37,42 @@ const HeroCarousel = ({
   }, [items, random]);
 
   const [index, setIndex] = useState(0);
+  const [delayMs, setDelayMs] = useState(intervalMs);
 
+  const goTo = (target) => {
+    if (!Number.isFinite(target) || slides.length === 0) return;
+    const next = ((target % slides.length) + slides.length) % slides.length;
+    setIndex(next);
+    setDelayMs(intervalMs);
+  };
+
+  const goNext = () => {
+    if (slides.length === 0) return;
+    setIndex((current) => (current + 1) % slides.length);
+    setDelayMs(intervalMs);
+  };
+
+  const goPrev = () => {
+    if (slides.length === 0) return;
+    setIndex((current) => (current - 1 + slides.length) % slides.length);
+    setDelayMs(intervalMs);
+  };
+
+  // Mantener sincronizado el delay por defecto si cambia la prop
+  useEffect(() => {
+    setDelayMs(intervalMs);
+  }, [intervalMs]);
+
+  // Autoplay con timeout reiniciable para controlar el delay tras interacción
   useEffect(() => {
     if (slides.length <= 1) return undefined;
-    const timerId = setInterval(
-      () => setIndex((current) => (current + 1) % slides.length),
-      intervalMs
-    );
-    return () => clearInterval(timerId);
-  }, [slides.length, intervalMs]);
+    const timerId = setTimeout(() => {
+      setIndex((current) => (current + 1) % slides.length);
+      // Al avanzar automáticamente, restaura el delay por defecto
+      setDelayMs(intervalMs);
+    }, delayMs);
+    return () => clearTimeout(timerId);
+  }, [slides.length, index, delayMs, intervalMs]);
 
   useEffect(() => {
     if (index >= slides.length) {
@@ -90,8 +117,23 @@ const HeroCarousel = ({
             <span
               key={indicatorIndex}
               className={`hero__indicator ${indicatorIndex === index ? "is-active" : ""}`}
+              onClick={() => goTo(indicatorIndex)}
+              role="button"
+              aria-label={`Go to slide ${indicatorIndex + 1}`}
+              tabIndex={0}
             />
           ))}
+        </div>
+      )}
+
+      {slides.length > 1 && (
+        <div>
+          <button type="button" onClick={goPrev} aria-label="Previous slide">
+            Prev
+          </button>
+          <button type="button" onClick={goNext} aria-label="Next slide">
+            Next
+          </button>
         </div>
       )}
     </div>

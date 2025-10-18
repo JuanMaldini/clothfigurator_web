@@ -6,17 +6,8 @@ import {
   fetchAuthSession,
 } from "aws-amplify/auth";
 
-/**
- * AuthContext - Contexto de autenticación global
- *
- * Maneja el estado de autenticación del usuario en toda la aplicación.
- * Proporciona funciones para login, logout y verificación de estado.
- */
 const AuthContext = createContext(null);
 
-/**
- * Hook personalizado para acceder al contexto de autenticación
- */
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -25,24 +16,15 @@ export const useAuth = () => {
   return context;
 };
 
-/**
- * AuthProvider - Proveedor del contexto de autenticación
- */
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  /**
-   * Verifica si hay un usuario autenticado al cargar la aplicación
-   */
   useEffect(() => {
     checkUser();
   }, []);
 
-  /**
-   * Verifica el estado actual de autenticación
-   */
   const checkUser = async () => {
     try {
       const currentUser = await getCurrentUser();
@@ -56,7 +38,6 @@ export const AuthProvider = ({ children }) => {
         });
       }
     } catch (err) {
-      // Usuario no autenticado
       setUser(null);
     } finally {
       setLoading(false);
@@ -83,7 +64,6 @@ export const AuthProvider = ({ children }) => {
         return { success: true };
       }
 
-      // Manejar casos especiales (MFA, cambio de contraseña, etc.)
       return { success: false, nextStep };
     } catch (err) {
       console.error("Error en login:", err);
@@ -94,9 +74,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  /**
-   * Función de logout
-   */
   const logout = async () => {
     try {
       setLoading(true);
@@ -112,9 +89,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  /**
-   * Verifica si el usuario está autenticado
-   */
   const isAuthenticated = () => {
     return user !== null;
   };

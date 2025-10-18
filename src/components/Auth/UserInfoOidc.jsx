@@ -1,11 +1,5 @@
 import { useAuth } from "react-oidc-context";
 
-/**
- * UserInfo - Componente para mostrar información del usuario autenticado con OIDC
- *
- * Muestra el email/username y un botón de logout opcional.
- * Útil para incluir en páginas protegidas.
- */
 const UserInfo = ({ showLogout = true }) => {
   const auth = useAuth();
 

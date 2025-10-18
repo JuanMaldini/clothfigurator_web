@@ -3,12 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import "./Auth.css";
 
-/**
- * LoginForm - Formulario de inicio de sesión
- *
- * Permite a los usuarios autenticarse con email/username y contraseña.
- * Utiliza AWS Cognito para la autenticación.
- */
 const LoginForm = () => {
   const navigate = useNavigate();
   const { login, error: authError } = useAuth();
@@ -20,28 +14,20 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  /**
-   * Maneja cambios en los inputs del formulario
-   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-    // Limpiar errores al escribir
     if (error) setError("");
   };
 
-  /**
-   * Maneja el envío del formulario
-   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    // Validación básica
     if (!formData.username || !formData.password) {
       setError("Por favor completa todos los campos");
       setLoading(false);
@@ -52,10 +38,8 @@ const LoginForm = () => {
       const result = await login(formData.username, formData.password);
 
       if (result.success) {
-        // Login exitoso - redirigir al control panel
         navigate("/controlpanel");
       } else {
-        // Error en login
         setError(result.error || "Error al iniciar sesión");
       }
     } catch (err) {
@@ -70,14 +54,12 @@ const LoginForm = () => {
       <div className="auth-card">
         <h1 className="auth-title">Iniciar Sesión</h1>
 
-        {/* Mostrar errores */}
         {(error || authError) && (
           <div className="auth-error">{error || authError}</div>
         )}
 
 
         <form className="auth-form" onSubmit={handleSubmit}>
-          {/* Campo de email/username */}
           <div className="form-field">
             <label htmlFor="username">Email o Usuario</label>
             <input
@@ -93,7 +75,6 @@ const LoginForm = () => {
             />
           </div>
 
-          {/* Campo de contraseña */}
           <div className="form-field">
             <label htmlFor="password">Contraseña</label>
             <input
@@ -109,7 +90,6 @@ const LoginForm = () => {
             />
           </div>
 
-          {/* Botón de envío */}
           <button type="submit" className="auth-submit-btn" disabled={loading}>
             {loading ? "Iniciando sesión..." : "Entrar"}
           </button>
