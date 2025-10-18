@@ -13,12 +13,7 @@ const LoginPage = () => {
   const auth = useAuth();
   const navigate = useNavigate();
 
-  // LOG: Estado de autenticación
-    isAuthenticated: auth.isAuthenticated,
-    isLoading: auth.isLoading,
-    error: auth.error,
-    user: auth.user,
-  });
+
 
   // Si ya está autenticado, redirigir al control panel
   useEffect(() => {
@@ -68,9 +63,14 @@ const LoginPage = () => {
         <button
           className="login-button"
           onClick={() => {
+            console.log("🚀 Login Page - Iniciando signinRedirect...");
             try {
               auth.signinRedirect();
             } catch (error) {
+              console.error(
+                "❌ Login Page - Error al llamar signinRedirect:",
+                error
+              );
             }
           }}
         >

@@ -3,10 +3,8 @@ import { useAuth } from "react-oidc-context";
 import "./Navbar.css";
 import Logo from "../../../public/icons/Logo.png";
 
-
 const Navbar = () => {
   const auth = useAuth();
-
 
   const handleLogout = async () => {
     try {
@@ -32,12 +30,16 @@ const Navbar = () => {
           Vanishing Point 3D
         </Link>
         <nav>
-          <Link to="/projects" className="nav-link-underline">Projects</Link>
+          <Link to="/projects" className="nav-link-underline">
+            Projects
+          </Link>
 
           {/* Mostrar Control Panel solo si está logueado */}
-          {/* {auth.isAuthenticated && ( */}
-            <Link to="/controlpanel" className="nav-link-underline">Control Panel</Link>
-          {/* }) */}
+          {auth.isAuthenticated === true && !auth.isLoading && (
+            <Link to="/controlpanel" className="nav-link-underline">
+              Control Panel
+            </Link>
+          )}
 
           {/* Mostrar Login o icono de Logout (✕) según el estado */}
           {auth.isAuthenticated ? (

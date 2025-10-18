@@ -19,28 +19,23 @@ const AppRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
 
       <Route path="/controlpanel" element={
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <ControlPanel />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         }/>
       <Route path="/vconfigurator" element={
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <VConfigurator />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         }/>
       <Route path="/voffice01" element={
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <VOffice01 />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         }/>
       <Route path="/vclothfigurator" element={
-          // <ProtectedRoute>
-            <VClothfigurator />
-          // </ProtectedRoute>
-        }/>
-      <Route path="/aprivatenullsample" element={
           <ProtectedRoute>
-            <APrivatenullsample />
+            <VClothfigurator />
           </ProtectedRoute>
         }/>
       <Route path="/pdflayout" element={
