@@ -71,7 +71,6 @@ function ArcwarePlayer() {
         <Sidepanel
           textures={collections as any}
           models={models as any}
-          onRequestClose={() => {}}
         />
       </aside>
     </div>

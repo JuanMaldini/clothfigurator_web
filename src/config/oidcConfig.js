@@ -4,8 +4,15 @@
  * Configuración usando react-oidc-context para autenticación
  * con AWS Cognito mediante OpenID Connect (OIDC)
  */
-
-
+// Utiliza el origen actual en tiempo de ejecución como fallback
+const runtimeOrigin = (() => {
+  try {
+    if (typeof window !== "undefined" && window.location?.origin) {
+      return window.location.origin;
+    }
+  } catch {}
+  return "http://localhost:5173";
+})();
 
 export const cognitoAuthConfig = {
   // Authority: URL del proveedor OIDC (Cognito User Pool)
@@ -14,20 +21,21 @@ export const cognitoAuthConfig = {
   // Client ID de la aplicación
   client_id: import.meta.env.VITE_AWS_COGNITO_CLIENT_ID,
 
-  redirect_uri: import.meta.env.VITE_REDIRECT_URI || "http://localhost:5173",
-
-  post_logout_redirect_uri:
-    import.meta.env.VITE_LOGOUT_URI || "http://localhost:5173",
+  // URIs de redirección (permiten override por .env, si no usan el origen actual)
+  redirect_uri: import.meta.env.VITE_REDIRECT_URI || runtimeOrigin,
+  post_logout_redirect_uri: import.meta.env.VITE_LOGOUT_URI || runtimeOrigin,
 
   response_type: "code",
 
-  scope: "openid email profile phone aws.cognito.signin.user.admin",
+  // Alinear scopes con lo habilitado en Cognito (puedes añadir "profile" si lo habilitas)
+  scope: import.meta.env.VITE_OIDC_SCOPE || "openid email phone",
 
   automaticSilentRenew: true,
   loadUserInfo: true,
 
   metadata: {
-    issuer: import.meta.env.VITE_AWS_COGNITO_DOMAIN,
+    // El issuer de los tokens de Cognito es el endpoint cognito-idp, no el dominio de Hosted UI
+    issuer: `https://cognito-idp.${import.meta.env.VITE_AWS_COGNITO_REGION}.amazonaws.com/${import.meta.env.VITE_AWS_COGNITO_USER_POOL_ID}`,
     authorization_endpoint: `${import.meta.env.VITE_AWS_COGNITO_DOMAIN}/oauth2/authorize`,
     token_endpoint: `${import.meta.env.VITE_AWS_COGNITO_DOMAIN}/oauth2/token`,
     userinfo_endpoint: `${import.meta.env.VITE_AWS_COGNITO_DOMAIN}/oauth2/userInfo`,
@@ -37,10 +45,11 @@ export const cognitoAuthConfig = {
 
 export const getCognitoLogoutUrl = () => {
   const clientId = import.meta.env.VITE_AWS_COGNITO_CLIENT_ID;
-  const logoutUri = import.meta.env.VITE_LOGOUT_URI || "http://localhost:5173";
+  const logoutUri = import.meta.env.VITE_LOGOUT_URI || runtimeOrigin;
   const cognitoDomain = import.meta.env.VITE_AWS_COGNITO_DOMAIN;
-
-  return `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
+  return `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
+    logoutUri
+  )}`;
 };
 
 export default cognitoAuthConfig;
